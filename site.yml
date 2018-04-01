@@ -1,0 +1,30 @@
+---
+
+# TODO(thraneh): change to ansible user
+
+- hosts: all
+  remote_user: root
+  become_user: root
+  roles:
+  - baseline
+  - sysadmin
+  - conda
+
+- hosts: trading
+  remote_user: root
+  become_user: root
+  roles:
+  - tuning
+  - infra
+  - consul
+  - prometheus
+  - redis
+  - nginx
+  - roq
+  - netdata
+
+- hosts: development
+  remote_user: root
+  become_user: root
+  roles:
+  - devtools

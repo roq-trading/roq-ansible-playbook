@@ -1,0 +1,17 @@
+---
+femasapi:
+  login_user: "00000000"
+  login_password: "000008"
+  broker_id: "0000"
+  investor_id: "00000000"
+  md_user:
+    front_address: "1.2.3.4"
+    front_port: "1234"
+    name_server_address: "1.2.3.4"
+    name_server_port: "1234"
+  trader:
+    front_address: "1.2.3.4"
+    front_port: "1234"
+    name_server_address: "1234"
+    name_server_port: "1234"
+  license: "90879bedfcb0316528dd41d3b12d7df718fd3c479486c7271b4ff7605bfa395e"

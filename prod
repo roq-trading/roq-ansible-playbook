@@ -1,0 +1,8 @@
+[Prod]
+prod ansible_host="localhost" gateways='["femasapi"]'
+
+[trading:children]
+Prod
+
+[development:children]
+Prod
