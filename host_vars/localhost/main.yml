@@ -1,17 +1,31 @@
 ---
 femasapi:
-  login_user: "00000000"
-  login_password: "000008"
-  broker_id: "0000"
-  investor_id: "00000000"
   md_user:
-    front_address: "1.2.3.4"
-    front_port: "1234"
-    name_server_address: "1.2.3.4"
-    name_server_port: "1234"
+    front: "tcp://1.2.3.4:8105"
+    name_server: "tcp://1.2.3.4:5213"
   trader:
-    front_address: "1.2.3.4"
-    front_port: "1234"
-    name_server_address: "1234"
-    name_server_port: "1234"
+    front: "tcp://1.2.3.4:8102"
+    name_server: "tcp://1.2.3.4:5213"
+  accounts:
+    "00000000":
+      broker: "0000"
+      password: "000000"
+      trading:
+        CFFEX:
+        - "${IC}"
+        - "${IF}"
+        - "${IH}"
+        - "${T_}"
+        - "${TF}"
+      master: true
+  users:
+    test:
+      password: "1234"
+    trader:
+      password: "secret"
+      accounts:
+      - "00000000"
+      trading:
+        CFFEX:
+        - "${IC}"
   license: "90879bedfcb0316528dd41d3b12d7df718fd3c479486c7271b4ff7605bfa395e"
