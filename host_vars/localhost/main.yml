@@ -21,11 +21,6 @@ femasapi:
   users:
     test:
       password: "1234"
-      symbols:
-        CFFEX:
-        - ".*"
-        SHFE:
-        - ".*"
     trader:
       password: "secret"
       accounts:
