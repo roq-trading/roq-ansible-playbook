@@ -8,20 +8,21 @@
   roles:
   - baseline
   - sysadmin
-  - conda
+  - python
+  - conda  # deprecate when docker has been fully implemented
 
 - hosts: trading
   remote_user: root
   become_user: root
   roles:
   - tuning
-  - infra
-  - consul
-  - prometheus
-  - redis
+  - docker
+  - infra  # deprecate when docker has been fully implemented
   - nginx
-  - roq
+  - redis
   - netdata
+  - prometheus
+  - roq-trading
 
 - hosts: development
   remote_user: root
