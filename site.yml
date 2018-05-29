@@ -11,6 +11,12 @@
   - python
   - conda  # deprecate when docker has been fully implemented
 
+- hosts: caching
+  remote_user: root
+  become_user: root
+  roles:
+  - nginx
+
 - hosts: trading
   remote_user: root
   become_user: root
@@ -18,7 +24,6 @@
   - tuning
   - docker
   - infra  # deprecate when docker has been fully implemented
-  - nginx
   - redis
   - netdata
   - prometheus
