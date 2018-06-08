@@ -6,6 +6,13 @@ femasapi:
   trader:
     front: "tcp://1.2.3.4:8102"
     name_server: "tcp://1.2.3.4:5213"
+  symbols:
+    CFFEX:
+    - "${IC}"
+    - "${IF}"
+    - "${IH}"
+    - "${T_}"
+    - "${TF}"
   accounts:
     "00000000":
       broker: "0000"
@@ -21,6 +28,9 @@ femasapi:
   users:
     test:
       password: "1234"
+      symbols:
+        CFFEX:
+        - ".*"
     trader:
       password: "secret"
       accounts:
