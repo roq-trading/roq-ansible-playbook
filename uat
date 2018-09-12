@@ -1,8 +1,0 @@
-[Test]
-test ansible_host="localhost" gateways='["femasapi"]'
-
-[trading:children]
-Test
-
-[development:children]
-Test

@@ -1,5 +1,0 @@
----
-gateway_ports:
-  femasapi: 12345
-  qq_femasapi: 12346
-  coinbase_gdax: 12347
