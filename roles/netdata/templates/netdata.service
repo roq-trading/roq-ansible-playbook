@@ -1,0 +1,24 @@
+[Unit]
+Description=Netdata
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+{% if cpu_affinity is defined %}
+CPUAffinity={{ cpu_affinity.zone_2 }}
+{% endif %}
+ExecStartPre=-/usr/bin/docker stop %n
+ExecStartPre=-/usr/bin/docker rm %n
+ExecStartPre=/usr/bin/docker pull titpetric/netdata
+ExecStart=/usr/bin/docker run --rm --name %n \
+  --cap-add SYS_PTRACE \
+  --security-opt apparmor=unconfined \
+  --volume /proc:/host/proc:ro \
+  --volume /sys:/host/sys:ro \
+  --publish {{ netdata_port }}:{{ netdata_port }} \
+  titpetric/netdata
+
+[Install]
+WantedBy=multi-user.target

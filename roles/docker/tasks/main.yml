@@ -1,0 +1,122 @@
+---
+
+##############
+### DEBIAN ###
+##############
+
+# https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04
+
+- block:
+
+  - name: install dependencies
+    apt:
+      name: "{{ item }}"
+      state: present
+    with_items:
+      - "apt-transport-https"
+      - "ca-certificates"
+      - "curl"
+      - "gnupg2"
+      - "software-properties-common"
+
+  - name: add docker gpg key
+    apt_key:
+      url: "https://download.docker.com/linux/ubuntu/gpg"
+      state: present
+
+  - name: find distribution version
+    command: "/usr/bin/lsb_release -cs"
+    register: ubuntu_version
+
+  - name: get distribution name
+    set_fact: 
+      distribution: "{{ ansible_distribution | lower }}"
+
+  - name: add docker repository
+    apt_repository:
+      repo: "deb [arch=amd64] https://download.docker.com/linux/{{ distribution }} {{ ubuntu_version.stdout }} stable"
+      state: present
+
+  - name: install docker-ce
+    apt:
+      name: "docker-ce"
+      update_cache: yes
+    notify:
+    - start docker
+
+  when: ansible_os_family == "Debian"
+  become: "{{ 'true' if become_user is defined else 'false' }}"
+  tags:
+    - docker
+
+
+##############
+### REDHAT ###
+##############
+
+# https://docs.docker.com/install/linux/docker-ce/centos/#install-docker-ce
+
+- block:
+
+  - name: install dependencies
+    yum:
+      name: "{{ item }}"
+      state: present
+    with_items:
+      - "yum-utils"
+      - "device-mapper-persistent-data"
+      - "lvm2"
+
+  # TODO(thraneh):
+  # https://github.com/docker/for-linux/issues/299
+  # sudo yum install -y http://mirror.centos.org/centos/7/extras/x86_64/Packages/container-selinux-2.42-1.gitad8f0f7.el7.noarch.rpm
+
+  - name: add docker gpg key
+    rpm_key:
+      key: "https://download.docker.com/linux/centos/gpg"
+      state: present
+
+  - name: add docker-ce repo
+    get_url:
+      url: "https://download.docker.com/linux/centos/docker-ce.repo"
+      dest: "/etc/yum.repos.d/docker-ce.repo"
+      force: yes
+      owner: root
+      group: root
+      mode: 0644
+
+  - name: install docker-ce
+    yum:
+      name: "docker-ce"
+      state: present
+      update_cache: yes
+    notify:
+    - start docker
+
+  when: ansible_os_family == "RedHat"
+  become: "{{ 'true' if become_user is defined else 'false' }}"
+  tags:
+    - docker
+
+
+##############
+### COMMON ###
+##############
+
+# otherwise (ansible) docker_image will fail later on...
+
+- block:
+
+  - name: pip install docker-py
+    pip:
+      name: "docker-py"
+      state: latest
+    tags:
+    - docker
+
+  become: "{{ 'true' if become_user is defined else 'false' }}"
+  tags:
+    - docker
+
+# TODO(thraneh): implement http proxy support
+# https://stackoverflow.com/questions/23111631/cannot-download-docker-images-behind-a-proxy

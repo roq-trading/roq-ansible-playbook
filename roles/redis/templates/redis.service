@@ -1,0 +1,24 @@
+[Unit]
+Description=Redis
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+{% if cpu_affinity is defined %}
+CPUAffinity={{ cpu_affinity.zone_3 }}
+{% endif %}
+ExecStartPre=-/usr/bin/docker stop %n
+ExecStartPre=-/usr/bin/docker rm %n
+ExecStartPre=/usr/bin/docker pull redis
+ExecStart=/usr/bin/docker run --rm --name %n \
+  --security-opt apparmor=unconfined \
+  --volume {{ root }}/etc/redis/redis.conf:/usr/local/etc/redis/redis.conf:ro \
+  --volume {{ root }}/var/lib/redis:/data \
+  --publish {{ redis_port }}:{{ redis_port }} \
+  redis \
+  redis-server /usr/local/etc/redis/redis.conf
+
+[Install]
+WantedBy=multi-user.target

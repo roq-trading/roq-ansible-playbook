@@ -1,0 +1,44 @@
+---
+
+- block:
+
+  - name: create directories
+    file:
+      path: "{{ item }}"
+      state: directory
+      recurse: yes
+      owner: root
+      group: root
+      mode: 0755
+    with_items:
+      - "{{ root }}/var/lib/influxdb"
+    notify:
+    - restart influxdb
+
+  - name: pull docker image
+    docker_image:
+      name: "influxdb"
+      http_timeout: 300
+
+  - name: create systemd service
+    template:
+      src: "templates/influxdb.service"
+      dest: "/etc/systemd/system/influxdb.service"
+      owner: root
+      group: root
+      mode: 0644
+    register: influxdb_service
+    notify:
+    - restart influxdb
+
+  - name: enable the influxdb service
+    systemd:
+      name: "influxdb.service"
+      enabled: true
+      daemon_reload: true
+    when: influxdb_service.changed
+
+
+  become: "{{ 'true' if become_user is defined else 'false' }}"
+  tags:
+    - influxdb

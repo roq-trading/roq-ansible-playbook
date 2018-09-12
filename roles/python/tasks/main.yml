@@ -1,0 +1,39 @@
+---
+
+##############
+### DEBIAN ###
+##############
+
+- block:
+
+  - name: install pip
+    apt:
+      name: "{{ item }}"
+    with_items:
+      - python-setuptools
+      - python-pip
+
+  when: ansible_os_family == "Debian"
+  become: "{{ 'true' if become_user is defined else 'false' }}"
+  tags:
+    - python
+
+##############
+### REDHAT ###
+##############
+
+- block:
+
+  - name: install pip
+    yum:
+      name: python-setuptools
+  
+  - name: easy install pip
+    easy_install:
+      name: pip
+      state: latest
+
+  when: ansible_os_family == "RedHat"
+  become: "{{ 'true' if become_user is defined else 'false' }}"
+  tags:
+    - python

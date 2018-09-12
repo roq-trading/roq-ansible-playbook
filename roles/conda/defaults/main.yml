@@ -1,0 +1,13 @@
+---
+
+root: "/"
+
+anaconda:
+  url: "https://repo.continuum.io"
+  sources:
+    - "anaconda"
+
+miniconda_sh: 'Miniconda3-latest-{{ "MacOSX" if ansible_os_family == "Darwin" else "Linux" }}-x86_64.sh'
+
+roq:
+  url: "http://www.roq-trading.com"

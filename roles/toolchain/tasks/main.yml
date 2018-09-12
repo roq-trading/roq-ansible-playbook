@@ -1,0 +1,14 @@
+---
+
+- block:
+
+  - name: install compiler toolchain
+    shell: "{{ root }}/miniconda/bin/conda install -y -n base {{ item }}"
+    with_items:
+      - "{{ conda_cc }}"
+      - "{{ conda_cxx }}"
+      - "cmake"
+    
+  become: "{{ 'true' if become_user is defined else 'false' }}"
+  tags:
+    - toolchain

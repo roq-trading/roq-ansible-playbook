@@ -1,0 +1,112 @@
+---
+
+- block:
+
+  - name: create directories
+    file:
+      path: "{{ item }}"
+      state: directory
+      owner: root
+      group: root
+      mode: 0755
+    with_items:
+      - "{{ root }}/etc/prometheus"
+      - "{{ root }}/var/lib/prometheus"
+      - "{{ root }}/var/lib/prometheus/lock"
+    notify:
+    - restart prometheus
+    - restart alertmanager
+  
+  - name: create config files
+    template:
+      src: "templates/{{ item }}"
+      dest: "{{ root }}/etc/prometheus/{{ item }}"
+      owner: root
+      group: root
+      mode: 0644
+    with_items:
+      - "prometheus.yml"
+      - "alertmanager.yml"
+      - "alert.rules"
+    notify:
+    - restart prometheus
+    - restart alertmanager
+  
+  - name: pull docker images
+    docker_image:
+      name: "prom/prometheus"
+      http_timeout: 300
+    with_items:
+      - "prom/prometheus"
+      - "prom/node-exporter"
+      - "prom/alertmanager"
+  
+  ##################
+  ### PROMETHEUS ###
+  ##################
+  
+  - name: create prometheus systemd service
+    template:
+      src: "templates/prometheus.service"
+      dest: "/etc/systemd/system/prometheus.service"
+      owner: root
+      group: root
+      mode: 0644
+    register: prometheus_service
+    notify:
+    - restart prometheus
+  
+  - name: enable the prometheus service
+    systemd:
+      name: "prometheus.service"
+      enabled: true
+      daemon_reload: true
+    when: prometheus_service.changed
+  
+  #####################
+  ### NODE-EXPORTER ###
+  #####################
+  
+  - name: create node-exporter systemd service
+    template:
+      src: "templates/node-exporter.service"
+      dest: "/etc/systemd/system/node-exporter.service"
+      owner: root
+      group: root
+      mode: 0644
+    register: node_exporter_service
+    notify:
+    - restart node-exporter
+  
+  - name: enable the node-exporter service
+    systemd:
+      name: "node-exporter.service"
+      enabled: true
+      daemon_reload: true
+    when: node_exporter_service.changed
+  
+  ####################
+  ### ALERTMANAGER ###
+  ####################
+  
+  - name: create alertmanager systemd service
+    template:
+      src: "templates/alertmanager.service"
+      dest: "/etc/systemd/system/alertmanager.service"
+      owner: root
+      group: root
+      mode: 0644
+    register: alertmanager_service
+    notify:
+    - restart alertmanager
+  
+  - name: enable the alertmanager service
+    systemd:
+      name: "alertmanager.service"
+      enabled: true
+      daemon_reload: true
+    when: alertmanager_service.changed
+
+  become: "{{ 'true' if become_user is defined else 'false' }}"
+  tags:
+    - prometheus

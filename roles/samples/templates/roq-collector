@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+set -e
+
+CONDA_DIR="{{ root }}/miniconda"
+LOG_DIR="{{ root }}/var/log"
+
+LICENSE="$CONFIG_DIR/license.conf"
+VARIABLES="$CONFIG_DIR/variables.conf"
+CONFIG="$CONFIG_DIR/master.conf"
+
+source "$CONDA_DIR/bin/activate"
+
+if [ -e "$CONDA_PREFIX/lib/libtcmalloc.so" ]; then
+  export LD_PRELOAD="$CONDA_PREFIX/lib/libtcmalloc.so"
+fi
+
+{% if samples.use_log_dir %}
+export ROQ_log_dir="$LOG_DIR"
+{% endif %}
+export ROQ_v="{{ samples.verbosity | default(0) }}"
+
+####
+
+SOCKET="{{ root }}/var/tmp/femas.sock"
+DATE="$(date +%Y-%m-%d)"
+STDOUT="{{ root }}/var/lib/roq/collector_$DATE.csv"
+
+USER="test"
+PASSWORD="1234"
+
+"$CONDA_PREFIX/bin/roq-samples-collector" --gateways "femas=$USER:$PASSWORD@$SOCKET" >> "$STDOUT"

@@ -1,0 +1,57 @@
+---
+
+# http://landoflinux.com/linux_fail2ban_install_configuration.html
+
+##############
+### DEBIAN ###
+##############
+
+- block:
+
+  - name: install
+    apt:
+      name: "fail2ban"
+
+  when: ansible_os_family == "Debian"
+  become: "{{ 'true' if become_user is defined else 'false' }}"
+  tags:
+    - fail2ban
+
+##############
+### REDHAT ###
+##############
+
+- block:
+  - name: install
+    yum:
+      name: "fail2ban"
+  when: ansible_os_family == "RedHat"
+  become: "{{ 'true' if become_user is defined else 'false' }}"
+  tags:
+    - fail2ban
+  
+##############
+### COMMON ###
+##############
+
+- block:
+
+  - name: change config
+    ini_file:
+      dest: "/etc/fail2ban/jail.local"
+      section: "{{ item.section }}"
+      option: "{{ item.option }}"
+      value: "{{ item.value }}"
+    with_items:
+      - { section: "DEFAULT", option: "destemail", value: "{{ fail2ban_mailto }}" }
+      - { section: "DEFAULT", option: "sender", value: "{{ fail2ban_sender }}@{{ ansible_hostname }}" }
+      - { section: "DEFAULT", option: "mta", value: "mail" }
+      - { section: "DEFAULT", option: "enabled", value: "false" }
+      - { section: "sshd", option: "enabled", value: "true" }
+      - { section: "sshd-ddos", option: "enabled", value: "true" }
+    notify:
+    - restart fail2ban
+  
+  become: "{{ 'true' if become_user is defined else 'false' }}"
+  tags:
+    - fail2ban

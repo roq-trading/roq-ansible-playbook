@@ -1,0 +1,40 @@
+---
+
+- block:
+
+  - name: create directories
+    file:
+      path: "{{ root }}/var/lib/grafana"
+      state: directory
+      owner: root
+      group: root
+      mode: 0777
+    notify:
+    - restart grafana
+  
+  - name: pull docker image
+    docker_image:
+      name: "grafana/grafana"
+      http_timeout: 300
+  
+  - name: create systemd service
+    template:
+      src: "templates/grafana.service"
+      dest: "/etc/systemd/system/grafana.service"
+      owner: root
+      group: root
+      mode: 0644
+    register: grafana_service
+    notify:
+    - restart grafana
+  
+  - name: enable the grafana service
+    systemd:
+      name: "grafana.service"
+      enabled: true
+      daemon_reload: true
+    when: grafana_service.changed
+  
+  become: "{{ 'true' if become_user is defined else 'false' }}"
+  tags:
+    - grafana

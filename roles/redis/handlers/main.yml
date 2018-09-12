@@ -1,0 +1,8 @@
+---
+
+# note! semantics is to reload on configuration change, but redis-server doesn't support reloading
+- name: reload redis
+  service:
+    name: redis
+    state: restarted
+  become: true

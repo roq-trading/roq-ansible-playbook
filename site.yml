@@ -1,0 +1,44 @@
+---
+
+- hosts: server
+  roles:
+    - baseline
+    - chrony
+    - sysstat
+    - sysadmin
+    - python
+    - docker
+
+- hosts: secure
+  roles:
+    - sshd
+    - fail2ban
+
+- hosts: onload
+  roles:
+    - onload
+
+- hosts: all
+  roles:
+    - conda
+
+- hosts: dev
+  roles:
+    - toolchain
+
+- hosts: server
+  roles:
+    - redis
+    - influxdb
+    - netdata
+    - prometheus
+    - grafana
+    - nginx
+
+- hosts: server,samples
+  roles:
+    - samples
+
+- hosts: femas
+  roles:
+    - femas

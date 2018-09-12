@@ -1,0 +1,29 @@
+---
+
+##############
+### DEBIAN ###
+##############
+
+- block:
+
+  - name: restart sshd
+    service:
+      name: ssh
+      state: restarted
+    become: true
+
+  when: ansible_os_family == "Debian"
+
+##############
+### REDHAT ###
+##############
+
+- block:
+
+  - name: restart sshd
+    service:
+      name: sshd
+      state: restarted
+    become: true
+
+  when: ansible_os_family == "RedHat"

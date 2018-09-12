@@ -1,0 +1,45 @@
+---
+
+- block:
+
+  - name: create required directories
+    file:
+      path: "{{ item }}"
+      state: directory
+      recurse: true
+      owner: "{{ roq_user if roq_user is defined else ansible_user_id }}"
+      mode: 0770
+    with_items:
+      - "{{ root }}/etc/roq/femas"
+
+  - name: create run script
+    template:
+      src: "templates/roq-femas.sh"
+      dest: "{{ root }}/usr/local/bin/roq-femas.sh"
+      owner: "{{ roq_user if roq_user is defined else ansible_user_id }}"
+      mode: 0750
+  
+  - name: create config files
+    template:
+      src: "templates/{{ item }}"
+      dest: "{{ root }}/etc/roq/femas/{{ item }}"
+      owner: "{{ roq_user if roq_user is defined else ansible_user_id }}"
+      mode: 0640
+    with_items:
+      - "master.conf"
+      - "users.conf"
+      - "symbols.conf"
+      - "accounts.conf"
+      - "trader.conf"
+      - "md_user.conf"
+      - "datafeed.conf"
+      - "order_templates.conf"
+      - "variables.conf"
+      - "license.conf"
+
+  - name: install the roq-femas conda package
+    shell: "{{ root }}/miniconda/bin/conda install -y -n base roq-femasapi"
+  
+  become: "{{ 'true' if become_user is defined else 'false' }}"
+  tags:
+    - femas

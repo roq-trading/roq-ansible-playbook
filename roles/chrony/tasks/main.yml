@@ -1,0 +1,46 @@
+---
+
+##############
+### DEBIAN ###
+##############
+
+- block:
+
+  - name: install chrony
+    apt:
+      name: chrony
+      state: present
+
+  - name: start chrony service
+    systemd:
+      name: "chrony"
+      enabled: true
+      state: started
+
+  when: ansible_os_family == "Debian"
+  become: "{{ 'true' if become_user is defined else 'false' }}"
+  tags:
+    - chrony
+
+
+##############
+### REDHAT ###
+##############
+
+- block:
+
+  - name: install chrony
+    yum:
+      name: chrony
+      state: present
+
+  - name: start chrony service
+    systemd:
+      name: "chronyd"
+      enabled: true
+      state: started
+
+  when: ansible_os_family == "RedHat"
+  become: "{{ 'true' if become_user is defined else 'false' }}"
+  tags:
+    - chrony

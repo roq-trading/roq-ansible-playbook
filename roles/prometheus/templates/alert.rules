@@ -1,0 +1,26 @@
+groups:
+- name: roq_gateway_monitoring
+  rules:
+{% if 'femas' in groups %}
+  - alert: roq_femas_connection
+    expr: roq_femas_connection_delay > 10
+    for: 2m
+    labels:
+      severity: critical
+    annotations:
+      summary: Gateway is unable to connect to broker or exchange.
+  - alert: roq_femas_client_connections
+    expr: rate(roq_femas_client_connections[30s]) > 0.1
+    for: 2m
+    labels:
+      severity: critical
+    annotations:
+      summary: Possibly bouncing client(s).
+  - alert: roq_femas_order_action_error
+    expr: rate(roq_femas_order_action_error[10s]) > 0.1
+    for: 1m
+    labels:
+      severity: critical
+    annotations:
+      summary: Possibly mis-behaving client(s).
+{% endif %}

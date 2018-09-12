@@ -1,0 +1,44 @@
+---
+
+##############
+### DEBIAN ###
+##############
+
+- block:
+
+  - name: install
+    apt:
+      name: sysstat
+      state: present
+
+  - name: enable
+    replace:
+      dest: '/etc/default/sysstat' 
+      regexp: 'ENABLED="false"'
+      replace: 'ENABLED="true"'
+    notify:
+      - restart sysstat
+  
+  when: ansible_os_family == "Debian"
+  become: "{{ 'true' if become_user is defined else 'false' }}"
+  tags:
+    - sysstat
+
+##############
+### REDHAT ###
+##############
+
+- block:
+  
+  - name: install
+    become: true
+    yum:
+      name: sysstat
+      state: present
+    notify:
+      - restart sysstat
+
+  when: ansible_os_family == "RedHat"
+  become: "{{ 'true' if become_user is defined else 'false' }}"
+  tags:
+    - sysstat

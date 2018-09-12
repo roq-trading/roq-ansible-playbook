@@ -1,0 +1,25 @@
+[Unit]
+Description=AlertManager
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+{% if cpu_affinity is defined %}
+CPUAffinity={{ cpu_affinity.zone_3 }}
+{% endif %}
+ExecStartPre=-/usr/bin/docker stop %n
+ExecStartPre=-/usr/bin/docker rm %n
+ExecStartPre=/usr/bin/docker pull prom/alertmanager
+ExecStart=/usr/bin/docker run --rm --name %n \
+  --security-opt apparmor=unconfined \
+  --net host \
+  --volume {{ root }}/etc/prometheus:/etc/prometheus:ro \
+  --volume {{ root }}/var/lib/prometheus:/var/lib/prometheus \
+  prom/alertmanager \
+  --config.file="/etc/prometheus/alertmanager.yml" \
+  --storage.path="/var/lib/prometheus/"
+
+[Install]
+WantedBy=multi-user.target

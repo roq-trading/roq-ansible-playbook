@@ -1,0 +1,24 @@
+[Unit]
+Description=Grafana
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+{% if cpu_affinity is defined %}
+CPUAffinity={{ cpu_affinity.zone_3 }}
+{% endif %}
+ExecStartPre=-/usr/bin/docker stop %n
+ExecStartPre=-/usr/bin/docker rm %n
+ExecStartPre=/usr/bin/docker pull grafana/grafana
+ExecStart=/usr/bin/docker run --rm --name %n \
+  --security-opt apparmor=unconfined \
+  --net host \
+  --publish 3000:3000 \
+  --volume {{ root }}/var/lib/grafana:/var/lib/grafana \
+  --env "GF_SERVER_ROOT_URL=http://localhost/grafana" \
+  grafana/grafana
+
+[Install]
+WantedBy=multi-user.target

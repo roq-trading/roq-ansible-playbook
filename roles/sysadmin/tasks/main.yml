@@ -1,0 +1,89 @@
+---
+
+##############
+### DEBIAN ###
+##############
+
+- block:
+
+  - name: install tools
+    apt:
+      name: "{{ item }}"
+      state: present
+    with_items:
+      - htop
+      - iotop
+      - iftop
+      - nethogs
+      - dstat
+      - lsof
+      - wget
+      - curl
+      - vim
+      - bash-completion
+      - traceroute
+      - whois
+      - bzip2
+      - zip
+      - unzip
+      - mailutils  ###
+
+  when: ansible_os_family == "Debian"
+  become: "{{ 'true' if become_user is defined else 'false' }}"
+  tags:
+    - sysadmin
+  
+##############
+### REDHAT ###
+##############
+
+- block:
+
+  - name: install tools
+    yum:
+      name: "{{ item }}"
+      state: present
+    with_items:
+      - htop
+      - iotop
+      - iftop
+      - nethogs
+      - dstat
+      - lsof
+      - wget
+      - curl
+      - vim
+      - bash-completion
+      - traceroute
+      - whois
+      - bzip2
+      - zip
+      - unzip
+      - mailx  ###
+      - net-tools  ### ifconfig
+
+  when: ansible_os_family == "RedHat"
+  become: "{{ 'true' if become_user is defined else 'false' }}"
+  tags:
+    - sysadmin
+  
+##############
+### COMMON ###
+##############
+
+- block:
+
+  - name: bash profile -- default editor + avoid history leaks
+    become: true
+    template:
+      src: "templates/profile.sh"
+      dest: "/etc/profile.d/00-aliases.sh"
+      owner: root
+      mode: 0644
+    tags:
+    - sysadmin
+    - bash
+
+  become: "{{ 'true' if become_user is defined else 'false' }}"
+  tags:
+    - sysadmin

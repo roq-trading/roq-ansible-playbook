@@ -1,0 +1,25 @@
+[Unit]
+Description=Nginx
+Wants=network-online.target docker.service
+After=network-online.target docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+{% if cpu_affinity is defined %}
+CPUAffinity={{ cpu_affinity.zone_3 }}
+{% endif %}
+ExecReload=/usr/bin/docker kill -s HUP %n
+ExecStartPre=-/usr/bin/docker stop %n
+ExecStartPre=-/usr/bin/docker rm %n
+ExecStartPre=/usr/bin/docker pull nginx
+ExecStart=/usr/bin/docker run --rm --name %n -i \
+  --security-opt apparmor=unconfined \
+  --net host \
+  --pid host \
+  --volume {{ root }}/etc/nginx/conf.d:/etc/nginx/conf.d:ro \
+  --volume {{ root }}/var/www:/var/www:ro \
+  nginx
+
+[Install]
+WantedBy=multi-user.target

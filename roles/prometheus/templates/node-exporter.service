@@ -1,0 +1,22 @@
+[Unit]
+Description=Node Exporter
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+{% if cpu_affinity is defined %}
+CPUAffinity={{ cpu_affinity.zone_2 }}
+{% endif %}
+ExecStartPre=-/usr/bin/docker stop %n
+ExecStartPre=-/usr/bin/docker rm %n
+ExecStartPre=/usr/bin/docker pull prom/node-exporter
+ExecStart=/usr/bin/docker run --rm --name %n -i \
+  --security-opt apparmor=unconfined \
+  --net host \
+  --pid host \
+  prom/node-exporter
+
+[Install]
+WantedBy=multi-user.target

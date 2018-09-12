@@ -1,0 +1,28 @@
+---
+
+# FIXME(thraneh): doesn't work with ubuntu 16.10
+#  - { regexp: '^\#?UseDNS', line: "UseDNS yes" }
+
+- block:
+
+  - name: secure sshd
+    lineinfile:
+      dest: "/etc/ssh/sshd_config"
+      regexp: "{{ item.regexp }}"
+      line: "{{ item.line }}"
+    with_items:
+    - { regexp: '^\#?X11Forwarding', line: "X11Forwarding no" }
+    - { regexp: '^\#?IgnoreRhosts', line: "IgnoreRhosts yes" }
+    - { regexp: '^\#?UseDNS', line: "UseDNS no" }
+    - { regexp: '^\#?MaxAuthTries', line: "MaxAuthTries 6" }
+    - { regexp: '^\#?PermitRootLogin', line: "PermitRootLogin no" }
+    - { regexp: '^\#?GatewayPorts', line: "GatewayPorts yes" }
+    - { regexp: '^\#?PasswordAuthentication', line: "PasswordAuthentication no" }
+    - { regexp: '^\#?ChallengeResponseAuthentication', line: "ChallengeResponseAuthentication no" }
+    - { regexp: '^\#?UsePAM', line: "UsePAM no" }
+    notify:
+    - restart sshd
+
+  become: "{{ 'true' if become_user is defined else 'false' }}"
+  tags:
+    - sshd

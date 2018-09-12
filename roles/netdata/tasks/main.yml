@@ -1,0 +1,30 @@
+---
+
+- block:
+
+  - name: pull docker image
+    docker_image:
+      name: "titpetric/netdata"
+      http_timeout: 300
+
+  - name: create systemd service
+    template:
+      src: "templates/netdata.service"
+      dest: "/etc/systemd/system/netdata.service"
+      owner: root
+      group: root
+      mode: 0644
+    register: netdata_service
+    notify:
+    - restart netdata
+
+  - name: enable the redis service
+    systemd:
+      name: "netdata.service"
+      enabled: true
+      daemon_reload: true
+    when: netdata_service.changed
+
+  become: "{{ 'true' if become_user is defined else 'false' }}"
+  tags:
+    - netdata

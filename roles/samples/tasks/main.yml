@@ -1,0 +1,27 @@
+---
+
+- block:
+
+  - name: create required directories
+    file:
+      path: "{{ item }}"
+      state: directory
+      recurse: true
+      owner: "{{ roq_user if roq_user is defined else ansible_user_id }}"
+      mode: 0770
+    with_items:
+      - "{{ root }}/var/lib/roq"
+
+  - name: create run script
+    template:
+      src: "templates/roq-collector"
+      dest: "{{ root }}/usr/local/bin/roq-collector"
+      owner: "{{ roq_user if roq_user is defined else ansible_user_id }}"
+      mode: 0750
+
+  - name: install the roq-samples conda package
+    shell: "{{ root }}/miniconda/bin/conda install -y -n base roq-samples"
+  
+  become: "{{ 'true' if become_user is defined else 'false' }}"
+  tags:
+    - samples

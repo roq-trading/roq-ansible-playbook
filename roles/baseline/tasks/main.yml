@@ -1,0 +1,64 @@
+---
+
+##############
+### DEBIAN ###
+##############
+
+- block:
+
+  - name: update and upgrade packages
+    apt:
+      upgrade: dist
+      update_cache: yes
+      cache_valid_time: 86400  # 24 hours
+
+  when: ansible_os_family == "Debian"
+  become: "{{ 'true' if become_user is defined else 'false' }}"
+  tags:
+    - baseline
+
+
+##############
+### REDHAT ###
+##############
+
+- block:
+
+  - name: update and upgrade packages
+    yum:
+      name: '*'
+      state: latest
+
+# TODO(thraneh):
+# https://www.tecmint.com/how-to-enable-epel-repository-for-rhel-centos-6-5/
+# wget http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+# rpm -ivh epel-release-latest-7.noarch.rpm
+
+  - name: install epel-release
+    yum:
+      name: epel-release
+      state: present
+
+  when: ansible_os_family == "RedHat"
+  become: "{{ 'true' if become_user is defined else 'false' }}"
+  tags:
+    - baseline
+
+##############
+### COMMON ###
+##############
+
+- block:
+
+  - name: create required directories
+    file:
+      path: "{{ item }}"
+      state: directory
+    with_items:
+      - "{{ root }}/usr/local/bin"
+      - "{{ root }}/var/log"
+      - "{{ root }}/var/tmp"
+
+  when: become_user is not defined
+  tags:
+    - baseline

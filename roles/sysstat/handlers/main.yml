@@ -1,0 +1,8 @@
+---
+
+- name: restart sysstat
+  service:
+    name: sysstat
+    state: restarted
+    enabled: yes
+  become: true

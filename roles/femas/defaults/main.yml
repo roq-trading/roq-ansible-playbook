@@ -1,0 +1,52 @@
+---
+root: "/"
+
+femas:
+  license: "cGxlYXNlIGNvbnRhY3QgaW5mb0Byb3EtdHJhZGluZy5jb20K"
+  use_log_dir: false
+  verbosity: 0
+  md_user:
+    front: "tcp://1.2.3.4:9876"
+    account: "12345678"
+    password: "abcdefghi"
+    broker: "1234"
+  trader:
+    front: "tcp://1.2.3.4:9876"
+  symbols:
+    CFFEX:
+    - "${IC}"
+    - "${IF}"
+    - "${IH}"
+    - "${T_}"
+    - "${TF}"
+  accounts:
+    "12345678":
+      user: "12345678"
+      broker: "1234"
+      password: "abcdefghi"
+      symbols:
+        CFFEX:
+        - "${IC}"
+        - "${IF}"
+        - "${IH}"
+        - "${T_}"
+        - "${TF}"
+      master: true
+  users:
+    test:
+      password: "1234"
+      symbols:
+        CFFEX:
+        - ".*"
+    algo1:
+      password: "secret"
+      accounts:
+      - "12345678"
+      symbols:
+        CFFEX:
+        - "${IC}"
+      limits:
+        create_order:
+          max: 10
+          monitor_period: 60s
+          ban_period: 300s

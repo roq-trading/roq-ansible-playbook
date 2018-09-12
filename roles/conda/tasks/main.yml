@@ -1,0 +1,42 @@
+---
+
+- block:
+
+  - name: create required directories
+    file:
+      path: "{{ item }}"
+      state: directory
+    with_items:
+      - "{{ root }}/opt"
+      - "{{ root }}/usr/local/bin"
+      - "{{ root }}/miniconda"
+  
+  - name: download {{ anaconda.url }}/miniconda/{{ miniconda_sh }}
+    get_url:
+      url: "{{ anaconda.url }}/miniconda/{{ miniconda_sh }}"
+      dest: "{{ root }}/opt"
+      mode: 0755
+  
+  - name: create {{ root }}/usr/local/bin/{{ miniconda_sh }}
+    file:
+      src: "{{ root }}/opt/{{ miniconda_sh }}"
+      dest: "{{ root }}/usr/local/bin/{{ miniconda_sh }}"
+      state: link
+  
+  - name: install {{ root }}/miniconda
+    shell: "bash {{ root }}/usr/local/bin/{{ miniconda_sh }} -b -u -p {{ root }}/miniconda"
+    args:
+      creates: "{{ root }}/miniconda/bin/activate"
+  
+  - name: create {{ root }}/miniconda/.condarc
+    template:
+      src: "templates/condarc"
+      dest: "{{ root }}/miniconda/.condarc"
+      mode: 0644
+  
+  - name: update miniconda to latest
+    shell: "{{ root }}/miniconda/bin/conda update -n root conda"
+  
+  become: "{{ 'true' if become_user is defined else 'false' }}"
+  tags:
+    - conda

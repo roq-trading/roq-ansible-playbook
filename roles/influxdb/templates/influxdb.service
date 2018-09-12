@@ -1,0 +1,21 @@
+[Unit]
+Description=InfluxDB
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+{% if cpu_affinity is defined %}
+CPUAffinity={{ cpu_affinity.zone_2 }}
+{% endif %}
+ExecStartPre=-/usr/bin/docker stop %n
+ExecStartPre=-/usr/bin/docker rm %n
+ExecStartPre=/usr/bin/docker pull influxdb
+ExecStart=/usr/bin/docker run --rm --name %n \
+  --volume {{ root }}/var/lib/influxdb:/var/lib/influxdb \
+  --publish {{ influxdb_port }}:{{ influxdb_port }} \
+  influxdb
+
+[Install]
+WantedBy=multi-user.target

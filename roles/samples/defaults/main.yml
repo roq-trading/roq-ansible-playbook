@@ -1,0 +1,7 @@
+---
+
+root: "/"
+
+samples:
+  use_log_dir: false
+  verbosity: 0

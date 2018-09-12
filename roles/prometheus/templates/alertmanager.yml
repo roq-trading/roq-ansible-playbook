@@ -1,0 +1,16 @@
+global:
+  smtp_smarthost: 'localhost:25'
+  smtp_from: 'trading@localhost'
+  smtp_require_tls: false
+
+route:
+  group_by: ['instance', 'severity']
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 3h
+  receiver: team-1
+
+receivers:
+  - name: 'team-1'
+    email_configs:
+    - to: 'root@localhost'
