@@ -2,15 +2,26 @@ global:
   smtp_smarthost: 'localhost:25'
   smtp_from: 'trading@localhost'
   smtp_require_tls: false
+{% if proxy_env is defined %}
+  http_config:
+    proxy_url: '{{ proxy_env.http_proxy }}'
+{% endif %}
 
 route:
   group_by: ['instance', 'severity']
   group_wait: 30s
   group_interval: 5m
   repeat_interval: 3h
-  receiver: team-1
+  receiver: 'team-1'
 
 receivers:
   - name: 'team-1'
     email_configs:
     - to: 'root@localhost'
+{% if wechat is defined %}
+    wechat_configs:
+    - corp_id: '{{ wechat.corp_id }}'
+      to_party: '{{ wechat.to_party }}'
+      agent_id: '{{ wechat.agent_id }}'
+      api_secret: '{{ wechat.api_secret }}'
+{% endif %}
