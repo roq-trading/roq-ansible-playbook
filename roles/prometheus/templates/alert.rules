@@ -1,6 +1,13 @@
 groups:
 - name: roq_gateway_monitoring
   rules:
+  - alert: heartbeat
+    expr: hour()==7
+    for: 1s
+    labels:
+      severity: critical
+    annotations:
+      summary: Heartbeat
 {% if 'femas' in groups %}
   - alert: roq_femas_connection
     expr: roq_femas_connection_delay > 10
