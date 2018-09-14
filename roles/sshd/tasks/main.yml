@@ -1,7 +1,9 @@
 ---
 
 # FIXME(thraneh): doesn't work with ubuntu 16.10
-#  - { regexp: '^\#?UseDNS', line: "UseDNS yes" }
+#    - { regexp: '^\#?UseDNS', line: "UseDNS yes" }
+# FIXME(thraneh): procedure should be to create a non-root login account
+#    - { regexp: '^\#?PermitRootLogin', line: "PermitRootLogin no" }
 
 - block:
 
@@ -15,7 +17,7 @@
     - { regexp: '^\#?IgnoreRhosts', line: "IgnoreRhosts yes" }
     - { regexp: '^\#?UseDNS', line: "UseDNS no" }
     - { regexp: '^\#?MaxAuthTries', line: "MaxAuthTries 6" }
-    - { regexp: '^\#?PermitRootLogin', line: "PermitRootLogin no" }
+    - { regexp: '^\#?PermitRootLogin', line: "PermitRootLogin yes" }
     - { regexp: '^\#?GatewayPorts', line: "GatewayPorts yes" }
     - { regexp: '^\#?PasswordAuthentication', line: "PasswordAuthentication no" }
     - { regexp: '^\#?ChallengeResponseAuthentication', line: "ChallengeResponseAuthentication no" }
