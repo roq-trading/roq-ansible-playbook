@@ -18,7 +18,7 @@
     notify:
     - restart netdata
 
-  - name: enable the redis service
+  - name: enable the netdata service
     systemd:
       name: "netdata.service"
       enabled: true

@@ -55,8 +55,14 @@
       path: "{{ item }}"
       state: directory
     with_items:
+      - "{{ root }}/etc"
+      - "{{ root }}/usr"
+      - "{{ root }}/usr/local"
       - "{{ root }}/usr/local/bin"
+      - "{{ root }}/var"
+      - "{{ root }}/var/lib"
       - "{{ root }}/var/log"
+      - "{{ root }}/var/run"
       - "{{ root }}/var/tmp"
 
   when: become_user is not defined

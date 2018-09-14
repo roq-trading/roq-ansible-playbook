@@ -1,0 +1,19 @@
+[Unit]
+Description=Femas gateway
+After=network-online.target
+Conflicts=roq-femas-stop.service
+
+[Service]
+User={{ roq_user if roq_user is defined else ansible_user_id }}
+Group={{ roq_user if roq_user is defined else ansible_user_id }}
+Restart=on-abnormal
+UMask=0002
+{% if femas.cpu_affinity is defined %}
+CPUAffinity={{ femas.cpu_affinity }}
+{% endif %}
+CPUSchedulingPolicy=fifo
+WorkingDirectory=/var/run/femas
+ExecStart={{ root }}/usr/local/bin/roq-femas.sh
+
+[Install]
+WantedBy=multi-user.target

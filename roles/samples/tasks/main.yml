@@ -1,27 +1,74 @@
 ---
 
+- name: detect owner
+  set_fact:
+    user: "{{ user if roq_user is defined else ansible_user_id }}"
+  tags:
+    - samples
+
 - block:
 
   - name: create required directories
     file:
       path: "{{ item }}"
       state: directory
-      recurse: true
-      owner: "{{ roq_user if roq_user is defined else ansible_user_id }}"
+      owner: "{{ user }}"
+      owner: "{{ user }}"
       mode: 0770
     with_items:
       - "{{ root }}/var/lib/roq"
+      - "{{ root }}/var/log/roq"
+      - "{{ root }}/var/run/roq"
+      - "{{ root }}/var/run/roq/collector"
 
   - name: create run script
     template:
-      src: "templates/roq-collector"
-      dest: "{{ root }}/usr/local/bin/roq-collector"
-      owner: "{{ roq_user if roq_user is defined else ansible_user_id }}"
+      src: "templates/roq-collector.sh"
+      dest: "{{ root }}/usr/local/bin/roq-collector.sh"
+      owner: "{{ user }}"
+      owner: "{{ user }}"
       mode: 0750
 
   - name: install the roq-samples conda package
     shell: "{{ root }}/miniconda/bin/conda install -y -n base roq-samples"
   
+  become: "{{ 'true' if become_user is defined else 'false' }}"
+  tags:
+    - samples
+
+##############
+### SERVER ###
+##############
+
+- block:
+
+  - name: define list of systemd units
+    set_fact:
+      systemd_units:
+      - 'roq-collector.service'
+      - 'roq-collector.timer'
+      - 'roq-collector-stop.service'
+      - 'roq-collector-stop.timer'
+
+  - name: create systemd units
+    template:
+      src: "templates/{{ item }}"
+      dest: "/etc/systemd/system/{{ item }}"
+      owner: root
+      group: root
+      mode: 0644
+    with_items: "{{ systemd_units }}"
+    register: samples_service
+
+  - name: enable the systemd units
+    systemd:
+      name: "{{ item }}"
+      enabled: true
+      daemon_reload: true
+    with_items: "{{ systemd_units }}"
+    when: samples_service.changed
+
+  when: "'server' in group_names"
   become: "{{ 'true' if become_user is defined else 'false' }}"
   tags:
     - samples

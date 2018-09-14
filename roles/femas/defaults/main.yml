@@ -3,7 +3,7 @@ root: "/"
 
 femas:
   license: "cGxlYXNlIGNvbnRhY3QgaW5mb0Byb3EtdHJhZGluZy5jb20K"
-  use_log_dir: false
+  use_log_dir: true
   verbosity: 0
   md_user:
     front: "tcp://1.2.3.4:9876"

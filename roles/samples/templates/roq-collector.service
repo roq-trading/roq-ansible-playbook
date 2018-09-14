@@ -1,0 +1,19 @@
+[Unit]
+Description=Market data collector
+After=network-online.target
+Conflicts=roq-collector-stop.service
+
+[Service]
+User={{ roq_user if roq_user is defined else ansible_user_id }}
+Group={{ roq_user if roq_user is defined else ansible_user_id }}
+Restart=on-abnormal
+UMask=0002
+{% if collector.cpu_affinity is defined %}
+CPUAffinity={{ collector.cpu_affinity }}
+{% endif %}
+CPUSchedulingPolicy=fifo
+WorkingDirectory=/var/run/roq/collector
+ExecStart={{ root }}/usr/local/bin/roq-collector.sh
+
+[Install]
+WantedBy=multi-user.target

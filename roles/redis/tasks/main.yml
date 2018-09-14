@@ -13,7 +13,7 @@
     - "{{ root }}/etc/redis"
     - "{{ root }}/var/lib/redis"
     notify:
-    - reload redis
+    - restart redis
 
   - name: create config file
     template:
@@ -24,7 +24,7 @@
       mode: 0644
     register: redis_service
     notify:
-    - reload redis
+    - restart redis
 
   - name: pull docker image
     docker_image:

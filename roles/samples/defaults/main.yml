@@ -2,6 +2,6 @@
 
 root: "/"
 
-samples:
-  use_log_dir: false
+collector:
+  use_log_dir: true
   verbosity: 0
