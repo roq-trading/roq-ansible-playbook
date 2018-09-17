@@ -37,8 +37,8 @@ These are the values you can override (notice, you will have to override the ent
     * `sources` | list of anaconda sources (the `.condarc file`)
 * `roq`
     * url` | roq conda package repository (url)
-* `roq\_user` | an optional user (default is to install using the ansible user)
+* `roq_user` | an optional user (default is to install using the ansible user)
 * `femas`
-    * `cpu\_affinity` | optional parameter for the systemd service (`CPUAffinity`)
+    * `cpu_affinity` | optional parameter for the systemd service (`CPUAffinity`)
 
 TO BE COMPLETED...
