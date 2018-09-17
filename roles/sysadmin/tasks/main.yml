@@ -1,16 +1,14 @@
 ---
 
 ##############
-### DEBIAN ###
+### COMMON ###
 ##############
 
 - block:
 
-  - name: install tools
-    apt:
-      name: "{{ item }}"
-      state: present
-    with_items:
+  - name: define list of common packages
+    set_fact:
+      common_packages:
       - htop
       - iotop
       - iftop
@@ -26,7 +24,26 @@
       - bzip2
       - zip
       - unzip
-      - mailutils  ###
+
+  tags:
+    - sysadmin
+
+##############
+### DEBIAN ###
+##############
+
+- block:
+
+  - name: define list of debian specific packages
+    set_fact:
+      debian_packages:
+      - mailutils
+
+  - name: install tools
+    apt:
+      name: "{{ item }}"
+      state: present
+    with_items: '{{ common_packages }} + {{ debian_packages }}'
 
   when: ansible_os_family == "Debian"
   become: "{{ 'true' if become_user is defined else 'false' }}"
@@ -39,28 +56,17 @@
 
 - block:
 
+  - name: define list of redhat specific packages
+    set_fact:
+      redhat_packages:
+      - mailx
+      - net-tools  # ifconfig
+
   - name: install tools
     yum:
       name: "{{ item }}"
       state: present
-    with_items:
-      - htop
-      - iotop
-      - iftop
-      - nethogs
-      - dstat
-      - lsof
-      - wget
-      - curl
-      - vim
-      - bash-completion
-      - traceroute
-      - whois
-      - bzip2
-      - zip
-      - unzip
-      - mailx  ###
-      - net-tools  ### ifconfig
+    with_items: '{{ common_packages }} + {{ redhat_packages }}'
 
   when: ansible_os_family == "RedHat"
   become: "{{ 'true' if become_user is defined else 'false' }}"

@@ -7,8 +7,6 @@
       path: "{{ item }}"
       state: directory
     with_items:
-      - "{{ root }}/opt"
-      - "{{ root }}/usr/local/bin"
       - "{{ root }}/miniconda"
   
   - name: download {{ anaconda.url }}/miniconda/{{ miniconda_sh }}

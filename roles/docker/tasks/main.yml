@@ -67,9 +67,29 @@
       - "device-mapper-persistent-data"
       - "lvm2"
 
-  # TODO(thraneh):
-  # https://github.com/docker/for-linux/issues/299
-  # sudo yum install -y http://mirror.centos.org/centos/7/extras/x86_64/Packages/container-selinux-2.42-1.gitad8f0f7.el7.noarch.rpm
+  # Docker for Centos - Install Instructions Causing Conflicts: https://github.com/docker/for-linux/issues/299
+
+  - name: define list of download packages
+    set_fact:
+      common_packages:
+      - "container-selinux-2.42-1.gitad8f0f7.el7.noarch.rpm"
+    when: '{{ install_container_selinux }}'
+
+  - name: download download packages
+    get_url:
+      url: "http://mirror.centos.org/centos/7/extras/x86_64/Packages/{{ item }}"
+      dest: "{{ root }}/opt"
+      mode: 0755
+    with_items: '{{ download_packages }}'
+    when: '{{ install_container_selinux }}'
+
+  - name: install download packages
+    yum:
+      name: "{{ root }}/opt/{{ item }}"
+      state: present
+    with_items: '{{ download_packages }}'
+      - "container-selinux-2.42-1.gitad8f0f7.el7.noarch.rpm"
+    when: '{{ install_container_selinux }}'
 
   - name: add docker gpg key
     rpm_key:

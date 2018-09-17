@@ -1,8 +1,10 @@
 ---
 
+- hosts: all
+    - baseline
+
 - hosts: server
   roles:
-    - baseline
     - chrony
     - sysstat
     - sysadmin
