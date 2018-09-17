@@ -1,5 +1,11 @@
 ---
 
+- name: detect owner
+  set_fact:
+    user: "{{ user if roq_user is defined else ansible_user_id }}"
+  tags:
+    - conda
+
 - block:
 
   - name: create required directories
@@ -13,12 +19,13 @@
     get_url:
       url: "{{ anaconda.url }}/miniconda/{{ miniconda_sh }}"
       dest: "{{ root }}/opt"
-      mode: 0755
+      mode: 0644
   
   - name: create {{ root }}/usr/local/bin/{{ miniconda_sh }}
     file:
       src: "{{ root }}/opt/{{ miniconda_sh }}"
       dest: "{{ root }}/usr/local/bin/{{ miniconda_sh }}"
+      owner: "{{ user }}"
       state: link
   
   - name: install {{ root }}/miniconda

@@ -1,6 +1,33 @@
 ---
 
 ##############
+### COMMON ###
+##############
+
+- block:
+
+  - name: create required directories
+    file:
+      path: "{{ item }}"
+      state: directory
+    with_items:
+      - "{{ root }}/etc"
+      - "{{ root }}/opt"
+      - "{{ root }}/usr"
+      - "{{ root }}/usr/local"
+      - "{{ root }}/usr/local/bin"
+      - "{{ root }}/var"
+      - "{{ root }}/var/lib"
+      - "{{ root }}/var/log"
+      - "{{ root }}/var/run"
+      - "{{ root }}/var/tmp"
+
+# TODO(thraneh): or maybe the condition should be root != '/' ?
+  when: become_user is not defined
+  tags:
+    - baseline
+
+##############
 ### DEBIAN ###
 ##############
 
@@ -34,13 +61,13 @@
     get_url:
       url: "http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm"
       dest: "{{ root }}/opt"
-    when: '{{ install epel-release-latest }}'
+    when: install_epel_release == true
 
   - name: install epel-release from download
     yum:
-      name: "{{ root }}/epel-release-latest-7.noarch.rpm"
+      name: "{{ root }}/opt/epel-release-latest-7.noarch.rpm"
       state: present
-    when: '{{ install epel-release-latest }}'
+    when: install_epel_release == true
 
   - name: install epel-release
     yum:
@@ -49,32 +76,5 @@
 
   when: ansible_os_family == "RedHat" and become_user is defined
   become: true
-  tags:
-    - baseline
-
-##############
-### COMMON ###
-##############
-
-- block:
-
-  - name: create required directories
-    file:
-      path: "{{ item }}"
-      state: directory
-    with_items:
-      - "{{ root }}/etc"
-      - "{{ root }}/opt"
-      - "{{ root }}/usr"
-      - "{{ root }}/usr/local"
-      - "{{ root }}/usr/local/bin"
-      - "{{ root }}/var"
-      - "{{ root }}/var/lib"
-      - "{{ root }}/var/log"
-      - "{{ root }}/var/run"
-      - "{{ root }}/var/tmp"
-
-# TODO(thraneh): or maybe the condition should be root != '/' ?
-  when: become_user is not defined
   tags:
     - baseline

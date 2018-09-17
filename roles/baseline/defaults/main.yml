@@ -1,3 +1,5 @@
 ---
 
+root: '/'
+
 install_epel_release: true
