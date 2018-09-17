@@ -56,8 +56,8 @@
 
   - name: create redis-cli script
     template:
-      src: "templates/redis-cli.sh"
-      dest: "{{ root }}/usr/local/bin/redis-cli.sh"
+      src: "templates/redis-cli"
+      dest: "{{ root }}/usr/local/bin/redis-cli"
       owner: "{{ user }}"
       mode: 0750
 

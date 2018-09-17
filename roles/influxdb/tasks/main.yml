@@ -1,5 +1,11 @@
 ---
 
+- name: detect owner
+  set_fact:
+    user: "{{ user if roq_user is defined else ansible_user_id }}"
+  tags:
+    - influxdb
+
 - block:
 
   - name: create directories
@@ -37,6 +43,12 @@
       daemon_reload: true
     when: influxdb_service.changed
 
+  - name: create influx script
+    template:
+      src: "templates/influx"
+      dest: "{{ root }}/usr/local/bin/influx"
+      owner: "{{ user }}"
+      mode: 0750
 
   become: "{{ 'true' if become_user is defined else 'false' }}"
   tags:
