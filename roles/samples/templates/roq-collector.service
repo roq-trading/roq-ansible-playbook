@@ -12,7 +12,7 @@ UMask=0002
 CPUAffinity={{ collector.cpu_affinity }}
 {% endif %}
 CPUSchedulingPolicy=fifo
-WorkingDirectory=/var/run/roq/collector
+WorkingDirectory={{ root }}/var/run/roq/collector
 ExecStart={{ root }}/usr/local/bin/roq-collector.sh
 
 [Install]

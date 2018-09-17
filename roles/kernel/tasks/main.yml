@@ -1,0 +1,18 @@
+---
+
+##############
+### REDHAT ###
+##############
+
+- block:
+
+  # https://stackoverflow.com/questions/46563332/docker-daemon-container-real-time-scheduling-with-ubuntu-linux-host
+  - name: allow real-time scheduling from systemd
+    become: true
+    sysctl:
+      name: "kernel.sched_rt_runtime_us"
+      value: "-1"
+
+  when: ansible_os_family == "RedHat"
+  tags:
+  - kernel

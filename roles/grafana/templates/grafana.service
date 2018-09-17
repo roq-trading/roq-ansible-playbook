@@ -13,6 +13,7 @@ ExecStartPre=-/usr/bin/docker stop %n
 ExecStartPre=-/usr/bin/docker rm %n
 ExecStartPre=/usr/bin/docker pull grafana/grafana
 ExecStart=/usr/bin/docker run --rm --name %n \
+  --user 0:0 \
   --security-opt apparmor=unconfined \
   --net host \
   --publish 3000:3000 \

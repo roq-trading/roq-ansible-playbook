@@ -12,7 +12,7 @@ UMask=0002
 CPUAffinity={{ femas.cpu_affinity }}
 {% endif %}
 CPUSchedulingPolicy=fifo
-WorkingDirectory=/var/run/femas
+WorkingDirectory={{ root }}/var/run/roq/femas
 ExecStart={{ root }}/usr/local/bin/roq-femas.sh
 
 [Install]

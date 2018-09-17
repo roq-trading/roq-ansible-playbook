@@ -8,7 +8,6 @@
 
 - block:
 
-  # https://github.com/docker-library/redis/issues/7
   - name: create directories
     file:
       path: "{{ item }}"

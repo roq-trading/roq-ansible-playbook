@@ -58,7 +58,6 @@
       group: root
       mode: 0644
     with_items: "{{ systemd_units }}"
-    register: samples_service
 
   - name: enable the systemd units
     systemd:
@@ -66,7 +65,6 @@
       enabled: true
       daemon_reload: true
     with_items: "{{ systemd_units }}"
-    when: samples_service.changed
 
   when: "'server' in group_names"
   become: "{{ 'true' if become_user is defined else 'false' }}"

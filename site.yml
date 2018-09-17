@@ -6,6 +6,7 @@
 
 - hosts: server
   roles:
+    - kernel
     - chrony
     - sysstat
     - sysadmin
