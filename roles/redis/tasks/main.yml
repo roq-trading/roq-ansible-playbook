@@ -1,13 +1,20 @@
 ---
 
+- name: detect owner
+  set_fact:
+    user: "{{ user if roq_user is defined else ansible_user_id }}"
+  tags:
+    - redis
+
 - block:
 
+  # https://github.com/docker-library/redis/issues/7
   - name: create directories
     file:
       path: "{{ item }}"
       state: directory
-      owner: root
-      group: root
+      owner: 999  # see link referenced above
+      group: 999  # see link referenced above
       mode: 0755
     with_items:
     - "{{ root }}/etc/redis"
@@ -46,6 +53,13 @@
       enabled: true
       daemon_reload: true
     when: redis_service.changed
+
+  - name: create redis-cli script
+    template:
+      src: "templates/redis-cli.sh"
+      dest: "{{ root }}/usr/local/bin/redis-cli.sh"
+      owner: "{{ user }}"
+      mode: 0750
 
   become: "{{ 'true' if become_user is defined else 'false' }}"
   tags:
