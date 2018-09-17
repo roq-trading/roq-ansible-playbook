@@ -12,34 +12,35 @@
     with_items:
       - "{{ root }}/etc/prometheus"
       - "{{ root }}/var/lib/prometheus"
-      - "{{ root }}/var/lib/prometheus/lock"
+      - "{{ root }}/etc/alertmanager"
+      - "{{ root }}/var/lib/alertmanager"
     notify:
     - restart prometheus
     - restart alertmanager
   
   - name: create config files
     template:
-      src: "templates/{{ item }}"
-      dest: "{{ root }}/etc/prometheus/{{ item }}"
+      src: "templates/{{ item | basename }}"
+      dest: "{{ root }}/etc/{{ item }}"
       owner: root
       group: root
       mode: 0644
     with_items:
-      - "prometheus.yml"
-      - "alertmanager.yml"
-      - "alert.rules"
+      - "prometheus/prometheus.yml"
+      - "prometheus/alert.rules"
+      - "alertmanager/alertmanager.yml"
     notify:
     - restart prometheus
     - restart alertmanager
   
   - name: pull docker images
     docker_image:
-      name: "prom/prometheus"
+      name: "prom/{{ item }}"
       http_timeout: 300
     with_items:
-      - "prom/prometheus"
-      - "prom/node-exporter"
-      - "prom/alertmanager"
+      - "prometheus"
+      - "node-exporter"
+      - "alertmanager"
   
   ##################
   ### PROMETHEUS ###
