@@ -32,13 +32,13 @@ The default configuration allows you to install the software, but it will most l
 
 These are the values you can override (notice, you will have to override the entire tree when the values nest).
 
-* `anaconda
+* `anaconda`
     * `url` | anaconda package repository (url)
     * `sources` | list of anaconda sources (the `.condarc file`)
 * `roq`
     * url` | roq conda package repository (url)
-* `roq_user` | an optional user (default is to install using the ansible user)
+* `roq\_user` | an optional user (default is to install using the ansible user)
 * `femas`
-    * `cpu_affinity` | optional parameter for the systemd service (`CPUAffinity`)
+    * `cpu\_affinity` | optional parameter for the systemd service (`CPUAffinity`)
 
 TO BE COMPLETED...
