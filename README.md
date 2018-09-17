@@ -4,6 +4,28 @@
 
 Copyright (c) 2017-2018, Hans Erik Thrane
 
+
 ## What is it?
 
-`ansible-playbook` for quick deployment of trading and/or development configuration to a Ubuntu 16.04 host.
+Reference server configuration.
+
+The Ansible playbook is a set of scripts useful to provision servers.
+The scripts are designed around this system architecture.
+
+![overview](https://github.com/roq-trading/roq-doc/blob/master/source/overview/architecture.png)
+
+
+## Requirements
+
+There are a number of ways to install Ansible.
+Please refer to Ansible's [Installation Guide](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
+for best practices.
+
+We recommend using Ansible from a Conda virtual environment.
+
+	conda install -c conda-forge ansible
+
+
+## How to use?
+
+
