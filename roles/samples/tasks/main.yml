@@ -6,6 +6,12 @@
   tags:
     - samples
 
+- name: combine configuration with defaults
+  set_fact:
+    femas: '{{ collector_defaults | combine(collector | default({})) }}'
+  tags:
+    - samples
+
 - block:
 
   - name: create required directories
@@ -41,6 +47,11 @@
 ##############
 
 - block:
+
+  - name: docker pull images
+    docker_image:
+      name: "roqtrading/roq-samples"
+      http_timeout: 300
 
   - name: define list of systemd units
     set_fact:

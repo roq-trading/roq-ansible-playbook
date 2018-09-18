@@ -3,7 +3,7 @@ root: "/"
 
 license: "cGxlYXNlIGNvbnRhY3QgaW5mb0Byb3EtdHJhZGluZy5jb20K"
 
-femas:
+femas_defaults:
   use_log_dir: true
   verbosity: 0
   md_user:

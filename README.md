@@ -42,32 +42,51 @@ documentation for further details.
 These are the playbook variables you can override.
 
 * `root` | root path for installation (defaults to `/` if `become_user` is defined and otherwise the home directory)
-* `anaconda`
+* `anaconda` | dictionary
     * `url` | conda package repository (url)
     * `sources` | override list for conda sources (the `.condarc file`)
-* `roq`
+* `roq` | dictionary
     * `user` | an optional user (default is to install using the ansible user)
 * `license` | base 64 encoded license
-* `collector`
+* `collector` | dictionary
     * `cpu_affinity` | optional parameter for the systemd service (`CPUAffinity`)
     * `use_log_dir` | boolean
     * `verbosity` | integer
-* `femas`
+* `femas` | dictionary
     * `cpu_affinity` | optional parameter for the systemd service (`CPUAffinity`)
     * `use_log_dir` | boolean
     * `verbosity` | integer
     * `datafeed`
         * Please refer to the [defaults](https://github.com/roq-trading/roq-ansible-playbook/blob/master/roles/femas/defaults/main.yml)
-    * `md_user`
-        * Please refer to the [defaults](https://github.com/roq-trading/roq-ansible-playbook/blob/master/roles/femas/defaults/main.yml)
-    * `trader`
-        * Please refer to the [defaults](https://github.com/roq-trading/roq-ansible-playbook/blob/master/roles/femas/defaults/main.yml)
-    * `symbols`
-        * Please refer to the [defaults](https://github.com/roq-trading/roq-ansible-playbook/blob/master/roles/femas/defaults/main.yml)
-    * `accounts`
-        * Please refer to the [defaults](https://github.com/roq-trading/roq-ansible-playbook/blob/master/roles/femas/defaults/main.yml)
-    * `users`
-        * Please refer to the [defaults](https://github.com/roq-trading/roq-ansible-playbook/blob/master/roles/femas/defaults/main.yml)
+    * `md_user` | dictionary
+        * `front` | connection string for the front server
+        * `account` | account id
+        * `password` | password
+        * `broker` | broker id
+    * `trader` | dictionary
+        * `front` | connection string for the front server
+    * `symbols` | dictionary
+        * `exchange` | exchange (key)
+            * `symbol` | list of symbols (as regular expressions)
+    * `accounts` | dictionary
+        * `alias` | key of dict, an alias for the account
+            * `user` | user id
+            * `broker` | broker id
+            * `password` | password
+            * `symbols` | dictionary
+                * `exchange` | exchange (key)
+                    * `symbol` | list of symbols (as regular expressions)
+    * `users` | dictionary
+        * `password` | password
+        * `accounts` | list of account aliases
+        * `symbols` | dictionary
+            * `exchange` | exchange
+                * `symbol` | list of symbols (as regular expressions)
+        * `limits` | dictionary
+            * `create_order` | dictionary
+                * `max` | count (integer)
+                * `monitor_period` | period, e.g. 60s
+                * `ban_period` | period, e.g. 300s
 
 ## Miscellany
 

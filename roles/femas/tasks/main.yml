@@ -6,6 +6,12 @@
   tags:
     - femas
 
+- name: combine configuration with defaults
+  set_fact:
+    femas: '{{ femas_defaults | combine(femas | default({})) }}'
+  tags:
+    - femas
+
 - block:
 
   - name: create required directories
@@ -60,6 +66,11 @@
 ##############
 
 - block:
+
+  - name: docker pull images
+    docker_image:
+      name: "roqtrading/roq-femas"
+      http_timeout: 300
 
   - name: define list of systemd units
     set_fact:

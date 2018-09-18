@@ -2,6 +2,6 @@
 
 root: "/"
 
-collector:
+collector_defaults:
   use_log_dir: true
   verbosity: 0
