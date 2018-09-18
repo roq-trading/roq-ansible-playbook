@@ -28,17 +28,49 @@ We recommend using Ansible from a Conda virtual environment.
 
 ## Configuration
 
-The default configuration allows you to install the software, but it will most likely not be the correct configuration.
+The default configuration allows you to install the software, but it will not be your desired configuration.
 
-These are the values you can override (notice, you will have to override the entire tree when the values nest).
+You can define your configuration in either of these locations (in order of precedence)
 
+* inventory file
+* group\_vars
+* host\_vars
+
+Please refer to Ansible's [Variables](https://docs.ansible.com/ansible/2.6/user_guide/playbooks_variables.html)
+documentation for further details.
+
+These are the playbook variables you can override.
+
+* `root` | root path for installation (defaults to `/` if `become_user` is defined and otherwise the home directory)
 * `anaconda`
-    * `url` | anaconda package repository (url)
-    * `sources` | list of anaconda sources (the `.condarc file`)
+    * `url` | conda package repository (url)
+    * `sources` | override list for conda sources (the `.condarc file`)
 * `roq`
-    * `url` | roq conda package repository (url)
-* `roq_user` | an optional user (default is to install using the ansible user)
+    * `user` | an optional user (default is to install using the ansible user)
+* `license` | base 64 encoded license
+* `collector`
+    * `cpu_affinity` | optional parameter for the systemd service (`CPUAffinity`)
+    * `use_log_dir` | boolean
+    * `verbosity` | integer
 * `femas`
     * `cpu_affinity` | optional parameter for the systemd service (`CPUAffinity`)
+    * `use_log_dir` | boolean
+    * `verbosity` | integer
+    * `datafeed`
+        * ...
+    * `md_user`
+        * ...
+    * `trader`
+        * ...
+    * `symbols`
+        * ...
+    * `accounts`
+        * ...
+    * `users`
+        * ...
 
-TO BE COMPLETED...
+## Miscellany
+
+HTTP proxy can be defined by host.
+Please refer to [Setting the Environment (and Working with Proxies)](https://docs.ansible.com/ansible/2.6/user_guide/playbooks_environment.html)
+for further details.
