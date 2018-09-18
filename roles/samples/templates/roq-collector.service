@@ -8,8 +8,8 @@ User={{ roq_user if roq_user is defined else ansible_user_id }}
 Group={{ roq_user if roq_user is defined else ansible_user_id }}
 Restart=on-abnormal
 UMask=0002
-{% if collector.cpu_affinity is defined %}
-CPUAffinity={{ collector.cpu_affinity }}
+{% if collector_config.cpu_affinity is defined %}
+CPUAffinity={{ collector_config.cpu_affinity }}
 {% endif %}
 CPUSchedulingPolicy=fifo
 WorkingDirectory={{ root }}/var/run/roq/collector

@@ -8,7 +8,7 @@
 
 - name: combine configuration with defaults
   set_fact:
-    femas: '{{ femas_defaults | combine(femas | default({})) }}'
+    femas_config: '{{ femas_defaults | combine(femas | default({})) }}'
   tags:
     - femas
 
@@ -70,6 +70,7 @@
   - name: docker pull images
     docker_image:
       name: "roqtrading/roq-femas"
+      tag: "latest"
       http_timeout: 300
 
   - name: define list of systemd units

@@ -15,6 +15,7 @@
   - name: pull docker image
     docker_image:
       name: "grafana/grafana"
+      tag: "latest"
       http_timeout: 300
   
   - name: create systemd service

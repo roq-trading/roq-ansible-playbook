@@ -36,6 +36,7 @@
   - name: pull docker images
     docker_image:
       name: "prom/{{ item }}"
+      tag: "latest"
       http_timeout: 300
     with_items:
       - "prometheus"

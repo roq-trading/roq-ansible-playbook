@@ -11,10 +11,10 @@ if [ -e "$CONDA_PREFIX/lib/libtcmalloc.so" ]; then
 fi
 
 # define logging parameters
-{% if femas.use_log_dir %}
+{% if femas_config.use_log_dir %}
 export ROQ_log_dir="{{ root }}/var/log/roq"
 {% endif %}
-export ROQ_v="{{ femas.verbosity | default(0) }}"
+export ROQ_v="{{ femas_config.verbosity | default(0) }}"
 
 # launch the application
 "$CONDA_PREFIX/bin/roq-femas" \

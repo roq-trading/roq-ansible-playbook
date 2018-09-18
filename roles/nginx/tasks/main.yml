@@ -38,6 +38,7 @@
   - name: docker pull images
     docker_image:
       name: "nginx"
+      tag: "latest"
       http_timeout: 300
   
   - name: create systemd service
