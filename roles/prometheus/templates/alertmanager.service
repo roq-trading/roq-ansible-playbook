@@ -19,8 +19,9 @@ ExecStart=/usr/bin/docker run --rm --name %n \
   --volume {{ root }}/etc/alertmanager:/etc/alertmanager:ro \
   --volume {{ root }}/var/lib/alertmanager:/var/lib/alertmanager \
   prom/alertmanager \
-  --config.file=/etc/alertmanager/alertmanager.yml \
-  --storage.path=/var/lib/alertmanager/
+  --web.external-url=http://localhost/alertmanager \
+  --config.file={{ root }}/etc/alertmanager/alertmanager.yml \
+  --storage.path={{ root }}/var/lib/alertmanager
 
 [Install]
 WantedBy=multi-user.target

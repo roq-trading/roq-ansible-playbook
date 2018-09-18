@@ -30,4 +30,11 @@ groups:
       severity: critical
     annotations:
       summary: Possibly mis-behaving client(s).
+  - alert: roq_femas_order_action_error_new
+    expr: increase(roq_femasapi_order_action_error[1m]) > 0
+    for: 1m
+    labels:
+      severity: critical
+    annotations:
+      summary: Possibly mis-behaving client(s).
 {% endif %}

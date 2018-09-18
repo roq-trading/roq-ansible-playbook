@@ -19,9 +19,9 @@ ExecStart=/usr/bin/docker run --rm --name %n \
   --volume {{ root }}/etc/prometheus:/etc/prometheus:ro \
   --volume {{ root }}/var/lib/prometheus:/var/lib/prometheus \
   prom/prometheus \
-  --config.file=/etc/prometheus/prometheus.yml \
-  --storage.tsdb.path=/var/lib/prometheus/ \
-  --web.external-url=http://localhost/prometheus
+  --web.external-url=http://localhost/prometheus \
+  --config.file={{ root }}/etc/prometheus/prometheus.yml \
+  --storage.tsdb.path={{ root }}/var/lib/prometheus
 
 [Install]
 WantedBy=multi-user.target

@@ -30,7 +30,7 @@ We recommend using Ansible from a Conda virtual environment.
 
 The default configuration allows you to install the software, but it will not be your desired configuration.
 
-You can define your configuration in either of these locations (in order of precedence)
+You can define your specific configuration to either of these locations (in order of precedence)
 
 * inventory file
 * group\_vars
@@ -57,17 +57,17 @@ These are the playbook variables you can override.
     * `use_log_dir` | boolean
     * `verbosity` | integer
     * `datafeed`
-        * ...
+        * Please refer to the [defaults](https://github.com/roq-trading/roq-ansible-playbook/blob/master/roles/femas/defaults/main.yml)
     * `md_user`
-        * ...
+        * Please refer to the [defaults](https://github.com/roq-trading/roq-ansible-playbook/blob/master/roles/femas/defaults/main.yml)
     * `trader`
-        * ...
+        * Please refer to the [defaults](https://github.com/roq-trading/roq-ansible-playbook/blob/master/roles/femas/defaults/main.yml)
     * `symbols`
-        * ...
+        * Please refer to the [defaults](https://github.com/roq-trading/roq-ansible-playbook/blob/master/roles/femas/defaults/main.yml)
     * `accounts`
-        * ...
+        * Please refer to the [defaults](https://github.com/roq-trading/roq-ansible-playbook/blob/master/roles/femas/defaults/main.yml)
     * `users`
-        * ...
+        * Please refer to the [defaults](https://github.com/roq-trading/roq-ansible-playbook/blob/master/roles/femas/defaults/main.yml)
 
 ## Miscellany
 
