@@ -73,13 +73,22 @@
       tag: "latest"
       http_timeout: 300
 
+  - name: define list of systemd services
+    set_fact:
+      systemd_services:
+      - 'roq-femas.service'
+      - 'roq-femas-stop.service'
+
+  - name: define list of systemd timers
+    set_fact:
+      systemd_timers:
+      - 'roq-femas.timer'
+      - 'roq-femas-stop.timer'
+
   - name: define list of systemd units
     set_fact:
       systemd_units:
-      - 'roq-femas.service'
-      - 'roq-femas.timer'
-      - 'roq-femas-stop.service'
-      - 'roq-femas-stop.timer'
+      - '{{ systemd_services }} + {{ systemd_timers }}'
 
   - name: create systemd units
     template:
@@ -90,13 +99,18 @@
       mode: 0644
     with_items: "{{ systemd_units }}"
 
-  - name: enable the systemd units
+  - name: enable systemd units
     systemd:
       name: "{{ item }}"
-      state: started
       enabled: true
       daemon_reload: true
     with_items: "{{ systemd_units }}"
+
+  - name: start systemd timers
+    systemd:
+      name: "{{ item }}"
+      state: started
+    with_items: "{{ systemd_timers }}"
 
   when: "'server' in group_names"
   become: "{{ 'true' if become_user is defined else 'false' }}"
