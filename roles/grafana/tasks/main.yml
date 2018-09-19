@@ -32,6 +32,7 @@
   - name: enable the grafana service
     systemd:
       name: "grafana.service"
+      state: started
       enabled: true
       daemon_reload: true
     when: grafana_service.changed

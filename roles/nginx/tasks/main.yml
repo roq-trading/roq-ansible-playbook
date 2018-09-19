@@ -55,6 +55,7 @@
   - name: enable the nginx service
     systemd:
       name: "nginx.service"
+      state: started
       enabled: true
       daemon_reload: true
     when: nginx_service.changed

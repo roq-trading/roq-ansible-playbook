@@ -22,6 +22,7 @@
   - name: enable the netdata service
     systemd:
       name: "netdata.service"
+      state: started
       enabled: true
       daemon_reload: true
     when: netdata_service.changed
