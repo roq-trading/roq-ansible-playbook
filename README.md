@@ -12,7 +12,7 @@ Reference server configuration.
 The Ansible playbook is a set of scripts useful to provision servers.
 The scripts are designed around this system architecture.
 
-![overview](https://github.com/roq-trading/roq-doc/blob/master/source/overview/architecture.png)
+![overview](https://github.com/roq-trading/roq-readthedocs/blob/master/source/overview/architecture.png)
 
 
 ## Requirements
