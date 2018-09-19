@@ -7,7 +7,7 @@ Conflicts=roq-femas-stop.service
 User={{ roq_user if roq_user is defined else ansible_user_id }}
 Group={{ roq_user if roq_user is defined else ansible_user_id }}
 Restart=on-abnormal
-UMask=0002
+UMask=0000
 {% if femas_config.cpu_affinity is defined %}
 CPUAffinity={{ femas_config.cpu_affinity }}
 {% endif %}
