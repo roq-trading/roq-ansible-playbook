@@ -23,6 +23,7 @@
       dest: "{{ root }}/var/www/html/index.html"
       owner: root
       mode: 0644
+    when: '"trading" in groups'
   
   - name: available sites
     template:
@@ -31,9 +32,9 @@
       owner: root
       mode: 0644
     with_items:
-      - roq.conf
+      - nginx.conf
     notify:
-      - reload nginx
+      - restart nginx
   
   - name: docker pull images
     docker_image:

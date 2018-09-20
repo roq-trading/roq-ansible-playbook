@@ -1,5 +1,7 @@
 channels:
-  - {{ roq.url }}/dist/conda/unstable
+{% if roq.url is defined %}
+  - {{ roq.url }}/conda/unstable
+{% endif %}
 {% for source in anaconda.sources %}
   - {{ source }}
 {% endfor %}

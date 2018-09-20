@@ -1,0 +1,32 @@
+---
+
+##############
+### DEBIAN ###
+##############
+
+- block:
+
+  - name: install dependencies
+    apt:
+      name: "software-properties-common"
+      state: present
+
+  - name: add the certbot ppa repository
+    apt_repository:
+      repo: ppa:certbot/certbot
+    register: ppa_added
+
+  - name: update apt cache
+    apt:
+      update_cache: true
+    when: ppa_added.changed
+
+  - name: install certbot
+    apt:
+      name: "python-certbot-nginx"
+      state: present
+
+  when: ansible_os_family == "Debian"
+  become: "{{ 'true' if become_user is defined else 'false' }}"
+  tags:
+    - certbot
