@@ -1,0 +1,10 @@
+[Unit]
+Description=certbot renew
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/certbot renew
+
+[Install]
+WantedBy=multi-user.target

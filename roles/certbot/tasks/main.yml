@@ -30,3 +30,51 @@
   become: "{{ 'true' if become_user is defined else 'false' }}"
   tags:
     - certbot
+
+##############
+### COMMON ###
+##############
+
+- block:
+
+  - name: define list of systemd services
+    set_fact:
+      systemd_services:
+      - 'certbot.service'
+
+  - name: define list of systemd timers
+    set_fact:
+      systemd_timers:
+      - 'certbot.timer'
+
+  - name: define list of systemd units
+    set_fact:
+      systemd_units:
+      - '{{ systemd_services }} + {{ systemd_timers }}'
+
+  - name: create systemd units
+    template:
+      src: "templates/{{ item }}"
+      dest: "/etc/systemd/system/{{ item }}"
+      owner: root
+      group: root
+      mode: 0644
+    with_items: "{{ systemd_units }}"
+
+  - name: enable systemd units
+    systemd:
+      name: "{{ item }}"
+      enabled: true
+      daemon_reload: true
+    with_items: "{{ systemd_units }}"
+
+  - name: start systemd timers
+    systemd:
+      name: "{{ item }}"
+      state: started
+    with_items: "{{ systemd_timers }}"
+
+  when: "'web' in group_names"
+  become: "{{ 'true' if become_user is defined else 'false' }}"
+  tags:
+    - certbot
