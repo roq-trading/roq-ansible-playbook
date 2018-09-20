@@ -32,6 +32,31 @@
     - certbot
 
 ##############
+### REDHAT ###
+##############
+
+# FIXME(thraneh): this doesn't seem to work on CentOS/7
+
+- block:
+
+  - name: enable epel extra repos
+    rhsm_repository:
+      name: "{{ item }}"
+    with_items:
+      - "rhel-7-server-optional-rpms"
+      - "rhel-7-server-extras-rpms"
+
+  - name: install certbot
+    yum:
+      name: "python2-certbot-nginx"
+      state: present
+
+  when: ansible_os_family == "RedHat"
+  become: "{{ 'true' if become_user is defined else 'false' }}"
+  tags:
+    - certbot
+
+##############
 ### COMMON ###
 ##############
 
