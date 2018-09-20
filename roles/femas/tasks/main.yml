@@ -112,7 +112,7 @@
       state: started
     with_items: "{{ systemd_timers }}"
 
-  when: "'server' in group_names"
+  when: "'femas' in group_names"
   become: "{{ 'true' if become_user is defined else 'false' }}"
   tags:
     - femas
