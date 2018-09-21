@@ -1,0 +1,23 @@
+[Unit]
+Description=Teamcity server
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+{% if cpu_affinity is defined %}
+CPUAffinity={{ cpu_affinity.zone_3 }}
+{% endif %}
+ExecStartPre=-/usr/bin/docker stop %n
+ExecStartPre=-/usr/bin/docker rm %n
+ExecStartPre=/usr/bin/docker pull jetbrains/teamcity-server
+ExecStart=/usr/bin/docker run --rm --name %n \
+  --user 0:0 \
+  --publish 8111:8111 \
+  --volume {{ root }}/var/lib/teamcity-server:/data/teamcity_server/datadir \
+  --volume {{ root }}/var/log/teamcity-server:/opt/teamcity/logs \
+  jetbrains/teamcity-server
+
+[Install]
+WantedBy=multi-user.target

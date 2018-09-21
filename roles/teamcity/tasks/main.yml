@@ -1,0 +1,76 @@
+---
+
+- block:
+
+  - name: create directories
+    file:
+      path: "{{ item }}"
+      state: directory
+      owner: root
+      group: root
+      mode: 0755
+    with_items:
+      - "{{ root }}/var/lib/teamcity-server"
+      - "{{ root }}/var/log/teamcity-server"
+      - "{{ root }}/etc/teamcity-agent-1"
+    notify:
+    - restart teamcity-server
+    - restart teamcity-agent-1
+  
+# server
+
+  - name: pull docker image
+    docker_image:
+      name: "jetbrains/teamcity-server"
+      tag: "latest"
+      http_timeout: 300
+  
+  - name: create systemd service
+    template:
+      src: "templates/teamcity-server.service"
+      dest: "/etc/systemd/system/teamcity-server.service"
+      owner: root
+      group: root
+      mode: 0644
+    register: teamcity_server_service
+    notify:
+    - restart teamcity-server
+  
+  - name: enable the teamcit-servery service
+    systemd:
+      name: "teamcity-server.service"
+      state: started
+      enabled: true
+      daemon_reload: true
+    when: teamcity_server_service.changed
+
+# agent
+
+  - name: pull docker image
+    docker_image:
+      name: "jetbrains/teamcity-agent"
+      tag: "latest"
+      http_timeout: 300
+  
+  - name: create systemd service
+    template:
+      src: "templates/teamcity-agent-1.service"
+      dest: "/etc/systemd/system/teamcity-agent-1.service"
+      owner: root
+      group: root
+      mode: 0644
+    register: teamcity_agent_1_service
+    notify:
+    - restart teamcity-agent-1
+  
+  - name: enable the teamcity agent-1 service
+    systemd:
+      name: "teamcity-agent-1.service"
+      state: started
+      enabled: true
+      daemon_reload: true
+    when: teamcity_agent_1_service.changed
+  
+  become: "{{ 'true' if become_user is defined else 'false' }}"
+  tags:
+    - teamcity

@@ -1,0 +1,15 @@
+---
+
+- name: restart teamcity-server
+  service:
+    name: teamcity-server
+    state: restarted
+    enabled: yes
+  become: true
+
+- name: restart teamcity-agent-1
+  service:
+    name: teamcity-agent-1
+    state: restarted
+    enabled: yes
+  become: true

@@ -14,7 +14,7 @@
   roles:
     - baseline
 
-- hosts: trading,web
+- hosts: trading,web,teamcity
   roles:
     - kernel
     - chrony
@@ -55,6 +55,10 @@
 - hosts: trading,web
   roles:
     - nginx
+
+- hosts: teamcity
+  roles:
+    - teamcity
 
 - hosts: trading
   roles:
