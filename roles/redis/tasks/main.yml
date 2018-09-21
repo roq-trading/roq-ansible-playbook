@@ -12,8 +12,6 @@
     file:
       path: "{{ item }}"
       state: directory
-      owner: root
-      group: root
       mode: 0755
     with_items:
     - "{{ root }}/etc/redis"
