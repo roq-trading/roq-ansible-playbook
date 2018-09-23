@@ -1,8 +1,8 @@
 ---
 
-- name: restart teamcity-server
+- name: restart teamcity
   service:
-    name: teamcity-server
+    name: teamcity
     state: restarted
     enabled: yes
   become: true

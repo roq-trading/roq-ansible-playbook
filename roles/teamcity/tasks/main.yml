@@ -10,11 +10,11 @@
       group: root
       mode: 0755
     with_items:
-      - "{{ root }}/var/lib/teamcity-server"
-      - "{{ root }}/var/log/teamcity-server"
+      - "{{ root }}/var/lib/teamcity"
+      - "{{ root }}/var/log/teamcity"
       - "{{ root }}/etc/teamcity-agent-1"
     notify:
-    - restart teamcity-server
+    - restart teamcity
     - restart teamcity-agent-1
   
 # server
@@ -27,18 +27,18 @@
   
   - name: create systemd service
     template:
-      src: "templates/teamcity-server.service"
-      dest: "/etc/systemd/system/teamcity-server.service"
+      src: "templates/teamcity.service"
+      dest: "/etc/systemd/system/teamcity.service"
       owner: root
       group: root
       mode: 0644
     register: teamcity_server_service
     notify:
-    - restart teamcity-server
+    - restart teamcity
   
-  - name: enable the teamcit-servery service
+  - name: enable the teamcity service
     systemd:
-      name: "teamcity-server.service"
+      name: "teamcity.service"
       state: started
       enabled: true
       daemon_reload: true

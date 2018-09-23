@@ -13,8 +13,8 @@ ExecStartPre=-/usr/bin/docker stop %n
 ExecStartPre=-/usr/bin/docker rm %n
 ExecStartPre=/usr/bin/docker pull titpetric/netdata
 ExecStart=/usr/bin/docker run --rm --name %n \
-  --cap-add SYS_PTRACE \
   --security-opt apparmor=unconfined \
+  --cap-add SYS_PTRACE \
   --volume /proc:/host/proc:ro \
   --volume /sys:/host/sys:ro \
   --publish {{ netdata_port }}:{{ netdata_port }} \

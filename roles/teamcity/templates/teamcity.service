@@ -1,5 +1,5 @@
 [Unit]
-Description=Teamcity server
+Description=Teamcity
 After=docker.service
 Requires=docker.service
 
@@ -14,9 +14,10 @@ ExecStartPre=-/usr/bin/docker rm %n
 ExecStartPre=/usr/bin/docker pull jetbrains/teamcity-server
 ExecStart=/usr/bin/docker run --rm --name %n \
   --user 0:0 \
-  --publish 8111:8111 \
-  --volume {{ root }}/var/lib/teamcity-server:/data/teamcity_server/datadir \
-  --volume {{ root }}/var/log/teamcity-server:/opt/teamcity/logs \
+  --publish {{ teamcity_port }}:8111 \
+  --volume {{ root }}/var/lib/teamcity:/data/teamcity_server/datadir \
+  --volume {{ root }}/var/log/teamcity:/opt/teamcity/logs \
+  --env TEAMCITY_CONTEXT=tc \
   jetbrains/teamcity-server
 
 [Install]

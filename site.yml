@@ -52,13 +52,13 @@
   roles:
     - certbot
 
-- hosts: trading,web
-  roles:
-    - nginx
-
 - hosts: teamcity
   roles:
     - teamcity
+
+- hosts: trading,web,teamcity
+  roles:
+    - nginx
 
 - hosts: trading
   roles:

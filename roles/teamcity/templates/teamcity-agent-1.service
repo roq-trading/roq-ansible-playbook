@@ -14,9 +14,10 @@ ExecStartPre=-/usr/bin/docker rm %n
 ExecStartPre=/usr/bin/docker pull jetbrains/teamcity-agent
 ExecStart=/usr/bin/docker run --rm --name %n \
   --user 0:0 \
-  --link teamcity-server.service \
+  --link teamcity.service \
   --volume {{ root }}/etc/teamcity-agent-1:/data/teamcity_agent/conf \
-  --env SERVER_URL="http://teamcity-server.service:8111/" \
+  --env SERVER_URL="http://teamcity.service:8111/tc/" \
+  --env AGENT_NAME="agent_1" \
   jetbrains/teamcity-agent
 
 [Install]

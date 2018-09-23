@@ -1,2 +1,3 @@
 ---
 root: '/'
+teamcity_port: 8111

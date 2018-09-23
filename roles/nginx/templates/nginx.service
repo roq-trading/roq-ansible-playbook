@@ -14,13 +14,17 @@ ExecStartPre=-/usr/bin/docker stop %n
 ExecStartPre=-/usr/bin/docker rm %n
 ExecStartPre=/usr/bin/docker pull nginx
 ExecStart=/usr/bin/docker run --rm --name %n -i \
-  --security-opt apparmor=unconfined \
-  --net host \
-  --pid host \
+  --publish 80:80 \
   --volume {{ root }}/etc/nginx/conf.d:/etc/nginx/conf.d:ro \
   --volume {{ root }}/var/www:/var/www:ro \
 {% if 'web' in groups %}
   --volume {{ root }}/etc/letsencrypt:/etc/letsencrypt:ro \
+  --link prometheus.service \
+  --link netdata.service \
+  --link grafana.service \
+{% endif %}
+{% if 'teamcity' in groups %}
+  --link teamcity.service \
 {% endif %}
   nginx
 

@@ -2,4 +2,4 @@
 
 root: '/'
 
-nginx_listen: "127.0.0.1"
+nginx_listen: "0.0.0.0"
