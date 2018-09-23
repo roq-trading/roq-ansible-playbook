@@ -13,9 +13,7 @@ ExecStartPre=-/usr/bin/docker stop %n
 ExecStartPre=-/usr/bin/docker rm %n
 ExecStartPre=/usr/bin/docker pull prom/alertmanager
 ExecStart=/usr/bin/docker run --rm --name %n \
-  --user 0:0 \
-  --security-opt apparmor=unconfined \
-  --net host \
+  --publish {{ alertmanager_port }}:{{ alertmanager_port }} \
   --volume {{ root }}/etc/alertmanager:/etc/alertmanager:ro \
   --volume {{ root }}/var/lib/alertmanager:/var/lib/alertmanager \
   prom/alertmanager \

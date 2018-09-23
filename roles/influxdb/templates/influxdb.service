@@ -14,7 +14,10 @@ ExecStartPre=-/usr/bin/docker rm %n
 ExecStartPre=/usr/bin/docker pull influxdb
 ExecStart=/usr/bin/docker run --rm --name %n \
   --volume {{ root }}/var/lib/influxdb:/var/lib/influxdb \
-  --publish {{ influxdb_port }}:{{ influxdb_port }} \
+  --publish {{ influxdb_client_port }}:{{ influxdb_client_port }} \
+  --publish {{ influxdb_graphite_port }}:{{ influxdb_graphite_port }} \
+  --env INFLUXDB_GRAPHITE_ENABLED=true \
+  --env INFLUXDB_REPORTING_DISABLED=true \
   influxdb
 
 [Install]

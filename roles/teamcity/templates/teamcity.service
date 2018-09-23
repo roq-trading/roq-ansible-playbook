@@ -13,11 +13,10 @@ ExecStartPre=-/usr/bin/docker stop %n
 ExecStartPre=-/usr/bin/docker rm %n
 ExecStartPre=/usr/bin/docker pull jetbrains/teamcity-server
 ExecStart=/usr/bin/docker run --rm --name %n \
-  --user 0:0 \
   --publish {{ teamcity_port }}:8111 \
   --volume {{ root }}/var/lib/teamcity:/data/teamcity_server/datadir \
   --volume {{ root }}/var/log/teamcity:/opt/teamcity/logs \
-  --env TEAMCITY_CONTEXT=tc \
+  --env TEAMCITY_CONTEXT=teamcity \
   jetbrains/teamcity-server
 
 [Install]

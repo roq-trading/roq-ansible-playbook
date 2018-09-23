@@ -12,9 +12,14 @@
 <section>
   <h1>Roq Trading Solutions</h1>
   <ul>
+{% if 'trading' in groups %}
     <li><a href="/grafana/">Grafana</a></li>
     <li><a href="/prometheus/">Prometheus</a></li>
     <li><a href="/netdata/">netdata</a></li>
+{% endif %}
+{% if 'teamcity' in groups %}
+    <li><a href="/teamcity/">TeamCity</a></li>
+{% endif %}
   </ul>
 </section>
 

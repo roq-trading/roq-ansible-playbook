@@ -2,4 +2,5 @@
 
 root: "/"
 
-influxdb_port: 8086
+influxdb_client_port: 8086
+influxdb_graphite_port: 2003

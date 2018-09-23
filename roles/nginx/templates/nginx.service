@@ -15,16 +15,18 @@ ExecStartPre=-/usr/bin/docker rm %n
 ExecStartPre=/usr/bin/docker pull nginx
 ExecStart=/usr/bin/docker run --rm --name %n -i \
   --publish 80:80 \
-  --volume {{ root }}/etc/nginx/conf.d:/etc/nginx/conf.d:ro \
-  --volume {{ root }}/var/www:/var/www:ro \
-{% if 'web' in groups %}
-  --volume {{ root }}/etc/letsencrypt:/etc/letsencrypt:ro \
+{% if 'trading' in groups %}
   --link prometheus.service \
   --link netdata.service \
   --link grafana.service \
 {% endif %}
 {% if 'teamcity' in groups %}
   --link teamcity.service \
+{% endif %}
+  --volume {{ root }}/etc/nginx/conf.d:/etc/nginx/conf.d:ro \
+  --volume {{ root }}/var/www:/var/www:ro \
+{% if 'web' in groups %}
+  --volume {{ root }}/etc/letsencrypt:/etc/letsencrypt:ro \
 {% endif %}
   nginx
 

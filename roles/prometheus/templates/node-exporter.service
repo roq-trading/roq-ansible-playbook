@@ -14,8 +14,7 @@ ExecStartPre=-/usr/bin/docker rm %n
 ExecStartPre=/usr/bin/docker pull prom/node-exporter
 ExecStart=/usr/bin/docker run --rm --name %n -i \
   --security-opt apparmor=unconfined \
-  --net host \
-  --pid host \
+  --publish {{ node_exporter_port }}:{{ node_exporter_port }} \
   prom/node-exporter
 
 [Install]

@@ -14,8 +14,9 @@ ExecStartPre=-/usr/bin/docker rm %n
 ExecStartPre=/usr/bin/docker pull grafana/grafana
 ExecStart=/usr/bin/docker run --rm --name %n \
   --user 0:0 \
-  --publish 3000:3000 \
   --link prometheus.service \
+  --link influxdb.service \
+  --publish {{ grafana_client_port }}:{{ grafana_client_port }} \
   --volume {{ root }}/var/lib/grafana:/var/lib/grafana \
   --env "GF_SERVER_ROOT_URL=http://localhost/grafana" \
   grafana/grafana
