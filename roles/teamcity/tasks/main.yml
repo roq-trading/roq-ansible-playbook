@@ -21,8 +21,8 @@
 
   - name: pull docker image
     docker_image:
-      name: "jetbrains/teamcity-server"
-      tag: "latest"
+      name: "{{ teamcity.docker.name }}"
+      tag: "{{ teamcity.docker.tag }}"
       http_timeout: 300
   
   - name: create systemd service
@@ -48,8 +48,8 @@
 
   - name: pull docker image
     docker_image:
-      name: "jetbrains/teamcity-agent"
-      tag: "latest"
+      name: "{{ teamcity_agent.docker.name }}"
+      tag: "{{ teamcity_agent.docker.tag }}"
       http_timeout: 300
   
   - name: create systemd service

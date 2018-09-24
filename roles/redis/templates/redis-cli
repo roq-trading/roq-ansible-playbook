@@ -6,4 +6,4 @@ sudo docker run \
   --link redis.service \
   --rm \
   redis \
-  redis-cli -h redis.service -p {{ redis_port }}
+  redis-cli -h redis.service -p {{ redis.port }}

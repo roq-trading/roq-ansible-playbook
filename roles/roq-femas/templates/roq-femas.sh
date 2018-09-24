@@ -25,5 +25,5 @@ export ROQ_v="{{ femas_config.verbosity | default(0) }}"
     --config-variables "{{ root }}/etc/roq/femas/variables.conf" \
     --config-file "{{ root }}/etc/roq/femas/master.conf" \
     --local-address "{{ root }}/var/tmp/femas.sock" \
-    --monitor-port "12345" \
+    --monitor-port "{{ roq_femas.metrics.port }}" \
     --name "roq_femas"

@@ -1,0 +1,91 @@
+---
+
+root: "/"
+
+redis:
+  port: 6379
+  service: "localhost"
+  docker:
+    name: "redis"
+    tag: "latest"
+
+influxdb:
+  port: 8086
+  service: "localhost"
+  docker:
+    name: "influxdb"
+    tag: "latest"
+
+netdata:
+  port: 19999
+  service: "localhost"
+  docker:
+    name: "titpetric/netdata"
+    tag: "latest"
+
+grafana:
+  port: 3000
+  service: "localhost"
+  docker:
+    name: "grafana/grafana"
+    tag: "latest"
+
+alertmanager:
+  port: 9093
+  service: "localhost"
+  docker:
+    name: "prom/alertmanager"
+    tag: "latest"
+
+node_exporter:
+  port: 9100
+  service: "localhost"
+  docker:
+    name: "prom/node-exporter"
+    tag: "latest"
+
+prometheus:
+  port: 9090
+  service: "localhost"
+  docker:
+    name: "prom/prometheus"
+    tag: "latest"
+
+nexus:
+  port: 8081
+  service: "localhost"
+  docker:
+    name: "sonatype/nexus3"
+    tag: "latest"
+
+teamcity:
+  port: 8111
+  service: "localhost"
+  docker:
+    name: "jetbrains/teamcity-server"
+    tag: "latest"
+
+teamcity_agent:
+  docker:
+    name: "jetbrains/teamcity-agent"
+    tag: "latest"
+
+nginx:
+  port: 80
+  service: "localhost"
+  docker:
+    name: "nginx"
+    tag: "latest"
+
+roq_samples:
+  docker:
+    name: "roqtrading/roq-samples"
+    tag: "latest"
+
+roq_femas:
+  service: "localhost"
+  metrics:
+    port: 12345
+  docker:
+    name: "roqtrading/roq-femas"
+    tag: "latest"

@@ -1,7 +1,5 @@
 ---
 
-root: "/"
-
 anaconda:
   url: "https://repo.continuum.io"
   sources:

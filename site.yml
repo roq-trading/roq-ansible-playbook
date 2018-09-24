@@ -42,15 +42,19 @@
 
 - hosts: trading
   roles:
+    - roq-samples
+
+- hosts: roq-femas
+  roles:
+    - roq-femas
+
+- hosts: trading
+  roles:
     - redis
     - influxdb
     - netdata
     - prometheus
     - grafana
-
-- hosts: web
-  roles:
-    - certbot
 
 - hosts: nexus
   roles:
@@ -60,14 +64,10 @@
   roles:
     - teamcity
 
+- hosts: web
+  roles:
+    - certbot
+
 - hosts: trading,web,teamcity
   roles:
     - nginx
-
-- hosts: trading
-  roles:
-    - samples
-
-- hosts: femas
-  roles:
-    - femas

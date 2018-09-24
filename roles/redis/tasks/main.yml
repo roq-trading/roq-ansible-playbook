@@ -32,8 +32,8 @@
 
   - name: pull docker image
     docker_image:
-      name: "redis"
-      tag: "latest"
+      name: "{{ redis.docker.name }}"
+      tag: "{{ redis.docker.tag }}"
       http_timeout: 300
 
   - name: create systemd service

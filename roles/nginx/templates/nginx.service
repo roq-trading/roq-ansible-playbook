@@ -12,26 +12,30 @@ CPUAffinity={{ cpu_affinity.zone_3 }}
 ExecReload=/usr/bin/docker kill -s HUP %n
 ExecStartPre=-/usr/bin/docker stop %n
 ExecStartPre=-/usr/bin/docker rm %n
-ExecStartPre=/usr/bin/docker pull nginx
+ExecStartPre=/usr/bin/docker pull {{ nginx.docker.name }}:{{ nginx.docker.tag }}
 ExecStart=/usr/bin/docker run --rm --name %n -i \
   --publish 80:80 \
+{% if true %}
+  --net="host" \
+{% else %}
 {% if 'trading' in groups %}
-  --link prometheus.service \
-  --link netdata.service \
-  --link grafana.service \
+  --link {{ prometheus.service }} \
+  --link {{ netdata.service }} \
+  --link {{ grafana.service }} \
 {% endif %}
 {% if 'nexus' in groups %}
-  --link nexus.service \
+  --link {{ nexus.service }} \
 {% endif %}
 {% if 'teamcity' in groups %}
-  --link teamcity.service \
+  --link {{ teamcity.service }} \
+{% endif %}
 {% endif %}
   --volume {{ root }}/etc/nginx/conf.d:/etc/nginx/conf.d:ro \
   --volume {{ root }}/var/www:/var/www:ro \
 {% if 'web' in groups %}
   --volume {{ root }}/etc/letsencrypt:/etc/letsencrypt:ro \
 {% endif %}
-  nginx
+  {{ nginx.docker.name }}:{{ nginx.docker.tag }}
 
 [Install]
 WantedBy=multi-user.target

@@ -1,5 +1,3 @@
 ---
 
-root: "/"
-
 install_container_selinux: true

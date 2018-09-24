@@ -1,5 +1,3 @@
 ---
 
-root: '/'
-
 nginx_listen: "0.0.0.0"

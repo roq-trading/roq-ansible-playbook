@@ -11,13 +11,13 @@ CPUAffinity={{ cpu_affinity.zone_3 }}
 {% endif %}
 ExecStartPre=-/usr/bin/docker stop %n
 ExecStartPre=-/usr/bin/docker rm %n
-ExecStartPre=/usr/bin/docker pull sonatype/nexus3
+ExecStartPre=/usr/bin/docker pull {{ nexus.docker.name }}:{{ nexus.docker.tag }}
 ExecStart=/usr/bin/docker run --rm --name %n \
   --user 0:0 \
   --volume {{ root }}/var/lib/nexus:/nexus-data \
-  --publish {{ nexus_port }}:{{ nexus_port }} \
+  --publish {{ nexus.port }}:{{ nexus.port }} \
   --env NEXUS_CONTEXT="nexus" \
-  sonatype/nexus3
+  {{ nexus.docker.name }}:{{ nexus.docker.tag }}
 
 [Install]
 WantedBy=multi-user.target

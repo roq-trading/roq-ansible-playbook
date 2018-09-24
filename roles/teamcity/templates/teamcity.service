@@ -11,13 +11,13 @@ CPUAffinity={{ cpu_affinity.zone_3 }}
 {% endif %}
 ExecStartPre=-/usr/bin/docker stop %n
 ExecStartPre=-/usr/bin/docker rm %n
-ExecStartPre=/usr/bin/docker pull jetbrains/teamcity-server
+ExecStartPre=/usr/bin/docker pull {{ teamcity.docker.name }}:{{ teamcity.docker.tag }}
 ExecStart=/usr/bin/docker run --rm --name %n \
-  --publish {{ teamcity_port }}:8111 \
+  --publish {{ teamcity.port }}:{{ teamcity.port }} \
   --volume {{ root }}/var/lib/teamcity:/data/teamcity_server/datadir \
   --volume {{ root }}/var/log/teamcity:/opt/teamcity/logs \
   --env TEAMCITY_CONTEXT=teamcity \
-  jetbrains/teamcity-server
+  {{ teamcity.docker.name }}:{{ teamcity.docker.tag }}
 
 [Install]
 WantedBy=multi-user.target

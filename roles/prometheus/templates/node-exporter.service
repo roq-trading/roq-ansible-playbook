@@ -11,11 +11,14 @@ CPUAffinity={{ cpu_affinity.zone_2 }}
 {% endif %}
 ExecStartPre=-/usr/bin/docker stop %n
 ExecStartPre=-/usr/bin/docker rm %n
-ExecStartPre=/usr/bin/docker pull prom/node-exporter
+ExecStartPre=/usr/bin/docker pull {{ node_exporter.docker.name }}:{{ node_exporter.docker.tag }}
 ExecStart=/usr/bin/docker run --rm --name %n -i \
+  --user 0:0 \
   --security-opt apparmor=unconfined \
-  --publish {{ node_exporter_port }}:{{ node_exporter_port }} \
-  prom/node-exporter
+  --publish {{ node_exporter.port }}:{{ node_exporter.port }} \
+  --volume /run/systemd:/run/systemd \
+  {{ node_exporter.docker.name }}:{{ node_exporter.docker.tag }} \
+  --collector.systemd
 
 [Install]
 WantedBy=multi-user.target

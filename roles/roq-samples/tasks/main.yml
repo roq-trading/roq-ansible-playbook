@@ -4,13 +4,13 @@
   set_fact:
     user: "{{ user if roq_user is defined else ansible_user_id }}"
   tags:
-    - femas
+    - roq-samples
 
 - name: combine configuration with defaults
   set_fact:
-    femas_config: '{{ femas_defaults | combine(femas | default({})) }}'
+    collector_config: '{{ collector_defaults | combine(collector | default({})) }}'
   tags:
-    - femas
+    - roq-samples
 
 - block:
 
@@ -19,47 +19,28 @@
       path: "{{ item }}"
       state: directory
       owner: "{{ user }}"
-      group: "{{ user }}"
+      # group: "{{ user }}"
       mode: 0770
     with_items:
-      - "{{ root }}/etc/roq"
-      - "{{ root }}/etc/roq/femas"
+      - "{{ root }}/var/lib/roq"
       - "{{ root }}/var/log/roq"
       - "{{ root }}/var/run/roq"
-      - "{{ root }}/var/run/roq/femas"
+      - "{{ root }}/var/run/roq/collector"
 
   - name: create run script
     template:
-      src: "templates/roq-femas.sh"
-      dest: "{{ root }}/usr/local/bin/roq-femas.sh"
+      src: "templates/roq-collector.sh"
+      dest: "{{ root }}/usr/local/bin/roq-collector.sh"
       owner: "{{ user }}"
+      # group: "{{ user }}"
       mode: 0750
-  
-  - name: create config files
-    template:
-      src: "templates/{{ item }}"
-      dest: "{{ root }}/etc/roq/femas/{{ item }}"
-      owner: "{{ user }}"
-      group: "{{ user }}"
-      mode: 0640
-    with_items:
-      - "master.conf"
-      - "users.conf"
-      - "symbols.conf"
-      - "accounts.conf"
-      - "trader.conf"
-      - "md_user.conf"
-      - "datafeed.conf"
-      - "order_templates.conf"
-      - "variables.conf"
-      - "license.conf"
 
-  - name: install the roq-femas conda package
-    shell: "{{ root }}/miniconda/bin/conda install -y -n base roq-femas"
+  - name: install the roq-samples conda package
+    shell: "{{ root }}/miniconda/bin/conda install -y -n base roq-samples"
   
   become: "{{ 'true' if become_user is defined else 'false' }}"
   tags:
-    - femas
+    - roq-samples
 
 ##############
 ### SERVER ###
@@ -69,21 +50,21 @@
 
   - name: docker pull images
     docker_image:
-      name: "roqtrading/roq-femas"
-      tag: "latest"
+      name: "{{ roq_samples.docker.name }}"
+      tag: "{{ roq_samples.docker.tag }}"
       http_timeout: 300
 
   - name: define list of systemd services
     set_fact:
       systemd_services:
-      - 'roq-femas.service'
-      - 'roq-femas-stop.service'
+      - 'roq-collector.service'
+      - 'roq-collector-stop.service'
 
   - name: define list of systemd timers
     set_fact:
       systemd_timers:
-      - 'roq-femas.timer'
-      - 'roq-femas-stop.timer'
+      - 'roq-collector.timer'
+      - 'roq-collector-stop.timer'
 
   - name: define list of systemd units
     set_fact:
@@ -112,7 +93,7 @@
       state: started
     with_items: "{{ systemd_timers }}"
 
-  when: "'femas' in group_names"
+  when: "'trading' in group_names"
   become: "{{ 'true' if become_user is defined else 'false' }}"
   tags:
-    - femas
+    - roq-samples

@@ -4,8 +4,8 @@
 
   - name: pull docker image
     docker_image:
-      name: "titpetric/netdata"
-      tag: "latest"
+      name: "{{ netdata.docker.name }}"
+      tag: "{{ netdata.docker.tag }}"
       http_timeout: 300
 
   - name: create systemd service

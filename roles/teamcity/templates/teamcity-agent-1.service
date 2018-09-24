@@ -11,13 +11,13 @@ CPUAffinity={{ cpu_affinity.zone_3 }}
 {% endif %}
 ExecStartPre=-/usr/bin/docker stop %n
 ExecStartPre=-/usr/bin/docker rm %n
-ExecStartPre=/usr/bin/docker pull jetbrains/teamcity-agent
+ExecStartPre=/usr/bin/docker pull {{ teamcity_agent.docker.name }}:{{ teamcity_agent.docker.tag }}
 ExecStart=/usr/bin/docker run --rm --name %n \
   --link teamcity.service \
   --volume {{ root }}/etc/teamcity-agent-1:/data/teamcity_agent/conf \
-  --env SERVER_URL="http://teamcity.service:8111/teamcity/" \
+  --env SERVER_URL="http://teamcity.service:{{ teamcity.port }}/teamcity/" \
   --env AGENT_NAME="agent_1" \
-  jetbrains/teamcity-agent
+  {{ teamcity_agent.docker.name }}:{{ teamcity_agent.docker.tag }}
 
 [Install]
 WantedBy=multi-user.target

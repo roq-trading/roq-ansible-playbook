@@ -11,12 +11,12 @@ CPUAffinity={{ cpu_affinity.zone_3 }}
 {% endif %}
 ExecStartPre=-/usr/bin/docker stop %n
 ExecStartPre=-/usr/bin/docker rm %n
-ExecStartPre=/usr/bin/docker pull prom/alertmanager
+ExecStartPre=/usr/bin/docker pull {{ alertmanager.docker.name }}:{{ alertmanager.docker.tag }}
 ExecStart=/usr/bin/docker run --rm --name %n \
-  --publish {{ alertmanager_port }}:{{ alertmanager_port }} \
+  --publish {{ alertmanager.port }}:{{ alertmanager.port }} \
   --volume {{ root }}/etc/alertmanager:/etc/alertmanager:ro \
   --volume {{ root }}/var/lib/alertmanager:/var/lib/alertmanager \
-  prom/alertmanager \
+  {{ alertmanager.docker.name }}:{{ alertmanager.docker.tag }} \
   --web.external-url=http://localhost/alertmanager \
   --config.file={{ root }}/etc/alertmanager/alertmanager.yml \
   --storage.path={{ root }}/var/lib/alertmanager

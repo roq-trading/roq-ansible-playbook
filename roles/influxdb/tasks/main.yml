@@ -22,8 +22,8 @@
 
   - name: pull docker image
     docker_image:
-      name: "influxdb"
-      tag: "latest"
+      name: "{{ influxdb.docker.name }}"
+      tag: "{{ influxdb.docker.tag }}"
       http_timeout: 300
 
   - name: create systemd service

@@ -1,6 +1,0 @@
----
-
-prometheus_port: 9090
-alertmanager_port: 9093
-node_exporter_port: 9100
-netdata_port: 19999

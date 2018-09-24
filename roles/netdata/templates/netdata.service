@@ -11,14 +11,14 @@ CPUAffinity={{ cpu_affinity.zone_2 }}
 {% endif %}
 ExecStartPre=-/usr/bin/docker stop %n
 ExecStartPre=-/usr/bin/docker rm %n
-ExecStartPre=/usr/bin/docker pull titpetric/netdata
+ExecStartPre=/usr/bin/docker pull {{ netdata.docker.name }}:{{ netdata.docker.tag }}
 ExecStart=/usr/bin/docker run --rm --name %n \
   --security-opt apparmor=unconfined \
   --cap-add SYS_PTRACE \
   --volume /proc:/host/proc:ro \
   --volume /sys:/host/sys:ro \
-  --publish {{ netdata_port }}:{{ netdata_port }} \
-  titpetric/netdata
+  --publish {{ netdata.port }}:{{ netdata.port }} \
+  {{ netdata.docker.name }}:{{ netdata.docker.tag }}
 
 [Install]
 WantedBy=multi-user.target

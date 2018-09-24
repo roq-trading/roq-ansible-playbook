@@ -1,0 +1,6 @@
+roq-* --> prometheus --> grafana --> nginx
+prometheus needs host access because roq-* services don't run as containers
+nginx then also needs host access
+
+nexus <--> teamcity ?
+what direction is the link -- 2-way?
