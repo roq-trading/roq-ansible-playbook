@@ -52,6 +52,10 @@
   roles:
     - certbot
 
+- hosts: nexus
+  roles:
+    - nexus
+
 - hosts: teamcity
   roles:
     - teamcity

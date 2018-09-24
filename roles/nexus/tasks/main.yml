@@ -1,0 +1,46 @@
+---
+
+- name: detect owner
+  set_fact:
+    user: "{{ user if roq_user is defined else ansible_user_id }}"
+  tags:
+    - nexus
+
+- block:
+
+  - name: create directories
+    file:
+      path: "{{ item }}"
+      state: directory
+      mode: 0755
+    with_items:
+    - "{{ root }}/var/lib/nexus"
+    notify:
+    - restart nexus
+
+  - name: pull docker image
+    docker_image:
+      name: "sonatype/nexus3"
+      tag: "latest"
+      http_timeout: 300
+
+  - name: create systemd service
+    template:
+      src: "templates/nexus.service"
+      dest: "/etc/systemd/system/nexus.service"
+      owner: root
+      group: root
+      mode: 0644
+    register: nexus_service
+
+  - name: enable the nexus service
+    systemd:
+      name: "nexus.service"
+      state: started
+      enabled: true
+      daemon_reload: true
+    when: nexus_service.changed
+
+  become: "{{ 'true' if become_user is defined else 'false' }}"
+  tags:
+    - nexus

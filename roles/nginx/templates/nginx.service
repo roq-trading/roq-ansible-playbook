@@ -20,6 +20,9 @@ ExecStart=/usr/bin/docker run --rm --name %n -i \
   --link netdata.service \
   --link grafana.service \
 {% endif %}
+{% if 'nexus' in groups %}
+  --link nexus.service \
+{% endif %}
 {% if 'teamcity' in groups %}
   --link teamcity.service \
 {% endif %}
