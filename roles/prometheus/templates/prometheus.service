@@ -15,7 +15,7 @@ ExecStartPre=/usr/bin/docker pull {{ prometheus.docker.name }}:{{ prometheus.doc
 ExecStart=/usr/bin/docker run --rm --name %n \
   --user 0:0 \
 {% if true %}
-  --net="host" \
+  --net host \
 {% else %}
   --link {{ netdata.service }} \
   --link {{ node-exporter.service }} \

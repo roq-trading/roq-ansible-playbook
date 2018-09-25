@@ -8,7 +8,7 @@ groups:
       severity: critical
     annotations:
       summary: Heartbeat
-{% if 'femas' in groups %}
+{% if 'roq-femas' in groups %}
   - alert: roq_femas_connection
     expr: roq_femas_connection_delay > 10
     for: 2m
