@@ -1,0 +1,22 @@
+[Unit]
+Description=PostgreSQL database
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+{% if cpu_affinity is defined %}
+CPUAffinity={{ cpu_affinity.zone_3 }}
+{% endif %}
+ExecStartPre=-/usr/bin/docker stop %n
+ExecStartPre=-/usr/bin/docker rm %n
+ExecStartPre=/usr/bin/docker pull {{ postgres.docker.name }}:{{ postgres.docker.tag }}
+ExecStart=/usr/bin/docker run --rm --name %n \
+  --volume {{ root }}/var/lib/postgres:/var/lib/postgres/data \
+  --publish {{ postgres.port }}:{{ postgres.port }} \
+  --env POSTGRES_PASSWORD="{{ postgres.password }}" \
+  {{ postgres.docker.name }}:{{ postgres.docker.tag }}
+
+[Install]
+WantedBy=multi-user.target

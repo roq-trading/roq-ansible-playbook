@@ -4,3 +4,7 @@ nginx then also needs host access
 
 nexus <--> teamcity ?
 what direction is the link -- 2-way?
+
+gogs
+exec postgres.service
+psql --user <...>; create database gogs;

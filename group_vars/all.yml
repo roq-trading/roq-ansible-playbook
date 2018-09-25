@@ -51,6 +51,27 @@ prometheus:
     name: "prom/prometheus"
     tag: "latest"
 
+postgres:
+  port: 5432
+  service: "localhost"
+  user: "postgres"
+  password: "admin"
+  docker:
+    name: "postgres"
+    tag: "latest"
+
+gogs:
+  port: 3000
+  link_port: 10080
+  service: "localhost"
+  docker:
+    name: "gogs/gogs"
+    tag: "latest"
+  postgres:
+    user: "{{ postgres.user }}"
+    password: "{{ postgres.password }}"
+    database: "gogs"
+
 nexus:
   port: 8081
   service: "localhost"

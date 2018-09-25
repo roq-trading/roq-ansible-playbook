@@ -5,31 +5,98 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Roq</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 
 <body>
-	
-<section>
-  <h1>Roq Trading Solutions</h1>
-  <ul>
+	<header>
+	  <div class="navbar navbar-dark bg-dark shadow-sm">
+			<div class="container d-flex justify-content-between">
+				<a class="navbar-brand d-flex align-items-center" href="#"><strong>Roq Trading Solutions</strong></a>
+			</div>
+		</div>
+	</header>
+	<main role="main">
+		<div class="album py-5 bg-light">
+			<div class="container">
 {% if 'trading' in groups %}
-    <li><a href="/grafana/">Grafana</a></li>
-    <li><a href="/prometheus/">Prometheus</a></li>
-    <li><a href="/netdata/">netdata</a></li>
+				<h2>Trading / Monitoring</h2>
+				<div class="card-deck">
+					<div class="card">
+						<div class="card-body">
+							<h5 class="card-title">Grafana</h5>
+							<div class="card-text">
+								<p>Dashboard experience.</p>
+								<p>Data visualization and monitoring. Extends Prometheus with a graphical front-end.</p>
+								<a class="btn btn-sm btn-outline-secondary" href="/grafana/" role="button">Launch</a>
+							</div>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-body">
+							<h5 class="card-title">Prometheus</h5>
+							<div class="card-text">
+								<p>Database for collected "metrics".</p>
+								<p>Time-series database. Query engine. Alerting.</p>
+								<a class="btn btn-sm btn-outline-secondary" href="/prometheus/" role="button">Launch</a>
+							</div>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-body">
+							<h5 class="card-title">netdata</h5>
+							<div class="card-text">
+								<p>System monitoring.</p>
+                <p>Real-time system performance and health monitoring.</p>
+								<a class="btn btn-sm btn-outline-secondary" href="/netdata/" role="button">Launch</a>
+							</div>
+						</div>
+					</div>
+				</div>
 {% endif %}
-{% if 'nexus' in groups %}
-    <li><a href="/nexus/">Nexus</a></li>
+{% if 'cicd' in groups %}
+				<h2>CI/CD Pipeline</h2>
+				<div class="card-deck">
+					<div class="card">
+						<div class="card-body">
+							<h5 class="card-title">Gogs</h5>
+							<div class="card-text">
+								<p>Version control.</p>
+                <p>Git service. Issue management. User management.</p>
+								<a class="btn btn-sm btn-outline-secondary" href="/gogs/" role="button">Launch</a>
+							</div>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-body">
+							<h5 class="card-title">TeamCity</h5>
+							<div class="card-text">
+								<p>Build management.</p>
+								<p>Build configuration. Compile and test. History.</p>
+								<a class="btn btn-sm btn-outline-secondary" href="/teamcity/" role="button">Launch</a>
+							</div>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-body">
+							<h5 class="card-title">Nexus</h5>
+							<div class="card-text">
+								<p>Repository management.</p>
+								<p>Store your compiled binaries. Cache external dependencies.</p>
+								<a class="btn btn-sm btn-outline-secondary" href="/nexus/" role="button">Launch</a>
+							</div>
+						</div>
+					</div>
+				</div>
 {% endif %}
-{% if 'teamcity' in groups %}
-    <li><a href="/teamcity/">TeamCity</a></li>
-{% endif %}
-  </ul>
-</section>
-
-<footer>
-  <p>Copyright 2018 Roq GmbH</p>
-</footer>
-
+			</div>
+		</div>
+	</main>
+	<footer class="text-muted">
+		<div class="container">
+			<p>Copyright 2018 Hans Erik Thrane</p>
+		</div>
+	</footer>
 </body>
 
 </html>

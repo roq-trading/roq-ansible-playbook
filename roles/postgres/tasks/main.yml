@@ -1,0 +1,52 @@
+---
+
+- name: detect owner
+  set_fact:
+    user: "{{ user if roq_user is defined else ansible_user_id }}"
+  tags:
+    - postgres
+
+- block:
+
+  - name: create directories
+    file:
+      path: "{{ item }}"
+      state: directory
+      mode: 0755
+    with_items:
+    - "{{ root }}/var/lib/postgres"
+    notify:
+    - restart postgres
+
+  - name: pull docker image
+    docker_image:
+      name: "{{ postgres.docker.name }}"
+      tag: "{{ postgres.docker.tag }}"
+      http_timeout: 300
+
+  - name: create systemd service
+    template:
+      src: "templates/postgres.service"
+      dest: "/etc/systemd/system/postgres.service"
+      owner: root
+      group: root
+      mode: 0644
+    register: postgres_service
+
+  - name: enable the postgres service
+    systemd:
+      name: "postgres.service"
+      state: started
+      enabled: true
+      daemon_reload: true
+    when: postgres_service.changed
+
+# so we can use ansible's postgresql_db command
+  - name: pip install psycopg2
+    pip:
+      name: "psycopg2"
+      state: latest
+
+  become: "{{ 'true' if become_user is defined else 'false' }}"
+  tags:
+    - postgres

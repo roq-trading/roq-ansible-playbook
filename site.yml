@@ -56,18 +56,17 @@
     - prometheus
     - grafana
 
-- hosts: nexus
+- hosts: cicd
   roles:
+    - postgres
+    - gogs
     - nexus
-
-- hosts: teamcity
-  roles:
     - teamcity
 
 - hosts: web
   roles:
     - certbot
 
-- hosts: trading,web,teamcity
+- hosts: trading,cicd,web
   roles:
     - nginx

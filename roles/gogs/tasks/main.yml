@@ -1,0 +1,63 @@
+---
+
+- name: detect owner
+  set_fact:
+    user: "{{ user if roq_user is defined else ansible_user_id }}"
+  tags:
+    - gogs
+
+- block:
+
+  - name: create directories
+    file:
+      path: "{{ item }}"
+      state: directory
+      mode: 0755
+    with_items:
+    - "{{ root }}/var/lib/gogs"
+    - "{{ root }}/var/lib/gogs/gogs"
+    - "{{ root }}/var/lib/gogs/gogs/conf"
+    notify:
+    - restart gogs
+
+  - name: create app.ini
+    template:
+      src: "templates/app.ini"
+      dest: "{{ root }}/var/lib/gogs/gogs/conf/app.ini"
+      owner: root
+      mode: 0644
+
+  - name: create postgres database
+    postgresql_db:
+      name: "{{ gogs.postgres.database }}"
+      login_host: "localhost"
+      port: "{{ postgres.port }}"
+      login_user: "{{ postgres.user }}"
+      login_password: "{{ postgres.password }}"
+
+  - name: pull docker image
+    docker_image:
+      name: "{{ gogs.docker.name }}"
+      tag: "{{ gogs.docker.tag }}"
+      http_timeout: 300
+
+  - name: create systemd service
+    template:
+      src: "templates/gogs.service"
+      dest: "/etc/systemd/system/gogs.service"
+      owner: root
+      group: root
+      mode: 0644
+    register: gogs_service
+
+  - name: enable the gogs service
+    systemd:
+      name: "gogs.service"
+      state: started
+      enabled: true
+      daemon_reload: true
+    when: gogs_service.changed
+
+  become: "{{ 'true' if become_user is defined else 'false' }}"
+  tags:
+    - gogs
