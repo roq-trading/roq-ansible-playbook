@@ -41,6 +41,18 @@
       daemon_reload: true
     when: postgres_service.changed
 
+  - name: create psql script
+    template:
+      src: "templates/{{ item }}"
+      dest: "{{ root }}/usr/local/bin/{{ item }}"
+      owner: "{{ user }}"
+      mode: 0750
+    with_items:
+      - "psql"
+      - "pg_dump"
+      - "pg_dumpall"
+      - "pg_restore"
+
 # so we can use ansible's postgresql_db command
   - name: pip install psycopg2
     pip:

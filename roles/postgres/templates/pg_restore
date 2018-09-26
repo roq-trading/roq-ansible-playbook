@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+sudo docker exec \
+  --interactive \
+  --tty \
+  postgres.service \
+  pg_restore --username "{{ postgres.user }}" $@
