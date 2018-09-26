@@ -1,0 +1,9 @@
+[Unit]
+Description=Postgres backup timer
+
+[Timer]
+OnCalendar=*-*-* 22:45:00
+Persistent=true
+
+[Install]
+WantedBy=multi-user.target

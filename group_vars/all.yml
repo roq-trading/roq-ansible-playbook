@@ -85,6 +85,10 @@ teamcity:
   docker:
     name: "jetbrains/teamcity-server"
     tag: "latest"
+  postgres:
+    user: "{{ postgres.user }}"
+    password: "{{ postgres.password }}"
+    database: "teamcitydb"
 
 teamcity_agent:
   docker:

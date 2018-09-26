@@ -12,18 +12,20 @@
     file:
       path: "{{ item }}"
       state: directory
-      mode: 0755
+      mode: 0700
     with_items:
     - "{{ root }}/var/lib/gogs"
-    - "{{ root }}/var/lib/gogs/gogs"
-    - "{{ root }}/var/lib/gogs/gogs/conf"
+    - "{{ root }}/var/lib/gogs/data"
+    - "{{ root }}/var/lib/gogs/data/gogs"
+    - "{{ root }}/var/lib/gogs/data/gogs/conf"
+    - "{{ root }}/var/lib/gogs/backups"
     notify:
     - restart gogs
 
   - name: create app.ini
     template:
       src: "templates/app.ini"
-      dest: "{{ root }}/var/lib/gogs/gogs/conf/app.ini"
+      dest: "{{ root }}/var/lib/gogs/data/gogs/conf/app.ini"
       owner: root
       mode: 0644
 
@@ -57,6 +59,52 @@
       enabled: true
       daemon_reload: true
     when: gogs_service.changed
+
+  - name: create scripts
+    template:
+      src: "templates/{{ item }}"
+      dest: "{{ root }}/usr/local/bin/{{ item }}"
+      owner: "{{ user }}"
+      mode: 0750
+    with_items:
+      - "gogs-backup.sh"
+
+  - name: define list of systemd services
+    set_fact:
+      systemd_services:
+      - 'gogs-backup.service'
+
+  - name: define list of systemd timers
+    set_fact:
+      systemd_timers:
+      - 'gogs-backup.timer'
+
+  - name: define list of systemd units
+    set_fact:
+      systemd_units:
+      - '{{ systemd_services }} + {{ systemd_timers }}'
+
+  - name: create systemd units
+    template:
+      src: "templates/{{ item }}"
+      dest: "/etc/systemd/system/{{ item }}"
+      owner: root
+      group: root
+      mode: 0644
+    with_items: "{{ systemd_units }}"
+
+  - name: enable systemd units
+    systemd:
+      name: "{{ item }}"
+      enabled: true
+      daemon_reload: true
+    with_items: "{{ systemd_units }}"
+
+  - name: start systemd timers
+    systemd:
+      name: "{{ item }}"
+      state: started
+    with_items: "{{ systemd_timers }}"
 
   become: "{{ 'true' if become_user is defined else 'false' }}"
   tags:

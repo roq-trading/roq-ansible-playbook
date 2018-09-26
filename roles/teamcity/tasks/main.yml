@@ -1,6 +1,27 @@
 ---
 
+- name: detect owner
+  set_fact:
+    user: "{{ user if roq_user is defined else ansible_user_id }}"
+  tags:
+    - teamcity
+
 - block:
+
+  - name: create directories
+    file:
+      path: "{{ item }}"
+      state: directory
+      owner: root
+      group: root
+      mode: 0700
+    with_items:
+      - "{{ root }}/var/lib/teamcity"
+      - "{{ root }}/var/lib/teamcity/data"
+      - "{{ root }}/var/lib/teamcity/backups"
+    notify:
+    - restart teamcity
+    - restart teamcity-agent-1
 
   - name: create directories
     file:
@@ -10,12 +31,19 @@
       group: root
       mode: 0755
     with_items:
-      - "{{ root }}/var/lib/teamcity"
       - "{{ root }}/var/log/teamcity"
       - "{{ root }}/etc/teamcity-agent-1"
     notify:
     - restart teamcity
     - restart teamcity-agent-1
+
+  - name: create postgres database
+    postgresql_db:
+      name: "{{ teamcity.postgres.database }}"
+      login_host: "localhost"
+      port: "{{ postgres.port }}"
+      login_user: "{{ postgres.user }}"
+      login_password: "{{ postgres.password }}"
   
 # server
 
@@ -43,6 +71,52 @@
       enabled: true
       daemon_reload: true
     when: teamcity_server_service.changed
+
+  - name: create scripts
+    template:
+      src: "templates/{{ item }}"
+      dest: "{{ root }}/usr/local/bin/{{ item }}"
+      owner: "{{ user }}"
+      mode: 0750
+    with_items:
+      - "teamcity-backup.sh"
+
+  - name: define list of systemd services
+    set_fact:
+      systemd_services:
+      - 'teamcity-backup.service'
+
+  - name: define list of systemd timers
+    set_fact:
+      systemd_timers:
+      - 'teamcity-backup.timer'
+
+  - name: define list of systemd units
+    set_fact:
+      systemd_units:
+      - '{{ systemd_services }} + {{ systemd_timers }}'
+
+  - name: create systemd units
+    template:
+      src: "templates/{{ item }}"
+      dest: "/etc/systemd/system/{{ item }}"
+      owner: root
+      group: root
+      mode: 0644
+    with_items: "{{ systemd_units }}"
+
+  - name: enable systemd units
+    systemd:
+      name: "{{ item }}"
+      enabled: true
+      daemon_reload: true
+    with_items: "{{ systemd_units }}"
+
+  - name: start systemd timers
+    systemd:
+      name: "{{ item }}"
+      state: started
+    with_items: "{{ systemd_timers }}"
 
 # agent
 

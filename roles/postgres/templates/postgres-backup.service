@@ -1,0 +1,10 @@
+[Unit]
+Description=Postgres backup
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/postgres-backup.sh
+
+[Install]
+WantedBy=multi-user.target

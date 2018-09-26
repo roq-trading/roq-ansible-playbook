@@ -5,6 +5,13 @@
 Copyright (c) 2017-2018, Hans Erik Thrane
 
 
+## Disclaimer
+
+Please refer to the LICENSE.
+
+In particular, *it is your own responsibility to ensure the correct operation for your own environment!*
+
+
 ## What is it?
 
 Reference server configuration.
