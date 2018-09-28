@@ -1,5 +1,11 @@
 ---
 
+- name: detect product_name
+  set_fact:
+    product_name: "{{ product_name if product_name is defined else 'Roq Trading Solutions' }}"
+  tags:
+    - nginx
+
 - block:
 
   - name: create directories
