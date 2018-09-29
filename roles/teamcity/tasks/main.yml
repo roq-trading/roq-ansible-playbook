@@ -36,14 +36,48 @@
     notify:
     - restart teamcity
     - restart teamcity-agent-1
+  
+  - name: create encrypted password
+    shell: "echo -n `echo -n {{ teamcity.postgres.password }}{{ teamcity.postgres.user }} | md5sum | awk '{print $1}'`"
+    register: encrypted_password
 
-  - name: create postgres database
-    postgresql_db:
-      name: "{{ teamcity.postgres.database }}"
+  - name: create postgres user
+    postgresql_user:
+      name: "{{ teamcity.postgres.user }}"
+      password: "md5{{ encrypted_password.stdout_lines[0] }}"
+      encrypted: true
+      role_attr_flags: "CREATEDB,NOSUPERUSER"
       login_host: "localhost"
       port: "{{ postgres.port }}"
       login_user: "{{ postgres.user }}"
       login_password: "{{ postgres.password }}"
+    notify:
+    - restart teamcity
+
+  - name: create postgres database
+    postgresql_db:
+      name: "{{ teamcity.postgres.database }}"
+      encoding: "UTF-8"
+      owner: "{{ teamcity.postgres.user }}"
+      login_host: "localhost"
+      port: "{{ postgres.port }}"
+      login_user: "{{ postgres.user }}"
+      login_password: "{{ postgres.password }}"
+    notify:
+    - restart teamcity
+
+  - name: grant postgres user priviliges
+    postgresql_privs:
+      db: "{{ teamcity.postgres.database }}"
+      privs: "ALL"
+      objs: "ALL_IN_SCHEMA"
+      role: "{{ teamcity.postgres.user }}"
+      login_host: "localhost"
+      port: "{{ postgres.port }}"
+      login_user: "{{ postgres.user }}"
+      login_password: "{{ postgres.password }}"
+    notify:
+    - restart teamcity
   
 # server
 

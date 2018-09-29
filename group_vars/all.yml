@@ -29,6 +29,10 @@ grafana:
   docker:
     name: "grafana/grafana"
     tag: "latest"
+  postgres:
+    user: "grafana"
+    password: "secret"
+    database: "grafana"
 
 alertmanager:
   port: 9093
@@ -68,8 +72,8 @@ gogs:
     name: "gogs/gogs"
     tag: "latest"
   postgres:
-    user: "{{ postgres.user }}"
-    password: "{{ postgres.password }}"
+    user: "gogs"
+    password: "secret"
     database: "gogs"
 
 nexus:
@@ -86,9 +90,9 @@ teamcity:
     name: "jetbrains/teamcity-server"
     tag: "latest"
   postgres:
-    user: "{{ postgres.user }}"
-    password: "{{ postgres.password }}"
-    database: "teamcitydb"
+    user: "teamcity"
+    password: "secret"
+    database: "teamcity"
 
 teamcity_agent:
   docker:

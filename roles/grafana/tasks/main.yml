@@ -6,11 +6,11 @@
     file:
       path: "{{ item }}"
       state: directory
-      owner: root
-      group: root
-      mode: 0755
     with_items:
       - "{{ root }}/var/lib/grafana"
+      - "{{ root }}/var/lib/grafana/data"
+      - "{{ root }}/var/lib/grafana/data/dashboards"
+      - "{{ root }}/var/lib/grafana/backups"
       - "{{ root }}/etc/grafana"
       - "{{ root }}/etc/grafana/provisioning"
       - "{{ root }}/etc/grafana/provisioning/datasources"
@@ -31,12 +31,13 @@
   - name: provision dashboards
     template:
       src: "templates/{{ item }}"
-      dest: "/etc/grafana/provisioning/dashboards/{{ item }}"
+      dest: "/var/lib/grafana/data/dashboards/{{ item }}"
       owner: root
       group: root
       mode: 0644
     with_items:
       - "femas-gateway.json"
+    when: "'roq-femas' in group_names"
     notify:
     - restart grafana
   
@@ -49,12 +50,56 @@
       mode: 0644
     notify:
     - restart grafana
+
+  - name: create encrypted password
+    shell: "echo -n `echo -n {{ grafana.postgres.password }}{{ grafana.postgres.user }} | md5sum | awk '{print $1}'`"
+    register: encrypted_password
+
+  - name: create postgres user
+    postgresql_user:
+      name: "{{ grafana.postgres.user }}"
+      password: "md5{{ encrypted_password.stdout_lines[0] }}"
+      encrypted: true
+      role_attr_flags: "CREATEDB,NOSUPERUSER"
+      login_host: "localhost"
+      port: "{{ postgres.port }}"
+      login_user: "{{ postgres.user }}"
+      login_password: "{{ postgres.password }}"
+    notify:
+    - restart grafana
+
+  - name: create postgres database
+    postgresql_db:
+      name: "{{ grafana.postgres.database }}"
+      encoding: "UTF-8"
+      owner: "{{ grafana.postgres.user }}"
+      login_host: "localhost"
+      port: "{{ postgres.port }}"
+      login_user: "{{ postgres.user }}"
+      login_password: "{{ postgres.password }}"
+    notify:
+    - restart grafana
+
+  - name: grant postgres user priviliges
+    postgresql_privs:
+      db: "{{ grafana.postgres.database }}"
+      privs: "ALL"
+      objs: "ALL_IN_SCHEMA"
+      role: "{{ grafana.postgres.user }}"
+      login_host: "localhost"
+      port: "{{ postgres.port }}"
+      login_user: "{{ postgres.user }}"
+      login_password: "{{ postgres.password }}"
+    notify:
+    - restart grafana
   
   - name: pull docker image
     docker_image:
       name: "{{ grafana.docker.name }}"
       tag: "{{ grafana.docker.tag }}"
       http_timeout: 300
+    notify:
+    - restart grafana
   
   - name: create systemd service
     template:
@@ -74,6 +119,52 @@
       enabled: true
       daemon_reload: true
     when: grafana_service.changed
+
+  - name: create scripts
+    template:
+      src: "templates/{{ item }}"
+      dest: "{{ root }}/usr/local/bin/{{ item }}"
+      owner: "{{ user }}"
+      mode: 0750
+    with_items:
+      - "grafana-backup.sh"
+
+  - name: define list of systemd services
+    set_fact:
+      systemd_services:
+      - 'grafana-backup.service'
+
+  - name: define list of systemd timers
+    set_fact:
+      systemd_timers:
+      - 'grafana-backup.timer'
+
+  - name: define list of systemd units
+    set_fact:
+      systemd_units:
+      - '{{ systemd_services }} + {{ systemd_timers }}'
+
+  - name: create systemd units
+    template:
+      src: "templates/{{ item }}"
+      dest: "/etc/systemd/system/{{ item }}"
+      owner: root
+      group: root
+      mode: 0644
+    with_items: "{{ systemd_units }}"
+
+  - name: enable systemd units
+    systemd:
+      name: "{{ item }}"
+      enabled: true
+      daemon_reload: true
+    with_items: "{{ systemd_units }}"
+
+  - name: start systemd timers
+    systemd:
+      name: "{{ item }}"
+      state: started
+    with_items: "{{ systemd_timers }}"
   
   become: "{{ 'true' if become_user is defined else 'false' }}"
   tags:

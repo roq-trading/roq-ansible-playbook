@@ -21,9 +21,14 @@ ExecStart=/usr/bin/docker run --rm --name %n \
   --link {{ influxdb.service }} \
 {% endif %}
   --publish {{ grafana.port }}:{{ grafana.port }} \
-  --volume {{ root }}/var/lib/grafana:/var/lib/grafana \
+  --volume {{ root }}/var/lib/grafana/data:/var/lib/grafana \
   --volume {{ root }}/etc/grafana/provisioning:/etc/grafana/provisioning \
   --env GF_SERVER_ROOT_URL="http://localhost/grafana" \
+  --env GF_DATABASE_TYPE="postgres" \
+  --env GF_DATABASE_HOST="localhost:{{ postgres.port }}" \
+  --env GF_DATABASE_NAME="{{ grafana.postgres.database }}" \
+  --env GF_DATABASE_USER="{{ grafana.postgres.user }}" \
+  --env GF_DATABASE_PASSWORD="{{ grafana.postgres.password }}" \
   --env GF_INSTALL_PLUGINS="grafana-clock-panel" \
   --env GF_PATHS_PROVISIONING="{{ root }}/etc/grafana/provisioning" \
   {{ grafana.docker.name }}:{{ grafana.docker.tag }}

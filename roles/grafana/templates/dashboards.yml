@@ -10,4 +10,4 @@ providers:
   disableDeletion: false
   updateIntervalSeconds: 30
   options:
-    path: "/etc/grafana/provisioning/dashboards"
+    path: "/var/lib/grafana/dashboards"
