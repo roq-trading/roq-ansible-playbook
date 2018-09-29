@@ -21,96 +21,108 @@
     <div class="album py-5 bg-light">
       <div class="container">
 {% if 'trading' in groups %}
-        <h2>Trading / Monitoring</h2>
-        <div class="card-deck">
-          <div class="card">
-            <div class="card-header">Grafana
-              <a class="btn btn-sm btn-outline-secondary float-right" href="/grafana/" target="_blank" role="button">Launch</a>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Dashboard</h5>
-              <p class="card-text">
-                <ul>
-                  <li>Data visualization and monitoring</li>
-                </ul>
-              </p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header">netdata
-              <a class="btn btn-sm btn-outline-secondary float-right" href="/netdata/" target="_blank" role="button">Launch</a>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">System Monitoring</h5>
-              <p class="card-text">
-                <ul>
-                  <li>Real-time system performance and health monitoring</p>
-                </ul>
-              </p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header">Prometheus
-              <a class="btn btn-sm btn-outline-secondary float-right" href="/prometheus/" target="_blank" role="button">Launch</a>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Time-series Database</h5>
-              <p class="card-text">
-                <ul>
-                  <li>Query engine</li>
-                  <li>Collect metrics</li>
-                  <li>Generate alerts</li>
-                </ul>
-              </p>
+        <div class="row align-items-start">
+          <div class="col">
+            <h2>Trading / Monitoring</h2>
+            <div class="card-deck">
+              <div class="card">
+                <div class="card-header">Grafana
+                  <a class="btn btn-sm btn-outline-secondary float-right" href="/grafana/" target="_blank" role="button">Launch</a>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Dashboard</h5>
+                  <p class="card-text">
+                    <ul>
+                      <li>Data visualization and monitoring</li>
+                    </ul>
+                  </p>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header">netdata
+                  <a class="btn btn-sm btn-outline-secondary float-right" href="/netdata/" target="_blank" role="button">Launch</a>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">System Monitoring</h5>
+                  <p class="card-text">
+                    <ul>
+                      <li>Real-time system performance and health monitoring</p>
+                    </ul>
+                  </p>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header">Prometheus
+                  <a class="btn btn-sm btn-outline-secondary float-right" href="/prometheus/" target="_blank" role="button">Launch</a>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Time-series Database</h5>
+                  <p class="card-text">
+                    <ul>
+                      <li>Query engine</li>
+                      <li>Collect metrics</li>
+                      <li>Generate alerts</li>
+                    </ul>
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 {% endif %}
 {% if 'cicd' in groups %}
-        <h2>CI/CD Pipeline</h2>
-        <div class="card-deck">
-          <div class="card">
-            <div class="card-header">Gogs
-              <a class="btn btn-sm btn-outline-secondary float-right" href="/gogs/" target="_blank" role="button">Launch</a>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Version Control</h5>
-              <p class="card-text">
-                <ul>
-                  <li>Git</li>
-                  <li>Issues</li>
-                  <li>Users</li>
-                </ul>
-              </p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header">TeamCity
-              <a class="btn btn-sm btn-outline-secondary float-right" href="/teamcity/" target="_blank" role="button">Launch</a>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Build Management</h5>
-              <p class="card-text">
-                <ul>
-                  <li>Build configuration</li>
-                  <li>Compile and test</li>
-                  <li>Deploy</li>
-                </ul>
-              </p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header">Nexus
-              <a class="btn btn-sm btn-outline-secondary float-right" href="/nexus/" target="_blank" role="button">Launch</a>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Repository Management</h5>
-              <p class="card-text">
-                <ul>
-                  <li>Store compiled binaries</li>
-                  <li>Cache external dependencies</li>
-                </ul>
-              </p>
+{% if 'trading' in groups %}
+        <div class="row align-items-start mt-5">
+{% else %}
+        <div class="row align-items-start">
+{% endif %}
+          <div class="col">
+            <h2>CI/CD Pipeline</h2>
+            <div class="card-deck">
+              <div class="card">
+                <div class="card-header">Gogs
+                  <a class="btn btn-sm btn-outline-secondary float-right" href="/gogs/" target="_blank" role="button">Launch</a>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Version Control</h5>
+                  <p class="card-text">
+                    <ul>
+                      <li>Git</li>
+                      <li>Issues</li>
+                      <li>Users</li>
+                    </ul>
+                  </p>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header">TeamCity
+                  <a class="btn btn-sm btn-outline-secondary float-right" href="/teamcity/" target="_blank" role="button">Launch</a>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Build Management</h5>
+                  <p class="card-text">
+                    <ul>
+                      <li>Build configuration</li>
+                      <li>Compile and test</li>
+                      <li>Deploy</li>
+                    </ul>
+                  </p>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header">Nexus
+                  <a class="btn btn-sm btn-outline-secondary float-right" href="/nexus/" target="_blank" role="button">Launch</a>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Repository Management</h5>
+                  <p class="card-text">
+                    <ul>
+                      <li>Store compiled binaries</li>
+                      <li>Cache external dependencies</li>
+                    </ul>
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
