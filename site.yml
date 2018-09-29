@@ -1,20 +1,6 @@
 ---
 
-# Groups:
-#   trading  -- install a trading server with required services
-#   web      -- install a web server with the required services
-#   secure   -- secure the server (sshd, fail2ban and firewall)
-#   onload   -- install the solarflare onload driver
-#   dev      -- install the conda build toolchain
-#   database -- install database services (redis and influxdb)
-#   samples  -- install roq-samples
-#   femas    -- install roq-femas
-
 - hosts: all
-  roles:
-    - baseline
-
-- hosts: trading,web,teamcity
   roles:
     - kernel
     - chrony
@@ -22,6 +8,10 @@
     - sysadmin
     - python
     - docker
+
+- hosts: web
+  roles:
+    - certbot
 
 - hosts: secure
   roles:
@@ -35,6 +25,7 @@
 - hosts: all
   roles:
     - conda
+    - postgres
 
 - hosts: dev
   roles:
@@ -58,15 +49,10 @@
 
 - hosts: cicd
   roles:
-    - postgres
     - gogs
     - nexus
     - teamcity
 
-- hosts: web
-  roles:
-    - certbot
-
-- hosts: trading,cicd,web
+- hosts: all
   roles:
     - nginx

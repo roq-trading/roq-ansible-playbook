@@ -22,7 +22,10 @@ ExecStart=/usr/bin/docker run --rm --name %n \
 {% endif %}
   --publish {{ grafana.port }}:{{ grafana.port }} \
   --volume {{ root }}/var/lib/grafana:/var/lib/grafana \
-  --env "GF_SERVER_ROOT_URL=http://localhost/grafana" \
+  --volume {{ root }}/etc/grafana/provisioning:/etc/grafana/provisioning \
+  --env GF_SERVER_ROOT_URL="http://localhost/grafana" \
+  --env GF_INSTALL_PLUGINS="grafana-clock-panel" \
+  --env GF_PATHS_PROVISIONING="{{ root }}/etc/grafana/provisioning" \
   {{ grafana.docker.name }}:{{ grafana.docker.tag }}
 
 [Install]

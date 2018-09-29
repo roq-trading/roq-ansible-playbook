@@ -8,3 +8,7 @@ what direction is the link -- 2-way?
 gogs
 exec postgres.service
 psql --user <...>; create database gogs;
+
+grafana
+can't provision dashboards because the datasource isn't linked
+https://github.com/grafana/grafana/issues/10786

@@ -1,0 +1,21 @@
+---
+
+apiVersion: 1
+
+datasources:
+  - name: "Prometheus"
+    orgId: 1
+    access: "proxy"
+    editable: true
+    isDefault: true
+    type: "prometheus"
+    url: "http://localhost:{{ prometheus.port }}/prometheus"
+    version: 1
+  - name: "InfluxDB"
+    orgId: 1
+    access: "proxy"
+    editable: true
+    isDefault: false
+    type: "influxdb"
+    url: "http://localhost:{{ influxdb.port }}"
+    version: 1

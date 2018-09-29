@@ -4,11 +4,49 @@
 
   - name: create directories
     file:
-      path: "{{ root }}/var/lib/grafana"
+      path: "{{ item }}"
       state: directory
       owner: root
       group: root
       mode: 0755
+    with_items:
+      - "{{ root }}/var/lib/grafana"
+      - "{{ root }}/etc/grafana"
+      - "{{ root }}/etc/grafana/provisioning"
+      - "{{ root }}/etc/grafana/provisioning/datasources"
+      - "{{ root }}/etc/grafana/provisioning/dashboards"
+    notify:
+    - restart grafana
+
+  - name: provision datasources
+    template:
+      src: "templates/datasources.yml"
+      dest: "/etc/grafana/provisioning/datasources/all.yml"
+      owner: root
+      group: root
+      mode: 0644
+    notify:
+    - restart grafana
+  
+  - name: provision dashboards
+    template:
+      src: "templates/{{ item }}"
+      dest: "/etc/grafana/provisioning/dashboards/{{ item }}"
+      owner: root
+      group: root
+      mode: 0644
+    with_items:
+      - "femas-gateway.json"
+    notify:
+    - restart grafana
+  
+  - name: provision dashboards
+    template:
+      src: "templates/dashboards.yml"
+      dest: "/etc/grafana/provisioning/dashboards/all.yml"
+      owner: root
+      group: root
+      mode: 0644
     notify:
     - restart grafana
   
