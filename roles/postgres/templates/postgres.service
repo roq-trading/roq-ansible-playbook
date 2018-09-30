@@ -14,8 +14,10 @@ ExecStartPre=-/usr/bin/docker rm %n
 ExecStartPre=/usr/bin/docker pull {{ postgres.docker.name }}:{{ postgres.docker.tag }}
 ExecStart=/usr/bin/docker run --rm --name %n \
   --volume {{ root }}/var/lib/postgres/data:/var/lib/postgresql/data \
+  --volume {{ root }}/var/run/postgres:/var/run/postgresql \
   --publish {{ postgres.port }}:{{ postgres.port }} \
-  --env POSTGRES_PASSWORD="{{ postgres.password }}" \
+  --env POSTGRES_USER={{ postgres.user }} \
+  --env POSTGRES_PASSWORD={{ postgres.password }} \
   {{ postgres.docker.name }}:{{ postgres.docker.tag }}
 
 [Install]

@@ -17,6 +17,7 @@
     - "{{ root }}/var/lib/postgres"
     - "{{ root }}/var/lib/postgres/data"
     - "{{ root }}/var/lib/postgres/backups"
+    - "{{ root }}/var/run/postgres"
     notify:
     - restart postgres
 
