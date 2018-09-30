@@ -76,6 +76,8 @@
       group: root
       mode: 0644
     register: rundeck_service
+    notify:
+    - restart rundeck
 
   - name: enable the rundeck service
     systemd:

@@ -128,4 +128,4 @@ rundeck:
   postgres:
     user: "rundeck"
     password: "secret"
-    database: "rundeckdb"
+    database: "rundeck"
