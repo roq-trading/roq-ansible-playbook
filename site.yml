@@ -53,6 +53,7 @@
     - gogs
     - nexus
     - teamcity
+    - rundeck
 
 - hosts: all
   roles:

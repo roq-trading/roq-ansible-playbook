@@ -1,0 +1,26 @@
+[Unit]
+Description=rundeck
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+{% if cpu_affinity is defined %}
+CPUAffinity={{ cpu_affinity.zone_3 }}
+{% endif %}
+ExecStartPre=-/usr/bin/docker stop %n
+ExecStartPre=-/usr/bin/docker rm %n
+ExecStartPre=/usr/bin/docker pull {{ rundeck.docker.name }}:{{ rundeck.docker.tag }}
+ExecStart=/usr/bin/docker run --rm --name %n \
+  --volume {{ root }}/var/lib/rundeck/data:/home/rundeck/server/data \
+  --publish {{ rundeck.port }}:{{ rundeck.port }} \
+  --env RUNDECK_GRAILS_URL=http://localhost:{{ rundeck.port }} \
+  --env RUNDECK_DATABASE_DRIVER=org.postgresql.Driver \
+  --env RUNDECK_DATABASE_USERNAME={{ rundeck.postgres.user }} \
+  --env RUNDECK_DATABASE_PASSWORD={{ rundeck.postgres.password }} \
+  {{ rundeck.docker.name }}:{{ rundeck.docker.tag }} \
+  -Dserver.web.context=/rundeck
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,90 @@
+---
+
+- name: detect owner
+  set_fact:
+    user: "{{ user if roq_user is defined else ansible_user_id }}"
+  tags:
+    - rundeck
+
+- block:
+
+  - name: create directories
+    file:
+      path: "{{ item }}"
+      state: directory
+      mode: 0755
+    with_items:
+    - "{{ root }}/var/lib/rundeck"
+    - "{{ root }}/var/lib/rundeck/data"
+    - "{{ root }}/var/lib/rundeck/backups"
+    notify:
+    - restart rundeck
+
+  - name: create encrypted password
+    shell: "echo -n `echo -n {{ rundeck.postgres.password }}{{ rundeck.postgres.user }} | md5sum | awk '{print $1}'`"
+    register: encrypted_password
+
+  - name: create postgres user
+    postgresql_user:
+      name: "{{ rundeck.postgres.user }}"
+      password: "md5{{ encrypted_password.stdout_lines[0] }}"
+      encrypted: true
+      role_attr_flags: "CREATEDB,NOSUPERUSER"
+      login_host: "localhost"
+      port: "{{ postgres.port }}"
+      login_user: "{{ postgres.user }}"
+      login_password: "{{ postgres.password }}"
+    notify:
+    - restart rundeck
+
+  - name: create postgres database
+    postgresql_db:
+      name: "{{ rundeck.postgres.database }}"
+      encoding: "UTF-8"
+      owner: "{{ rundeck.postgres.user }}"
+      login_host: "localhost"
+      port: "{{ postgres.port }}"
+      login_user: "{{ postgres.user }}"
+      login_password: "{{ postgres.password }}"
+    notify:
+    - restart rundeck
+
+  - name: grant postgres user priviliges
+    postgresql_privs:
+      db: "{{ rundeck.postgres.database }}"
+      privs: "ALL"
+      objs: "ALL_IN_SCHEMA"
+      role: "{{ rundeck.postgres.user }}"
+      login_host: "localhost"
+      port: "{{ postgres.port }}"
+      login_user: "{{ postgres.user }}"
+      login_password: "{{ postgres.password }}"
+    notify:
+    - restart rundeck
+
+  - name: pull docker image
+    docker_image:
+      name: "{{ rundeck.docker.name }}"
+      tag: "{{ rundeck.docker.tag }}"
+      http_timeout: 300
+
+  - name: create systemd service
+    template:
+      src: "templates/rundeck.service"
+      dest: "/etc/systemd/system/rundeck.service"
+      owner: root
+      group: root
+      mode: 0644
+    register: rundeck_service
+
+  - name: enable the rundeck service
+    systemd:
+      name: "rundeck.service"
+      state: started
+      enabled: true
+      daemon_reload: true
+    when: rundeck_service.changed
+
+  become: "{{ 'true' if become_user is defined else 'false' }}"
+  tags:
+    - rundeck
