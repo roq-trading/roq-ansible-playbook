@@ -14,6 +14,8 @@ ExecStartPre=-/usr/bin/docker rm %n
 ExecStartPre=/usr/bin/docker pull {{ rundeck.docker.name }}:{{ rundeck.docker.tag }}
 ExecStart=/usr/bin/docker run --rm --name %n \
   --link postgres.service \
+  --link teamcity.service \
+  --link nexus.service \
   --publish {{ rundeck.port }}:{{ rundeck.port }} \
   --volume {{ root }}/var/lib/rundeck/data:/home/rundeck/server/data \
   --env RUNDECK_GRAILS_URL=http://localhost:{{ rundeck.port }} \

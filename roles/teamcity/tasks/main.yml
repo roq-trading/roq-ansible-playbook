@@ -32,13 +32,32 @@
       mode: 0755
     with_items:
       - "{{ root }}/var/log/teamcity"
+    notify:
+    - restart teamcity
+
+  - name: create directories
+    file:
+      path: "{{ item }}"
+      state: directory
+      owner: root
+      group: root
+      mode: 0755
+    with_items:
       - "{{ root }}/etc/teamcity-agent-1"
+    notify:
+    - restart teamcity-agent-1
+
+  - name: create directories
+    file:
+      path: "{{ item }}"
+      state: directory
+      owner: root
+      group: root
+      mode: 0755
+    with_items:
       - "{{ root }}/opt/ansible"
       - "{{ root }}/opt/ansible/docker"
       - "{{ root }}/opt/ansible/docker/roq-tc-agent"
-    notify:
-    - restart teamcity
-    - restart teamcity-agent-1
   
   - name: create encrypted password
     shell: "echo -n `echo -n {{ teamcity.postgres.password }}{{ teamcity.postgres.user }} | md5sum | awk '{print $1}'`"

@@ -13,6 +13,7 @@ ExecStartPre=-/usr/bin/docker stop %n
 ExecStartPre=-/usr/bin/docker rm %n
 ExecStart=/usr/bin/docker run --rm --name %n \
   --link teamcity.service \
+  --link nexus.service \
   --volume {{ root }}/etc/teamcity-agent-1:/data/teamcity_agent/conf \
   --env SERVER_URL=http://teamcity.service:{{ teamcity.port }}/teamcity/ \
   --env AGENT_NAME=agent_1 \
