@@ -33,6 +33,9 @@
     with_items:
       - "{{ root }}/var/log/teamcity"
       - "{{ root }}/etc/teamcity-agent-1"
+      - "{{ root }}/opt/ansible"
+      - "{{ root }}/opt/ansible/docker"
+      - "{{ root }}/opt/ansible/docker/roq-tc-agent"
     notify:
     - restart teamcity
     - restart teamcity-agent-1
@@ -160,22 +163,16 @@
       tag: "{{ teamcity_agent.docker.tag }}"
       http_timeout: 300
   
-
-  - name: create directories
-    file:
-      path: "/home/ansible/tmp"
-
-  - name: dockerfile
+  - name: create dockerfile
     template:
       src: "templates/Dockerfile"
-      dest: "/home/ansible/tmp/Dockerfile"
+      dest: "/opt/ansible/docker/roq-tc-agent/Dockerfile"
 
-  - name: build derived image
+  - name: build customized agent
     docker_image:
-      name: "roq_tc_agent"
+      name: "roq-tc-agent"
       tag: "latest"
-      path: "/home/ansible/tmp"
-  
+      path: "/opt/ansible/docker/roq-tc-agent"
 
   - name: create systemd service
     template:
