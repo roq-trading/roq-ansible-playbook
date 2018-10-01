@@ -12,7 +12,6 @@
     file:
       path: "{{ item }}"
       state: directory
-      mode: 0700
     with_items:
     - "{{ root }}/var/lib/postgres"
     - "{{ root }}/var/lib/postgres/data"

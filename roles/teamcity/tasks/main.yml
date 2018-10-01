@@ -86,7 +86,7 @@
       name: "{{ teamcity.docker.name }}"
       tag: "{{ teamcity.docker.tag }}"
       http_timeout: 300
-  
+
   - name: create systemd service
     template:
       src: "templates/teamcity.service"
@@ -160,6 +160,23 @@
       tag: "{{ teamcity_agent.docker.tag }}"
       http_timeout: 300
   
+
+  - name: create directories
+    file:
+      path: "/home/ansible/tmp"
+
+  - name: dockerfile
+    template:
+      src: "templates/Dockerfile"
+      dest: "/home/ansible/tmp/Dockerfile"
+
+  - name: build derived image
+    docker_image:
+      name: "roq_tc_agent"
+      tag: "latest"
+      path: "/home/ansible/tmp"
+  
+
   - name: create systemd service
     template:
       src: "templates/teamcity-agent-1.service"
