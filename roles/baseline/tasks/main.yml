@@ -33,11 +33,16 @@
 
 - block:
 
+  - name: update packages
+    apt:
+      update_cache: yes
+    when: not upgrade_system
+
   - name: update and upgrade packages
     apt:
       upgrade: dist
       update_cache: yes
-      cache_valid_time: 86400  # 24 hours
+    when: upgrade_system
 
   when: ansible_os_family == "Debian" and become_user is defined
   become: true
@@ -55,6 +60,7 @@
     yum:
       name: '*'
       state: latest
+    when: upgrade_system
 
   # TODO(thraneh): use 'ansible_lsb.major_release|int' to get '7'?
   - name: download epel-release-latest
