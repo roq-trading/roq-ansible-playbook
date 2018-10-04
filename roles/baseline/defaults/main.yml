@@ -1,4 +1,4 @@
 ---
 
-upgrade_system: false
+upgrade_system: true
 install_epel_release: true
