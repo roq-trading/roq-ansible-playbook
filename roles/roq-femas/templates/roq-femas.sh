@@ -5,10 +5,18 @@ set -e
 # activate the conda environment
 source "{{ root }}/miniconda/bin/activate"
 
-# preload tcmalloc, if present
+# define the list of dynamic libraries to preload
+LD_PRELOAD="${LD_PRELOAD:-}"
+# ... tcmalloc, if present
 if [ -e "$CONDA_PREFIX/lib/libtcmalloc.so" ]; then
-  export LD_PRELOAD="$CONDA_PREFIX/lib/libtcmalloc.so"
+  LD_PRELOAD="$LD_PRELOAD $CONDA_PREFIX/lib/libtcmalloc.so"
 fi
+{% if femas_config.preload %}
+# ... user specified
+LD_PRELOAD="$LD_PRELOAD {{ femas_config.preload | join(" ") }}"
+{% endif %}
+# ... done
+export LD_PRELOAD
 
 # define logging parameters
 {% if femas_config.use_log_dir %}
