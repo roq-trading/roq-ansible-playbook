@@ -16,8 +16,8 @@ ExecStart=/usr/bin/docker run --rm --name %n \
   --link postgres.service \
   --volume {{ root }}/var/lib/gogs/data:/data \
   --volume {{ root }}/var/lib/gogs/backups:/var/lib/gogs/backups \
-  --publish {{ gogs.link_port }}:{{ gogs.port }} \
-  --publish 10022:22 \
+  --publish {{ gogs.ssh_port }}:22 \
+  --publish {{ gogs.http_port }}:3000 \
   {{ gogs.docker.name }}:{{ gogs.docker.tag }}
 
 [Install]

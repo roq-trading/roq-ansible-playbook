@@ -65,8 +65,8 @@ postgres:
     tag: "latest"
 
 gogs:
-  port: 3000
-  link_port: 10080
+  ssh_port: 10022
+  http_port: 10080
   service: "localhost"
   docker:
     name: "gogs/gogs"
