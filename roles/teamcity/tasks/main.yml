@@ -21,7 +21,7 @@
       - "{{ root }}/var/lib/teamcity/backups"
     notify:
     - restart teamcity
-    - restart teamcity-agent-1
+    - restart teamcity-agent
 
   - name: create directories
     file:
@@ -37,15 +37,14 @@
 
   - name: create directories
     file:
-      path: "{{ item }}"
+      path: "{{ root }}/etc/teamcity-agent-{{ item }}"
       state: directory
       owner: root
       group: root
       mode: 0755
-    with_items:
-      - "{{ root }}/etc/teamcity-agent-1"
+    with_sequence: start=1 end={{ teamcity_agent_count | int }}
     notify:
-    - restart teamcity-agent-1
+    - restart teamcity-agent
 
   - name: create directories
     file:
@@ -193,24 +192,24 @@
       tag: "latest"
       path: "/opt/ansible/docker/roq-tc-agent"
 
-  - name: create systemd service
+  - name: create systemd services
     template:
-      src: "templates/teamcity-agent-1.service"
-      dest: "/etc/systemd/system/teamcity-agent-1.service"
+      src: "templates/teamcity-agent.service"
+      dest: "/etc/systemd/system/teamcity-agent-{{ item }}.service"
       owner: root
       group: root
       mode: 0644
-    register: teamcity_agent_1_service
+    with_sequence: start=1 end={{ teamcity_agent_count | int }}
     notify:
-    - restart teamcity-agent-1
+    - restart teamcity-agent
   
-  - name: enable the teamcity agent-1 service
+  - name: enable the teamcity agent services
     systemd:
-      name: "teamcity-agent-1.service"
+      name: "teamcity-agent-{{ item }}.service"
       state: started
       enabled: true
       daemon_reload: true
-    when: teamcity_agent_1_service.changed
+    with_sequence: start=1 end={{ teamcity_agent_count | int }}
   
   become: "{{ 'true' if become_user is defined else 'false' }}"
   tags:

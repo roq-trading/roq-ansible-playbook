@@ -1,5 +1,5 @@
 [Unit]
-Description=Teamcity agent
+Description=Teamcity agent {{ item }}
 After=docker.service
 Requires=docker.service
 
@@ -15,9 +15,9 @@ ExecStart=/usr/bin/docker run --rm --name %n \
   --link teamcity.service \
   --link nexus.service \
   --link gogs.service \
-  --volume {{ root }}/etc/teamcity-agent-1:/data/teamcity_agent/conf \
+  --volume {{ root }}/etc/teamcity-agent-{{ item }}:/data/teamcity_agent/conf \
   --env SERVER_URL=http://teamcity.service:{{ teamcity.port }}/teamcity/ \
-  --env AGENT_NAME=agent_1 \
+  --env AGENT_NAME=agent_{{ item }} \
   --env DOCKER_IN_DOCKER=start \
   --privileged \
   roq-tc-agent:latest
