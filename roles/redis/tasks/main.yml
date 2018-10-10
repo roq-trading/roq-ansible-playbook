@@ -34,6 +34,7 @@
     docker_image:
       name: "{{ redis.docker.name }}"
       tag: "{{ redis.docker.tag }}"
+      force: true
       http_timeout: 300
 
   - name: create systemd service

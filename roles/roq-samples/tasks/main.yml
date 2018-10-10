@@ -52,6 +52,7 @@
     docker_image:
       name: "{{ roq_samples.docker.name }}"
       tag: "{{ roq_samples.docker.tag }}"
+      force: true
       http_timeout: 300
 
   - name: define list of systemd services

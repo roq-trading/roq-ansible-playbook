@@ -71,6 +71,7 @@
     docker_image:
       name: "{{ roq_femas.docker.name }}"
       tag: "{{ roq_femas.docker.tag }}"
+      force: true
       http_timeout: 300
 
   - name: define list of systemd services

@@ -22,6 +22,7 @@
     docker_image:
       name: "{{ nexus.docker.name }}"
       tag: "{{ nexus.docker.tag }}"
+      force: true
       http_timeout: 300
 
   - name: create systemd service

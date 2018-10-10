@@ -24,6 +24,7 @@
     docker_image:
       name: "{{ postgres.docker.name }}"
       tag: "{{ postgres.docker.tag }}"
+      force: true
       http_timeout: 300
 
   - name: create systemd service

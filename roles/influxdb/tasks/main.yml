@@ -24,6 +24,7 @@
     docker_image:
       name: "{{ influxdb.docker.name }}"
       tag: "{{ influxdb.docker.tag }}"
+      force: true
       http_timeout: 300
 
   - name: create systemd service

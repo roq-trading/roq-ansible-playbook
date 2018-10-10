@@ -46,6 +46,7 @@
     docker_image:
       name: "{{ nginx.docker.name }}"
       tag: "{{ nginx.docker.tag }}"
+      force: true
       http_timeout: 300
   
   - name: create systemd service

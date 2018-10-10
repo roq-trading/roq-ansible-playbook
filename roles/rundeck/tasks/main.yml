@@ -66,6 +66,7 @@
     docker_image:
       name: "{{ rundeck.docker.name }}"
       tag: "{{ rundeck.docker.tag }}"
+      force: true
       http_timeout: 300
 
   - name: create systemd service

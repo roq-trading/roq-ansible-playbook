@@ -76,6 +76,7 @@
     docker_image:
       name: "{{ gogs.docker.name }}"
       tag: "{{ gogs.docker.tag }}"
+      force: true
       http_timeout: 300
     notify:
     - restart gogs

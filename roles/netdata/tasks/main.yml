@@ -6,6 +6,7 @@
     docker_image:
       name: "{{ netdata.docker.name }}"
       tag: "{{ netdata.docker.tag }}"
+      force: true
       http_timeout: 300
 
   - name: create systemd service
