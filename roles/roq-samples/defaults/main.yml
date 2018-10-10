@@ -1,5 +1,7 @@
 ---
 
+collector_use_docker: false
+
 collector_defaults:
   use_log_dir: true
   verbosity: 0
