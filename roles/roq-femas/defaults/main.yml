@@ -1,7 +1,7 @@
 ---
 license: "cGxlYXNlIGNvbnRhY3QgaW5mb0Byb3EtdHJhZGluZy5jb20K"
 
-femas_use_docker: true
+femas_use_docker: false
 
 femas_defaults:
   preload: []
