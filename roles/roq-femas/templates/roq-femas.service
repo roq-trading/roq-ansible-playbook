@@ -4,24 +4,25 @@ After=network-online.target
 Conflicts=roq-femas-stop.service
 
 [Service]
-User={{ roq_user if roq_user is defined else ansible_user_id }}
-Group={{ roq_user if roq_user is defined else ansible_user_id }}
-Restart=on-abnormal
-UMask=0000
 {% if femas_use_docker %}
+TimeoutStartSec=0
 ExecStart=/usr/bin/docker run --rm --name %n -i \
 {% if femas_config.cpu_affinity is defined %}
   --cpuset-cpus "{{ femas_config.cpu_affinity }}" \
 {% endif %}
-  --publish 12345:12345 \
+  --publish {{ roq_femas.metrics.port }}:{{ roq_femas.metrics.port }} \
   --volume {{ root }}/etc/roq/femas:/etc/roq/femas:ro \
   --volume {{ root }}/var/log/roq:/var/log/roq \
   --volume {{ root }}/var/tmp/femas.sock:/var/tmp/femas.sock \
   --env ROQ_log_dir={{ root }}/var/log/roq \
   --env ROQ_v={{ femas_config.verbosity | default(0) }} \
+  --env FLAGS_monitor_port={{ roq_femas.metrics.port }} \
   {{ roq_femas.docker.name }}:{{ roq_femas.docker.tag }}
-# TODO(thraneh): --monitor-port {{ roq_femas.metrics.port }}
 {% else %}
+User={{ roq_user if roq_user is defined else ansible_user_id }}
+Group={{ roq_user if roq_user is defined else ansible_user_id }}
+Restart=on-abnormal
+UMask=0000
 {% if femas_config.cpu_affinity is defined %}
 CPUAffinity={{ femas_config.cpu_affinity }}
 {% endif %}
