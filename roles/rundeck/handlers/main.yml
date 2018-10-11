@@ -1,7 +1,0 @@
----
-
-- name: restart rundeck
-  service:
-    name: rundeck
-    state: restarted
-  become: true

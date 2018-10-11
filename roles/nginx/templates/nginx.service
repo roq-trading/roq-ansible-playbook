@@ -28,7 +28,6 @@ ExecStart=/usr/bin/docker run --rm --name %n -i \
   --link {{ gogs.service }} \
   --link {{ nexus.service }} \
   --link {{ teamcity.service }} \
-  --link {{ rundeck.service }} \
 {% endif %}
 {% endif %}
   --volume {{ root }}/etc/nginx/conf.d:/etc/nginx/conf.d:ro \

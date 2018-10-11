@@ -118,14 +118,3 @@ roq_femas:
   docker:
     name: "roqtrading/roq-femas"
     tag: "latest"
-
-rundeck:
-  port: 4440
-  service: "localhost"
-  docker:
-    name: "rundeck/rundeck"
-    tag: "SNAPSHOT"
-  postgres:
-    user: "rundeck"
-    password: "secret"
-    database: "rundeck"
