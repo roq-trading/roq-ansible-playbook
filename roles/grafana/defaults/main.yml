@@ -1,2 +1,2 @@
 ---
-grafana_backups: "{{ backups_dir }}/grafana"
+grafana_backups: "{{ backups }}/grafana"

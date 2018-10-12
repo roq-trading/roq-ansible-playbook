@@ -1,4 +1,4 @@
 ---
 
 teamcity_agent_count: 2
-teamcity_backups: "{{ backups_dir }}/teamcity"
+teamcity_backups: "{{ backups }}/teamcity"

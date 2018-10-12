@@ -27,7 +27,7 @@
       path: "{{ item }}"
       state: directory
     with_items:
-      - "{{ backups_dir }}"
+      - "{{ backups }}"
 
 # TODO(thraneh): or maybe the condition should be root != '/' ?
   when: become_user is not defined

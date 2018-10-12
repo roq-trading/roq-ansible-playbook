@@ -1,2 +1,2 @@
 ---
-postgres_backups: "{{ backups_dir }}/postgres"
+postgres_backups: "{{ backups }}/postgres"
