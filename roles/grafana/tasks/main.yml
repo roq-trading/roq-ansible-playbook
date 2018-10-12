@@ -36,7 +36,7 @@
   - name: provision dashboards
     template:
       src: "templates/{{ item }}"
-      dest: "/var/lib/grafana/data/dashboards/{{ item }}"
+      dest: "/var/lib/grafana/dashboards/{{ item }}"
       owner: root
       group: root
       mode: 0644
