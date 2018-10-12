@@ -21,7 +21,7 @@ ExecStart=/usr/bin/docker run --rm --name %n \
   --link {{ influxdb.service }} \
 {% endif %}
   --publish {{ grafana.port }}:{{ grafana.port }} \
-  --volume {{ root }}/var/lib/grafana/data:/var/lib/grafana \
+  --volume {{ root }}/var/lib/grafana:/var/lib/grafana \
   --volume {{ root }}/etc/grafana/provisioning:/etc/grafana/provisioning \
   --env GF_SERVER_ROOT_URL=http://localhost/grafana \
   --env GF_DATABASE_TYPE=postgres \

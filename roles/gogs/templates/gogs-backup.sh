@@ -2,12 +2,12 @@
 
 set -e
 
-TIMESTAMP=$(date -u +'%s')
-ROOT="{{ root }}/var/lib/gogs"
+TIMESTAMP=$(date -u +'%Y%m%d-%H%M%S')
+DATA="{{ root }}/var/lib/gogs"
 
-DATA="$ROOT/backups/$TIMESTAMP"
-echo "Creating $DATA..."
-tar -cjf "$DATA.tar.bz2" -C "$ROOT/data" .
+SNAPSHOT="{{ gogs_backups }}/$TIMESTAMP"
+echo "Creating $SNAPSHOT..."
+tar -cjf "$SNAPSHOT.tar.bz2" -C "$DATA" .
 
 # FIXME(thraneh): backup from inside the container
 # https://discuss.gogs.io/t/how-to-backup-restore-and-migrate/991/1

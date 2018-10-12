@@ -17,11 +17,19 @@
       mode: 0700
     with_items:
       - "{{ root }}/var/lib/teamcity"
-      - "{{ root }}/var/lib/teamcity/data"
-      - "{{ root }}/var/lib/teamcity/backups"
     notify:
     - restart teamcity
     - restart teamcity-agent
+
+  - name: create backup directories
+    file:
+      path: "{{ item }}"
+      state: directory
+      owner: root
+      group: root
+      mode: 0700
+    with_items:
+      - "{{ teamcity_backups }}"
 
   - name: create directories
     file:

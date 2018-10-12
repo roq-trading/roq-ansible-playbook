@@ -14,11 +14,16 @@
       state: directory
     with_items:
     - "{{ root }}/var/lib/postgres"
-    - "{{ root }}/var/lib/postgres/data"
-    - "{{ root }}/var/lib/postgres/backups"
     - "{{ root }}/var/run/postgres"
     notify:
     - restart postgres
+
+  - name: create backup directories
+    file:
+      path: "{{ item }}"
+      state: directory
+    with_items:
+    - "{{ postgres_backups }}"
 
   - name: pull docker image
     docker_image:

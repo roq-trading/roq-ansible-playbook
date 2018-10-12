@@ -2,6 +2,8 @@
 
 root: "/"
 
+backups_dir: "{{ root }}/var/backups"
+
 redis:
   port: 6379
   service: "localhost"

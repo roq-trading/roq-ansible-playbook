@@ -14,17 +14,16 @@
       state: directory
     with_items:
     - "{{ root }}/var/lib/gogs"
-    - "{{ root }}/var/lib/gogs/data"
-    - "{{ root }}/var/lib/gogs/data/gogs"
-    - "{{ root }}/var/lib/gogs/data/gogs/conf"
-    - "{{ root }}/var/lib/gogs/backups"
+    - "{{ root }}/var/lib/gogs"
+    - "{{ root }}/var/lib/gogs/conf"
+    - "{{ gogs_backups }}"
     notify:
     - restart gogs
 
   - name: create app.ini
     template:
       src: "templates/app.ini"
-      dest: "{{ root }}/var/lib/gogs/data/gogs/conf/app.ini"
+      dest: "{{ root }}/var/lib/gogs/conf/app.ini"
       owner: root
       mode: 0644
     notify:

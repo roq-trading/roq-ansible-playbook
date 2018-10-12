@@ -1,0 +1,2 @@
+---
+postgres_backups: "{{ backups_dir }}/postgres"

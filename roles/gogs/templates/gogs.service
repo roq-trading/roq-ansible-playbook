@@ -14,8 +14,8 @@ ExecStartPre=-/usr/bin/docker rm %n
 ExecStartPre=/usr/bin/docker pull {{ gogs.docker.name }}:{{ gogs.docker.tag }}
 ExecStart=/usr/bin/docker run --rm --name %n \
   --link postgres.service \
-  --volume {{ root }}/var/lib/gogs/data:/data \
-  --volume {{ root }}/var/lib/gogs/backups:/var/lib/gogs/backups \
+  --volume {{ root }}/var/lib/gogs:/data \
+  --volume {{ gogs_backups }}:/var/lib/gogs/backups \
   --publish {{ gogs.ssh_port }}:22 \
   --publish {{ gogs.http_port }}:3000 \
   {{ gogs.docker.name }}:{{ gogs.docker.tag }}

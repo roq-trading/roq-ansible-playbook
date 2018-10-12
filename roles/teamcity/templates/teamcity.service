@@ -17,9 +17,9 @@ ExecStart=/usr/bin/docker run --rm --name %n \
   --link nexus.service \
   --link gogs.service \
   --publish {{ teamcity.port }}:{{ teamcity.port }} \
-  --volume {{ root }}/var/lib/teamcity/data:/data/teamcity_server/datadir \
+  --volume {{ root }}/var/lib/teamcity:/data/teamcity_server/datadir \
   --volume {{ root }}/var/log/teamcity:/opt/teamcity/logs \
-  --volume {{ root }}/var/lib/teamcity/backups:/var/lib/teamcity/backups \
+  --volume {{ teamcity_backups }}:/var/backups/teamcity \
   --env TEAMCITY_CONTEXT=teamcity \
   {{ teamcity.docker.name }}:{{ teamcity.docker.tag }}
 

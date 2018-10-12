@@ -2,12 +2,12 @@
 
 set -e
 
-TIMESTAMP=$(date -u +'%s')
-ROOT="{{ root }}/var/lib/grafana"
+TIMESTAMP=$(date -u +'%Y%m%d-%H%M%S')
+DATA="{{ root }}/var/lib/grafana"
 
-DATA="$ROOT/backups/$TIMESTAMP.zip"
+SNAPSHOT="{{ grafana_backups }}/$TIMESTAMP"
 
-echo "Creating $DATA..."
-tar -cjf "$DATA.tar.bz2" -C "$ROOT/data" .
+echo "Creating $SNAPSHOT..."
+tar -cjf "$SNAPSHOT.tar.bz2" -C "$DATA" .
 
 echo "Done!"

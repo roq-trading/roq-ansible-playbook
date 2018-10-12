@@ -1,0 +1,2 @@
+---
+gogs_backups: "{{ backups_dir }}/gogs"

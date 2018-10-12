@@ -8,15 +8,20 @@
       state: directory
     with_items:
       - "{{ root }}/var/lib/grafana"
-      - "{{ root }}/var/lib/grafana/data"
-      - "{{ root }}/var/lib/grafana/data/dashboards"
-      - "{{ root }}/var/lib/grafana/backups"
+      - "{{ root }}/var/lib/grafana/dashboards"
       - "{{ root }}/etc/grafana"
       - "{{ root }}/etc/grafana/provisioning"
       - "{{ root }}/etc/grafana/provisioning/datasources"
       - "{{ root }}/etc/grafana/provisioning/dashboards"
     notify:
     - restart grafana
+
+  - name: create backup directories
+    file:
+      path: "{{ item }}"
+      state: directory
+    with_items:
+      - "{{ grafana_backups }}"
 
   - name: provision datasources
     template:
