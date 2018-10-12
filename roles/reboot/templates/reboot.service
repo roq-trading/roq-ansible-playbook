@@ -1,0 +1,13 @@
+[Unit]
+Description=Reboot
+
+[Service]
+Type=oneshot
+{% if ansible_os_family == "RedHat" %}
+ExecStart=/usr/bin/systemctl --force reboot
+{% else %}
+ExecStart=/bin/systemctl --force reboot
+{% endif %}
+
+[Install]
+WantedBy=multi-user.target

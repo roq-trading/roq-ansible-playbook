@@ -57,3 +57,7 @@
 - hosts: all
   roles:
     - nginx
+
+- hosts: reboot
+  roles:
+    - reboot
