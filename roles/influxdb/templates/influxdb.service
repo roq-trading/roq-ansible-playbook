@@ -11,7 +11,6 @@ CPUAffinity={{ cpu_affinity.zone_2 }}
 {% endif %}
 ExecStartPre=-/usr/bin/docker stop %n
 ExecStartPre=-/usr/bin/docker rm %n
-ExecStartPre=/usr/bin/docker pull {{ influxdb.docker.name }}:{{ influxdb.docker.tag }}
 ExecStart=/usr/bin/docker run --rm --name %n \
   --volume {{ root }}/var/lib/influxdb:/var/lib/influxdb \
   --publish {{ influxdb.port }}:{{ influxdb.port }} \

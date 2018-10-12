@@ -11,7 +11,6 @@ CPUAffinity={{ cpu_affinity.zone_2 }}
 {% endif %}
 ExecStartPre=-/usr/bin/docker stop %n
 ExecStartPre=-/usr/bin/docker rm %n
-ExecStartPre=/usr/bin/docker pull {{ netdata.docker.name }}:{{ netdata.docker.tag }}
 ExecStart=/usr/bin/docker run --rm --name %n \
   --security-opt apparmor=unconfined \
   --cap-add SYS_PTRACE \
