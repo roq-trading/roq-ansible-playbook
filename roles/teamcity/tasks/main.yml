@@ -30,6 +30,8 @@
       mode: 0700
     with_items:
       - "{{ teamcity_backups }}"
+      - "{{ teamcity_backups }}/raw"
+      - "{{ teamcity_backups }}/native"
 
   - name: create directories
     file:

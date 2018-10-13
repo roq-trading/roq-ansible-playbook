@@ -17,6 +17,8 @@
     - "{{ root }}/var/lib/gogs"
     - "{{ root }}/var/lib/gogs/conf"
     - "{{ gogs_backups }}"
+    - "{{ gogs_backups }}/raw"
+    - "{{ gogs_backups }}/native"
     notify:
     - restart gogs
 

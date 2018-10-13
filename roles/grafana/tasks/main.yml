@@ -22,6 +22,8 @@
       state: directory
     with_items:
       - "{{ grafana_backups }}"
+      - "{{ grafana_backups }}/raw"
+      - "{{ grafana_backups }}/native"
 
   - name: provision datasources
     template:
