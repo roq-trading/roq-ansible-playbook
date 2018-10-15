@@ -1,0 +1,10 @@
+[Unit]
+Description=Nexus backup
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/nexus-backup.sh
+
+[Install]
+WantedBy=multi-user.target

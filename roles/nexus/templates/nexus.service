@@ -14,6 +14,7 @@ ExecStartPre=-/usr/bin/docker rm %n
 ExecStart=/usr/bin/docker run --rm --name %n \
   --user 0:0 \
   --volume {{ root }}/var/lib/nexus:/nexus-data \
+  --volume {{ nexus_backups }}/native:/var/backups/nexus \
   --publish {{ nexus.port }}:{{ nexus.port }} \
   --env NEXUS_CONTEXT=nexus \
   {{ nexus.docker.name }}:{{ nexus.docker.tag }}
