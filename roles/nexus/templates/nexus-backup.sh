@@ -2,12 +2,19 @@
 
 set -e
 
+if [ ! -d "{{ backups }}" ]; then
+  echo "{{ backups }} not ready!"
+  exit 1
+fi
+
+mkdir -p {{ backups }}/nexus/{raw,native}
+
 TIMESTAMP=$(date -u +'%Y%m%d-%H%M%S')
 
-# mounted volume
+# raw backup
 
 DATA="{{ root }}/var/lib/nexus/blobs"
-SNAPSHOT="{{ nexus_backups }}/raw/$TIMESTAMP.tar.bz2"
+SNAPSHOT="{{ backups }}/nexus/raw/$TIMESTAMP.tar.bz2"
 echo "Creating $SNAPSHOT..."
 tar -cjf "$SNAPSHOT" -C "$DATA" .
 
