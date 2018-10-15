@@ -15,9 +15,6 @@
       mode: 0755
     with_items:
     - "{{ root }}/var/lib/nexus"
-    - "{{ nexus_backups }}"
-    - "{{ nexus_backups }}/raw"
-    - "{{ nexus_backups }}/native"
     notify:
     - restart nexus
 
