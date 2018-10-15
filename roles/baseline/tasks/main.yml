@@ -20,14 +20,8 @@
       - "{{ root }}/var/lib"
       - "{{ root }}/var/log"
       - "{{ root }}/var/run"
+      - "{{ root }}/var/run/backups"
       - "{{ root }}/var/tmp"
-
-  - name: create backup directories
-    file:
-      path: "{{ item }}"
-      state: directory
-    with_items:
-      - "{{ backups }}"
 
 # TODO(thraneh): or maybe the condition should be root != '/' ?
   when: become_user is not defined

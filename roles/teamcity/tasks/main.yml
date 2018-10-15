@@ -21,18 +21,6 @@
     - restart teamcity
     - restart teamcity-agent
 
-  - name: create backup directories
-    file:
-      path: "{{ item }}"
-      state: directory
-      owner: root
-      group: root
-      mode: 0700
-    with_items:
-      - "{{ teamcity_backups }}"
-      - "{{ teamcity_backups }}/raw"
-      - "{{ teamcity_backups }}/native"
-
   - name: create directories
     file:
       path: "{{ item }}"

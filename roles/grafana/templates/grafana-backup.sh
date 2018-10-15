@@ -2,12 +2,24 @@
 
 set -e
 
+if [ ! -d "{{ backups }}" ]; then
+  echo "{{ backups }} not ready!"
+  exit 1
+fi
+
+mkdir -p {{ backups }}/grafana/{raw,native}
+
 TIMESTAMP=$(date -u +'%Y%m%d-%H%M%S')
+
+# raw backup
+
 DATA="{{ root }}/var/lib/grafana"
-
-SNAPSHOT="{{ grafana_backups }}/$TIMESTAMP"
-
+SNAPSHOT="{{ backups }}/grafana/raw/$TIMESTAMP.tar.bz2"
 echo "Creating $SNAPSHOT..."
-tar -cjf "$SNAPSHOT.tar.bz2" -C "$DATA" .
+tar -cjf "$SNAPSHOT" -C "$DATA" .
+
+# native backup
+
+# TODO(thraneh): implement
 
 echo "Done!"

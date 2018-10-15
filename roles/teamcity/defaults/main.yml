@@ -1,4 +1,2 @@
 ---
-
-teamcity_agent_count: 2
-teamcity_backups: "{{ backups }}/teamcity"
+teamcity_agent_count: 1

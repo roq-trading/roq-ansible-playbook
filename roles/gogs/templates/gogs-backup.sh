@@ -2,12 +2,18 @@
 
 set -e
 
+if [ ! -d "{{ backups }}" ]; then
+  echo "{{ backups }} not ready!"
+  exit 1
+fi
+
+mkdir -p {{ backups }}/gogs/{raw,native}
+
 TIMESTAMP=$(date -u +'%Y%m%d-%H%M%S')
 
-# mounted volume
-
+# raw backup
 DATA="{{ root }}/var/lib/gogs"
-SNAPSHOT="{{ gogs_backups }}/raw/$TIMESTAMP.tar.bz2"
+SNAPSHOT="{{ backups }}/gogs/raw/$TIMESTAMP.tar.bz2"
 echo "Creating $SNAPSHOT..."
 tar -cjf "$SNAPSHOT" -C "$DATA" .
 
@@ -21,5 +27,7 @@ tar -cjf "$SNAPSHOT" -C "$DATA" .
 # 2018/09/26 11:28:59 [ INFO] Backup root directory: /tmp/gogs-backup-382462351
 # 2018/09/26 11:28:59 [ INFO] Packing backup files to: gogs-backup-20180926112859.zip
 # 2018/09/26 11:28:59 [FATAL] Fail to include 'custom': open /app/gogs/custom: no such file or directory
+# TODO(thraneh): if different: copy from /var/run/backups/gogs to {{ backups }}/gogs/native
 
 echo "Done!"
+exit 0

@@ -11,10 +11,11 @@ CPUAffinity={{ cpu_affinity.zone_3 }}
 {% endif %}
 ExecStartPre=-/usr/bin/docker stop %n
 ExecStartPre=-/usr/bin/docker rm %n
+ExecStartPre=/bin/mkdir -p {{ root }}/var/run/backups/gogs/native
 ExecStart=/usr/bin/docker run --rm --name %n \
   --link postgres.service \
   --volume {{ root }}/var/lib/gogs:/data \
-  --volume {{ gogs_backups }}:/var/lib/gogs/backups \
+  --volume {{ root }}/var/run/backups/gogs/native:/var/lib/gogs/backups \
   --publish {{ gogs.ssh_port }}:22 \
   --publish {{ gogs.http_port }}:3000 \
   {{ gogs.docker.name }}:{{ gogs.docker.tag }}

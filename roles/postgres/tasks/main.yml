@@ -18,15 +18,6 @@
     notify:
     - restart postgres
 
-  - name: create backup directories
-    file:
-      path: "{{ item }}"
-      state: directory
-    with_items:
-    - "{{ postgres_backups }}"
-    - "{{ postgres_backups }}/raw"
-    - "{{ postgres_backups }}/native"
-
   - name: pull docker image
     docker_image:
       name: "{{ postgres.docker.name }}"
