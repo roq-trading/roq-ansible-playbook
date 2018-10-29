@@ -6,7 +6,7 @@ Conflicts=roq-collector-stop.service
 [Service]
 {% if collector_use_docker %}
 TimeoutStartSec=0
-ExecStart=/usr/bin/docker run --rm --name %n -i \
+ExecStart=/bin/bash -c '/usr/bin/docker run --rm --name %n -i \
 {% if collector_config.cpu_affinity is defined %}
   --cpuset-cpus "{{ collector_config.cpu_affinity }}" \
 {% endif %}
@@ -15,7 +15,8 @@ ExecStart=/usr/bin/docker run --rm --name %n -i \
   --env ROQ_log_dir={{ root }}/var/log/roq \
   --env ROQ_v={{ collector_config.verbosity | default(0) }} \
   {{ roq_samples.docker.name }}:{{ roq_samples.docker.tag }} \
-  --gateways femas=test:1234@/var/tmp/femas.sock
+  --gateways femas=test:1234@/var/tmp/femas.sock \
+  --output-file "{{ root }}/var/lib/roq/femas_$$(date +%%Y-%%m-%%d).csv"'
 {% else %}
 User={{ roq_user if roq_user is defined else ansible_user_id }}
 Group={{ roq_user if roq_user is defined else ansible_user_id }}
@@ -26,7 +27,8 @@ CPUAffinity={{ collector_config.cpu_affinity }}
 {% endif %}
 CPUSchedulingPolicy=fifo
 WorkingDirectory={{ root }}/var/run/roq/collector
-ExecStart={{ root }}/usr/local/bin/roq-collector.sh
+ExecStart=/bin/bash -c '{{ root }}/usr/local/bin/roq-collector.sh \
+  --output-file "{{ root }}/var/lib/roq/femas_$$(date +%%Y-%%m-%%d).csv"'
 {% endif %}
 
 [Install]
