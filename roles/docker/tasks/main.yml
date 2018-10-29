@@ -10,14 +10,13 @@
 
   - name: install dependencies
     apt:
-      name: "{{ item }}"
+      name:
+        - "apt-transport-https"
+        - "ca-certificates"
+        - "curl"
+        - "gnupg2"
+        - "software-properties-common"
       state: present
-    with_items:
-      - "apt-transport-https"
-      - "ca-certificates"
-      - "curl"
-      - "gnupg2"
-      - "software-properties-common"
 
   - name: add docker gpg key
     apt_key:
@@ -60,12 +59,11 @@
 
   - name: install dependencies
     yum:
-      name: "{{ item }}"
+      name:
+        - "yum-utils"
+        - "device-mapper-persistent-data"
+        - "lvm2"
       state: present
-    with_items:
-      - "yum-utils"
-      - "device-mapper-persistent-data"
-      - "lvm2"
 
   # Docker for Centos - Install Instructions Causing Conflicts: https://github.com/docker/for-linux/issues/299
 

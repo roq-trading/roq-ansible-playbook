@@ -41,9 +41,8 @@
 
   - name: install tools
     apt:
-      name: "{{ item }}"
+      name: '{{ common_packages }} + {{ debian_packages }}'
       state: present
-    with_items: '{{ common_packages }} + {{ debian_packages }}'
 
   when: ansible_os_family == "Debian"
   become: "{{ 'true' if become_user is defined else 'false' }}"
@@ -64,9 +63,8 @@
 
   - name: install tools
     yum:
-      name: "{{ item }}"
+      name: '{{ common_packages }} + {{ redhat_packages }}'
       state: present
-    with_items: '{{ common_packages }} + {{ redhat_packages }}'
 
   when: ansible_os_family == "RedHat"
   become: "{{ 'true' if become_user is defined else 'false' }}"
