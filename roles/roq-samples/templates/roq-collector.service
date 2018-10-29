@@ -12,7 +12,7 @@ ExecStart=/bin/bash -c '/usr/bin/docker run --rm --name %n -i \
 {% endif %}
   --volume {{ root }}/var/tmp/femas.sock:/var/tmp/femas.sock \
   --volume {{ root }}/var/log/roq:/var/log/roq \
-  --volume {{ root }}/var/lib/roq:/var/log/lib \
+  --volume {{ root }}/var/lib/roq:/var/lib/roq \
   --env ROQ_v={{ collector_config.verbosity | default(0) }} \
   {{ roq_samples.docker.name }}:{{ roq_samples.docker.tag }} \
   --gateways "femas=test:1234@/var/tmp/femas.sock" \
