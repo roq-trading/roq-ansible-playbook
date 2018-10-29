@@ -64,7 +64,7 @@ postgres:
   password: "admin"
   docker:
     name: "postgres"
-    tag: "latest"
+    tag: "10"
 
 gogs:
   ssh_port: 10022
