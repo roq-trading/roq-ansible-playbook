@@ -14,15 +14,16 @@
       state: directory
     with_items:
     - "{{ root }}/var/lib/gogs"
-    - "{{ root }}/var/lib/gogs"
-    - "{{ root }}/var/lib/gogs/conf"
+    - "{{ root }}/var/lib/gogs/custom"
+    - "{{ root }}/var/lib/gogs/custom/conf"
     notify:
     - restart gogs
 
+# TODO(thraneh): this doesn't seem to work as advertised... only on first install?
   - name: create app.ini
     template:
       src: "templates/app.ini"
-      dest: "{{ root }}/var/lib/gogs/conf/app.ini"
+      dest: "{{ root }}/var/lib/gogs/custom/conf/app.ini"
       owner: root
       mode: 0644
     notify:
@@ -91,7 +92,7 @@
   - name: enable the gogs service
     systemd:
       name: "gogs.service"
-      state: started
+      state: restarted
       enabled: true
       daemon_reload: true
     when: gogs_service.changed

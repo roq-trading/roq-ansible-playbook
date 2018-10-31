@@ -61,7 +61,7 @@
   - name: enable the prometheus service
     systemd:
       name: "prometheus.service"
-      state: started
+      state: restarted
       enabled: true
       daemon_reload: true
     when: prometheus_service.changed
@@ -84,7 +84,7 @@
   - name: enable the node-exporter service
     systemd:
       name: "node-exporter.service"
-      state: started
+      state: restarted
       enabled: true
       daemon_reload: true
     when: node_exporter_service.changed
@@ -107,7 +107,7 @@
   - name: enable the alertmanager service
     systemd:
       name: "alertmanager.service"
-      state: started
+      state: restarted
       enabled: true
       daemon_reload: true
     when: alertmanager_service.changed

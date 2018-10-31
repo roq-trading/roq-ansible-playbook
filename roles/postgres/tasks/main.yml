@@ -37,7 +37,7 @@
   - name: enable the postgres service
     systemd:
       name: "postgres.service"
-      state: started
+      state: restarted
       enabled: true
       daemon_reload: true
     when: postgres_service.changed

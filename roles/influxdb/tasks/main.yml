@@ -41,7 +41,7 @@
   - name: enable the influxdb service
     systemd:
       name: "influxdb.service"
-      state: started
+      state: restarted
       enabled: true
       daemon_reload: true
     when: influxdb_service.changed

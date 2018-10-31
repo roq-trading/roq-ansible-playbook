@@ -37,7 +37,7 @@
   - name: enable the nexus service
     systemd:
       name: "nexus.service"
-      state: started
+      state: restarted
       enabled: true
       daemon_reload: true
     when: nexus_service.changed

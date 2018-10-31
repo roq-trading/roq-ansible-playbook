@@ -49,7 +49,7 @@
   - name: enable the redis service
     systemd:
       name: "redis.service"
-      state: started
+      state: restarted
       enabled: true
       daemon_reload: true
     when: redis_service.changed

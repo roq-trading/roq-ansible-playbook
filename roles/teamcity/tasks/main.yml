@@ -121,7 +121,7 @@
   - name: enable the teamcity service
     systemd:
       name: "teamcity.service"
-      state: started
+      state: restarted
       enabled: true
       daemon_reload: true
     when: teamcity_server_service.changed
