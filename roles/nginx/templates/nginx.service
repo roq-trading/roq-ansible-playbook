@@ -13,22 +13,11 @@ ExecReload=/usr/bin/docker kill -s HUP %n
 ExecStartPre=-/usr/bin/docker stop %n
 ExecStartPre=-/usr/bin/docker rm %n
 ExecStart=/usr/bin/docker run --rm --name %n -i \
-  --publish 80:80 \
-{% if true %}
+  --publish 80:{{ nginx.http_port }} \
+  --publish 443:{{ nginx.https_port }} \
   --security-opt apparmor=unconfined \
-  --net host \
-{% else %}
-{% if 'trading' in groups %}
-  --link {{ prometheus.service }} \
-  --link {{ netdata.service }} \
-  --link {{ grafana.service }} \
-{% endif %}
-{% if 'cicd' in groups %}
-  --link {{ gogs.service }} \
-  --link {{ nexus.service }} \
-  --link {{ teamcity.service }} \
-{% endif %}
-{% endif %}
+  --network host \
+  --network roq-network \
   --volume {{ root }}/etc/nginx/conf.d:/etc/nginx/conf.d:ro \
   --volume {{ root }}/var/www:/var/www:ro \
 {% if 'web' in groups %}

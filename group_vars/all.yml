@@ -6,28 +6,24 @@ backups: "{{ root }}/var/backups"
 
 redis:
   port: 6379
-  service: "localhost"
   docker:
     name: "redis"
     tag: "latest"
 
 influxdb:
   port: 8086
-  service: "localhost"
   docker:
     name: "influxdb"
     tag: "latest"
 
 netdata:
   port: 19999
-  service: "localhost"
   docker:
     name: "titpetric/netdata"
     tag: "latest"
 
 grafana:
   port: 3000
-  service: "localhost"
   docker:
     name: "grafana/grafana"
     tag: "latest"
@@ -38,28 +34,24 @@ grafana:
 
 alertmanager:
   port: 9093
-  service: "localhost"
   docker:
     name: "prom/alertmanager"
     tag: "latest"
 
 node_exporter:
   port: 9100
-  service: "localhost"
   docker:
     name: "prom/node-exporter"
     tag: "latest"
 
 prometheus:
   port: 9090
-  service: "localhost"
   docker:
     name: "prom/prometheus"
     tag: "latest"
 
 postgres:
   port: 5432
-  service: "localhost"
   user: "postgres"
   password: "admin"
   docker:
@@ -69,7 +61,6 @@ postgres:
 gogs:
   ssh_port: 10022
   http_port: 10080
-  service: "localhost"
   docker:
     name: "gogs/gogs"
     tag: "latest"
@@ -80,14 +71,12 @@ gogs:
 
 nexus:
   port: 8081
-  service: "localhost"
   docker:
     name: "sonatype/nexus3"
     tag: "latest"
 
 teamcity:
   port: 8111
-  service: "localhost"
   docker:
     name: "jetbrains/teamcity-server"
     tag: "latest"
@@ -102,8 +91,8 @@ teamcity_agent:
     tag: "latest"
 
 nginx:
-  port: 80
-  service: "localhost"
+  http_port: 80
+  https_port: 443
   docker:
     name: "nginx"
     tag: "latest"
@@ -114,7 +103,6 @@ roq_samples:
     tag: "latest"
 
 roq_femas:
-  service: "localhost"
   metrics:
     port: 12345
   docker:

@@ -12,8 +12,8 @@ CPUAffinity={{ cpu_affinity.zone_2 }}
 ExecStartPre=-/usr/bin/docker stop %n
 ExecStartPre=-/usr/bin/docker rm %n
 ExecStart=/usr/bin/docker run --rm --name %n \
+  --network roq-network \
   --volume {{ root }}/var/lib/influxdb:/var/lib/influxdb \
-  --publish {{ influxdb.port }}:{{ influxdb.port }} \
   --env INFLUXDB_GRAPHITE_ENABLED=true \
   --env INFLUXDB_REPORTING_DISABLED=true \
   {{ influxdb.docker.name }}:{{ influxdb.docker.tag }}

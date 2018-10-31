@@ -3,7 +3,6 @@
 sudo docker run \
   --interactive \
   --tty \
-  --link influxdb.service \
   --rm \
   influxdb \
   influx -host influxdb.service

@@ -13,10 +13,7 @@ ExecStartPre=-/usr/bin/docker stop %n
 ExecStartPre=-/usr/bin/docker rm %n
 ExecStartPre=/bin/mkdir -p {{ root }}/var/run/backups/teamcity/native
 ExecStart=/usr/bin/docker run --rm --name %n \
-  --link postgres.service \
-  --link nexus.service \
-  --link gogs.service \
-  --publish {{ teamcity.port }}:{{ teamcity.port }} \
+  --network roq-network \
   --volume {{ root }}/var/lib/teamcity:/data/teamcity_server/datadir \
   --volume {{ root }}/var/log/teamcity:/opt/teamcity/logs \
   --volume {{ root }}/var/run/backups/teamcity/native:/var/backups/teamcity \

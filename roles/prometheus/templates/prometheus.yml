@@ -9,19 +9,19 @@ alerting:
     - scheme: http
       path_prefix: /alertmanager
       static_configs:
-        - targets: ['{{ alertmanager.service }}:{{ alertmanager.port }}']
+        - targets: ['alertmanager.service:{{ alertmanager.port }}']
 
 scrape_configs:
 
   - job_name: 'prometheus'
     scrape_interval: 5s
     static_configs:
-      - targets: ['{{ prometheus.service }}:{{ prometheus.port }}']
+      - targets: ['prometheus.service:{{ prometheus.port }}']
 
   - job_name: 'node_exporter'
     scrape_interval: 5s
     static_configs:
-      - targets: ['{{ node_exporter.service }}:{{ node_exporter.port }}']
+      - targets: ['node-exporter.service:{{ node_exporter.port }}']
 
   - job_name: 'netdata'
     metrics_path: '/api/v1/allmetrics'
@@ -29,11 +29,11 @@ scrape_configs:
       format: [ prometheus ]
     honor_labels: true
     static_configs:
-      - targets: ['{{ netdata.service }}:{{ netdata.port }}']
+      - targets: ['netdata.service:{{ netdata.port }}']
 
 {% if 'roq-femas' in groups %}
-  - job_name: 'roq-femas'
+  - job_name: 'roq_femas'
     scrape_interval: 5s
     static_configs:
-      - targets: ['{{ roq_femas.service }}:{{ roq_femas.metrics.port }}']
+      - targets: ['roq-femas.service:{{ roq_femas.metrics.port }}']
 {% endif %}

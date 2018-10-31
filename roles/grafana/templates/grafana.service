@@ -13,18 +13,14 @@ ExecStartPre=-/usr/bin/docker stop %n
 ExecStartPre=-/usr/bin/docker rm %n
 ExecStart=/usr/bin/docker run --rm --name %n \
   --user 0:0 \
-{% if true %}
-  --net host \
-{% else %}
-  --link {{ prometheus.service }} \
-  --link {{ influxdb.service }} \
-{% endif %}
-  --publish {{ grafana.port }}:{{ grafana.port }} \
+  --network roq-network \
   --volume {{ root }}/var/lib/grafana:/var/lib/grafana \
   --volume {{ root }}/etc/grafana/provisioning:/etc/grafana/provisioning \
   --env GF_SERVER_ROOT_URL=http://localhost/grafana \
+  --env GF_SERVER_HTTP_ADDR=0.0.0.0 \
+  --env GF_SERVER_HTTP_PORT={{ grafana.port }} \
   --env GF_DATABASE_TYPE=postgres \
-  --env GF_DATABASE_HOST=localhost:{{ postgres.port }} \
+  --env GF_DATABASE_HOST=postgres.service:{{ postgres.port }} \
   --env GF_DATABASE_NAME={{ grafana.postgres.database }} \
   --env GF_DATABASE_USER={{ grafana.postgres.user }} \
   --env GF_DATABASE_PASSWORD={{ grafana.postgres.password }} \

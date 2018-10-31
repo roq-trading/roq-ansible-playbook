@@ -42,7 +42,7 @@
       - "{{ prometheus.docker.name }}:{{ prometheus.docker.tag }}"
       - "{{ node_exporter.docker.name }}:{{ node_exporter.docker.tag }}"
       - "{{ alertmanager.docker.name }}:{{ alertmanager.docker.tag }}"
-  
+
   ##################
   ### PROMETHEUS ###
   ##################

@@ -10,7 +10,8 @@ ExecStart=/usr/bin/docker run --rm --name %n -i \
 {% if femas_config.cpu_affinity is defined %}
   --cpuset-cpus "{{ femas_config.cpu_affinity }}" \
 {% endif %}
-  --publish {{ roq_femas.metrics.port }}:{{ roq_femas.metrics.port }} \
+  --network host \
+  --network roq-network \
   --volume {{ root }}/etc/roq/femas:/etc/roq/femas:ro \
   --volume {{ root }}/var/tmp:/var/tmp \
 {% if femas_config.use_log_dir %}

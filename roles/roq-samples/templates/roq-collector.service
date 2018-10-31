@@ -10,6 +10,7 @@ ExecStart=/bin/bash -c '/usr/bin/docker run --rm --name %n -i \
 {% if collector_config.cpu_affinity is defined %}
   --cpuset-cpus "{{ collector_config.cpu_affinity }}" \
 {% endif %}
+  --network roq-network \
   --volume {{ root }}/var/tmp:/var/tmp \
   --volume {{ root }}/var/lib/roq:/var/lib/roq \
 {% if collector_config.use_log_dir %}

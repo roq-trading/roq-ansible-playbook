@@ -14,9 +14,9 @@ ExecStartPre=-/usr/bin/docker rm %n
 ExecStart=/usr/bin/docker run --rm --name %n \
   --security-opt apparmor=unconfined \
   --cap-add SYS_PTRACE \
+  --network roq-network \
   --volume /proc:/host/proc:ro \
   --volume /sys:/host/sys:ro \
-  --publish {{ netdata.port }}:{{ netdata.port }} \
   {{ netdata.docker.name }}:{{ netdata.docker.tag }}
 
 [Install]

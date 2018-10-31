@@ -12,9 +12,7 @@ CPUAffinity={{ cpu_affinity.zone_3 }}
 ExecStartPre=-/usr/bin/docker stop %n
 ExecStartPre=-/usr/bin/docker rm %n
 ExecStart=/usr/bin/docker run --rm --name %n \
-  --link teamcity.service \
-  --link nexus.service \
-  --link gogs.service \
+  --network roq-network \
   --volume {{ root }}/etc/teamcity-agent-{{ item }}:/data/teamcity_agent/conf \
   --env SERVER_URL=http://teamcity.service:{{ teamcity.port }}/teamcity/ \
   --env AGENT_NAME=agent_{{ item }} \

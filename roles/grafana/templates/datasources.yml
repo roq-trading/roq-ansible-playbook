@@ -9,7 +9,7 @@ datasources:
     editable: true
     isDefault: true
     type: "prometheus"
-    url: "http://localhost:{{ prometheus.port }}/prometheus"
+    url: "http://prometheus.service:{{ prometheus.port }}/prometheus"
     version: 1
   - name: "InfluxDB"
     orgId: 1
@@ -17,5 +17,5 @@ datasources:
     editable: true
     isDefault: false
     type: "influxdb"
-    url: "http://localhost:{{ influxdb.port }}"
+    url: "http://influxdb.service:{{ influxdb.port }}"
     version: 1

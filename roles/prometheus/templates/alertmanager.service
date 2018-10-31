@@ -12,7 +12,7 @@ CPUAffinity={{ cpu_affinity.zone_3 }}
 ExecStartPre=-/usr/bin/docker stop %n
 ExecStartPre=-/usr/bin/docker rm %n
 ExecStart=/usr/bin/docker run --rm --name %n \
-  --publish {{ alertmanager.port }}:{{ alertmanager.port }} \
+  --network roq-network \
   --volume {{ root }}/etc/alertmanager:/etc/alertmanager:ro \
   --volume {{ root }}/var/lib/alertmanager:/var/lib/alertmanager \
   {{ alertmanager.docker.name }}:{{ alertmanager.docker.tag }} \

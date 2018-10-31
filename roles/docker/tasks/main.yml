@@ -40,8 +40,9 @@
     apt:
       name: "docker-ce"
       update_cache: yes
+    register: docker_ce_install
     notify:
-    - start docker
+    - restart docker
 
   when: ansible_os_family == "Debian"
   become: "{{ 'true' if become_user is defined else 'false' }}"
@@ -99,8 +100,9 @@
       name: "docker-ce"
       state: present
       update_cache: yes
+    register: docker_ce_install
     notify:
-    - start docker
+    - restart docker
 
   when: ansible_os_family == "RedHat"
   become: "{{ 'true' if become_user is defined else 'false' }}"
@@ -112,16 +114,43 @@
 ### COMMON ###
 ##############
 
-# otherwise (ansible) docker_image will fail later on...
-
 - block:
 
-  - name: pip install docker-py
+  - name: start docker
+    service:
+      name: docker
+      state: started
+    when: docker_ce_install.changed
+
+  - name: pip remove docker-py
     pip:
       name: "docker-py"
+      state: absent
+
+  - name: pip install docker
+    pip:
+      name: "docker"
       state: latest
-    tags:
-    - docker
+
+  - name: initialize swarm
+    docker_swarm:
+      state: present
+      advertise_addr: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"
+
+# TODO(thraneh): use docker_network when this is fixed: https://github.com/ansible/ansible/issues/28380
+#  - name: create roq network
+#    docker_network:
+#      name: "roq-network"
+#      driver: "overlay"
+
+  - name: test if roq network exists
+    shell: "docker network inspect roq-network"
+    register: roq_network_exists
+    failed_when: roq_network_exists.rc < 0 or roq_network_exists.rc > 1
+
+  - name: create roq network
+    shell: "docker network create --driver overlay --attachable roq-network"
+    when: roq_network_exists.rc == 1
 
   become: "{{ 'true' if become_user is defined else 'false' }}"
   tags:
