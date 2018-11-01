@@ -4,6 +4,8 @@ root: "/"
 
 backups: "{{ root }}/var/backups"
 
+roq_conda_channel: "stable"
+
 redis:
   port: 6379
   docker:
