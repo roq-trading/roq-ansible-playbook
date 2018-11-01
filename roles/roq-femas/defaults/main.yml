@@ -1,11 +1,12 @@
 ---
 license: "cGxlYXNlIGNvbnRhY3QgaW5mb0Byb3EtdHJhZGluZy5jb20K"
 
-femas_use_docker: false
+femas_use_docker: true
 
 femas_defaults:
   preload: []
-  use_log_dir: true
+  version: "{{ roq_femas.docker.tag }}"
+  use_log_dir: false
   verbosity: 0
   md_user:
     front: "tcp://1.2.3.4:9876"

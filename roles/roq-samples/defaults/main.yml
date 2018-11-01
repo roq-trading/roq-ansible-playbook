@@ -1,7 +1,8 @@
 ---
 
-collector_use_docker: false
+collector_use_docker: true
 
 collector_defaults:
-  use_log_dir: true
+  version: "{{ roq_samples.docker.tag }}"
+  use_log_dir: false
   verbosity: 0

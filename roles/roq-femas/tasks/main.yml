@@ -55,7 +55,7 @@
       - "license.conf"
 
   - name: install the roq-femas conda package
-    shell: "{{ root }}/miniconda/bin/conda install -y -n base roq-femas"
+    shell: "{{ root }}/miniconda/bin/conda install -y -n base roq-femas{{ '' if femas_config.version == 'latest' else '==%s'|format(femas_config.version) }}"
   
   become: "{{ 'true' if become_user is defined else 'false' }}"
   tags:
@@ -70,7 +70,7 @@
   - name: docker pull images
     docker_image:
       name: "{{ roq_femas.docker.name }}"
-      tag: "{{ roq_femas.docker.tag }}"
+      tag: "{{ femas_config.version }}"
       force: true
       http_timeout: 300
 

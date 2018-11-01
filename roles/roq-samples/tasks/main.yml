@@ -36,7 +36,7 @@
       mode: 0750
 
   - name: install the roq-samples conda package
-    shell: "{{ root }}/miniconda/bin/conda install -y -n base roq-samples"
+    shell: "{{ root }}/miniconda/bin/conda install -y -n base roq-samples{{ '' if collector_config.version == 'latest' else '==%s'|format(collector_config.version) }}"
   
   become: "{{ 'true' if become_user is defined else 'false' }}"
   tags:
@@ -51,7 +51,7 @@
   - name: docker pull images
     docker_image:
       name: "{{ roq_samples.docker.name }}"
-      tag: "{{ roq_samples.docker.tag }}"
+      tag: "{{ collector_config.version }}"
       force: true
       http_timeout: 300
 
