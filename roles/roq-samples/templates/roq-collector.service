@@ -29,7 +29,6 @@ UMask=0002
 {% if collector_config.cpu_affinity is defined %}
 CPUAffinity={{ collector_config.cpu_affinity }}
 {% endif %}
-CPUSchedulingPolicy=fifo
 WorkingDirectory={{ root }}/var/run/roq/collector
 ExecStart=/bin/bash -c '{{ root }}/usr/local/bin/roq-collector.sh \
   --output-file "{{ root }}/var/lib/roq/femas_$$(date +%%Y-%%m-%%d).csv"'

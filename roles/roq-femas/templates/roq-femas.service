@@ -29,7 +29,6 @@ UMask=0000
 {% if femas_config.cpu_affinity is defined %}
 CPUAffinity={{ femas_config.cpu_affinity }}
 {% endif %}
-CPUSchedulingPolicy=fifo
 WorkingDirectory={{ root }}/var/run/roq/femas
 ExecStart={{ root }}/usr/local/bin/roq-femas.sh
 {% endif %}
