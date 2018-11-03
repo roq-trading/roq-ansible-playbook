@@ -28,7 +28,7 @@ export ROQ_v="{{ femas_config.verbosity | default(0) }}"
 "$CONDA_PREFIX/bin/roq-femas" \
     --socket-buffer-size 10485760 \
     --spin-usecs 1000 \
-    --timer-refresh-usecs 100 \
+    --timer-refresh-usecs 4000 \
     --license-file "{{ root }}/etc/roq/femas/license.conf" \
     --config-variables "{{ root }}/etc/roq/femas/variables.conf" \
     --config-file "{{ root }}/etc/roq/femas/master.conf" \
