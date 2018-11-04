@@ -69,7 +69,7 @@
 
   - name: docker pull images
     docker_image:
-      name: "{{ roq_femas.docker.name }}"
+      name: "{{ femas_config.docker.name }}"
       tag: "{{ femas_config.version }}"
       force: true
       http_timeout: 300

@@ -6,9 +6,13 @@ femas_use_docker: true
 femas_defaults:
   preload: []
   version: "{{ roq_femas.docker.tag }}"
+  docker:
+    name: "{{ roq_femas.docker.name }}"
   logging:
     use_log_dir: false
     verbosity: 0
+  metrics:
+    port: "{{ roq_femas.metrics.port }}"
   md_user:
     front: "tcp://1.2.3.4:9876"
     account: "12345678"

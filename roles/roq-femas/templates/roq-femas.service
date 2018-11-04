@@ -19,8 +19,8 @@ ExecStart=/usr/bin/docker run --rm --name %n -i \
   --env ROQ_log_dir={{ root }}/var/log/roq \
 {% endif %}
   --env ROQ_v={{ femas_config.logging.verbosity | default(0) }} \
-  --env FLAGS_monitor_port={{ roq_femas.metrics.port }} \
-  {{ roq_femas.docker.name }}:{{ femas_config.version }}
+  --env FLAGS_monitor_port={{ femas_config.metrics.port }} \
+  {{ femas_config.docker.name }}:{{ femas_config.version }}
 {% else %}
 User={{ roq_user if roq_user is defined else ansible_user_id }}
 Group={{ roq_user if roq_user is defined else ansible_user_id }}

@@ -50,7 +50,7 @@
 
   - name: docker pull images
     docker_image:
-      name: "{{ roq_samples.docker.name }}"
+      name: "{{ collector_config.docker.name }}"
       tag: "{{ collector_config.version }}"
       force: true
       http_timeout: 300
