@@ -6,8 +6,9 @@ femas_use_docker: true
 femas_defaults:
   preload: []
   version: "{{ roq_femas.docker.tag }}"
-  use_log_dir: false
-  verbosity: 0
+  logging:
+    use_log_dir: false
+    verbosity: 0
   md_user:
     front: "tcp://1.2.3.4:9876"
     account: "12345678"
@@ -22,6 +23,7 @@ femas_defaults:
     - "${IH}"
     - "${T_}"
     - "${TF}"
+    - "${TS}"
   accounts:
     "12345678":
       user: "12345678"
@@ -34,6 +36,7 @@ femas_defaults:
         - "${IH}"
         - "${T_}"
         - "${TF}"
+        - "${TS}"
       master: true
   users:
     test:

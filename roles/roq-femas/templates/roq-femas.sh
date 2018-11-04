@@ -19,10 +19,10 @@ LD_PRELOAD="$LD_PRELOAD {{ femas_config.preload | join(" ") }}"
 export LD_PRELOAD
 
 # define logging parameters
-{% if femas_config.use_log_dir %}
+{% if femas_config.logging.use_log_dir %}
 export ROQ_log_dir="{{ root }}/var/log/roq"
 {% endif %}
-export ROQ_v="{{ femas_config.verbosity | default(0) }}"
+export ROQ_v="{{ femas_config.logging.verbosity | default(0) }}"
 
 # launch the application
 "$CONDA_PREFIX/bin/roq-femas" \
