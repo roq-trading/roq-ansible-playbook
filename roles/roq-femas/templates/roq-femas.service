@@ -14,7 +14,7 @@ ExecStart=/usr/bin/docker run --rm --name %n -i \
   --network roq-network \
   --volume {{ root }}/etc/roq/femas:/etc/roq/femas:ro \
   --volume {{ root }}/var/tmp:/var/tmp \
-{% if femas_config.logging.use_log_dir %}
+{% if femas_config.logging.use_log_dir is defined and femas_config.logging.use_log_dir %}
   --volume {{ root }}/var/log/roq:/var/log/roq \
   --env ROQ_log_dir={{ root }}/var/log/roq \
 {% endif %}

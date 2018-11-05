@@ -13,7 +13,7 @@ ExecStart=/bin/bash -c '/usr/bin/docker run --rm --name %n -i \
   --network roq-network \
   --volume {{ root }}/var/tmp:/var/tmp \
   --volume {{ root }}/var/lib/roq:/var/lib/roq \
-{% if collector_config.logging.use_log_dir %}
+{% if collector_config.logging.use_log_dir is defined and collector_config.logging.use_log_dir %}
   --volume {{ root }}/var/log/roq:/var/log/roq \
   --env ROQ_log_dir={{ root }}/var/log/roq \
 {% endif %}
