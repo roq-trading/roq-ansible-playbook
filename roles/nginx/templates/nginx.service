@@ -23,7 +23,7 @@ ExecStart=/usr/bin/docker run --rm --name %n -i \
 {% if 'web' in groups %}
   --volume {{ root }}/etc/letsencrypt:/etc/letsencrypt:ro \
 {% endif %}
-  {{ nginx.docker.name }}:{{ nginx.docker.tag }}
+  {{ docker_registry_prefix | default('') }}{{ nginx.docker.name }}:{{ nginx.docker.tag }}
 
 [Install]
 WantedBy=multi-user.target

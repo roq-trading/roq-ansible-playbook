@@ -20,7 +20,7 @@
 
   - name: pull docker image
     docker_image:
-      name: "{{ nexus.docker.name }}"
+      name: "{{ docker_registry_prefix | default('') }}{{ nexus.docker.name }}"
       tag: "{{ nexus.docker.tag }}"
       force: true
       http_timeout: 300

@@ -20,7 +20,7 @@
 
   - name: pull docker image
     docker_image:
-      name: "{{ postgres.docker.name }}"
+      name: "{{ docker_registry_prefix | default('') }}{{ postgres.docker.name }}"
       tag: "{{ postgres.docker.tag }}"
       force: true
       http_timeout: 300

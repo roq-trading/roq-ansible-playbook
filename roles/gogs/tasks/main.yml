@@ -73,7 +73,7 @@
 
   - name: pull docker image
     docker_image:
-      name: "{{ gogs.docker.name }}"
+      name: "{{ docker_registry_prefix | default('') }}{{ gogs.docker.name }}"
       tag: "{{ gogs.docker.tag }}"
       force: true
       http_timeout: 300

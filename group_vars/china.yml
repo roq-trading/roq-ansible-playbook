@@ -8,3 +8,5 @@ anaconda:
     - "{{ tuna_url }}/pkgs/main/"
     - "{{ tuna_url }}/pkgs/free/"
     - "defaults"
+
+docker_registry_prefix: "registry.docker-cn.com/"

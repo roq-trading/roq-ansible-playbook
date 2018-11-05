@@ -50,7 +50,7 @@
 
   - name: docker pull images
     docker_image:
-      name: "{{ collector_config.docker.name }}"
+      name: "{{ docker_registry_prefix | default('') }}{{ collector_config.docker.name }}"
       tag: "{{ collector_config.version }}"
       force: true
       http_timeout: 300

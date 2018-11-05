@@ -22,7 +22,7 @@
 
   - name: pull docker image
     docker_image:
-      name: "{{ influxdb.docker.name }}"
+      name: "{{ docker_registry_prefix | default('') }}{{ influxdb.docker.name }}"
       tag: "{{ influxdb.docker.tag }}"
       force: true
       http_timeout: 300

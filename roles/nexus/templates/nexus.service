@@ -18,7 +18,7 @@ ExecStart=/usr/bin/docker run --rm --name %n \
   --volume {{ root }}/var/lib/nexus:/nexus-data \
   --volume {{ root }}/var/run/nexus/native:/var/backups/nexus \
   --env NEXUS_CONTEXT=nexus \
-  {{ nexus.docker.name }}:{{ nexus.docker.tag }}
+  {{ docker_registry_prefix | default('') }}{{ nexus.docker.name }}:{{ nexus.docker.tag }}
 
 [Install]
 WantedBy=multi-user.target

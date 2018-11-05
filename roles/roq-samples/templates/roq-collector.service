@@ -18,7 +18,7 @@ ExecStart=/bin/bash -c '/usr/bin/docker run --rm --name %n -i \
   --env ROQ_log_dir={{ root }}/var/log/roq \
 {% endif %}
   --env ROQ_v={{ collector_config.logging.verbosity | default(0) }} \
-  {{ collector_config.docker.name }}:{{ collector_config.version }} \
+  {{ docker_registry_prefix | default('') }}{{ collector_config.docker.name }}:{{ collector_config.version }} \
   --gateways "femas=test:1234@/var/tmp/femas.sock" \
   --output-file "{{ root }}/var/lib/roq/femas_$$(date +%%Y-%%m-%%d).csv"'
 {% else %}

@@ -9,13 +9,13 @@ roq_conda_channel: "stable"
 redis:
   port: 6379
   docker:
-    name: "redis"
+    name: "library/redis"
     tag: "latest"
 
 influxdb:
   port: 8086
   docker:
-    name: "influxdb"
+    name: "library/influxdb"
     tag: "latest"
 
 netdata:
@@ -57,7 +57,7 @@ postgres:
   user: "postgres"
   password: "admin"
   docker:
-    name: "postgres"
+    name: "library/postgres"
     tag: "10"
 
 gogs:
@@ -96,7 +96,7 @@ nginx:
   http_port: 80
   https_port: 443
   docker:
-    name: "nginx"
+    name: "library/nginx"
     tag: "latest"
 
 roq_samples:

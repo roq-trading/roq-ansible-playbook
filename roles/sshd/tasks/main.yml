@@ -21,7 +21,17 @@
     - { regexp: '^\#?GatewayPorts', line: "GatewayPorts yes" }
     - { regexp: '^\#?PasswordAuthentication', line: "PasswordAuthentication no" }
     - { regexp: '^\#?ChallengeResponseAuthentication', line: "ChallengeResponseAuthentication no" }
+    notify:
+    - restart sshd
+
+  - name: secure sshd (non-redhat)
+    lineinfile:
+      dest: "/etc/ssh/sshd_config"
+      regexp: "{{ item.regexp }}"
+      line: "{{ item.line }}"
+    with_items:
     - { regexp: '^\#?UsePAM', line: "UsePAM no" }
+    when: ansible_os_family != "RedHat"
     notify:
     - restart sshd
 

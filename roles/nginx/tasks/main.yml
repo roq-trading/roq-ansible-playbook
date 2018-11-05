@@ -44,7 +44,7 @@
   
   - name: docker pull images
     docker_image:
-      name: "{{ nginx.docker.name }}"
+      name: "{{ docker_registry_prefix | default('') }}{{ nginx.docker.name }}"
       tag: "{{ nginx.docker.tag }}"
       force: true
       http_timeout: 300

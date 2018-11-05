@@ -16,7 +16,7 @@ ExecStart=/usr/bin/docker run --rm --name %n \
   --volume {{ root }}/var/lib/influxdb:/var/lib/influxdb \
   --env INFLUXDB_GRAPHITE_ENABLED=true \
   --env INFLUXDB_REPORTING_DISABLED=true \
-  {{ influxdb.docker.name }}:{{ influxdb.docker.tag }}
+  {{ docker_registry_prefix | default('') }}{{ influxdb.docker.name }}:{{ influxdb.docker.tag }}
 
 [Install]
 WantedBy=multi-user.target

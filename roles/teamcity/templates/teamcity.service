@@ -18,7 +18,7 @@ ExecStart=/usr/bin/docker run --rm --name %n \
   --volume {{ root }}/var/log/teamcity:/opt/teamcity/logs \
   --volume {{ root }}/var/run/backups/teamcity/native:/var/backups/teamcity \
   --env TEAMCITY_CONTEXT=teamcity \
-  {{ teamcity.docker.name }}:{{ teamcity.docker.tag }}
+  {{ docker_registry_prefix | default('') }}{{ teamcity.docker.name }}:{{ teamcity.docker.tag }}
 
 [Install]
 WantedBy=multi-user.target

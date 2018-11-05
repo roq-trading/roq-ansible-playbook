@@ -16,7 +16,7 @@ ExecStart=/usr/bin/docker run --rm --name %n \
   --network roq-network \
   --volume {{ root }}/etc/redis/redis.conf:/usr/local/etc/redis/redis.conf:ro \
   --volume {{ root }}/var/lib/redis:/data \
-  {{ redis.docker.name }}:{{ redis.docker.tag }} \
+  {{ docker_registry_prefix | default('') }}{{ redis.docker.name }}:{{ redis.docker.tag }} \
   redis-server /usr/local/etc/redis/redis.conf
 
 [Install]

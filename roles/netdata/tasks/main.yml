@@ -4,7 +4,7 @@
 
   - name: pull docker image
     docker_image:
-      name: "{{ netdata.docker.name }}"
+      name: "{{ docker_registry_prefix | default('') }}{{ netdata.docker.name }}"
       tag: "{{ netdata.docker.tag }}"
       force: true
       http_timeout: 300

@@ -17,7 +17,7 @@ ExecStart=/usr/bin/docker run --rm --name %n -i \
   --network host \
   --network roq-network \
   --volume /run/systemd:/run/systemd \
-  {{ node_exporter.docker.name }}:{{ node_exporter.docker.tag }} \
+  {{ docker_registry_prefix | default('') }}{{ node_exporter.docker.name }}:{{ node_exporter.docker.tag }} \
   --collector.systemd
 
 [Install]

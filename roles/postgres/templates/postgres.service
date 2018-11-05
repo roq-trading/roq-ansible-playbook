@@ -19,7 +19,7 @@ ExecStart=/usr/bin/docker run --rm --name %n \
   --volume {{ root }}/var/run/postgres:/var/run/postgresql \
   --env POSTGRES_USER={{ postgres.user }} \
   --env POSTGRES_PASSWORD={{ postgres.password }} \
-  {{ postgres.docker.name }}:{{ postgres.docker.tag }}
+  {{ docker_registry_prefix | default('') }}{{ postgres.docker.name }}:{{ postgres.docker.tag }}
 
 [Install]
 WantedBy=multi-user.target

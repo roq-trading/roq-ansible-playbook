@@ -102,7 +102,7 @@
 
   - name: pull docker image
     docker_image:
-      name: "{{ teamcity.docker.name }}"
+      name: "{{ docker_registry_prefix | default('') }}{{ teamcity.docker.name }}"
       tag: "{{ teamcity.docker.tag }}"
       force: true
       http_timeout: 300
@@ -176,7 +176,7 @@
 
   - name: pull docker image
     docker_image:
-      name: "{{ teamcity_agent.docker.name }}"
+      name: "{{ docker_registry_prefix | default('') }}{{ teamcity_agent.docker.name }}"
       tag: "{{ teamcity_agent.docker.tag }}"
       force: true
       http_timeout: 300
