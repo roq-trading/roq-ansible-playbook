@@ -1,5 +1,8 @@
 ---
 
+### TEMPORARY !!! ###
+femas_use_docker: true
+
 root: "/"
 
 backups: "{{ root }}/var/backups"
