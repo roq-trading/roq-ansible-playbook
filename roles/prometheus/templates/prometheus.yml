@@ -38,6 +38,6 @@ scrape_configs:
 {% if femas_use_docker %}
       - targets: ['roq-femas.service:{{ roq_femas.metrics.port }}']
 {% else %}
-      - targets: ['localhost:{{ roq_femas.metrics.port }}']
+      - targets: ['roq-femas-unix-to-tcp.service:{{ roq_femas.metrics.port }}']
 {% endif %}
 {% endif %}

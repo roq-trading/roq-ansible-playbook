@@ -1,14 +1,3 @@
-roq-* --> prometheus --> grafana --> nginx
-prometheus needs host access because roq-* services don't run as containers
-nginx then also needs host access
-
-nexus <--> teamcity ?
-what direction is the link -- 2-way?
-
-gogs
-exec postgres.service
-psql --user <...>; create database gogs;
-
 grafana
-can't provision dashboards because the datasource isn't linked
+can't provision dashboards because the prometheus datasource isn't linked automatically
 https://github.com/grafana/grafana/issues/10786

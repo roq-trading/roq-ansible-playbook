@@ -24,6 +24,7 @@
       - bzip2
       - zip
       - unzip
+      - socat
 
   tags:
     - sysadmin

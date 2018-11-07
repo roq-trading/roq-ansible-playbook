@@ -117,3 +117,66 @@
   become: "{{ 'true' if become_user is defined else 'false' }}"
   tags:
     - roq-femas
+
+#############################
+### WORKAROUND FOR ROQ-11 ###
+#############################
+
+- block:
+
+  - name: create directories
+    file:
+      path: "{{ item }}"
+      state: directory
+      owner: root
+      group: root
+      mode: 0755
+    with_items:
+      - "{{ root }}/opt/ansible"
+      - "{{ root }}/opt/ansible/docker"
+      - "{{ root }}/opt/ansible/docker/roq-femas-bridge"
+
+  - name: create dockerfile
+    template:
+      src: "templates/Dockerfile"
+      dest: "/opt/ansible/docker/roq-femas-bridge/Dockerfile"
+
+  - name: build customized agent
+    docker_image:
+      name: "roq-femas-bridge"
+      tag: "latest"
+      force: true
+      path: "/opt/ansible/docker/roq-femas-bridge"
+
+  - name: define list of systemd units needed to bridge tcp into docker network
+    set_fact:
+      workaround_services:
+      - "roq-femas-tcp-to-unix.service"
+      - "roq-femas-unix-to-tcp.service"
+
+  - name: create systemd units for bridging tcp into docker network
+    template:
+      src: "templates/{{ item }}"
+      dest: "/etc/systemd/system/{{ item }}"
+      owner: root
+      group: root
+      mode: 0644
+    with_items: "{{ workaround_services }}"
+
+  - name: enable systemd units for bridging tcp into docker network
+    systemd:
+      name: "{{ item }}"
+      enabled: true
+      daemon_reload: true
+    with_items: "{{ workaround_services }}"
+
+  - name: start systemd units for bridging tcp into docker network
+    systemd:
+      name: "{{ item }}"
+      state: started
+    with_items: "{{ workaround_services }}"
+
+  when: "'roq-femas' in group_names and not femas_use_docker"
+  become: "{{ 'true' if become_user is defined else 'false' }}"
+  tags:
+    - roq-femas
