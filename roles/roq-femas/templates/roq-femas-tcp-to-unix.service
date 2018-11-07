@@ -1,0 +1,10 @@
+[Unit]
+Description=Femas gateway tcp to unix bridge
+After=network-online.target
+
+[Service]
+TimeoutStartSec=0
+ExecStart=/usr/bin/socat unix-listen:/var/tmp/femas.metrics.sock,fork tcp:127.0.0.1:{{ roq-femas.port }}
+
+[Install]
+WantedBy=multi-user.target

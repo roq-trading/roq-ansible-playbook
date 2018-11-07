@@ -5,98 +5,54 @@
 Copyright (c) 2017-2018, Hans Erik Thrane
 
 
-## Disclaimer
-
-Please refer to the LICENSE.
-
-In particular, *it is your own responsibility to ensure the correct operation for your own environment!*
-
-
 ## What is it?
 
-Reference server configuration.
-
-The Ansible playbook is a set of scripts useful to provision servers.
-The scripts are designed around this system architecture.
-
-![overview](https://github.com/roq-trading/roq-readthedocs/blob/master/source/overview/architecture.png)
+An Ansible playbook implementing the reference server configuration described
+[here](https://roq-trading.com/docs/introduction/overview/index.html).
 
 
 ## Requirements
 
-There are a number of ways to install Ansible.
-Please refer to Ansible's [Installation Guide](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
+The playbook requires Ansible version 2.7 (or higher).
+
+Please refer to Ansible's
+[Installation Guide](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
 for best practices.
 
 We recommend using Ansible from a Conda virtual environment.
 
-	conda install -c conda-forge ansible
+## Using
+
+You can follow these steps if you don't already have a compatible Ansible installation.
+
+	# Download miniconda for Linux (see https://conda.io/miniconda.html for other platforms)
+	wget -N https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+
+	# Install miniconda (to your home directory)
+	bash Miniconda3-latest-Linux-x86_64.sh -b -u -p ~/miniconda3
+
+	# Activate your conda environment
+	source ~/miniconda3/bin/activate
+
+	# Install ansible
+	pip install ansible
+
+	# Check the installed version
+	conda list | grep ansible
+
+Using playbook is to some extent dependent on your specific host configuration.
+
+Please [contact us](mailto:info@roq-trading.com) for further details.
 
 
-## Configuration
+## Disclaimer
 
-The default configuration allows you to install the software, but it will not be your desired configuration.
+Please refer to the LICENSE, in particular:
 
-You can define your specific configuration to either of these locations (in order of precedence)
-
-* inventory file
-* group\_vars
-* host\_vars
-
-Please refer to Ansible's [Variables](https://docs.ansible.com/ansible/2.6/user_guide/playbooks_variables.html)
-documentation for further details.
-
-These are the playbook variables you can override.
-
-* `root` | root path for installation (defaults to `/` if `become_user` is defined and otherwise the home directory)
-* `anaconda` | dictionary
-    * `url` | conda package repository (url)
-    * `sources` | override list for conda sources (the `.condarc file`)
-* `roq` | dictionary
-    * `user` | an optional user (default is to install using the ansible user)
-* `license` | base 64 encoded license
-* `collector` | dictionary
-    * `cpu_affinity` | optional parameter for the systemd service (`CPUAffinity`)
-    * `use_log_dir` | boolean
-    * `verbosity` | integer
-* `femas` | dictionary
-    * `cpu_affinity` | optional parameter for the systemd service (`CPUAffinity`)
-    * `use_log_dir` | boolean
-    * `verbosity` | integer
-    * `datafeed`
-        * Please refer to the [defaults](https://github.com/roq-trading/roq-ansible-playbook/blob/master/roles/femas/defaults/main.yml)
-    * `md_user` | dictionary
-        * `front` | connection string for the front server
-        * `account` | account id
-        * `password` | password
-        * `broker` | broker id
-    * `trader` | dictionary
-        * `front` | connection string for the front server
-    * `symbols` | dictionary
-        * `exchange` | exchange (key)
-            * `symbol` | list of symbols (as regular expressions)
-    * `accounts` | dictionary
-        * `alias` | key of dict, an alias for the account
-            * `user` | user id
-            * `broker` | broker id
-            * `password` | password
-            * `symbols` | dictionary
-                * `exchange` | exchange (key)
-                    * `symbol` | list of symbols (as regular expressions)
-    * `users` | dictionary
-        * `password` | password
-        * `accounts` | list of account aliases
-        * `symbols` | dictionary
-            * `exchange` | exchange
-                * `symbol` | list of symbols (as regular expressions)
-        * `limits` | dictionary
-            * `create_order` | dictionary
-                * `max` | count (integer)
-                * `monitor_period` | period, e.g. 60s
-                * `ban_period` | period, e.g. 300s
-
-## Miscellany
-
-HTTP proxy can be defined by host.
-Please refer to [Setting the Environment (and Working with Proxies)](https://docs.ansible.com/ansible/2.6/user_guide/playbooks_environment.html)
-for further details.
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+	SOFTWARE.
