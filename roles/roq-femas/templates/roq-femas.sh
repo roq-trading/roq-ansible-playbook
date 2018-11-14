@@ -26,12 +26,12 @@ export ROQ_v="{{ femas_config.logging.verbosity | default(0) }}"
 
 # launch the application
 "$CONDA_PREFIX/bin/roq-femas" \
-    --socket-buffer-size 10485760 \
-    --spin-usecs 1000 \
-    --timer-refresh-usecs 4000 \
     --license-file "{{ root }}/etc/roq/femas/license.conf" \
     --config-variables "{{ root }}/etc/roq/femas/variables.conf" \
     --config-file "{{ root }}/etc/roq/femas/master.conf" \
     --local-address "{{ root }}/var/tmp/femas.sock" \
     --monitor-port "{{ femas_config.metrics.port }}" \
+{% for key, value in femas_config.options.items() %}
+    --{{ key }} {{ value }} \
+{% endfor %}
     --name "roq_femas"

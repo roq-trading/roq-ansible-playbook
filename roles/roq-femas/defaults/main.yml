@@ -11,6 +11,7 @@ femas_defaults:
     verbosity: 0
   metrics:
     port: "{{ roq_femas.metrics.port }}"
+  options: {}
   md_user:
     front: "tcp://1.2.3.4:9876"
     account: "12345678"
