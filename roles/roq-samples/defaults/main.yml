@@ -6,6 +6,7 @@ collector_defaults:
   version: "{{ roq_samples.docker.tag }}"
   docker:
     name: "{{ roq_samples.docker.name }}"
+  cpu: {}
   logging:
     use_log_dir: false
     verbosity: 0

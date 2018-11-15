@@ -6,6 +6,7 @@ femas_defaults:
   version: "{{ roq_femas.docker.tag }}"
   docker:
     name: "{{ roq_femas.docker.name }}"
+  cpu: {}
   logging:
     use_log_dir: false
     verbosity: 0
