@@ -110,6 +110,7 @@ roq_samples:
 roq_femas:
   metrics:
     port: 12345
+    sock: "femas.metrics.sock"
   docker:
     name: "roqtrading/roq-femas"
     tag: "latest"

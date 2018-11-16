@@ -12,6 +12,7 @@ femas_defaults:
     verbosity: 0
   metrics:
     port: "{{ roq_femas.metrics.port }}"
+    path: "{{ root }}/var/tmp/{{ roq_femas.metrics.sock }}"
   options: {}
   md_user:
     front: "tcp://1.2.3.4:9876"

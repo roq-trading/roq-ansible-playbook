@@ -31,6 +31,7 @@ export ROQ_v="{{ femas_config.logging.verbosity | default(0) }}"
     --config-file "{{ root }}/etc/roq/femas/master.conf" \
     --local-address "{{ root }}/var/tmp/femas.sock" \
     --monitor-port "{{ femas_config.metrics.port }}" \
+    --monitor-path "{{ femas_config.metrics.path }}" \
 {% for key, value in femas_config.options.items() %}
     --{{ key }} {{ value }} \
 {% endfor %}
