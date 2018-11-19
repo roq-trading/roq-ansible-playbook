@@ -1,7 +1,8 @@
 [Unit]
 Description=Gogs
-After=docker.service
+After=docker.service postgres.service
 Requires=docker.service
+Wants=postgres.service
 
 [Service]
 TimeoutStartSec=0
