@@ -1,0 +1,47 @@
+[Unit]
+Description=Femas gateway
+After=network-online.target
+Conflicts=roq-datafeed-stop.service
+
+[Service]
+{% if datafeed_use_docker %}
+TimeoutStartSec=0
+ExecStart=/usr/bin/docker run --rm --name %n -i \
+{% if datafeed_config.cpu.affinity is defined %}
+  --cpuset-cpus "{{ datafeed_config.cpu.affinity }}" \
+{% endif %}
+{% if datafeed_config.cpu.scheduling_policy is defined %}
+  --cap-add sys_nice \
+{% endif %}
+  --network host \
+  --network roq-network \
+  --volume {{ root }}/etc/roq/datafeed:/etc/roq/datafeed:ro \
+  --volume {{ root }}/var/tmp:/var/tmp \
+{% if datafeed_config.logging.use_log_dir is defined and datafeed_config.logging.use_log_dir %}
+  --volume {{ root }}/var/log/roq:/var/log/roq \
+  --env ROQ_log_dir={{ root }}/var/log/roq \
+{% endif %}
+  --env ROQ_v={{ datafeed_config.logging.verbosity | default(0) }} \
+  --env FLAGS_monitor_port={{ datafeed_config.metrics.port }} \
+{% for key, value in datafeed_config.options.items() %}
+  --env FLAGS_{{ key }}={{ value }} \
+{% endfor %}
+  {{ docker_registry_prefix | default('') }}{{ datafeed_config.docker.name }}:{{ datafeed_config.version }}
+{% else %}
+User={{ roq_user if roq_user is defined else ansible_user_id }}
+Group={{ roq_user if roq_user is defined else ansible_user_id }}
+Restart=on-abnormal
+UMask=0000
+{% if datafeed_config.cpu.affinity is defined %}
+CPUAffinity={{ datafeed_config.cpu.affinity }}
+{% endif %}
+{% if datafeed_config.cpu.scheduling_policy is defined %}
+CPUSchedulingPolicy={{ datafeed_config.cpu.scheduling_policy }}
+{% endif %}
+WorkingDirectory={{ root }}/var/run/roq/datafeed
+ExecStart={{ root }}/usr/local/bin/roq-datafeed.sh
+{% endif %}
+
+
+[Install]
+WantedBy=multi-user.target

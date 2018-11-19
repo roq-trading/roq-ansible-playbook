@@ -41,3 +41,14 @@ scrape_configs:
       - targets: ['roq-femas-unix-to-tcp.service:{{ roq_femas.metrics.port }}']
 {% endif %}
 {% endif %}
+
+{% if 'roq-datafeed' in groups %}
+  - job_name: 'roq_datafeed'
+    scrape_interval: 5s
+    static_configs:
+{% if datafeed_use_docker %}
+      - targets: ['roq-datafeed.service:{{ roq_datafeed.metrics.port }}']
+{% else %}
+      - targets: ['roq-datafeed-unix-to-tcp.service:{{ roq_datafeed.metrics.port }}']
+{% endif %}
+{% endif %}

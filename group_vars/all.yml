@@ -2,6 +2,7 @@
 
 ### TEMPORARY !!! ###
 femas_use_docker: true
+datafeed_use_docker: false
 
 root: "/"
 
@@ -113,4 +114,12 @@ roq_femas:
     sock: "femas.metrics.sock"
   docker:
     name: "roqtrading/roq-femas"
+    tag: "latest"
+
+roq_datafeed:
+  metrics:
+    port: 12346
+    sock: "datafeed.metrics.sock"
+  docker:
+    name: "roqtrading/roq-datafeed"
     tag: "latest"

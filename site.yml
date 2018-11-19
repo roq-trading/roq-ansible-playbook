@@ -48,6 +48,10 @@
   roles:
     - roq-femas
 
+- hosts: roq-datafeed
+  roles:
+    - roq-datafeed
+
 - hosts: trading
   roles:
     - redis
