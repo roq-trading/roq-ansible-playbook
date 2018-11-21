@@ -72,7 +72,7 @@
       name: "{{ docker_registry_prefix | default('') }}{{ femas_config.docker.name }}"
       tag: "{{ femas_config.version }}"
       force: true
-      http_timeout: 300
+      http_timeout: 600
 
   - name: define list of systemd services
     set_fact:
