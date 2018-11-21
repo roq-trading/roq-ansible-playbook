@@ -1,0 +1,10 @@
+---
+
+tuna_url: "https://mirrors.tuna.tsinghua.edu.cn/anaconda"
+
+anaconda:
+  url: "{{ tuna_url }}"
+  sources:
+    - "{{ tuna_url }}/pkgs/main/"
+    - "{{ tuna_url }}/pkgs/free/"
+    - "defaults"
