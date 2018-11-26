@@ -10,6 +10,11 @@ LD_PRELOAD="${LD_PRELOAD:-}"
 # ... tcmalloc, if present
 if [ -e "$CONDA_PREFIX/lib/libtcmalloc.so" ]; then
   LD_PRELOAD="$LD_PRELOAD $CONDA_PREFIX/lib/libtcmalloc.so"
+else
+  # ... jemalloc, if present
+  if [ -e "$CONDA_PREFIX/lib/libjemalloc.so" ]; then
+    LD_PRELOAD="$LD_PRELOAD $CONDA_PREFIX/lib/libjemalloc.so"
+  fi
 fi
 {% if femas_config.preload %}
 # ... user specified
