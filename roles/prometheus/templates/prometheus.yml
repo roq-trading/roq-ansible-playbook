@@ -52,3 +52,21 @@ scrape_configs:
       - targets: ['roq-datafeed-unix-to-tcp.service:{{ roq_datafeed.metrics.port }}']
 {% endif %}
 {% endif %}
+
+{% if 'roq-test' in groups %}
+  - job_name: 'roq-ping-1'
+    metrics_path: '/metrics/roq-ping-1'
+    params:
+      format: [ prometheus ]
+    honor_labels: true
+    static_configs:
+      - targets: ['nginx.service:80']
+
+  - job_name: 'roq-ping-2'
+    metrics_path: '/metrics/roq-ping-2'
+    params:
+      format: [ prometheus ]
+    honor_labels: true
+    static_configs:
+      - targets: ['nginx.service:80']
+{% endif %}

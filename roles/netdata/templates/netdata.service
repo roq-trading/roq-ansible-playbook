@@ -17,6 +17,7 @@ ExecStart=/usr/bin/docker run --rm --name %n \
   --network roq-network \
   --volume /proc:/host/proc:ro \
   --volume /sys:/host/sys:ro \
+  --volume {{ root }}/etc/netdata:/etc/netdata/override:ro \
   {{ docker_registry_prefix | default('') }}{{ netdata.docker.name }}:{{ netdata.docker.tag }}
 
 [Install]

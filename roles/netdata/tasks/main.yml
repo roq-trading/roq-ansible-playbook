@@ -2,6 +2,25 @@
 
 - block:
 
+  - name: create directories
+    file:
+      path: "{{ item }}"
+      state: directory
+    with_items:
+      - "{{ root }}/etc/netdata"
+    notify:
+    - restart netdata
+
+  - name: config overrides
+    template:
+      src: "templates/netdata.conf"
+      dest: "/etc/netdata/netdata.conf"
+      owner: root
+      group: root
+      mode: 0644
+    notify:
+    - restart netdata
+
   - name: pull docker image
     docker_image:
       name: "{{ docker_registry_prefix | default('') }}{{ netdata.docker.name }}"

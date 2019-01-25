@@ -1,0 +1,27 @@
+[Unit]
+Description=Pong 1
+After=network-online.target
+
+[Service]
+{% if test_use_docker %}
+TimeoutStartSec=0
+ExecStart=/bin/bash -c '/usr/bin/docker run --rm --name %n -i \
+  --network roq-network \
+  --volume {{ root }}/var/tmp:/var/tmp \
+  --volume {{ root }}/var/lib/roq:/var/lib/roq \
+  --env ROQ_v={{ test_config.logging.verbosity | default(0) }} \
+  {{ docker_registry_prefix | default('') }}{{ test_config.docker.name }}:{{ test_config.version }} \
+  ping \
+  --gateways "femas=test:1234@/var/tmp/femas.sock" \
+  --output-file "{{ root }}/var/lib/roq/femas_$$(date +%%Y-%%m-%%d).csv"'
+{% else %}
+User={{ roq_user if roq_user is defined else ansible_user_id }}
+Group={{ roq_user if roq_user is defined else ansible_user_id }}
+Restart=on-abnormal
+UMask=0000
+WorkingDirectory={{ root }}/var/run/roq
+ExecStart={{ root }}/usr/local/bin/roq-pong-1.sh
+{% endif %}
+
+[Install]
+WantedBy=multi-user.target

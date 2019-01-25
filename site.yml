@@ -40,7 +40,11 @@
   roles:
     - toolchain
 
-- hosts: trading
+- hosts: roq-test
+  roles:
+    - roq-test
+
+- hosts: roq-samples
   roles:
     - roq-samples
 

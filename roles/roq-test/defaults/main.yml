@@ -1,0 +1,12 @@
+---
+
+test_use_docker: true
+
+test_defaults:
+  version: "{{ roq_test.docker.tag }}"
+  docker:
+    name: "{{ roq_test.docker.name }}"
+  cpu: {}
+  logging:
+    use_log_dir: false
+    verbosity: 0

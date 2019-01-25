@@ -23,6 +23,7 @@ ExecStart=/usr/bin/docker run --rm --name %n -i \
 {% if 'web' in groups %}
   --volume {{ root }}/etc/letsencrypt:/etc/letsencrypt:ro \
 {% endif %}
+  --volume {{ root }}/var/tmp:/metrics \
   {{ docker_registry_prefix | default('') }}{{ nginx.docker.name }}:{{ nginx.docker.tag }}
 
 [Install]

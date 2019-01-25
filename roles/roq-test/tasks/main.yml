@@ -1,0 +1,90 @@
+---
+
+- name: detect owner
+  set_fact:
+    user: "{{ user if roq_user is defined else ansible_user_id }}"
+  tags:
+    - roq-test
+
+- name: combine configuration with defaults
+  set_fact:
+    test_config: '{{ test_defaults | combine(test | default({})) }}'
+  tags:
+    - roq-test
+
+- block:
+
+  - name: create required directories
+    file:
+      path: "{{ root }}/{{ item }}"
+      state: directory
+      owner: "{{ user }}"
+      # group: "{{ user }}"
+      mode: 0770
+    with_items:
+      - "/var/lib/roq"
+      - "/var/log/roq"
+      - "/var/run/roq"
+      - "/var/run/roq/test"
+
+  - name: create run script
+    template:
+      src: "templates/{{ item }}"
+      dest: "{{ root }}/usr/local/bin/{{ item }}"
+      owner: "{{ user }}"
+      # group: "{{ user }}"
+      mode: 0750
+    with_items:
+      - "roq-ping-1.sh"
+      - "roq-ping-2.sh"
+      - "roq-pong-1.sh"
+      - "roq-pong-2.sh"
+
+  - name: install the roq-test conda package
+    shell: "{{ root }}/miniconda/bin/conda install -y -n base roq-test2{{ '' if test_config.version == 'latest' else '==%s'|format(test_config.version) }}"
+  
+  become: "{{ 'true' if become_user is defined else 'false' }}"
+  tags:
+    - roq-test
+
+##############
+### SERVER ###
+##############
+
+- block:
+
+  - name: docker pull images
+    docker_image:
+      name: "{{ docker_registry_prefix | default('') }}{{ test_config.docker.name }}"
+      tag: "{{ test_config.version }}"
+      force: true
+      http_timeout: 600
+
+  - name: define list of systemd units
+    set_fact:
+      systemd_units:
+      - 'roq-ping-1.service'
+      - 'roq-ping-2.service'
+      - 'roq-pong-1.service'
+      - 'roq-pong-2.service'
+
+  - name: create systemd units
+    template:
+      src: "templates/{{ item }}"
+      dest: "/etc/systemd/system/{{ item }}"
+      owner: root
+      group: root
+      mode: 0644
+    with_items: "{{ systemd_units }}"
+
+  - name: enable systemd units
+    systemd:
+      name: "{{ item }}"
+      enabled: false
+      daemon_reload: true
+    with_items: "{{ systemd_units }}"
+
+  when: "'roq-test' in group_names"
+  become: "{{ 'true' if become_user is defined else 'false' }}"
+  tags:
+    - roq-test

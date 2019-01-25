@@ -103,6 +103,11 @@ nginx:
     name: "library/nginx"
     tag: "latest"
 
+roq_test:
+  docker:
+    name: "roqtrading/roq-test2"
+    tag: "latest"
+
 roq_samples:
   docker:
     name: "roqtrading/roq-samples"
