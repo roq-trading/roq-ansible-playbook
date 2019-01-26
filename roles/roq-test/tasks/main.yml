@@ -27,19 +27,23 @@
       - "/var/run/roq"
       - "/var/run/roq/test"
 
-  - name: create run script
+  - name: create ping run scripts
     template:
-      src: "templates/{{ item }}"
-      dest: "{{ root }}/usr/local/bin/{{ item }}"
+      src: "templates/roq-ping.sh"
+      dest: "{{ root }}/usr/local/bin/roq-ping-{{ item }}.sh"
       owner: "{{ user }}"
       # group: "{{ user }}"
       mode: 0750
-    with_items:
-      - "roq-ping-1.sh"
-      - "roq-ping-2.sh"
-      - "roq-pong-1.sh"
-      - "roq-pong-2.sh"
+    with_sequence: 1-2
 
+  - name: create pong run scripts
+    template:
+      src: "templates/roq-pong.sh"
+      dest: "{{ root }}/usr/local/bin/roq-pong-{{ item }}.sh"
+      owner: "{{ user }}"
+      # group: "{{ user }}"
+      mode: 0750
+    with_sequence: 1-2
   - name: install the roq-test conda package
     shell: "{{ root }}/miniconda/bin/conda install -y -n base roq-test2{{ '' if test_config.version == 'latest' else '==%s'|format(test_config.version) }}"
   
@@ -68,14 +72,32 @@
       - 'roq-pong-1.service'
       - 'roq-pong-2.service'
 
-  - name: create systemd units
+#  - name: create systemd units
+#    template:
+#      src: "templates/{{ item }}"
+#      dest: "/etc/systemd/system/{{ item }}"
+#      owner: root
+#      group: root
+#      mode: 0644
+#    with_items: "{{ systemd_units }}"
+
+  - name: create ping systemd units
     template:
-      src: "templates/{{ item }}"
-      dest: "/etc/systemd/system/{{ item }}"
-      owner: root
-      group: root
-      mode: 0644
-    with_items: "{{ systemd_units }}"
+      src: "templates/roq-ping.service"
+      dest: "{{ root }}/usr/local/bin/roq-ping-{{ item }}.service"
+      owner: "{{ user }}"
+      # group: "{{ user }}"
+      mode: 0750
+    with_sequence: 1-2
+
+  - name: create pong systemd units
+    template:
+      src: "templates/roq-pong.service"
+      dest: "{{ root }}/usr/local/bin/roq-pong-{{ item }}.service"
+      owner: "{{ user }}"
+      # group: "{{ user }}"
+      mode: 0750
+    with_sequence: 1-2
 
   - name: enable systemd units
     systemd:

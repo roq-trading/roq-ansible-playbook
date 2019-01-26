@@ -30,8 +30,8 @@ scrape_configs:
     honor_labels: true
     static_configs:
       - targets: ['netdata.service:{{ netdata.port }}']
-
 {% if 'roq-femas' in groups %}
+
   - job_name: 'roq_femas'
     scrape_interval: 5s
     static_configs:
@@ -41,8 +41,8 @@ scrape_configs:
       - targets: ['roq-femas-unix-to-tcp.service:{{ roq_femas.metrics.port }}']
 {% endif %}
 {% endif %}
-
 {% if 'roq-datafeed' in groups %}
+
   - job_name: 'roq_datafeed'
     scrape_interval: 5s
     static_configs:
@@ -52,21 +52,25 @@ scrape_configs:
       - targets: ['roq-datafeed-unix-to-tcp.service:{{ roq_datafeed.metrics.port }}']
 {% endif %}
 {% endif %}
-
 {% if 'roq-test' in groups %}
-  - job_name: 'roq-ping-1'
-    metrics_path: '/metrics/roq-ping-1'
-    params:
-      format: [ prometheus ]
-    honor_labels: true
-    static_configs:
-      - targets: ['nginx.service:80']
+{% for i in range(1, 3) %}
 
-  - job_name: 'roq-ping-2'
-    metrics_path: '/metrics/roq-ping-2'
+  - job_name: 'server-{{ i }}'
+    metrics_path: '/metrics/server-{{ i }}'
     params:
       format: [ prometheus ]
     honor_labels: true
     static_configs:
       - targets: ['nginx.service:80']
+{% endfor %}
+{% for i in range(1, 3) %}
+
+  - job_name: 'client-{{ i }}'
+    metrics_path: '/metrics/client-{{ i }}'
+    params:
+      format: [ prometheus ]
+    honor_labels: true
+    static_configs:
+      - targets: ['nginx.service:80']
+{% endfor %}
 {% endif %}

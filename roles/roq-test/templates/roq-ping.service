@@ -1,0 +1,14 @@
+[Unit]
+Description=Ping {{ item }}
+After=network-online.target
+
+[Service]
+User={{ roq_user if roq_user is defined else ansible_user_id }}
+Group={{ roq_user if roq_user is defined else ansible_user_id }}
+Restart=on-abnormal
+UMask=0000
+WorkingDirectory={{ root }}/var/run/roq
+ExecStart={{ root }}/usr/local/bin/roq-ping-{{ item }}.sh
+
+[Install]
+WantedBy=multi-user.target
