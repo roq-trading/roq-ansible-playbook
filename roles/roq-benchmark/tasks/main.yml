@@ -8,7 +8,7 @@
 
 - name: combine configuration with defaults
   set_fact:
-    test_config: '{{ test_defaults | combine(test | default({})) }}'
+    test_config: '{{ benchmark_defaults | combine(benchmark | default({})) }}'
   tags:
     - roq-benchmark
 

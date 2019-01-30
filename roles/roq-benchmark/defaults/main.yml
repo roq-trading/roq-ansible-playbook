@@ -1,11 +1,11 @@
 ---
 
-test_use_docker: true
+benchmark_use_docker: true
 
-test_defaults:
-  version: "{{ roq_test.docker.tag }}"
+benchmark_defaults:
+  version: "{{ roq_benchmark.docker.tag }}"
   docker:
-    name: "{{ roq_test.docker.name }}"
+    name: "{{ roq_benchmark.docker.name }}"
   cpu: {}
   logging:
     use_log_dir: false

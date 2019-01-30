@@ -103,9 +103,9 @@ nginx:
     name: "library/nginx"
     tag: "latest"
 
-roq_test:
+roq_benchmark:
   docker:
-    name: "roqtrading/roq-test2"
+    name: "roqtrading/roq-benchmark"
     tag: "latest"
 
 roq_samples:
