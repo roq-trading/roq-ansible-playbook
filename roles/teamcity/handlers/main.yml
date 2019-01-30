@@ -2,7 +2,7 @@
 
 - name: restart teamcity
   service:
-    name: "teamcity"
+    name: "teamcity-server"
     state: restarted
     enabled: yes
   become: true

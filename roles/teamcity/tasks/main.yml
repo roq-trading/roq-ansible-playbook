@@ -109,8 +109,8 @@
 
   - name: create systemd service
     template:
-      src: "templates/teamcity.service"
-      dest: "/etc/systemd/system/teamcity.service"
+      src: "templates/teamcity-server.service"
+      dest: "/etc/systemd/system/teamcity-server.service"
       owner: root
       group: root
       mode: 0644
@@ -118,9 +118,9 @@
     notify:
     - restart teamcity
   
-  - name: enable the teamcity service
+  - name: enable the teamcity-server service
     systemd:
-      name: "teamcity.service"
+      name: "teamcity-server.service"
       state: restarted
       enabled: true
       daemon_reload: true
