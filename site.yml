@@ -40,9 +40,9 @@
   roles:
     - toolchain
 
-- hosts: roq-test
+- hosts: roq-benchmark
   roles:
-    - roq-test
+    - roq-benchmark
 
 - hosts: roq-samples
   roles:

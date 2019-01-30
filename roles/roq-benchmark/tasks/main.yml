@@ -4,13 +4,13 @@
   set_fact:
     user: "{{ user if roq_user is defined else ansible_user_id }}"
   tags:
-    - roq-test
+    - roq-benchmark
 
 - name: combine configuration with defaults
   set_fact:
     test_config: '{{ test_defaults | combine(test | default({})) }}'
   tags:
-    - roq-test
+    - roq-benchmark
 
 - block:
 
@@ -44,12 +44,12 @@
       # group: "{{ user }}"
       mode: 0750
     with_sequence: 1-2
-  - name: install the roq-test conda package
-    shell: "{{ root }}/miniconda/bin/conda install -y -n base roq-test2{{ '' if test_config.version == 'latest' else '==%s'|format(test_config.version) }}"
+  - name: install the roq-benchmark conda package
+    shell: "{{ root }}/miniconda/bin/conda install -y -n base roq-benchmark{{ '' if test_config.version == 'latest' else '==%s'|format(test_config.version) }}"
   
   become: "{{ 'true' if become_user is defined else 'false' }}"
   tags:
-    - roq-test
+    - roq-benchmark
 
 ##############
 ### SERVER ###
@@ -106,7 +106,7 @@
       daemon_reload: true
     with_items: "{{ systemd_units }}"
 
-  when: "'roq-test' in group_names"
+  when: "'roq-benchmark' in group_names"
   become: "{{ 'true' if become_user is defined else 'false' }}"
   tags:
-    - roq-test
+    - roq-benchmark
