@@ -84,7 +84,7 @@
   - name: create ping systemd units
     template:
       src: "templates/roq-ping.service"
-      dest: "{{ root }}/usr/local/bin/roq-ping-{{ item }}.service"
+      dest: "{{ root }}/etc/systemd/system/roq-ping-{{ item }}.service"
       owner: "{{ user }}"
       # group: "{{ user }}"
       mode: 0750
@@ -93,7 +93,7 @@
   - name: create pong systemd units
     template:
       src: "templates/roq-pong.service"
-      dest: "{{ root }}/usr/local/bin/roq-pong-{{ item }}.service"
+      dest: "{{ root }}/etc/systemd/system/roq-pong-{{ item }}.service"
       owner: "{{ user }}"
       # group: "{{ user }}"
       mode: 0750
