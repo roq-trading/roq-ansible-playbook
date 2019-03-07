@@ -60,7 +60,6 @@
   roles:
     - redis
     - influxdb
-    - netdata
     - prometheus
     - grafana
 
