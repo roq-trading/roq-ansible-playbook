@@ -92,6 +92,20 @@
       state: started
     with_items: "{{ systemd_timers }}"
 
+# required by psycopg2
+
+  - name: install libpq-dev (debian)
+    apt:
+      name: "libpq-dev"
+      state: present
+    when: ansible_os_family == "Debian"
+
+  - name: install libpq-devel (redhat)
+    yum:
+      name: "libpq-devel"
+      state: present
+    when: ansible_os_family == "RedHat"
+
 # so we later can use ansible's postgresql_db command
 
   - name: pip install psycopg2
