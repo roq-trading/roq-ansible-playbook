@@ -124,13 +124,13 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "decimals": null,
+      "decimals": 1,
       "format": "µs",
       "gauge": {
-        "maxValue": 100,
+        "maxValue": 25,
         "minValue": 0,
         "show": true,
-        "thresholdLabels": false,
+        "thresholdLabels": true,
         "thresholdMarkers": true
       },
       "gridPos": {
@@ -246,7 +246,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "> 2µs (conditional distribution)",
+      "title": "%(>2µs) [10 min]",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -293,13 +293,13 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "decimals": null,
+      "decimals": 1,
       "format": "percent",
       "gauge": {
-        "maxValue": 100,
+        "maxValue": 25,
         "minValue": 0,
         "show": true,
-        "thresholdLabels": false,
+        "thresholdLabels": true,
         "thresholdMarkers": true
       },
       "gridPos": {
@@ -353,8 +353,8 @@
           "refId": "A"
         }
       ],
-      "thresholds": "10,50",
-      "title": "> 2µs (10 min)",
+      "thresholds": "5,10",
+      "title": "%(>2µs) [10 min]",
       "type": "singlestat",
       "valueFontSize": "50%",
       "valueMaps": [
@@ -414,7 +414,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "> 5µs (conditional distribution)",
+      "title": "%(>5µs) [10 min]",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -461,13 +461,13 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "decimals": null,
+      "decimals": 1,
       "format": "percent",
       "gauge": {
-        "maxValue": 100,
+        "maxValue": 5,
         "minValue": 0,
         "show": true,
-        "thresholdLabels": false,
+        "thresholdLabels": true,
         "thresholdMarkers": true
       },
       "gridPos": {
@@ -521,8 +521,8 @@
           "refId": "A"
         }
       ],
-      "thresholds": "1,5",
-      "title": "> 5µs (10 min)",
+      "thresholds": "1,2",
+      "title": "%(>5µs) [10 min]",
       "type": "singlestat",
       "valueFontSize": "50%",
       "valueMaps": [
@@ -641,13 +641,13 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "decimals": null,
+      "decimals": 1,
       "format": "µs",
       "gauge": {
-        "maxValue": 100,
+        "maxValue": 25,
         "minValue": 0,
         "show": true,
-        "thresholdLabels": false,
+        "thresholdLabels": true,
         "thresholdMarkers": true
       },
       "gridPos": {
@@ -763,7 +763,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "> 2µs (conditional distribution)",
+      "title": "%(>2µs) [10 min]",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -810,13 +810,13 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "decimals": null,
+      "decimals": 1,
       "format": "percent",
       "gauge": {
-        "maxValue": 100,
+        "maxValue": 25,
         "minValue": 0,
         "show": true,
-        "thresholdLabels": false,
+        "thresholdLabels": true,
         "thresholdMarkers": true
       },
       "gridPos": {
@@ -871,8 +871,8 @@
           "refId": "A"
         }
       ],
-      "thresholds": "10,50",
-      "title": "> 2µs (10 min)",
+      "thresholds": "5,10",
+      "title": "%(>2µs) [10 min]",
       "type": "singlestat",
       "valueFontSize": "50%",
       "valueMaps": [
@@ -932,7 +932,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "> 5µs (conditional distribution)",
+      "title": "%(>5µs) [10 min]",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -979,13 +979,13 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "decimals": null,
+      "decimals": 1,
       "format": "percent",
       "gauge": {
-        "maxValue": 100,
+        "maxValue": 5,
         "minValue": 0,
         "show": true,
-        "thresholdLabels": false,
+        "thresholdLabels": true,
         "thresholdMarkers": true
       },
       "gridPos": {
@@ -1040,8 +1040,8 @@
           "refId": "A"
         }
       ],
-      "thresholds": "2,5",
-      "title": "> 5µs (10 min)",
+      "thresholds": "1,2",
+      "title": "%(>5µs) [10 min]",
       "type": "singlestat",
       "valueFontSize": "50%",
       "valueMaps": [
@@ -1160,13 +1160,13 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "decimals": null,
+      "decimals": 1,
       "format": "µs",
       "gauge": {
-        "maxValue": 100,
+        "maxValue": 25,
         "minValue": 0,
         "show": true,
-        "thresholdLabels": false,
+        "thresholdLabels": true,
         "thresholdMarkers": true
       },
       "gridPos": {
@@ -1282,7 +1282,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "> 2µs (conditional distribution)",
+      "title": "%(>2µs) [10 min]",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1332,10 +1332,10 @@
       "decimals": null,
       "format": "percent",
       "gauge": {
-        "maxValue": 100,
+        "maxValue": 25,
         "minValue": 0,
         "show": true,
-        "thresholdLabels": false,
+        "thresholdLabels": true,
         "thresholdMarkers": true
       },
       "gridPos": {
@@ -1390,8 +1390,8 @@
           "refId": "A"
         }
       ],
-      "thresholds": "10,50",
-      "title": "> 2µs (10 min)",
+      "thresholds": "5,10",
+      "title": "%(>2µs) [10 min]",
       "type": "singlestat",
       "valueFontSize": "50%",
       "valueMaps": [
@@ -1451,7 +1451,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "> 5µs (conditional distribution)",
+      "title": "%(>5µs) [10 min]",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1498,13 +1498,13 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "decimals": null,
+      "decimals": 1,
       "format": "percent",
       "gauge": {
-        "maxValue": 100,
+        "maxValue": 5,
         "minValue": 0,
         "show": true,
-        "thresholdLabels": false,
+        "thresholdLabels": true,
         "thresholdMarkers": true
       },
       "gridPos": {
@@ -1559,8 +1559,8 @@
           "refId": "A"
         }
       ],
-      "thresholds": "2,5",
-      "title": "> 5µs (10 min)",
+      "thresholds": "1,2",
+      "title": "%(>5µs) [10 min]",
       "type": "singlestat",
       "valueFontSize": "50%",
       "valueMaps": [
@@ -1679,13 +1679,13 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "decimals": null,
+      "decimals": 1,
       "format": "µs",
       "gauge": {
-        "maxValue": 100,
+        "maxValue": 25,
         "minValue": 0,
         "show": true,
-        "thresholdLabels": false,
+        "thresholdLabels": true,
         "thresholdMarkers": true
       },
       "gridPos": {
@@ -1801,7 +1801,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "> 2µs (conditional distribution)",
+      "title": "%(>2µs) [10 min]",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1851,10 +1851,10 @@
       "decimals": null,
       "format": "percent",
       "gauge": {
-        "maxValue": 100,
+        "maxValue": 25,
         "minValue": 0,
         "show": true,
-        "thresholdLabels": false,
+        "thresholdLabels": true,
         "thresholdMarkers": true
       },
       "gridPos": {
@@ -1909,8 +1909,8 @@
           "refId": "A"
         }
       ],
-      "thresholds": "10,50",
-      "title": "> 2µs (10 min)",
+      "thresholds": "5,10",
+      "title": "%(>2µs) [10 min]",
       "type": "singlestat",
       "valueFontSize": "50%",
       "valueMaps": [
@@ -1970,7 +1970,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "> 5µs (conditional distribution)",
+      "title": "%(>5µs) [10 min]",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -2017,13 +2017,13 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "decimals": null,
+      "decimals": 1,
       "format": "percent",
       "gauge": {
-        "maxValue": 100,
+        "maxValue": 5,
         "minValue": 0,
         "show": true,
-        "thresholdLabels": false,
+        "thresholdLabels": true,
         "thresholdMarkers": true
       },
       "gridPos": {
@@ -2078,8 +2078,8 @@
           "refId": "A"
         }
       ],
-      "thresholds": "2,5",
-      "title": "> 5µs (10 min)",
+      "thresholds": "1,2",
+      "title": "%(>5µs) [10 min]",
       "type": "singlestat",
       "valueFontSize": "50%",
       "valueMaps": [
@@ -3115,5 +3115,5 @@
   "timezone": "",
   "title": "roq-benchmark (ping-pong)",
   "uid": "5XjlSilik",
-  "version": 56
+  "version": 57
 }
