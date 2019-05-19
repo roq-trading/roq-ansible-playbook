@@ -30,7 +30,7 @@ scrape_configs:
     honor_labels: true
     static_configs:
       - targets: ['netdata.service:{{ netdata.port }}']
-{% if 'roq-femas' in groups %}
+{% if 'roq_femas' in groups %}
 
   - job_name: 'roq_femas'
     scrape_interval: 5s
@@ -41,7 +41,7 @@ scrape_configs:
       - targets: ['roq-femas-unix-to-tcp.service:{{ roq_femas.metrics.port }}']
 {% endif %}
 {% endif %}
-{% if 'roq-datafeed' in groups %}
+{% if 'roq_datafeed' in groups %}
 
   - job_name: 'roq_datafeed'
     scrape_interval: 5s
@@ -52,7 +52,7 @@ scrape_configs:
       - targets: ['roq-datafeed-unix-to-tcp.service:{{ roq_datafeed.metrics.port }}']
 {% endif %}
 {% endif %}
-{% if 'roq-benchmark' in groups %}
+{% if 'roq_benchmark' in groups %}
 {% for i in range(1, 3) %}
 
   - job_name: 'server-{{ i }}'

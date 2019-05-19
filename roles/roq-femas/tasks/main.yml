@@ -113,7 +113,7 @@
       state: started
     with_items: "{{ systemd_timers }}"
 
-  when: "'roq-femas' in group_names"
+  when: "'roq_femas' in group_names"
   become: "{{ 'true' if become_user is defined else 'false' }}"
   tags:
     - roq-femas
@@ -197,7 +197,7 @@
       daemon_reload: true
     when: roq_11_service.stat.exists
 
-  when: "'roq-femas' in group_names and not femas_use_docker"
+  when: "'roq_femas' in group_names and not femas_use_docker"
   become: "{{ 'true' if become_user is defined else 'false' }}"
   tags:
     - roq-femas

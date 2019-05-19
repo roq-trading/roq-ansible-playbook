@@ -106,7 +106,7 @@
       daemon_reload: true
     with_items: "{{ systemd_units }}"
 
-  when: "'roq-benchmark' in group_names"
+  when: "'roq_benchmark' in group_names"
   become: "{{ 'true' if become_user is defined else 'false' }}"
   tags:
     - roq-benchmark

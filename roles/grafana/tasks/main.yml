@@ -53,7 +53,7 @@
       mode: 0644
     with_items:
       - "femas-gateway.json"
-    when: "'roq-femas' in group_names"
+    when: "'roq_femas' in group_names"
     notify:
     - restart grafana
   
