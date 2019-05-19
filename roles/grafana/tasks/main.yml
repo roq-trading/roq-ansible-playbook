@@ -113,8 +113,10 @@
     docker_image:
       name: "{{ docker_registry_prefix | default('') }}{{ grafana.docker.name }}"
       tag: "{{ grafana.docker.tag }}"
-      force: true
-      http_timeout: 300
+      source: pull
+      force_tag: true
+      build:
+        http_timeout: 300
     notify:
     - restart grafana
   

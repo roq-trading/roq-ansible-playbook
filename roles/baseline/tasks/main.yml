@@ -44,7 +44,7 @@
     apt:
       upgrade: dist
       update_cache: yes
-    when: upgrade_system
+    when: upgrade_system | bool
 
   when: ansible_os_family == "Debian" and become_user is defined
   become: true

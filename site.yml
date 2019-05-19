@@ -40,19 +40,19 @@
   roles:
     - toolchain
 
-- hosts: roq-benchmark
+- hosts: roq_benchmark
   roles:
     - roq-benchmark
 
-- hosts: roq-samples
+- hosts: roq_samples
   roles:
     - roq-samples
 
-- hosts: roq-femas
+- hosts: roq_femas
   roles:
     - roq-femas
 
-- hosts: roq-datafeed
+- hosts: roq_datafeed
   roles:
     - roq-datafeed
 

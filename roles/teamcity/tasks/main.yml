@@ -104,8 +104,10 @@
     docker_image:
       name: "{{ docker_registry_prefix | default('') }}{{ teamcity.docker.name }}"
       tag: "{{ teamcity.docker.tag }}"
-      force: true
-      http_timeout: 300
+      source: pull
+      force_tag: true
+      build:
+        http_timeout: 300
 
   - name: create systemd service
     template:
@@ -178,8 +180,10 @@
     docker_image:
       name: "{{ docker_registry_prefix | default('') }}{{ teamcity_agent.docker.name }}"
       tag: "{{ teamcity_agent.docker.tag }}"
-      force: true
-      http_timeout: 300
+      source: pull
+      force_tag: true
+      build:
+        http_timeout: 300
   
   - name: create dockerfile
     template:
@@ -190,8 +194,11 @@
     docker_image:
       name: "roq-tc-agent"
       tag: "latest"
-      force: true
-      path: "/opt/ansible/docker/roq-tc-agent"
+      source: build
+      force_tag: true
+      build:
+        path: "/opt/ansible/docker/roq-tc-agent"
+        pull: true
 
   - name: create systemd services
     template:
