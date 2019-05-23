@@ -61,8 +61,10 @@
     docker_image:
       name: "{{ docker_registry_prefix | default('') }}{{ test_config.docker.name }}"
       tag: "{{ test_config.version }}"
-      force: true
-      http_timeout: 600
+      source: pull
+      force_tag: true
+      build:
+        http_timeout: 600
 
   - name: define list of systemd units
     set_fact:
