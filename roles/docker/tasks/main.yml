@@ -44,8 +44,8 @@
     notify:
     - restart docker
 
-  when: ansible_os_family == "Debian"
-  become: "{{ 'true' if become_user is defined else 'false' }}"
+  when: ansible_os_family == "Debian" and become_user is defined
+  become: true
   tags:
     - docker
 
@@ -104,8 +104,8 @@
     notify:
     - restart docker
 
-  when: ansible_os_family == "RedHat"
-  become: "{{ 'true' if become_user is defined else 'false' }}"
+  when: ansible_os_family == "RedHat" and become_user is defined
+  become: true
   tags:
     - docker
 
@@ -152,7 +152,8 @@
     shell: "docker network create --driver overlay --attachable roq-network"
     when: roq_network_exists.rc == 1
 
-  become: "{{ 'true' if become_user is defined else 'false' }}"
+  when: become_user is defined
+  become: true
   tags:
     - docker
 

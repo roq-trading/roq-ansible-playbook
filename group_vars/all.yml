@@ -8,7 +8,7 @@ root: "/"
 
 backups: "{{ root }}/var/backups"
 
-roq_conda_channel: "stable"
+roq_conda_channel: "unstable"
 
 redis:
   port: 6379

@@ -12,8 +12,8 @@
         - python-setuptools
         - python-pip
 
-  when: ansible_os_family == "Debian"
-  become: "{{ 'true' if become_user is defined else 'false' }}"
+  when: ansible_os_family == "Debian" and become_user is defined
+  become: true
   tags:
     - python
 
@@ -32,7 +32,7 @@
       name: pip
       state: latest
 
-  when: ansible_os_family == "RedHat"
-  become: "{{ 'true' if become_user is defined else 'false' }}"
+  when: ansible_os_family == "RedHat" and become_user is defined
+  become: true
   tags:
     - python

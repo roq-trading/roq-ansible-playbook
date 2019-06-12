@@ -44,10 +44,11 @@
       # group: "{{ user }}"
       mode: 0750
     with_sequence: 1-2
+
   - name: install the roq-benchmark conda package
     shell: "{{ root }}/miniconda/bin/conda install -y -n base roq-benchmark{{ '' if test_config.version == 'latest' else '==%s'|format(test_config.version) }}"
   
-  become: "{{ 'true' if become_user is defined else 'false' }}"
+  become: become_user is defined
   tags:
     - roq-benchmark
 
@@ -108,7 +109,7 @@
       daemon_reload: true
     with_items: "{{ systemd_units }}"
 
-  when: "'roq_benchmark' in group_names"
-  become: "{{ 'true' if become_user is defined else 'false' }}"
+  when: become_user is defined and 'roq_benchmark' in group_names
+  become: true
   tags:
     - roq-benchmark

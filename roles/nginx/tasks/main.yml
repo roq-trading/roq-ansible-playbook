@@ -70,6 +70,7 @@
       daemon_reload: true
     when: nginx_service.changed
 
-  become: "{{ 'true' if become_user is defined else 'false' }}"
+  when: become_user is defined
+  become: true
   tags:
     - nginx
