@@ -62,7 +62,7 @@
     yum:
       name: '*'
       state: latest
-    when: upgrade_system
+    when: upgrade_system | bool
 
   # TODO(thraneh): use 'ansible_lsb.major_release|int' to get '7'?
   - name: download epel-release-latest

@@ -115,7 +115,6 @@
       name: "psycopg2"
       state: latest
 
-  when: become_user is defined
-  become: true
+  become: "{{ 'true' if become_user is defined else 'false' }}"
   tags:
     - postgres
