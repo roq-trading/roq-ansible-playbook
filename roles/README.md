@@ -8,16 +8,16 @@ in order the roles are listed here.
 > Most tasks are only executed when `become_user` is defined.
 
 * [baseline](baseline/README.md) to update and upgrade the Linux distribution
-* [kernel](kernel/README.md)
+* [kernel](kernel/README.md) to update Linux kernel parameters
 * [chrony](chrony/README.md) to install and enable chrony for NTP (older Linux distributions)
 * [sysstat](sysstat/README.md) to install and enable sysstat tools
-* [sysadmin](sysadmin/README.md)
-* [python](python/README.md)
-* [docker](docker/README.md) to install Docker CE services
+* [sysadmin](sysadmin/README.md) to install useful sysadmin tools
+* [python](python/README.md) to ensure a baseline Python environment
+* [docker](docker/README.md) to install Docker services
 
 ## [web]
 
-* [certbot](certbot/README.md)
+* [certbot](certbot/README.md) to install a Let's Encrypt certificate
 
 ## [secure]
 
@@ -62,10 +62,10 @@ This role automates the installation of the onload drivers.
 
 ## [cicd]
 
-* [gogs](gogs/README.md) to install gogs (a "private" GitHub)
+* [gogs](gogs/README.md) to install gogs (a "private GitHub")
 * [nexus](nexus/README.md) to install Nexus
 * [teamcity](teamcity/README.md) to install TeamCity
 
 ## [all]
 
-* [nginx](nginx/README.md) to install the nginx frontend
+* [nginx](nginx/README.md) to install the nginx front-end

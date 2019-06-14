@@ -1,10 +1,11 @@
 # roq-benchmark
 
-Installs the Roq benchmark suite.
+Installs the Roq Benchmark Suite.
 
 ## Requirements
 
-Add the target host to the `roq_benchmark` group.
+* Conda
+* Docker (optional)
 
 ## Variables
 
@@ -12,8 +13,9 @@ Add the target host to the `roq_benchmark` group.
   * `false` = Conda installation
   * `true` = Docker installation
 
+## Tasks
 
-## TODO
-
-* Install using Docker
-  * How to control affinity?
+* Create directories
+* Create run scripts
+* Install roq-benchmark
+* Create systemd services

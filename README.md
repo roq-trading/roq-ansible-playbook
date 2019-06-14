@@ -16,7 +16,10 @@ The following examples will install the roq-benchmark suite.
 > Defining a `become_user` (typically `root`) will allow the playbook
 > to harden the system for low latency trading.
 
-You can find further details about the playbook [here](roles/README.md).
+
+## Details
+
+The playbook is explained in more details [here](roles/README.md).
 
 
 ## Requirements
