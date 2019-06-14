@@ -11,7 +11,7 @@ An Ansible playbook implementing the reference server configuration described
 
 The following examples will install the roq-benchmark suite.
 
-> The playbook extensively use groups to drive the installation.
+> The playbook extensively uses groups for driving the installation.
 
 > Defining a `become_user` (typically `root`) will allow the playbook
 > to harden the system for low latency trading.
