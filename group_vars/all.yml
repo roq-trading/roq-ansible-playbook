@@ -1,9 +1,5 @@
 ---
 
-### TEMPORARY !!! ###
-femas_use_docker: true
-datafeed_use_docker: false
-
 root: "/"
 
 backups: "{{ root }}/var/backups"
@@ -103,15 +99,7 @@ nginx:
     name: "library/nginx"
     tag: "latest"
 
-roq_benchmark:
-  docker:
-    name: "roqtrading/roq-benchmark"
-    tag: "latest"
-
-roq_samples:
-  docker:
-    name: "roqtrading/roq-samples"
-    tag: "latest"
+# TODO(thraneh): deprecate following
 
 roq_femas:
   metrics:

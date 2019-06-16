@@ -3,7 +3,7 @@
 set -e
 
 # variables
-NAME="server-{{ item }}"
+NAME="simulator"
 
 # activate the conda environment
 source "{{ root }}/miniconda/bin/activate" ""
@@ -12,10 +12,10 @@ source "{{ root }}/miniconda/bin/activate" ""
 export ROQ_v="{{ config.logging.verbosity | default(0) }}"
 
 # launch the application
-"$CONDA_PREFIX/bin/roq-ping" \
+"$CONDA_PREFIX/bin/roq-simulator" \
     --name "$NAME" \
-    --dispatcher-affinity {{ 2 * (item | int - 1) + 1 }} \
-    --market-data-affinity {{ 2 * (item | int - 1) + 2 }} \
+    --dispatcher-affinity 1 \
+    --market-data-affinity 2 \
     --metrics "{{ root }}/var/tmp/${NAME}_metrics.sock" \
     --listen "{{ root }}/var/tmp/$NAME.sock" \
     $@

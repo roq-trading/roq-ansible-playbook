@@ -10,11 +10,8 @@ if [ -e "$CONDA_PREFIX/lib/libtcmalloc.so" ]; then
   export LD_PRELOAD="$CONDA_PREFIX/lib/libtcmalloc.so"
 fi
 
-# define logging parameters
-{% if collector_config.logging.use_log_dir is defined and collector_config.logging.use_log_dir %}
-export ROQ_log_dir="{{ root }}/var/log/roq"
-{% endif %}
-export ROQ_v="{{ collector_config.logging.verbosity | default(0) }}"
+# verbosity (logging)
+export ROQ_v="{{ config.logging.verbosity | default(0) }}"
 
 # launch the application
 "$CONDA_PREFIX/bin/roq-samples-collector" \

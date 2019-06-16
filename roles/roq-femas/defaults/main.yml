@@ -8,7 +8,6 @@ femas_defaults:
     name: "{{ roq_femas.docker.name }}"
   cpu: {}
   logging:
-    use_log_dir: false
     verbosity: 0
   metrics:
     port: "{{ roq_femas.metrics.port }}"

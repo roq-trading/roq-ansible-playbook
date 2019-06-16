@@ -48,6 +48,14 @@
   roles:
     - roq-samples
 
+- hosts: roq_simulator
+  roles:
+    - roq-simulator
+
+- hosts: roq_influxdb
+  roles:
+    - roq-influxdb
+
 - hosts: roq_femas
   roles:
     - roq-femas
@@ -72,7 +80,3 @@
 - hosts: all
   roles:
     - nginx
-
-- hosts: reboot
-  roles:
-    - reboot

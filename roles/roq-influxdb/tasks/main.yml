@@ -4,52 +4,52 @@
   set_fact:
     user: "{{ user if roq_user is defined else ansible_user_id }}"
   tags:
-    - roq-samples
+    - roq-influxdb
 
 - name: combine user configuration with defaults
   set_fact:
     config: >
-        {{ roq_samples_defaults | combine(roq_samples | default({}), recursive=True) }}
+        {{ roq_influxdb_defaults | combine(roq_influxdb | default({}), recursive=True) }}
   tags:
-    - roq-samples
+    - roq-influxdb
 
 - name: configuration (debug)
   debug:
     var: config
     verbosity: 1
   tags:
-    - roq-samples
+    - roq-influxdb
 
 - block:
 
   - name: create required directories
     file:
-      path: "{{ item }}"
+      path: "{{ root }}/{{ item }}"
       state: directory
       owner: "{{ user }}"
       # group: "{{ user }}"
       mode: 0770
     with_items:
-      - "{{ root }}/var/lib/roq"
-      - "{{ root }}/var/log/roq"
-      - "{{ root }}/var/run/roq"
-      - "{{ root }}/var/run/roq/collector"
+      - "/var/lib/roq"
+      - "/var/log/roq"
+      - "/var/run/roq"
 
-  - name: create run script
+  - name: create run scripts
     template:
-      src: "templates/roq-collector.sh"
-      dest: "{{ root }}/usr/local/bin/roq-collector.sh"
+      src: "templates/roq-influxdb.sh"
+      dest: "{{ root }}/usr/local/bin/roq-influxdb.sh"
       owner: "{{ user }}"
       # group: "{{ user }}"
       mode: 0750
 
-  - name: install the roq-samples conda package
+  - name: install the roq-influxdb conda package
     shell: "{{ root }}/miniconda/bin/conda install -y -n base \
-      roq-samples{{ '' if config.version == 'latest' else '==%s'|format(config.version) }}"
+      roq-influxdb{{ '' if config.version == 'latest' else '==%s'|format(config.version) }}"
   
+  when: "'roq_influxdb' in group_names"
   become: "{{ 'true' if become_user is defined else 'false' }}"
   tags:
-    - roq-samples
+    - roq-influxdb
 
 ##############
 ### SERVER ###
@@ -65,24 +65,12 @@
       force_tag: true
       build:
         http_timeout: 600
-      when: config.docker.use
-
-  - name: define list of systemd services
-    set_fact:
-      systemd_services:
-      - 'roq-collector.service'
-      - 'roq-collector-stop.service'
-
-  - name: define list of systemd timers
-    set_fact:
-      systemd_timers:
-      - 'roq-collector.timer'
-      - 'roq-collector-stop.timer'
+    when: config.docker.use
 
   - name: define list of systemd units
     set_fact:
       systemd_units:
-      - '{{ systemd_services }} + {{ systemd_timers }}'
+      - 'roq-influxdb.service'
 
   - name: create systemd units
     template:
@@ -96,17 +84,11 @@
   - name: enable systemd units
     systemd:
       name: "{{ item }}"
-      enabled: true
+      enabled: false
       daemon_reload: true
     with_items: "{{ systemd_units }}"
 
-  - name: start systemd timers
-    systemd:
-      name: "{{ item }}"
-      state: started
-    with_items: "{{ systemd_timers }}"
-
-  when: "'trading' in group_names"
-  become: "{{ 'true' if become_user is defined else 'false' }}"
+  when: become_user is defined and 'roq_influxdb' in group_names
+  become: true
   tags:
-    - roq-samples
+    - roq-influxdb

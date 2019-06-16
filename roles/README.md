@@ -1,7 +1,7 @@
 # roles
 
-Depending on group membership, the following will be executed
-in order the roles are listed here.
+Depending on **group membership**, the following will be executed
+in order listed here.
 
 ## [all]
 
@@ -48,6 +48,14 @@ This role automates the installation of the onload drivers.
 ## [roq\_benchmark]
 
 * [roq-benchmark](roq-benchmark/README.md) to install the Roq Benchmark Suite.
+
+## [roq\_simulator]
+
+* [roq-simulator](roq-simulator/README.md) to install the Roq Simulator
+
+## [roq\_influxdb]
+
+* [roq-influxdb](roq-influxdb/README.md) to install the Roq InfluxDB Feed Handler
 
 
 ## ...

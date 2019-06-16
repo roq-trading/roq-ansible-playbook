@@ -1,5 +1,5 @@
 [Unit]
-Description=Roq Pong {{ item }}
+Description=Roq InfluxDB Feed Handler
 After=network-online.target
 
 [Service]
@@ -16,7 +16,7 @@ ExecStart=/usr/bin/docker run --rm --name %n -i \
 UMask=0000
 User={{ roq_user if roq_user is defined else ansible_user_id }}
 Group={{ roq_user if roq_user is defined else ansible_user_id }}
-ExecStart={{ root }}/usr/local/bin/roq-pong-{{ item }}.sh --create-orders {{ item | int }}
+ExecStart={{ root }}/usr/local/bin/roq-influxdb.sh
 Restart=on-abnormal
 {% endif %}
 

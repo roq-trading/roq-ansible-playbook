@@ -9,6 +9,7 @@
       - "{{ conda_cxx }}"
       - "cmake"
     
+  when: "'dev' in group_names"
   become: "{{ 'true' if become_user is defined else 'false' }}"
   tags:
     - toolchain

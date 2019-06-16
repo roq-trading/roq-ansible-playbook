@@ -1,10 +1,10 @@
 ---
 
-roq_benchmark_defaults:
+roq_simulator_defaults:
   version: "latest"
   docker:
     use: false
-    name: "roqtrading/roq-benchmark"
+    name: "roqtrading/roq-simulator"
   cpu: {}
   logging:
     verbosity: 0

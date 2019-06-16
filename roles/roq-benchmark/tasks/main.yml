@@ -6,9 +6,17 @@
   tags:
     - roq-benchmark
 
-- name: combine configuration with defaults
+- name: combine user configuration with defaults
   set_fact:
-    test_config: '{{ benchmark_defaults | combine(benchmark | default({})) }}'
+    config: >
+        {{ roq_benchmark_defaults | combine(roq_benchmark | default({}), recursive=True) }}
+  tags:
+    - roq-benchmark
+
+- name: configuration (debug)
+  debug:
+    var: config
+    verbosity: 1
   tags:
     - roq-benchmark
 
@@ -25,7 +33,14 @@
       - "/var/lib/roq"
       - "/var/log/roq"
       - "/var/run/roq"
-      - "/var/run/roq/test"
+
+  - name: create benchmark run script
+    template:
+      src: "templates/roq-benchmark.sh"
+      dest: "{{ root }}/usr/local/bin/roq-benchmark.sh"
+      owner: "{{ user }}"
+      # group: "{{ user }}"
+      mode: 0750
 
   - name: create ping run scripts
     template:
@@ -46,9 +61,11 @@
     with_sequence: 1-2
 
   - name: install the roq-benchmark conda package
-    shell: "{{ root }}/miniconda/bin/conda install -y -n base roq-benchmark{{ '' if test_config.version == 'latest' else '==%s'|format(test_config.version) }}"
+    shell: "{{ root }}/miniconda/bin/conda install -y -n base \
+      roq-benchmark{{ '' if config.version == 'latest' else '==%s'|format(config.version) }}"
   
-  become: "{{ become_user is defined }}"
+  when: "'roq_benchmark' in group_names"
+  become: "{{ 'true' if become_user is defined else 'false' }}"
   tags:
     - roq-benchmark
 
@@ -60,12 +77,13 @@
 
   - name: docker pull images
     docker_image:
-      name: "{{ docker_registry_prefix | default('') }}{{ test_config.docker.name }}"
-      tag: "{{ test_config.version }}"
+      name: "{{ docker_registry_prefix | default('') }}{{ config.docker.name }}"
+      tag: "{{ config.version }}"
       source: pull
       force_tag: true
       build:
         http_timeout: 600
+    when: config.docker.use
 
   - name: define list of systemd units
     set_fact:
@@ -75,6 +93,7 @@
       - 'roq-pong-1.service'
       - 'roq-pong-2.service'
 
+# FIXME(thraneh): templates require {{ item }}
 #  - name: create systemd units
 #    template:
 #      src: "templates/{{ item }}"

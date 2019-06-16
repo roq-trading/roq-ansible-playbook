@@ -1,10 +1,10 @@
 ---
 
-roq_benchmark_defaults:
+roq_influxdb_defaults:
   version: "latest"
   docker:
     use: false
-    name: "roqtrading/roq-benchmark"
+    name: "roqtrading/roq-influxdb"
   cpu: {}
   logging:
     verbosity: 0
