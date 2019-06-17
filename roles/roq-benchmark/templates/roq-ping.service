@@ -10,12 +10,13 @@ ExecStart=/usr/bin/docker run --rm --name %n -i \
   --network roq-network \
   --volume {{ root }}/var/tmp:/var/tmp \
   --env ROQ_v={{ config.logging.verbosity | default(0) }} \
-  --env FLAGS_metrics="/var/tmp/ping_{{ item }}_metrics.sock" \
-  --env FLAGS_listen="/var/tmp/ping_{{ item }}.sock" \
-  --env FLAGS_dispatcher_affinity="{{ 2 * (item | int - 1) + 1 }}" \
-  --env FLAGS_market_data_affinity="{{ 2 * (item | int - 1) + 2 }}" \
   {{ docker_registry_prefix | default('') }}{{ config.docker.name }}:{{ config.version }} \
-  "/miniconda/bin/roq-ping"
+  "/miniconda/bin/roq-ping" \
+  --name="roq_ping_{{ item }}" \
+  --metrics="/var/tmp/roq-ping-{{ item }}_metrics.sock" \
+  --listen="/var/tmp/roq-ping-{{ item }}.sock" \
+  --dispatcher-affinity="{{ 2 * (item | int - 1) + 1 }}" \
+  --market-data-affinity="{{ 2 * (item | int - 1) + 2 }}"
 {% else %}
 UMask=0000
 User={{ roq_user if roq_user is defined else ansible_user_id }}
