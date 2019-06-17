@@ -1,11 +1,5 @@
 ---
 
-- name: detect owner
-  set_fact:
-    user: "{{ user if roq_user is defined else ansible_user_id }}"
-  tags:
-    - redis
-
 - block:
 
   - name: create directories
@@ -60,7 +54,7 @@
     template:
       src: "templates/redis-cli"
       dest: "{{ root }}/usr/local/bin/redis-cli"
-      owner: "{{ user }}"
+      owner: "{{ roq_user }}"
       mode: 0750
 
   become: "{{ 'true' if become_user is defined else 'false' }}"

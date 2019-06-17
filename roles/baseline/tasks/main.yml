@@ -28,7 +28,6 @@
   tags:
     - baseline
 
-
 ##############
 ### DEBIAN ###
 ##############
@@ -50,7 +49,6 @@
   become: true
   tags:
     - baseline
-
 
 ##############
 ### REDHAT ###

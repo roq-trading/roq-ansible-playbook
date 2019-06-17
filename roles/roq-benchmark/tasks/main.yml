@@ -1,11 +1,5 @@
 ---
 
-- name: detect owner
-  set_fact:
-    user: "{{ user if roq_user is defined else ansible_user_id }}"
-  tags:
-    - roq-benchmark
-
 - name: combine user configuration with defaults
   set_fact:
     config: >
@@ -26,8 +20,8 @@
     file:
       path: "{{ root }}/{{ item }}"
       state: directory
-      owner: "{{ user }}"
-      # group: "{{ user }}"
+      owner: "{{ roq_user }}"
+      # group: "{{ roq_user }}"
       mode: 0770
     with_items:
       - "/var/lib/roq"
@@ -38,16 +32,16 @@
     template:
       src: "templates/roq-benchmark.sh"
       dest: "{{ root }}/usr/local/bin/roq-benchmark.sh"
-      owner: "{{ user }}"
-      # group: "{{ user }}"
+      owner: "{{ roq_user }}"
+      # group: "{{ roq_user }}"
       mode: 0750
 
   - name: create ping run scripts
     template:
       src: "templates/roq-ping.sh"
       dest: "{{ root }}/usr/local/bin/roq-ping-{{ item }}.sh"
-      owner: "{{ user }}"
-      # group: "{{ user }}"
+      owner: "{{ roq_user }}"
+      # group: "{{ roq_user }}"
       mode: 0750
     with_sequence: 1-2
 
@@ -55,9 +49,27 @@
     template:
       src: "templates/roq-pong.sh"
       dest: "{{ root }}/usr/local/bin/roq-pong-{{ item }}.sh"
-      owner: "{{ user }}"
-      # group: "{{ user }}"
+      owner: "{{ roq_user }}"
+      # group: "{{ roq_user }}"
       mode: 0750
+    with_sequence: 1-2
+
+  - name: create ping flags
+    template:
+      src: "templates/roq-ping.flags"
+      dest: "{{ root }}/etc/roq/roq-ping-{{ item }}.flags"
+      owner: "{{ roq_user }}"
+      # group: "{{ roq_user }}"
+      mode: 0640
+    with_sequence: 1-2
+
+  - name: create pong flags
+    template:
+      src: "templates/roq-pong.flags"
+      dest: "{{ root }}/etc/roq/roq-pong-{{ item }}.flags"
+      owner: "{{ roq_user }}"
+      # group: "{{ roq_user }}"
+      mode: 0640
     with_sequence: 1-2
 
   - name: install the roq-benchmark conda package
@@ -107,8 +119,8 @@
     template:
       src: "templates/roq-ping.service"
       dest: "{{ root }}/etc/systemd/system/roq-ping-{{ item }}.service"
-      owner: "{{ user }}"
-      # group: "{{ user }}"
+      owner: "{{ roq_user }}"
+      # group: "{{ roq_user }}"
       mode: 0750
     with_sequence: 1-2
 
@@ -116,8 +128,8 @@
     template:
       src: "templates/roq-pong.service"
       dest: "{{ root }}/etc/systemd/system/roq-pong-{{ item }}.service"
-      owner: "{{ user }}"
-      # group: "{{ user }}"
+      owner: "{{ roq_user }}"
+      # group: "{{ roq_user }}"
       mode: 0750
     with_sequence: 1-2
 

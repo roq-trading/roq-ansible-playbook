@@ -4,6 +4,8 @@ root: "/"
 
 backups: "{{ root }}/var/backups"
 
+roq_user: "{{ ansible_user_id }}"
+
 roq_conda_channel: "unstable"
 
 roq_version: "latest"

@@ -1,11 +1,5 @@
 ---
 
-- name: detect owner
-  set_fact:
-    user: "{{ user if roq_user is defined else ansible_user_id }}"
-  tags:
-    - postgres
-
 - block:
 
   - name: create directories
@@ -48,7 +42,7 @@
     template:
       src: "templates/{{ item }}"
       dest: "{{ root }}/usr/local/bin/{{ item }}"
-      owner: "{{ user }}"
+      owner: "{{ roq_user }}"
       mode: 0750
     with_items:
       - "psql"

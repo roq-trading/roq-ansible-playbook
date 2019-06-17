@@ -8,20 +8,20 @@ TimeoutStartSec=0
 ExecStart=/usr/bin/docker run --rm --name %n -i \
   --network host \
   --network roq-network \
+  --volume {{ root }}/etc/roq:/etc/roq \
   --volume {{ root }}/var/tmp:/var/tmp \
-  --env ROQ_v={{ config.logging.verbosity | default(0) }} \
-  --env FLAGS_dispatcher_affinity="1" \
-  --env FLAGS_market-data_affinity="2" \
-  --env FLAGS_metrics="/var/tmp/roq-simulator_metrics.sock" \
-  --env FLAGS_listen="/var/tmp/roq-simulator.sock" \
+  --env ROQ_v={{ config.logging.verbosity }} \
   {{ docker_registry_prefix | default('') }}{{ config.docker.name }}:{{ config.version }} \
-  "/miniconda/bin/roq-simulator"
+  /miniconda/bin/roq-simulator \
+  --flagfile "/etc/roq/roq-simulator.flags"
 {% else %}
+User={{ roq_user }}
+Group={{ roq_user }}
 UMask=0000
-User={{ roq_user if roq_user is defined else ansible_user_id }}
-Group={{ roq_user if roq_user is defined else ansible_user_id }}
-ExecStart={{ root }}/usr/local/bin/roq-simulator.sh
 Restart=on-abnormal
+Environment="ROQ_v={{ config.logging.verbosity }}"
+ExecStart={{ root }}/miniconda/bin/roq-simulator \
+  --flagfile "{{ root }}/etc/roq/roq-simulator.flags"
 {% endif %}
 
 [Install]

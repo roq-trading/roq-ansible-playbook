@@ -1,22 +1,27 @@
 ---
 
-- name: detect owner
-  set_fact:
-    user: "{{ user if roq_user is defined else ansible_user_id }}"
-  tags:
-    - roq-simulator
+##############
+### ALWAYS ###
+##############
 
 - name: combine user configuration with defaults
   set_fact:
-    config: >
+    roq_simulator_config: >
         {{ roq_simulator_defaults | combine(roq_simulator | default({}), recursive=True) }}
-  tags:
-    - roq-simulator
+    cacheable: true
 
-- name: configuration (debug)
+- name: debug
   debug:
-    var: config
+    var: roq_simulator_config
     verbosity: 1
+
+###########
+### ... ###
+###########
+
+- name: shorter variable name for config (convenience)
+  set_fact:
+    config: "{{ roq_simulator_config }}"
   tags:
     - roq-simulator
 
@@ -26,20 +31,32 @@
     file:
       path: "{{ root }}/{{ item }}"
       state: directory
-      owner: "{{ user }}"
-      # group: "{{ user }}"
+      owner: "{{ roq_user }}"
+      # group: "{{ roq_user }}"
       mode: 0770
     with_items:
+      - "/etc/roq"
       - "/var/lib/roq"
       - "/var/log/roq"
       - "/var/run/roq"
+
+  - name: create config
+    template:
+      src: "templates/{{ item }}"
+      dest: "{{ root }}/etc/roq/{{ item }}"
+      owner: "{{ roq_user }}"
+      # group: "{{ roq_user }}"
+      mode: 0640
+    with_items:
+      - "roq-simulator.flags"
+      - "roq-simulator.conf"
 
   - name: create run scripts
     template:
       src: "templates/roq-simulator.sh"
       dest: "{{ root }}/usr/local/bin/roq-simulator.sh"
-      owner: "{{ user }}"
-      # group: "{{ user }}"
+      owner: "{{ roq_user }}"
+      # group: "{{ roq_user }}"
       mode: 0750
 
   - name: install the roq-simulator conda package

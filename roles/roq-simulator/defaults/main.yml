@@ -8,3 +8,4 @@ roq_simulator_defaults:
   cpu: {}
   logging:
     verbosity: 0
+  export: true

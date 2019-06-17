@@ -1,0 +1,5 @@
+# Copyright (c) 2017-2019, Hans Erik Thrane
+
+--name=roq_pong_{{ item }}
+--metrics=/var/tmp/roq-pong-{{ item }}_metrics.sock
+--dispatcher-affinity={{ (item | int - 1) + 5 }}

@@ -24,8 +24,8 @@ ExecStart=/usr/bin/docker run --rm --name %n -i \
 {% endfor %}
   {{ docker_registry_prefix | default('') }}{{ femas_config.docker.name }}:{{ femas_config.version }}
 {% else %}
-User={{ roq_user if roq_user is defined else ansible_user_id }}
-Group={{ roq_user if roq_user is defined else ansible_user_id }}
+User={{ roq_user }}
+Group={{ roq_user }}
 Restart=on-abnormal
 UMask=0000
 {% if femas_config.cpu.affinity is defined %}

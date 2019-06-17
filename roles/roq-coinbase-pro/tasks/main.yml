@@ -1,11 +1,5 @@
 ---
 
-- name: detect owner
-  set_fact:
-    user: "{{ user if roq_user is defined else ansible_user_id }}"
-  tags:
-    - roq-coinbase-pro
-
 - name: combine user configuration with defaults
   set_fact:
     config: >
@@ -26,8 +20,8 @@
     file:
       path: "{{ root }}/{{ item }}"
       state: directory
-      owner: "{{ user }}"
-      # group: "{{ user }}"
+      owner: "{{ roq_user }}"
+      # group: "{{ roq_user }}"
       mode: 0770
     with_items:
       - "/var/lib/roq"
@@ -38,8 +32,8 @@
     template:
       src: "templates/roq-coinbase-pro.sh"
       dest: "{{ root }}/usr/local/bin/roq-coinbase-pro.sh"
-      owner: "{{ user }}"
-      # group: "{{ user }}"
+      owner: "{{ roq_user }}"
+      # group: "{{ roq_user }}"
       mode: 0750
 
   - name: install the roq-coinbase-pro conda package

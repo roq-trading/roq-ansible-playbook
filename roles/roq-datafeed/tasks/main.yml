@@ -1,11 +1,5 @@
 ---
 
-- name: detect owner
-  set_fact:
-    user: "{{ user if roq_user is defined else ansible_user_id }}"
-  tags:
-    - roq-datafeed
-
 - name: combine configuration with defaults
   set_fact:
     datafeed_config: '{{ datafeed_defaults | combine(datafeed | default({})) }}'
@@ -18,8 +12,8 @@
     file:
       path: "{{ item }}"
       state: directory
-      owner: "{{ user }}"
-      group: "{{ user }}"
+      owner: "{{ roq_user }}"
+      group: "{{ roq_user }}"
       mode: 0770
     with_items:
       - "{{ root }}/etc/roq"
@@ -32,15 +26,15 @@
     template:
       src: "templates/roq-datafeed.sh"
       dest: "{{ root }}/usr/local/bin/roq-datafeed.sh"
-      owner: "{{ user }}"
+      owner: "{{ roq_user }}"
       mode: 0750
   
   - name: create config files
     template:
       src: "templates/{{ item }}"
       dest: "{{ root }}/etc/roq/datafeed/{{ item }}"
-      owner: "{{ user }}"
-      group: "{{ user }}"
+      owner: "{{ roq_user }}"
+      group: "{{ roq_user }}"
       mode: 0640
     with_items:
       - "master.conf"

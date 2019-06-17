@@ -21,8 +21,8 @@ ExecStart=/bin/bash -c '/usr/bin/docker run --rm --name %n -i \
   --gateways "femas=test:1234@/var/tmp/femas.sock" \
   --output-file "{{ root }}/var/lib/roq/femas_$$(date +%%Y-%%m-%%d).csv"'
 {% else %}
-User={{ roq_user if roq_user is defined else ansible_user_id }}
-Group={{ roq_user if roq_user is defined else ansible_user_id }}
+User={{ roq_user }}
+Group={{ roq_user }}
 Restart=on-abnormal
 UMask=0002
 {% if config.cpu.affinity is defined %}
