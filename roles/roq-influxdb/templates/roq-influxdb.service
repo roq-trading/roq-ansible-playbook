@@ -10,8 +10,12 @@ ExecStart=/usr/bin/docker run --rm --name %n -i \
   --network roq-network \
   --volume {{ root }}/var/tmp:/var/tmp \
   --env ROQ_v={{ config.logging.verbosity | default(0) }} \
-  --env FLAGS_monitor_port={{ config.metrics.port }} \
-  {{ docker_registry_prefix | default('') }}{{ config.docker.name }}:{{ config.version }}
+  --env FLAGS_dispatcher_affinity="1" \
+  --env FLAGS_market-data_affinity="2" \
+  --env FLAGS_metrics="/var/tmp/roq-influxdb_metrics.sock" \
+  --env FLAGS_listen="/var/tmp/roq-influxdb.sock" \
+  {{ docker_registry_prefix | default('') }}{{ config.docker.name }}:{{ config.version }} \
+  "/miniconda/bin/roq-influxdb"
 {% else %}
 UMask=0000
 User={{ roq_user if roq_user is defined else ansible_user_id }}

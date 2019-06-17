@@ -10,8 +10,12 @@ ExecStart=/usr/bin/docker run --rm --name %n -i \
   --network roq-network \
   --volume {{ root }}/var/tmp:/var/tmp \
   --env ROQ_v={{ config.logging.verbosity | default(0) }} \
-  --env FLAGS_monitor_port={{ config.metrics.port }} \
-  {{ docker_registry_prefix | default('') }}{{ config.docker.name }}:{{ config.version }}
+  --env FLAGS_metrics="{{ root }}/var/tmp/roq-pong-{{ item }}_metrics.sock" \
+  --env FLAGS_dispatcher_affinity="{{ (item | int - 1) + 5 }}" \
+  {{ docker_registry_prefix | default('') }}{{ config.docker.name }}:{{ config.version }} \
+  "/miniconda/bin/roq-pong" \
+  "/var/tmp/roq-ping-1.sock" \
+  "/var/tmp/roq-ping-2.sock"
 {% else %}
 UMask=0000
 User={{ roq_user if roq_user is defined else ansible_user_id }}
