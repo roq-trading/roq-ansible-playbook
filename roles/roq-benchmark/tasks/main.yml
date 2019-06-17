@@ -24,6 +24,7 @@
       # group: "{{ roq_user }}"
       mode: 0770
     with_items:
+      - "/etc/roq"
       - "/var/lib/roq"
       - "/var/log/roq"
       - "/var/run/roq"
