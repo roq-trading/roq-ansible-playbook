@@ -6,6 +6,10 @@ backups: "{{ root }}/var/backups"
 
 roq_conda_channel: "unstable"
 
+roq_version: "latest"
+
+roq_use_docker: false
+
 redis:
   port: 6379
   docker:

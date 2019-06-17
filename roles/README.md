@@ -57,8 +57,13 @@ This role automates the installation of the onload drivers.
 
 * [roq-influxdb](roq-influxdb/README.md) to install the Roq InfluxDB Feed Handler
 
+## [roq\_coinbase\_pro]
 
-## ...
+* [roq-coinbase-pro](roq-coinbase-pro/README.md) to install the Roq Coinbase/Pro Gateway
+
+## [roq\_deribit]
+
+* [roq-deribit](roq-deribit/README.md) to install the Roq Coinbase/Pro Gateway
 
 
 ## [trading]

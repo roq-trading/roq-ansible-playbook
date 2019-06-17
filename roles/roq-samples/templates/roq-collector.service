@@ -4,7 +4,7 @@ After=network-online.target
 Conflicts=roq-collector-stop.service
 
 [Service]
-{% if collector_use_docker %}
+{% if config.docker.use %}
 TimeoutStartSec=0
 ExecStart=/bin/bash -c '/usr/bin/docker run --rm --name %n -i \
 {% if config.cpu.affinity is defined %}

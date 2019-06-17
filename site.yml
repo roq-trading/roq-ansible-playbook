@@ -56,6 +56,14 @@
   roles:
     - roq-influxdb
 
+- hosts: roq_coinbase_pro
+  roles:
+    - roq-coinbase-pro
+
+- hosts: roq_deribit
+  roles:
+    - roq-deribit
+
 - hosts: roq_femas
   roles:
     - roq-femas

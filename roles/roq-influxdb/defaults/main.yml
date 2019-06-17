@@ -1,9 +1,9 @@
 ---
 
 roq_influxdb_defaults:
-  version: "latest"
+  version: "{{ roq_version }}"
   docker:
-    use: false
+    use: "{{ roq_use_docker }}"
     name: "roqtrading/roq-influxdb"
   cpu: {}
   logging:

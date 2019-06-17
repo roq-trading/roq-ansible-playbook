@@ -1,0 +1,24 @@
+[Unit]
+Description=Roq Deribit Gateway
+After=network-online.target
+
+[Service]
+{% if config.docker.use %}
+TimeoutStartSec=0
+ExecStart=/usr/bin/docker run --rm --name %n -i \
+  --network host \
+  --network roq-network \
+  --volume {{ root }}/var/tmp:/var/tmp \
+  --env ROQ_v={{ config.logging.verbosity | default(0) }} \
+  --env FLAGS_monitor_port={{ config.metrics.port }} \
+  {{ docker_registry_prefix | default('') }}{{ config.docker.name }}:{{ config.version }}
+{% else %}
+UMask=0000
+User={{ roq_user if roq_user is defined else ansible_user_id }}
+Group={{ roq_user if roq_user is defined else ansible_user_id }}
+ExecStart={{ root }}/usr/local/bin/roq-deribit.sh
+Restart=on-abnormal
+{% endif %}
+
+[Install]
+WantedBy=multi-user.target

@@ -1,9 +1,9 @@
 ---
 
 roq_samples_defaults:
-  version: "latest"
+  version: "{{ roq_version }}"
   docker:
-    use: false
+    use: "{{ roq_use_docker }}"
     name: "roqtrading/roq-samples"
   cpu: {}
   logging:
