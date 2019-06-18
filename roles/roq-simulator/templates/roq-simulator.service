@@ -21,7 +21,8 @@ UMask=0000
 Restart=on-abnormal
 Environment="ROQ_v={{ config.logging.verbosity }}"
 ExecStart={{ root }}/miniconda/bin/roq-simulator \
-  --flagfile "{{ root }}/etc/roq/roq-simulator.flags"
+  --flagfile "{{ root }}/etc/roq/roq-simulator.flags" \
+  "{{ root }}/miniconda/share/roq/data/USTP_Multi_20180223.csv"
 {% endif %}
 
 [Install]

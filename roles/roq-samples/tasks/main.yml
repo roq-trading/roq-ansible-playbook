@@ -2,15 +2,22 @@
 
 - name: combine user configuration with defaults
   set_fact:
-    config: >
+    roq_samples_config: >
         {{ roq_samples_defaults | combine(roq_samples | default({}), recursive=True) }}
+    cacheable: true
   tags:
-    - roq-samples
+    - always
 
 - name: configuration (debug)
   debug:
     var: config
     verbosity: 1
+  tags:
+    - always
+
+- name: shorter variable name for config
+  set_fact:
+    config: "{{ roq_samples_config }}"
   tags:
     - roq-samples
 

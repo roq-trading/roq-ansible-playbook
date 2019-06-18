@@ -74,3 +74,43 @@ scrape_configs:
       - targets: ['nginx.service:80']
 {% endfor %}
 {% endif %}
+{% if 'roq_simulator' in groups %}
+
+  - job_name: 'roq-simulator'
+    metrics_path: '/metrics/roq-simulator'
+    params:
+      format: [ prometheus ]
+    honor_labels: true
+    static_configs:
+      - targets: ['nginx.service:80']
+{% endif %}
+{% if 'roq_influxdb' in groups %}
+
+  - job_name: 'roq-influxdb'
+    metrics_path: '/metrics/roq-influxdb'
+    params:
+      format: [ prometheus ]
+    honor_labels: true
+    static_configs:
+      - targets: ['nginx.service:80']
+{% endif %}
+{% if 'roq_coinbase_pro' in groups %}
+
+  - job_name: 'roq-coinbase-pro'
+    metrics_path: '/metrics/roq-coinbase-pro'
+    params:
+      format: [ prometheus ]
+    honor_labels: true
+    static_configs:
+      - targets: ['nginx.service:80']
+{% endif %}
+{% if 'roq_deribit' in groups %}
+
+  - job_name: 'roq-deribit'
+    metrics_path: '/metrics/roq-deribit'
+    params:
+      format: [ prometheus ]
+    honor_labels: true
+    static_configs:
+      - targets: ['nginx.service:80']
+{% endif %}
