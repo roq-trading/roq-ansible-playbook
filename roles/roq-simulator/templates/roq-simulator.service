@@ -13,7 +13,7 @@ ExecStart=/usr/bin/docker run --rm --name %n -i \
   --env ROQ_v={{ config.logging.verbosity }} \
   {{ docker_registry_prefix | default('') }}{{ config.docker.name }}:{{ config.version }} \
   /miniconda/bin/roq-simulator \
-  --flagfile "/etc/roq/roq-simulator.flags"
+  --flagfile "/etc/roq/roq-simulator.gflags"
 {% else %}
 User={{ roq_user }}
 Group={{ roq_user }}
@@ -21,7 +21,7 @@ UMask=0000
 Restart=on-abnormal
 Environment="ROQ_v={{ config.logging.verbosity }}"
 ExecStart={{ root }}/miniconda/bin/roq-simulator \
-  --flagfile "{{ root }}/etc/roq/roq-simulator.flags" \
+  --flagfile "{{ root }}/etc/roq/roq-simulator.gflags" \
   "{{ root }}/miniconda/share/roq/data/USTP_Multi_20180223.csv"
 {% endif %}
 

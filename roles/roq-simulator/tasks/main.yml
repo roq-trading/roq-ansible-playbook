@@ -44,7 +44,7 @@
       # group: "{{ roq_user }}"
       mode: 0640
     with_items:
-      - "roq-simulator.flags"
+      - "roq-simulator.gflags"
       - "roq-simulator.conf"
 
   - name: create run scripts

@@ -64,8 +64,8 @@
 
   - name: create ping flags
     template:
-      src: "templates/roq-ping.flags"
-      dest: "{{ root }}/etc/roq/roq-ping-{{ item }}.flags"
+      src: "templates/roq-ping.gflags"
+      dest: "{{ root }}/etc/roq/roq-ping-{{ item }}.gflags"
       owner: "{{ roq_user }}"
       # group: "{{ roq_user }}"
       mode: 0640
@@ -73,8 +73,8 @@
 
   - name: create pong flags
     template:
-      src: "templates/roq-pong.flags"
-      dest: "{{ root }}/etc/roq/roq-pong-{{ item }}.flags"
+      src: "templates/roq-pong.gflags"
+      dest: "{{ root }}/etc/roq/roq-pong-{{ item }}.gflags"
       owner: "{{ roq_user }}"
       # group: "{{ roq_user }}"
       mode: 0640

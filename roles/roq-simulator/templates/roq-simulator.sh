@@ -2,7 +2,7 @@
 
 set -e
 
-ARGS="${@:-"--flagfile={{ root }}/etc/roq/roq-simulator.flags"}"
+ARGS="${@:-"--flagfile={{ root }}/etc/roq/roq-simulator.gflags"}"
 
 # FIXME(thraneh): need a better approach to discovering files, e.g. now-1bday
 "{{ root }}/miniconda/bin/roq-simulator" "$ARGS" \
