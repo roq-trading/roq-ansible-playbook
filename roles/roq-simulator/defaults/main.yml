@@ -11,3 +11,4 @@ roq_simulator_defaults:
   collect:
     size: 134217728
     path: "{{ root }}/var/tmp/roq-simulator.roq"
+    sync_freq_secs: 600

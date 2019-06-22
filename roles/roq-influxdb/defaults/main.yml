@@ -10,4 +10,4 @@ roq_influxdb_defaults:
     verbosity: 0
   influxdb:
     database: "roq"
-    freq_secs: "60"
+    freq_secs: 60

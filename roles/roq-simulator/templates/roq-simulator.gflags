@@ -16,6 +16,7 @@
 
 --feed-size={{ config.collect.size }}
 --feed-path={{ config.collect.path }}
+--feed-sync-freq-secs={{ config.collect.sync_freq_secs }}
 {% endif %}
 
 --generator-type=csv-old

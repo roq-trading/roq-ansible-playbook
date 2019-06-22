@@ -17,6 +17,9 @@ Installs the Roq InfluxDB Feed Handler.
   * `cpu` ()
   * `logging` (dict)
     * `verbosity` (int)
+  * `influxdb` (dict)
+    * `database` (string)
+    * `freq_secs` (int)
 
 ## Tasks
 

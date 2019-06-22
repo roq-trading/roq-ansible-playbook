@@ -9,4 +9,4 @@
 --influxdb-port=8086
 --influxdb-database={{ config.influxdb.database }}
 
---influxdb-freq-secs {{ config.influxdb.freq_secs }}
+--influxdb-freq-secs={{ config.influxdb.freq_secs }}

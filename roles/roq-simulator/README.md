@@ -20,6 +20,7 @@ Installs Roq Simulator.
   * `collect` (dict)
     * `size` (int)
     * `path` (string)
+    * `sync_freq_secs` (int)
 
 
 ## Tasks
