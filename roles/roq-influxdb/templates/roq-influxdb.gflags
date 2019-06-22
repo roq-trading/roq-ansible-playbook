@@ -1,0 +1,12 @@
+# Copyright (c) 2017-2019, Hans Erik Thrane
+
+--name=roq-influxdb
+
+--metrics=/var/tmp/roq-influxdb_metrics.sock
+--listen=/var/tmp/roq-influxdb.sock
+
+--influxdb-host=localhost
+--influxdb-port=8086
+--influxdb-database={{ config.influxdb.database }}
+
+--influxdb-freq-secs {{ config.influxdb.freq_secs }}

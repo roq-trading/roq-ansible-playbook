@@ -9,9 +9,18 @@ Installs Roq Simulator.
 
 ## Variables
 
-* `simulator_use_docker` (bool)
-  * `false` = Conda installation
-  * `true` = Docker installation
+* `roq_simulator` (dict)
+  * `version` (string)
+  * `docker` (dict)
+    * `use` (bool)
+    * `name` (string)
+  * `cpu` ()
+  * `logging` (dict)
+    * `verbosity` (int)
+  * `collect` (dict)
+    * `size` (int)
+    * `path` (string)
+
 
 ## Tasks
 

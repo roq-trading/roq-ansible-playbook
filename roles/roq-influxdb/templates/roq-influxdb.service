@@ -9,19 +9,20 @@ ExecStart=/usr/bin/docker run --rm --name %n -i \
   --network host \
   --network roq-network \
   --volume {{ root }}/var/tmp:/var/tmp \
-  --env ROQ_v={{ config.logging.verbosity | default(0) }} \
-  --env FLAGS_dispatcher_affinity="1" \
-  --env FLAGS_market-data_affinity="2" \
-  --env FLAGS_metrics="/var/tmp/roq-influxdb_metrics.sock" \
-  --env FLAGS_listen="/var/tmp/roq-influxdb.sock" \
+  --env ROQ_v={{ config.logging.verbosity }} \
   {{ docker_registry_prefix | default('') }}{{ config.docker.name }}:{{ config.version }} \
-  "/miniconda/bin/roq-influxdb"
+  "/miniconda/bin/roq-influxdb" \
+  --flagfile "/etc/roq/roq-influxdb.gflags" \
+  "/var/tmp/roq-influxdb.roq"
 {% else %}
-UMask=0000
 User={{ roq_user }}
 Group={{ roq_user }}
-ExecStart={{ root }}/usr/local/bin/roq-influxdb.sh
+UMask=0000
 Restart=on-abnormal
+Environment="ROQ_v={{ config.logging.verbosity }}"
+ExecStart={{ root }}/miniconda/bin/roq-influxdb \
+  --flagfile "{{ root }}/etc/roq/roq-influxdb.gflags" \
+  "{{ root }}/var/tmp/roq-simulator.roq"
 {% endif %}
 
 [Install]

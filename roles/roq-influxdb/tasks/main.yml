@@ -35,6 +35,17 @@
       - "/var/log/roq"
       - "/var/run/roq"
 
+  - name: create config
+    template:
+      src: "templates/{{ item }}"
+      dest: "{{ root }}/etc/roq/{{ item }}"
+      owner: "{{ roq_user }}"
+      # group: "{{ roq_user }}"
+      mode: 0640
+    with_items:
+      - "roq-influxdb.gflags"
+
+
   - name: create run scripts
     template:
       src: "templates/roq-influxdb.sh"

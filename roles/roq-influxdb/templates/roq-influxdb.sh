@@ -2,20 +2,7 @@
 
 set -e
 
-# variables
-NAME="influxdb"
+ARGS="${@:-"--flagfile={{ root }}/etc/roq/roq-influxdb.gflags"}"
 
-# activate the conda environment
-source "{{ root }}/miniconda/bin/activate" ""
-
-# verbosity (logging)
-export ROQ_v="{{ config.logging.verbosity | default(0) }}"
-
-# launch the application
-"$CONDA_PREFIX/bin/roq-influxdb" \
-    --name "$NAME" \
-    --dispatcher-affinity 1 \
-    --market-data-affinity 2 \
-    --metrics "{{ root }}/var/tmp/${NAME}_metrics.sock" \
-    --listen "{{ root }}/var/tmp/$NAME.sock" \
-    $@
+"{{ root }}/miniconda/bin/roq-influxdb" "$ARGS" \
+  "{{ root }}/var/tmp/roq-simulator.roq"

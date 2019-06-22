@@ -8,3 +8,6 @@ roq_influxdb_defaults:
   cpu: {}
   logging:
     verbosity: 0
+  influxdb:
+    database: "roq"
+    freq_secs: "60"

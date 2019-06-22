@@ -9,9 +9,14 @@ Installs the Roq InfluxDB Feed Handler.
 
 ## Variables
 
-* `influxdb_use_docker` (bool)
-  * `false` = Conda installation
-  * `true` = Docker installation
+* `roq_influxdb` (dict)
+  * `version` (string)
+  * `docker` (dict)
+    * `use` (bool)
+    * `name` (string)
+  * `cpu` ()
+  * `logging` (dict)
+    * `verbosity` (int)
 
 ## Tasks
 

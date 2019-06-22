@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
-sudo docker run \
+sudo docker exec \
   --interactive \
   --tty \
-  --rm \
-  influxdb \
-  influx -host influxdb.service
+  influxdb.service \
+  influx

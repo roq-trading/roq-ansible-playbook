@@ -8,4 +8,6 @@ roq_simulator_defaults:
   cpu: {}
   logging:
     verbosity: 0
-  export: true
+  collect:
+    size: 134217728
+    path: "{{ root }}/var/tmp/roq-simulator.roq"
