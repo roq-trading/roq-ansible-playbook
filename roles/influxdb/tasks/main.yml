@@ -57,11 +57,18 @@
 
 - block:
 
-  - name: create the roq database
+  - name: create database
     uri:
       url: "http://localhost:8086/query"
       method: POST
       body: "q=CREATE DATABASE roq"
+      status_code: 200
+
+  - name: create retention policy
+    uri:
+      url: "http://localhost:8086/query"
+      method: POST
+      body: "q=CREATE RETENTION POLICY \"week\" ON \"roq\" DURATION 1w REPLICATION 1"
       status_code: 200
 
   tags:
