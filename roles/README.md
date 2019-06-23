@@ -44,6 +44,10 @@ This role automates the installation of the onload drivers.
 
 * [toolchain](toolchain/README.md) to install the Conda build toolchain
 
+## [trading]
+
+* [redis](redis/README.md) to install Redis
+* [influxdb](influxdb/README.md) to install InfluxDB
 
 ## [roq\_benchmark]
 
@@ -68,8 +72,6 @@ This role automates the installation of the onload drivers.
 
 ## [trading]
 
-* [redis](redis/README.md) to install Redis
-* [influxdb](influxdb/README.md) to install InfluxDB
 * [prometheus](prometheus/README.md) to install Prometheus
 * [grafana](grafana/README.md) to install Grafana
 

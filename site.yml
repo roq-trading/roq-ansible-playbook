@@ -40,6 +40,11 @@
   roles:
     - toolchain
 
+- hosts: trading
+  roles:
+    - redis
+    - influxdb
+
 - hosts: roq_benchmark
   roles:
     - roq-benchmark
@@ -74,8 +79,6 @@
 
 - hosts: trading
   roles:
-    - redis
-    - influxdb
     - prometheus
     - grafana
 

@@ -57,6 +57,20 @@
   - name: install the roq-influxdb conda package
     shell: "{{ root }}/miniconda/bin/conda install -y -n base \
       roq-influxdb{{ '' if config.version == 'latest' else '==%s'|format(config.version) }}"
+
+  - name: create influxdb database
+    uri:
+      url: "http://localhost:8086/query"
+      method: POST
+      body: "q=CREATE DATABASE {{ config.influxdb.database }}"
+      status_code: 200
+
+  - name: create influxdb retention policy
+    uri:
+      url: "http://localhost:8086/query"
+      method: POST
+      body: "q=CREATE RETENTION POLICY \"week\" ON \"{{ config.influxdb.database }}\" DURATION 1w REPLICATION 1"
+      status_code: 200
   
   when: "'roq_influxdb' in group_names"
   become: "{{ 'true' if become_user is defined else 'false' }}"
