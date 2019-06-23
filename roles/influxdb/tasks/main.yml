@@ -52,3 +52,17 @@
   become: "{{ 'true' if become_user is defined else 'false' }}"
   tags:
     - influxdb
+
+# should be run *after* influxdb has been start
+
+- block:
+
+  - name: create the roq database
+    uri:
+      url: "http://localhost:8086/query"
+      method: POST
+      body: "q=CREATE DATABASE roq"
+      status_code: 200
+
+  tags:
+    - influxdb
