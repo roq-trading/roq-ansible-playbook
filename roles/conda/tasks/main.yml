@@ -33,9 +33,6 @@
       dest: "{{ root }}/miniconda/.condarc"
       mode: 0644
   
-  - name: update miniconda to latest
-    shell: "{{ root }}/miniconda/bin/conda update -y -n root conda"
-  
   become: "{{ 'true' if become_user is defined else 'false' }}"
   tags:
     - conda
