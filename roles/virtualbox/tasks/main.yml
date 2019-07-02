@@ -6,7 +6,7 @@
 
 - block:
 
-  - name: install tools
+  - name: install
     apt:
       name: virtualbox
       state: present
@@ -22,9 +22,19 @@
 
 - block:
 
-  - name: install tools
+  - name: install dkms
     yum:
-      name: virtualbox
+      name: dkms
+      state: present
+
+  - name: download repo
+    get_url:
+      url: "http://download.virtualbox.org/virtualbox/rpm/rhel/virtualbox.repo"
+      dest: "/etc/yum.repos.d/virtualbox.repo"
+
+  - name: install
+    yum:
+      name: "VirtualBox-{{ virtualbox_defaults.version }}"
       state: present
 
   when: ansible_os_family == "RedHat" and become_user is defined

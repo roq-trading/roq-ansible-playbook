@@ -6,7 +6,7 @@
 
 - block:
 
-  - name: install tools
+  - name: install
     apt:
       name: vagrant
       state: present
@@ -22,9 +22,9 @@
 
 - block:
 
-  - name: install tools
+  - name: install
     yum:
-      name: vagrant
+      name: "https://releases.hashicorp.com/vagrant/{{ vagrant_defaults.version }}/vagrant_{{ vagrant_defaults.version }}_x86_64.rpm"
       state: present
 
   when: ansible_os_family == "RedHat" and become_user is defined
