@@ -6,7 +6,7 @@
       assert:
         that: "ansible_version.full is version_compare('2.7', '>=')"
         msg: >
-          "You should as an updated version of Ansible, version 2.7 or higher is required"
+          "You should use an updated version of Ansible, version 2.7 or higher is required"
 
 - hosts: all
   roles:
@@ -39,6 +39,8 @@
 - hosts: dev
   roles:
     - toolchain
+    - virtualbox
+    - vagrant
 
 - hosts: trading
   roles:

@@ -1,0 +1,33 @@
+---
+
+##############
+### DEBIAN ###
+##############
+
+- block:
+
+  - name: install tools
+    apt:
+      name: vagrant
+      state: present
+
+  when: ansible_os_family == "Debian" and become_user is defined
+  become: true
+  tags:
+    - vagrant
+  
+##############
+### REDHAT ###
+##############
+
+- block:
+
+  - name: install tools
+    yum:
+      name: vagrant
+      state: present
+
+  when: ansible_os_family == "RedHat" and become_user is defined
+  become: true
+  tags:
+    - vagrant
