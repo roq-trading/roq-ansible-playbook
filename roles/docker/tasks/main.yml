@@ -4,6 +4,25 @@
 ### DEBIAN ###
 ##############
 
+# https://stackoverflow.com/questions/42695004/importerror-no-module-named-ssl-match-hostname-when-importing-the-docker-sdk-fo
+
+- block:
+
+  - name: pip remove backports.ssl-match-hostname (compatibility)
+    pip:
+      name: "backports.ssl-match-hostname"
+      state: absent
+
+  - name: install python-backports.ssl-match-hostname (compatibility)
+    apt:
+      name: "python-backports.ssl-match-hostname"
+      state: present
+
+  when: ansible_os_family == "Debian" and ansible_distribution_release == "buster" and become_user is defined
+  become: true
+  tags:
+    - docker
+
 # https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04
 
 - block:
