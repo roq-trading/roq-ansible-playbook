@@ -16,7 +16,6 @@ ExecStart=/usr/bin/docker run --rm --name %n -i \
   --publish 80:{{ nginx.http_port }} \
   --publish 443:{{ nginx.https_port }} \
   --security-opt apparmor=unconfined \
-  --network host \
   --network roq-network \
   --volume {{ root }}/etc/nginx/conf.d:/etc/nginx/conf.d:ro \
   --volume {{ root }}/var/www:/var/www:ro \
