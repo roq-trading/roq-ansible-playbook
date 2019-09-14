@@ -14,7 +14,6 @@ ExecStartPre=-/usr/bin/docker rm %n
 ExecStart=/usr/bin/docker run --rm --name %n -i \
   --user 0:0 \
   --security-opt apparmor=unconfined \
-  --network host \
   --network roq-network \
   --volume /run/systemd:/run/systemd \
   {{ docker_registry_prefix | default('') }}{{ node_exporter.docker.name }}:{{ node_exporter.docker.tag }} \
