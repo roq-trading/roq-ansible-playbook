@@ -26,6 +26,7 @@
       name: "{{ docker_registry_prefix | default('') }}{{ netdata.docker.name }}"
       tag: "{{ netdata.docker.tag }}"
       source: pull
+      force_source: true
       force_tag: true
       build:
         http_timeout: 300

@@ -63,6 +63,7 @@
       name: "{{ docker_registry_prefix | default('') }}{{ datafeed_config.docker.name }}"
       tag: "{{ datafeed_config.version }}"
       source: pull
+      force_source: true
       force_tag: true
       build:
         http_timeout: 600
@@ -138,7 +139,8 @@
     docker_image:
       name: "roq-datafeed-bridge"
       tag: "latest"
-      force: true
+      force_source: true
+      force_tag: true
       path: "/opt/ansible/docker/roq-datafeed-bridge"
 
   - name: define list of systemd units needed to bridge tcp into docker network

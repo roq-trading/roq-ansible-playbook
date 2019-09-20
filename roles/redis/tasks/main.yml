@@ -29,6 +29,7 @@
       name: "{{ docker_registry_prefix | default('') }}{{ redis.docker.name }}"
       tag: "{{ redis.docker.tag }}"
       source: pull
+      force_source: true
       force_tag: true
       build:
         http_timeout: 300

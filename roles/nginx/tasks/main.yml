@@ -47,9 +47,12 @@
       name: "{{ docker_registry_prefix | default('') }}{{ nginx.docker.name }}"
       tag: "{{ nginx.docker.tag }}"
       source: pull
+      force_source: true
       force_tag: true
       build:
         http_timeout: 300
+    notify:
+      - restart nginx
   
   - name: create systemd service
     template:

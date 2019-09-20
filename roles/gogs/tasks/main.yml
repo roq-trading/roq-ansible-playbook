@@ -70,6 +70,7 @@
       name: "{{ docker_registry_prefix | default('') }}{{ gogs.docker.name }}"
       tag: "{{ gogs.docker.tag }}"
       source: pull
+      force_source: true
       force_tag: true
       build:
         http_timeout: 300

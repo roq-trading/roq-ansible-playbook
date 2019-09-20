@@ -19,9 +19,12 @@
       name: "{{ docker_registry_prefix | default('') }}{{ influxdb.docker.name }}"
       tag: "{{ influxdb.docker.tag }}"
       source: pull
+      force_source: true
       force_tag: true
       build:
         http_timeout: 300
+    notify:
+    - restart influxdb
 
   - name: create systemd service
     template:

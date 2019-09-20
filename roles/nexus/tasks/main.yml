@@ -17,9 +17,12 @@
       name: "{{ docker_registry_prefix | default('') }}{{ nexus.docker.name }}"
       tag: "{{ nexus.docker.tag }}"
       source: pull
+      force_source: true
       force_tag: true
       build:
         http_timeout: 300
+    notify:
+    - restart nexus
 
   - name: create systemd service
     template:
