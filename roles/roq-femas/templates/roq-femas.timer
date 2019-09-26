@@ -1,8 +1,0 @@
-[Unit]
-Description=Femas start timer
-
-[Timer]
-OnCalendar=Mon-Fri *-*-* 09:14:00
-
-[Install]
-WantedBy=multi-user.target

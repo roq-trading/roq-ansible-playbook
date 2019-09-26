@@ -45,7 +45,7 @@
       mode: 0640
     with_items:
       - "roq-simulator.gflags"
-      - "roq-simulator.conf"
+      - "roq-simulator.toml"
 
   - name: create run scripts
     template:

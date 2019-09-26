@@ -1,0 +1,8 @@
+--name={{ config.name }}
+--fix-uri={{ config.net.fix }}
+--ws-uri={{ config.net.ws }}
+--rest-uri={{ config.net.rest }}
+--metrics={{ root }}/var/tmp/roq-coinbase-pro_metrics.sock
+--listen={{ root }}/var/tmp/roq-coinbase-pro.sock
+--config-file={{ root }}/etc/roq/roq-coinbase-pro.toml
+--dispatcher-affinity={{ config.cpu.affinity[0] }}

@@ -71,14 +71,6 @@
   roles:
     - roq-deribit
 
-- hosts: roq_femas
-  roles:
-    - roq-femas
-
-- hosts: roq_datafeed
-  roles:
-    - roq-datafeed
-
 - hosts: trading
   roles:
     - prometheus

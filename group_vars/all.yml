@@ -105,20 +105,18 @@ nginx:
     name: "library/nginx"
     tag: "latest"
 
-# TODO(thraneh): deprecate following
-
-roq_femas:
+roq_deribit:
   metrics:
     port: 12345
-    sock: "femas.metrics.sock"
+    sock: "deribit.metrics.sock"
   docker:
-    name: "roqtrading/roq-femas"
+    name: "roqtrading/roq-deribit"
     tag: "latest"
 
-roq_datafeed:
+roq_coinbase_pro:
   metrics:
-    port: 12346
-    sock: "datafeed.metrics.sock"
+    port: 12345
+    sock: "coinbase_pro.metrics.sock"
   docker:
-    name: "roqtrading/roq-datafeed"
+    name: "roqtrading/roq-coinbase-pro"
     tag: "latest"

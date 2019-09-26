@@ -2,6 +2,6 @@
 
 set -e
 
-ARGS="${@:-"--flagfile={{ root }}/etc/roq/roq-ping-{{ item }}.flags"}"
+ARGS="${@:-"--flagfile={{ root }}/etc/roq/roq-ping-{{ item }}.gflags"}"
 
 "{{ root }}/miniconda/bin/roq-ping" "$ARGS"

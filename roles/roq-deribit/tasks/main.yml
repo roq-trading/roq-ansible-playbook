@@ -31,9 +31,21 @@
       # group: "{{ roq_user }}"
       mode: 0770
     with_items:
+      - "/etc/roq"
       - "/var/lib/roq"
       - "/var/log/roq"
       - "/var/run/roq"
+
+  - name: create config files
+    template:
+      src: "templates/{{ item | basename }}"
+      dest: "{{ root }}/etc/roq/{{ item }}"
+      owner: "{{ roq_user }}"
+      group: "{{ roq_user }}"
+      mode: 0644
+    with_items:
+      - "roq-deribit.toml"
+      - "roq-deribit.gflags"
 
   - name: create run scripts
     template:

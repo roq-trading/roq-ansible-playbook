@@ -8,30 +8,30 @@ groups:
       severity: critical
     annotations:
       summary: Heartbeat
-{% if 'roq_femas' in groups %}
-  - alert: roq_femas_connection
-    expr: roq_femas_connection_delay > 10
+{% if 'roq_deribit' in groups %}
+  - alert: roq_deribit_connection
+    expr: roq_deribit_connection_delay > 10
     for: 2m
     labels:
       severity: critical
     annotations:
       summary: Gateway is unable to connect to broker or exchange.
-  - alert: roq_femas_client_connections
-    expr: rate(roq_femas_client_connections[30s]) > 0.1
+  - alert: roq_deribit_client_connections
+    expr: rate(roq_deribit_client_connections[30s]) > 0.1
     for: 2m
     labels:
       severity: critical
     annotations:
       summary: Possibly bouncing client(s).
-  - alert: roq_femas_order_action_error
-    expr: rate(roq_femas_order_action_error[10s]) > 0.1
+  - alert: roq_deribit_order_action_error
+    expr: rate(roq_deribit_order_action_error[10s]) > 0.1
     for: 1m
     labels:
       severity: critical
     annotations:
       summary: Possibly mis-behaving client(s).
-  - alert: roq_femas_order_action_error_new
-    expr: increase(roq_femasapi_order_action_error[1m]) > 0
+  - alert: roq_deribit_order_action_error_new
+    expr: increase(roq_deribitapi_order_action_error[1m]) > 0
     for: 1m
     labels:
       severity: critical

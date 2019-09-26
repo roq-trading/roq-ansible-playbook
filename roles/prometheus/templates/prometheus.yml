@@ -30,28 +30,6 @@ scrape_configs:
     honor_labels: true
     static_configs:
       - targets: ['netdata.service:{{ netdata.port }}']
-{% if 'roq_femas' in groups %}
-
-  - job_name: 'roq_femas'
-    scrape_interval: 5s
-    static_configs:
-{% if femas_use_docker %}
-      - targets: ['roq-femas.service:{{ roq_femas.metrics.port }}']
-{% else %}
-      - targets: ['roq-femas-unix-to-tcp.service:{{ roq_femas.metrics.port }}']
-{% endif %}
-{% endif %}
-{% if 'roq_datafeed' in groups %}
-
-  - job_name: 'roq_datafeed'
-    scrape_interval: 5s
-    static_configs:
-{% if datafeed_use_docker %}
-      - targets: ['roq-datafeed.service:{{ roq_datafeed.metrics.port }}']
-{% else %}
-      - targets: ['roq-datafeed-unix-to-tcp.service:{{ roq_datafeed.metrics.port }}']
-{% endif %}
-{% endif %}
 {% if 'roq_benchmark' in groups %}
 {% for i in range(1, 3) %}
 
