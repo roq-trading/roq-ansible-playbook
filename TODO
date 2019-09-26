@@ -1,3 +1,0 @@
-grafana
-can't provision dashboards because the prometheus datasource isn't linked automatically
-https://github.com/grafana/grafana/issues/10786
