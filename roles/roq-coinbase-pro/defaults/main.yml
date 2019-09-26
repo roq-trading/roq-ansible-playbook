@@ -8,3 +8,7 @@ roq_coinbase_pro_defaults:
   cpu: {}
   logging:
     verbosity: 0
+  collect:
+    size: 0
+    path: "{{ root }}/var/tmp/roq-coinbase-pro.roq"
+    sync_freq_secs: 600

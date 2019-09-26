@@ -9,6 +9,6 @@ roq_simulator_defaults:
   logging:
     verbosity: 0
   collect:
-    size: 134217728
+    size: 0
     path: "{{ root }}/var/tmp/roq-simulator.roq"
     sync_freq_secs: 600

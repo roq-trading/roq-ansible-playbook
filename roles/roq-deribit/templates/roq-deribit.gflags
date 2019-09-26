@@ -8,4 +8,9 @@
 {% if 'network' in config.cpu_affinity %}
 --network-affinity={{ config.cpu_affinity.network }}
 {% endif %}
+{% if config.collect.size | int > 0 %}
+--feed-size={{ config.collect.size }}
+--feed-path={{ config.collect.path }}
+--feed-sync-freq-secs={{ config.collect.sync_freq_secs }}
+{% endif %}
 --fix-uri={{ config.net.fix }}

@@ -9,7 +9,7 @@
 --simulator-affinity={{ config.cpu_affinity.simulator }}
 {% endif %}
 --buffer-size=266240
-{% if config.collect.size > 0 %}
+{% if config.collect.size | int > 0 %}
 --feed-size={{ config.collect.size }}
 --feed-path={{ config.collect.path }}
 --feed-sync-freq-secs={{ config.collect.sync_freq_secs }}
