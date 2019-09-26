@@ -1,17 +1,17 @@
 --name={{ config.name }}
---metrics={{ root }}/var/tmp/roq-simulator_metrics.sock
---listen={{ root }}/var/tmp/roq-simulator.sock
 --config-file={{ root }}/etc/roq/roq-simulator.toml
---dispatcher-affinity={{ config.cpu.affinity[0] }}
-
---simulator-affinity=2
+--listen={{ root }}/var/tmp/roq-simulator.sock
+--metrics={{ root }}/var/tmp/roq-simulator_metrics.sock
+{% if 'dispatcher' in config.cpu_affinity %}
+--dispatcher-affinity={{ config.cpu_affinity.dispatcher }}
+{% endif %}
+{% if 'simulator' in config.cpu_affinity %}
+--simulator-affinity={{ config.cpu_affinity.simulator }}
+{% endif %}
 --buffer-size=266240
-
 {% if config.collect.size > 0 %}
-
 --feed-size={{ config.collect.size }}
 --feed-path={{ config.collect.path }}
 --feed-sync-freq-secs={{ config.collect.sync_freq_secs }}
 {% endif %}
-
 --generator-type=csv-old

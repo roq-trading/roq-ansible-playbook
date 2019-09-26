@@ -1,6 +1,11 @@
 --name={{ config.name }}
---fix-uri={{ config.net.fix }}
---metrics={{ root }}/var/tmp/roq-deribit_metrics.sock
---listen={{ root }}/var/tmp/roq-deribit.sock
 --config-file={{ root }}/etc/roq/roq-deribit.toml
---dispatcher-affinity={{ config.cpu.affinity[0] }}
+--listen={{ root }}/var/tmp/roq-deribit.sock
+--metrics={{ root }}/var/tmp/roq-deribit_metrics.sock
+{% if 'dispatcher' in config.cpu_affinity %}
+--dispatcher-affinity={{ config.cpu_affinity.dispatcher }}
+{% endif %}
+{% if 'network' in config.cpu_affinity %}
+--network-affinity={{ config.cpu_affinity.network }}
+{% endif %}
+--fix-uri={{ config.net.fix }}

@@ -1,8 +1,13 @@
 --name={{ config.name }}
+--config-file={{ root }}/etc/roq/roq-coinbase-pro.toml
+--listen={{ root }}/var/tmp/roq-coinbase-pro.sock
+--metrics={{ root }}/var/tmp/roq-coinbase-pro_metrics.sock
+{% if 'dispatcher' in config.cpu_affinity %}
+--dispatcher-affinity={{ config.cpu_affinity.dispatcher }}
+{% endif %}
+{% if 'network' in config.cpu_affinity %}
+--network-affinity={{ config.cpu_affinity.network }}
+{% endif %}
 --fix-uri={{ config.net.fix }}
 --ws-uri={{ config.net.ws }}
 --rest-uri={{ config.net.rest }}
---metrics={{ root }}/var/tmp/roq-coinbase-pro_metrics.sock
---listen={{ root }}/var/tmp/roq-coinbase-pro.sock
---config-file={{ root }}/etc/roq/roq-coinbase-pro.toml
---dispatcher-affinity={{ config.cpu.affinity[0] }}
