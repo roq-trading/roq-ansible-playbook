@@ -1,18 +1,25 @@
 --name={{ config.name }}
+
 --config-file={{ root }}/etc/roq/roq-coinbase-pro.toml
+
 --listen={{ root }}/var/tmp/roq-coinbase-pro.sock
+
 --metrics={{ root }}/var/tmp/roq-coinbase-pro_metrics.sock
-{% if 'dispatcher' in config.cpu_affinity %}
---dispatcher-affinity={{ config.cpu_affinity.dispatcher }}
-{% endif %}
-{% if 'network' in config.cpu_affinity %}
---network-affinity={{ config.cpu_affinity.network }}
-{% endif %}
+
+{% for (key, value) in config.cpu_affinity.items() %}
+--{{ key }}-affinity={{ value }}
+{% endfor %}
+
 {% if config.collect.size | int > 0 %}
---feed-size={{ config.collect.size }}
---feed-path={{ config.collect.path }}
---feed-sync-freq-secs={{ config.collect.sync_freq_secs }}
+{% for (key, value) in config.collect.items() %}
+--feed-{{ key }}={{ value }}
+{% endfor %}
 {% endif %}
---fix-uri={{ config.net.fix }}
---ws-uri={{ config.net.ws }}
---rest-uri={{ config.net.rest }}
+
+{% for (key, value) in config.net.items() %}
+--{{ key }}-uri={{ value }}
+{% endfor %}
+
+{% for (key, value) in config.options.items() %}
+--{{ key }}={{ value }}
+{% endfor %}
