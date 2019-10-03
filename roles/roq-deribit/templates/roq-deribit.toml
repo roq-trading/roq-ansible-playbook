@@ -1,3 +1,9 @@
+symbols = [
+  ".*-PERPETUAL",
+  ".*-DERIBIT-INDEX",
+  ".*-\\d{2}\\D{3}\\d{2}",
+]
+
 [order_templates]
 
   [order_templates.default]
