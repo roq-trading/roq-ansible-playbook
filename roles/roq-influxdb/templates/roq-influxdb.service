@@ -13,9 +13,6 @@ ExecStart=/usr/bin/docker run --rm --name %n -i \
   {{ docker_registry_prefix | default('') }}{{ config.docker.name }}:{{ config.version }} \
   "/miniconda/bin/roq-influxdb" \
   --flagfile "/etc/roq/roq-influxdb.gflags" \
-{% if 'roq_simulator' in groups %}
-  "{{ root }}/var/tmp/roq-simulator.roq" \
-{% endif %}
 {% if 'roq_deribit' in groups %}
   "{{ root }}/var/tmp/roq-deribit.roq" \
 {% endif %}
@@ -30,9 +27,6 @@ Restart=on-abnormal
 Environment="ROQ_v={{ config.logging.verbosity }}"
 ExecStart={{ root }}/miniconda/bin/roq-influxdb \
   --flagfile "{{ root }}/etc/roq/roq-influxdb.gflags" \
-{% if 'roq_simulator' in groups %}
-  "{{ root }}/var/tmp/roq-simulator.roq" \
-{% endif %}
 {% if 'roq_deribit' in groups %}
   "{{ root }}/var/tmp/roq-deribit.roq" \
 {% endif %}
