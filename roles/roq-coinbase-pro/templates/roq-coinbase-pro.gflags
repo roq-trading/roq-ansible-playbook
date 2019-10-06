@@ -1,25 +1,18 @@
 --name={{ config.name }}
-
 --config-file={{ root }}/etc/roq/roq-coinbase-pro.toml
-
 --listen={{ root }}/var/tmp/roq-coinbase-pro.sock
-
 --metrics={{ root }}/var/tmp/roq-coinbase-pro_metrics.sock
-
 {% for (key, value) in config.cpu_affinity.items() %}
 --{{ key }}-affinity={{ value }}
 {% endfor %}
-
-{% if config.collect.size | int > 0 %}
+{% if config.collect.file_size | int > 0 %}
 {% for (key, value) in config.collect.items() %}
 --feed-{{ key }}={{ value }}
 {% endfor %}
 {% endif %}
-
 {% for (key, value) in config.net.items() %}
 --{{ key }}-uri={{ value }}
 {% endfor %}
-
 {% for (key, value) in config.options.items() %}
 --{{ key }}={{ value }}
 {% endfor %}

@@ -9,6 +9,6 @@ roq_deribit_defaults:
   logging:
     verbosity: 0
   collect:
-    size: 0
-    path: "{{ root }}/var/tmp/roq-deribit.roq"
+    file_size: 0
+    file_path: "{{ root }}/var/tmp/roq-deribit.roq"
     sync_freq_secs: 600

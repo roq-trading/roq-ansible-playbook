@@ -1,8 +1,10 @@
-symbols = [
-  ".*-PERPETUAL",
-  ".*-DERIBIT-INDEX",
-  ".*-\\d{2}\\D{3}\\d{2}",
-]
+{% if config.symbols is defined %}
+{% if config.symbols is iterable and config.symbols is not string %}
+symbols = [ {{ '"' + config.symbols | join('", "') + '"' }} ]
+{% else %}
+symbols = "{{ config.symbols }}"
+{% endif %}
+{% endif %}
 
 [order_templates]
 
