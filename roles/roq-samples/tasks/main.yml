@@ -43,7 +43,7 @@
       owner: "{{ roq_user }}"
       group: "{{ roq_user }}"
       mode: 0644
-    with_sequence: 1-4
+    with_sequence: 1-3
 
   - name: create run scripts
     template:
@@ -52,7 +52,7 @@
       owner: "{{ roq_user }}"
       # group: "{{ roq_user }}"
       mode: 0750
-    with_sequence: 1-4
+    with_sequence: 1-3
 
   - name: install the roq-samples conda package
     shell: "{{ root }}/miniconda/bin/conda install -y -n base \
@@ -80,14 +80,14 @@
       owner: root
       group: root
       mode: 0644
-    with_sequence: 1-4
+    with_sequence: 1-3
 
   - name: disable systemd units
     systemd:
       name: "roq-samples-example-{{ item }}"
       enabled: false
       daemon_reload: true
-    with_sequence: 1-4
+    with_sequence: 1-3
 
   when: "'trading' in group_names"
   become: "{{ 'true' if become_user is defined else 'false' }}"
