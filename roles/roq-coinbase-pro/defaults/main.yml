@@ -5,10 +5,11 @@ roq_coinbase_pro_defaults:
   docker:
     use: "{{ roq_use_docker }}"
     name: "roqtrading/roq-coinbase-pro"
-  cpu: {}
+  cpu_affinity: {}
   logging:
     verbosity: 0
   collect:
     file_size: 0
     file_path: "{{ root }}/var/tmp/roq-coinbase-pro.roq"
     sync_freq_secs: 600
+  options: {}
