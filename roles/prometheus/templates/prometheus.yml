@@ -1,5 +1,5 @@
 global:
-  scrape_interval: 15s
+  scrape_interval: 5s
 
 rule_files:
   - "alert.rules"
@@ -14,12 +14,10 @@ alerting:
 scrape_configs:
 
   - job_name: 'prometheus'
-    scrape_interval: 5s
     static_configs:
       - targets: ['prometheus.service:{{ prometheus.port }}']
 
   - job_name: 'node_exporter'
-    scrape_interval: 5s
     static_configs:
       - targets: ['node-exporter.service:{{ node_exporter.port }}']
 
