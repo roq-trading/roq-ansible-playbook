@@ -6,6 +6,7 @@ After=network-online.target
 UMask=0000
 User={{ roq_user if roq_user is defined else ansible_user_id }}
 Group={{ roq_user if roq_user is defined else ansible_user_id }}
+Environment="ROQ_v={{ config.logging.verbosity }}"
 ExecStart={{ root }}/miniconda/bin/roq-samples-example-{{ item }} \
   --flagfile {{ root }}/etc/roq/roq-samples-example-{{ item }}.gflags \
   {{ root }}/var/tmp/roq-deribit.sock \

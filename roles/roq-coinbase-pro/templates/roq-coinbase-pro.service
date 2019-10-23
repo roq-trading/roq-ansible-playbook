@@ -16,7 +16,9 @@ ExecStart=/usr/bin/docker run --rm --name %n -i \
 UMask=0000
 User={{ roq_user }}
 Group={{ roq_user }}
-ExecStart={{ root }}/usr/local/bin/roq-coinbase-pro.sh
+Environment="ROQ_v={{ config.logging.verbosity }}"
+ExecStart={{ root }}/miniconda/bin/roq-coinbase-pro \
+  --flagfile={{ root }}/etc/roq/roq-coinbase-pro.gflags
 Restart=on-abnormal
 {% endif %}
 

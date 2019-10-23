@@ -2,6 +2,12 @@
 
 set -e
 
+BIN="{{ root }}/miniconda/bin/roq-deribit"
+
 ARGS="${@:-"--flagfile={{ root }}/etc/roq/roq-deribit.gflags"}"
 
-"{{ root }}/miniconda/bin/roq-deribit" "$ARGS"
+if [[ $- == *i* ]]; then
+  exec "$BIN" "$ARGS"
+else
+  "$BIN" "$ARGS"
+fi
