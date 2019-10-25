@@ -4,4 +4,5 @@ sudo docker exec \
   --interactive \
   --tty \
   influxdb.service \
-  influx
+  influx \
+  -precision rfc3339
