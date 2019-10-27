@@ -17,7 +17,9 @@ ExecStart=/usr/bin/docker run --rm --name %n -i \
   --network roq-network \
   --volume /run/systemd:/run/systemd \
   {{ docker_registry_prefix | default('') }}{{ node_exporter.docker.name }}:{{ node_exporter.docker.tag }} \
-  --collector.systemd
+  --collector.systemd \
+  --collector.interrupts \
+  --collector.processes
 
 [Install]
 WantedBy=multi-user.target
