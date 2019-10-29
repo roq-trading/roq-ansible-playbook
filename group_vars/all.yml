@@ -107,7 +107,7 @@ nginx:
 
 roq_deribit:
   metrics:
-    port: 12345
+    port: 12301
     sock: "deribit.metrics.sock"
   docker:
     name: "roqtrading/roq-deribit"
@@ -115,8 +115,8 @@ roq_deribit:
 
 roq_coinbase_pro:
   metrics:
-    port: 12345
-    sock: "coinbase_pro.metrics.sock"
+    port: 12302
+    sock: "coinbase-pro.metrics.sock"
   docker:
     name: "roqtrading/roq-coinbase-pro"
     tag: "latest"

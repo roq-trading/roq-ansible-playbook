@@ -8,7 +8,7 @@ roq_deribit_defaults:
   cpu_affinity: {}
   logging:
     verbosity: 0
-  collect:
+  event_log:
     file_size: 0
     file_path: "{{ root }}/var/tmp/roq-deribit.roq"
     sync_freq_secs: 600
