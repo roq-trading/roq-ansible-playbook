@@ -5,6 +5,7 @@ roq_influxdb_defaults:
   docker:
     use: "{{ roq_use_docker }}"
     name: "roqtrading/roq-influxdb"
+  options: {}
   cpu_affinity: {}
   logging:
     verbosity: 0
@@ -13,4 +14,3 @@ roq_influxdb_defaults:
     port: 8086
     database: "roq"
     create: true
-  options: {}

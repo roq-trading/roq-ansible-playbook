@@ -5,9 +5,13 @@ roq_deribit_defaults:
   docker:
     use: "{{ roq_use_docker }}"
     name: "roqtrading/roq-deribit"
+  options: {}
   cpu_affinity: {}
   logging:
     verbosity: 0
+  net:
+    fix: "tcp://test.deribit.com:9881"
+    ws: "wss://test.deribit.com/ws/api/v2"
   event_log:
     dir: "{{ root }}/var/lib/roq/deribit/"
     sync_freq_secs: 600

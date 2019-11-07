@@ -1,21 +1,13 @@
 --name={{ config.name }}
-
 --config-file={{ root }}/etc/roq/roq-simulator.toml
-
 --listen={{ root }}/var/tmp/roq-simulator.sock
-
 --metrics={{ root }}/var/tmp/roq-simulator_metrics.sock
-
 {% for (key, value) in config.cpu_affinity.items() %}
 --{{ key }}-affinity={{ value }}
 {% endfor %}
-
-{% if config.collect.size | int > 0 %}
-{% for (key, value) in config.collect.items() %}
---feed-{{ key }}={{ value }}
+{% for (key, value) in config.event_log.items() %}
+--event-log-{{ key }}={{ value }}
 {% endfor %}
-{% endif %}
-
 {% for (key, value) in config.options.items() %}
 --{{ key }}={{ value }}
 {% endfor %}

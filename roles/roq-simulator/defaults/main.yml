@@ -5,10 +5,10 @@ roq_simulator_defaults:
   docker:
     use: "{{ roq_use_docker }}"
     name: "roqtrading/roq-simulator"
-  cpu: {}
+  options: {}
+  cpu_affinity: {}
   logging:
     verbosity: 0
-  collect:
-    size: 0
-    path: "{{ root }}/var/tmp/roq-simulator.roq"
+  event_log:
+    dir: "{{ root }}/var/lib/roq/simulator/"
     sync_freq_secs: 600
