@@ -5,11 +5,9 @@
 {% for (key, value) in config.cpu_affinity.items() %}
 --{{ key }}-affinity={{ value }}
 {% endfor %}
-{% if config.event_log.file_size | int > 0 %}
 {% for (key, value) in config.event_log.items() %}
 --event-log-{{ key }}={{ value }}
 {% endfor %}
-{% endif %}
 {% for (key, value) in config.net.items() %}
 --{{ key }}-uri={{ value }}
 {% endfor %}
