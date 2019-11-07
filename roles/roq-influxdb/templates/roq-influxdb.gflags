@@ -1,15 +1,12 @@
-# Copyright (c) 2017-2019, Hans Erik Thrane
-
 --name={{ config.name }}
-
 --listen={{ root }}/var/tmp/roq-influxdb.sock
-
 --metrics={{ root }}/var/tmp/roq-influxdb_metrics.sock
-
---influxdb-host=localhost
---influxdb-port=8086
---influxdb-database={{ config.influxdb.database }}
-
+{% for (key, value) in config.cpu_affinity.items() %}
+--{{ key }}-affinity={{ value }}
+{% endfor %}
+{% for (key, value) in config.influxdb.items() %}
+--influxdb-{{ key }}={{ value }}
+{% endfor %}
 {% for (key, value) in config.options.items() %}
 --{{ key }}={{ value }}
 {% endfor %}
