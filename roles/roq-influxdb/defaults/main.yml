@@ -5,7 +5,8 @@ roq_influxdb_defaults:
   docker:
     use: "{{ roq_use_docker }}"
     name: "roqtrading/roq-influxdb"
-  options: {}
+  options:
+    poll_freq_secs: 60
   cpu_affinity: {}
   logging:
     verbosity: 0
