@@ -1410,6 +1410,7 @@
         "#d44a3a"
       ],
       "datasource": null,
+      "decimals": 0,
       "description": "Quickly spot\n\n(a) how much has been processed,\n(b) is the feed good, and\n(c) has the service restarted.",
       "format": "short",
       "gauge": {
@@ -1528,7 +1529,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(roq_events_count{source=\"coinbase-pro\"}[1m]))",
+          "expr": "irate(roq_events_count{source=\"coinbase-pro\"}[1m])",
           "format": "time_series",
           "instant": false,
           "refId": "A"
@@ -1647,7 +1648,7 @@
       },
       "yaxes": [
         {
-          "decimals": 0,
+          "decimals": null,
           "format": "ms",
           "label": "",
           "logBase": 1,
@@ -2396,6 +2397,7 @@
         "#d44a3a"
       ],
       "datasource": null,
+      "decimals": 0,
       "description": "Quickly spot\n\n(a) how much has been processed,\n(b) is the feed good, and\n(c) has the service restarted.",
       "format": "short",
       "gauge": {
@@ -2514,7 +2516,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(roq_events_count{source=\"deribit\"}[1m]))",
+          "expr": "irate(roq_events_count{source=\"deribit\"}[1m])",
           "format": "time_series",
           "instant": false,
           "refId": "A"
@@ -2541,7 +2543,7 @@
       },
       "yaxes": [
         {
-          "format": "short",
+          "format": "cps",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -2633,7 +2635,7 @@
       },
       "yaxes": [
         {
-          "decimals": 0,
+          "decimals": null,
           "format": "ms",
           "label": "",
           "logBase": 1,
@@ -3469,7 +3471,7 @@
       },
       "yaxes": [
         {
-          "decimals": 0,
+          "decimals": null,
           "format": "cps",
           "label": "",
           "logBase": 1,
@@ -3562,7 +3564,7 @@
       },
       "yaxes": [
         {
-          "decimals": 0,
+          "decimals": null,
           "format": "µs",
           "label": "",
           "logBase": 1,
@@ -3940,7 +3942,7 @@
       },
       "yaxes": [
         {
-          "decimals": 0,
+          "decimals": null,
           "format": "cps",
           "label": "",
           "logBase": 1,
@@ -4033,7 +4035,7 @@
       },
       "yaxes": [
         {
-          "decimals": 0,
+          "decimals": null,
           "format": "µs",
           "label": "",
           "logBase": 1,
@@ -4413,7 +4415,7 @@
       },
       "yaxes": [
         {
-          "decimals": 0,
+          "decimals": null,
           "format": "µs",
           "label": "",
           "logBase": 1,
@@ -5532,5 +5534,5 @@
   "timezone": "",
   "title": "roq-dashboard",
   "uid": "Afi9GToZz",
-  "version": 6
+  "version": 7
 }
