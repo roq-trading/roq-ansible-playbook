@@ -17,7 +17,7 @@ ExecStart=/usr/bin/docker run --rm --name %n \
   --network roq-network \
   --volume {{ root }}/var/lib/grafana:/var/lib/grafana \
   --volume {{ root }}/etc/grafana/provisioning:/etc/grafana/provisioning \
-  --env GF_SERVER_ROOT_URL=http://localhost/grafana \
+  --env GF_SERVER_ROOT_URL=%%(protocol)s://%%(domain)s:%%(http_port)s/grafana/ \
   --env GF_SERVER_HTTP_ADDR=0.0.0.0 \
   --env GF_SERVER_HTTP_PORT={{ grafana.port }} \
   --env GF_DATABASE_TYPE=postgres \
