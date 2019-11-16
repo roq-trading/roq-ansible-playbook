@@ -12,7 +12,6 @@
       - htop
       - iotop
       - iftop
-      - nethogs
       - dstat
       - lsof
       - wget
