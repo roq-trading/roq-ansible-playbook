@@ -1,91 +1,109 @@
 # Roq Trading Solutions
 
-Solutions focused on development, testing and deployment of
-algorithmic trading strategies.
+*A C++ HFT Toolkit for Algo Traders*
 
 
-## Overview
+## What is it?
 
-An Ansible playbook implementing the reference server configuration described
-[here](https://roq-trading.com/docs/introduction/overview/index.html).
+Ansible roles (scripts) useful for
 
-The following examples will install the roq-benchmark suite.
+* Server provisioning
+* Market gateway configuration and deployment
+* Auxiliary tooling, e.g. InfluxDB exporter
+* Service scripts and start/stop timers
 
-> The playbook extensively uses groups for driving the installation.
-
-> Defining a `become_user` (typically `root`) will allow the playbook
-> to harden the system for low latency trading.
-
-
-## Details
-
-The playbook is explained in more details [here](roles/README.md).
+> In short, you can define your host configuration
+> as code and apply this to
+> * Install a server
+> * Update the server
+> * Ensure your server configuration is correct
 
 
 ## Requirements
 
-The playbook requires Ansible version 2.7 (or higher).
+Ansible version 2.7 (or higher).
 
 
-## Install Ansible
+## Ansible
 
-> If you don't already have a compatible Ansible installation.
+> This step is only useful if you don't already
+> have a recent version of Ansible.
+> This is also just one of many ways to get Ansible.
+>
+> We use Conda because
+> * You don't need root access
+> * We're using Conda for many other examples
 
-```bash
-# download the miniconda installer
+Download the Miniconda Installer
+
+```
 wget -N https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+```
 
-# install miniconda (to your home directory)
+Install Miniconda
+
+```
 bash Miniconda3-latest-Linux-x86_64.sh -b -u -p ~/miniconda3
+```
 
-# activate conda environment
+Activate Miniconda
+
+```
 source ~/miniconda3/bin/activate
-
-# install ansible
-conda install -y ansible
-
-# check the installed version
-conda list | grep ansible
 ```
 
-## Install to HOME
+Install Ansible
 
-```bash
-# create inventory file
-cat > dev << EOF
-[DEV]
-dev ansible_host="localhost" root="$HOME/roq"
-
-[roq_benchmark]
-dev
-EOF
-
-# run the playbook
-ansible-playbook -i dev site.yml
+```
+conda install -c conda-forge ansible
 ```
 
-## Install to Server
+## Using
+
+> This is the absolutely simplest use-case using
+> only the default configurations.
+>
+> Please refer to
+> [roq-client-template](https://github.com/roq-trading/roq-client-template)
+> for a more detailed example using custom configurations.
+
+Create an inventory
 
 ```bash
-# create inventory
 cat > server << EOF
 [SERVER]
 server ansible_host="localhost" ansible_user="ansible" become_user="root"
 
-[roq_benchmark]
+[trading]
+server
+
+[roq_samples]
+server
+
+[roq_coinbase_pro]
+server
+
+[roq_deribit]
+server
+
+[roq_influxdb]
 server
 EOF
+```
 
-# run the playbook
+> This assumes you want to install to `localhost`
+> and that the `ansible` user has root access.
+> You will should replace these with your server's
+> hostname and an appropriate username.
+
+Run the playbook
+
+```
 ansible-playbook -i server site.yml --ask-become-pass
 ```
 
-## Next Steps
 
+## Links
+
+* [Documentation](https://roq-trading.com/docs)
 * [Contact us](mailto:info@roq-trading.com)
-* [Roq Trading Solutions (website)](https://roq-trading.com)
-* [Online documentation](https://roq-trading.com/docs)
-* [Development samples](https://github.com/roq-trading/roq-samples)
-* [Ansible playbook](https://github.com/roq-trading/roq-ansible)
-* [Grafana dashboards](https://github.com/roq-trading/roq-grafana)
-* [Vagrant development environments](https://github.com/roq-trading/roq-vagrant)
