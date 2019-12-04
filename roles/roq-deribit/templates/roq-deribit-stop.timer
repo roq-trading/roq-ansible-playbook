@@ -1,0 +1,8 @@
+[Unit]
+Description=Deribit stop timer
+
+[Timer]
+OnCalendar=Mon-Sun *-*-* 23:59:00
+
+[Install]
+WantedBy=multi-user.target

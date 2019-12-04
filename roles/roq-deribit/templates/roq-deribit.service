@@ -1,5 +1,5 @@
 [Unit]
-Description=Roq Deribit Gateway
+Description=Deribit Gateway
 After=network-online.target
 
 [Service]

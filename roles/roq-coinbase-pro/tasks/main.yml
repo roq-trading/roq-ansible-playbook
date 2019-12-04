@@ -82,10 +82,22 @@
         http_timeout: 600
     when: config.docker.use
 
+  - name: define list of systemd services
+    set_fact:
+      systemd_services:
+      - 'roq-coinbase-pro.service'
+      - 'roq-coinbase-pro-stop.service'
+
+  - name: define list of systemd timers
+    set_fact:
+      systemd_timers:
+      - 'roq-coinbase-pro.timer'
+      - 'roq-coinbase-pro-stop.timer'
+
   - name: define list of systemd units
     set_fact:
       systemd_units:
-      - 'roq-coinbase-pro.service'
+      - '{{ systemd_services }} + {{ systemd_timers }}'
 
   - name: create systemd units
     template:
@@ -102,6 +114,12 @@
       enabled: false
       daemon_reload: true
     with_items: "{{ systemd_units }}"
+
+  - name: start systemd timers
+    systemd:
+      name: "{{ item }}"
+      state: started
+    with_items: "{{ systemd_timers }}"
 
   when: become_user is defined and 'roq_coinbase_pro' in group_names
   become: true
