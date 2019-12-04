@@ -50,11 +50,14 @@
 
   - name: create run scripts
     template:
-      src: "templates/roq-deribit.sh"
-      dest: "{{ root }}/usr/local/bin/roq-deribit.sh"
+      src: "templates/{{ item }}"
+      dest: "{{ root }}/usr/local/bin/{{ item }}"
       owner: "{{ roq_user }}"
       # group: "{{ roq_user }}"
       mode: 0750
+    with_items:
+      - "roq-deribit.sh"
+      - "roq-deribit-backup.sh"
 
   - name: install the roq-deribit conda package
     shell: "{{ root }}/miniconda/bin/conda install -y -n base \
@@ -87,12 +90,14 @@
       systemd_services:
       - 'roq-deribit.service'
       - 'roq-deribit-stop.service'
+      - 'roq-deribit-backup.service'
 
   - name: define list of systemd timers
     set_fact:
       systemd_timers:
       - 'roq-deribit.timer'
       - 'roq-deribit-stop.timer'
+      - 'roq-deribit-backup.timer'
 
   - name: define list of systemd units
     set_fact:
