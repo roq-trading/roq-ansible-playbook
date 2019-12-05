@@ -1,6 +1,7 @@
 [Unit]
 Description=Deribit Gateway
 After=network-online.target
+Conflicts=roq-deribit-stop.service
 
 [Service]
 {% if config.docker.use %}

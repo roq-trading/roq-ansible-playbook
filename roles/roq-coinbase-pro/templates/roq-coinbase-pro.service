@@ -1,6 +1,7 @@
 [Unit]
 Description=Coinbase Pro Gateway
 After=network-online.target
+Conflicts=roq-coinbase-pro-stop.service
 
 [Service]
 {% if config.docker.use %}
