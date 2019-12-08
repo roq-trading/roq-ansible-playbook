@@ -10,6 +10,6 @@ roq_coinbase_pro_defaults:
   logging:
     verbosity: 0
   event_log:
-    dir: "{{ root }}/var/lib/roq/coinbase-pro/"
+    dir: "{{ root }}/var/lib/roq/roq-coinbase-pro/"
     sync_freq_secs: 600
   options: {}

@@ -33,7 +33,7 @@
     with_items:
       - "/etc/roq"
       - "/var/lib/roq"
-      - "/var/lib/roq/coinbase-pro"
+      - "/var/lib/roq/roq-coinbase-pro"
       - "/var/log/roq"
       - "/var/run/roq"
 

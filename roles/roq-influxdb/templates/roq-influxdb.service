@@ -13,8 +13,8 @@ ExecStart=/usr/bin/docker run --rm --name %n -i \
   {{ docker_registry_prefix | default('') }}{{ config.docker.name }}:{{ config.version }} \
   "/miniconda/bin/roq-influxdb" \
   --flagfile "/etc/roq/roq-influxdb.gflags" \
-  {{ root }}/var/lib/roq/deribit \
-  {{ root }}/var/lib/roq/coinbase-pro
+  {{ root }}/var/lib/roq/roq-deribit \
+  {{ root }}/var/lib/roq/roq-coinbase-pro
 {% else %}
 User={{ roq_user }}
 Group={{ roq_user }}
@@ -23,8 +23,8 @@ Restart=on-abnormal
 Environment="ROQ_v={{ config.logging.verbosity }}"
 ExecStart={{ root }}/miniconda/bin/roq-influxdb \
   --flagfile "{{ root }}/etc/roq/roq-influxdb.gflags" \
-  {{ root }}/var/lib/roq/deribit \
-  {{ root }}/var/lib/roq/coinbase-pro
+  {{ root }}/var/lib/roq/roq-deribit \
+  {{ root }}/var/lib/roq/roq-coinbase-pro
 {% endif %}
 
 [Install]

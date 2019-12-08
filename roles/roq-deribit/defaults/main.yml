@@ -13,6 +13,6 @@ roq_deribit_defaults:
     fix: "tcp://test.deribit.com:9881"
     ws: "wss://test.deribit.com/ws/api/v2"
   event_log:
-    dir: "{{ root }}/var/lib/roq/deribit/"
+    dir: "{{ root }}/var/lib/roq/roq-deribit/"
     sync_freq_secs: 600
   options: {}

@@ -33,7 +33,7 @@
     with_items:
       - "/etc/roq"
       - "/var/lib/roq"
-      - "/var/lib/roq/deribit"
+      - "/var/lib/roq/roq-deribit"
       - "/var/log/roq"
       - "/var/run/roq"
 

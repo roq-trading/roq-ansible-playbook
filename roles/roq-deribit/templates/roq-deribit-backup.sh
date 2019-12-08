@@ -14,9 +14,9 @@ for i in {1..10}; do
   sleep 2
 done
 
-mkdir -p "{{ backups }}/deribit"
+mkdir -p "{{ backups }}/roq-deribit"
 
-rsync -av "{{ root }}/var/lib/roq/deribit/" "{{ backups }}/deribit"
+rsync -av "{{ root }}/var/lib/roq/roq-deribit/" "{{ backups }}/roq-deribit"
 
 # TODO(thraneh): remove older files from source
 
