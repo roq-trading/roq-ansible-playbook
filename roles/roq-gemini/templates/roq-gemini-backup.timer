@@ -1,0 +1,9 @@
+[Unit]
+Description=Gemini backup timer
+
+[Timer]
+OnCalendar=*-*-* 00:05:00
+Persistent=true
+
+[Install]
+WantedBy=multi-user.target

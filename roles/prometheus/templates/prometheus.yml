@@ -90,3 +90,13 @@ scrape_configs:
     static_configs:
       - targets: ['nginx.service:80']
 {% endif %}
+{% if 'roq_gemini' in groups %}
+
+  - job_name: 'roq-gemini'
+    metrics_path: '/metrics/roq-gemini'
+    params:
+      format: [ prometheus ]
+    honor_labels: true
+    static_configs:
+      - targets: ['nginx.service:80']
+{% endif %}

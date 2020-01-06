@@ -71,6 +71,10 @@
   roles:
     - roq-deribit
 
+- hosts: roq_gemini
+  roles:
+    - roq-gemini
+
 - hosts: trading
   roles:
     - prometheus

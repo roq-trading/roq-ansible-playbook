@@ -1,0 +1,82 @@
+{% if config.symbols is defined %}
+{% if config.symbols is iterable and config.symbols is not string %}
+symbols = [ {{ '"' + config.symbols | join('", "') + '"' }} ]
+{% else %}
+symbols = "{{ config.symbols }}"
+{% endif %}
+{% endif %}
+
+[market_data]
+{% for (name, value) in config.market_data.items() %}
+  {{ name }} = "{{ value }}"
+{% endfor %}
+
+[order_entry]
+{% for (name, value) in config.order_entry.items() %}
+  {{ name }} = "{{ value }}"
+{% endfor %}
+
+[drop_copy]
+{% for (name, value) in config.drop_copy.items() %}
+  {{ name }} = "{{ value }}"
+{% endfor %}
+
+[order_templates]
+
+  [order_templates.default]
+  self_trade_prevention = 'D'
+
+[accounts]
+{% for (name, account) in config.accounts.items() %}
+
+  [accounts.{{ name }}]
+{% if account.master is defined %}
+  master = {{ account.master | lower }}
+{% endif %}
+{% if account.login is defined %}
+  login = "{{ account.login }}"
+{% endif %}
+{% if account.password is defined %}
+  password = "{{ account.password }}"
+{% endif %}
+{% if account.secret is defined %}
+  secret = "{{ account.secret }}"
+{% endif %}
+{% if account.symbols is defined %}
+{% if account.symbols is iterable and account.symbols is not string %}
+  symbols = [ {{ '"' + account.symbols | join('", "') + '"' }} ]
+{% else %}
+  symbols = "{{ account.symbols }}"
+{% endif %}
+{% endif %}
+{% endfor %}
+
+[users]
+{% for (name, user) in config.users.items() %}
+
+  [users.{{ name }}]
+  password = "{{ user.password }}"
+{% if user.accounts is defined %}
+{% if user.accounts is iterable and user.accounts is not string %}
+  accounts = [ {{ '"' + user.accounts | join('", "') + '"' }} ]
+  {% else %}
+  accounts = "{{ user.accounts }}"
+{% endif %}
+{% endif %}
+{% if user.symbols is defined %}
+{% if user.symbols is iterable and user.symbols is not string %}
+  symbols = [ {{ '"' + user.symbols | join('", "') + '"' }} ]
+  {% else %}
+  symbols = "{{ user.symbols }}"
+{% endif %}
+{% endif %}
+{% if user.monitor_period_secs is defined %}
+  monitor_period_secs = {{ user.monitor_period_secs }}
+{% endif %}
+{% if user.ban_period_secs is defined %}
+  ban_period_secs = {{ user.ban_period_secs }}
+{% endif %}
+{% if user.request_limit is defined %}
+  request_limit = {{ user.request_limit }}
+{% endif %}
+{% endfor %}
