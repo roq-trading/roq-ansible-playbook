@@ -1624,7 +1624,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(roq_latency_sum{source=\"coinbase-pro\"}[1m]) / on(source, connection, function) irate(roq_latency_count{source=\"coinbase-pro\"}[1m]) / 1000000",
+          "expr": "rate(roq_latency_sum{source=\"coinbase-pro\"}[1m]) / on(source, connection, function) rate(roq_latency_count{source=\"coinbase-pro\"}[1m]) / 1000000",
           "instant": false,
           "refId": "A"
         }
@@ -2613,7 +2613,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(roq_latency_sum{source=\"deribit\"}[1m]) / on(source, connection, function) irate(roq_latency_count{source=\"deribit\"}[1m]) / 1000000",
+          "expr": "rate(roq_latency_sum{source=\"deribit\"}[1m]) / on(source, connection, function) rate(roq_latency_count{source=\"deribit\"}[1m]) / 1000000",
           "instant": false,
           "refId": "A"
         }
@@ -3602,7 +3602,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(roq_latency_sum{source=\"gemini\"}[1m]) / on(source, connection, function) irate(roq_latency_count{source=\"gemini\"}[1m]) / 1000000",
+          "expr": "rate(roq_latency_sum{source=\"gemini\"}[1m]) / on(source, connection, function) rate(roq_latency_count{source=\"gemini\"}[1m]) / 1000000",
           "instant": false,
           "refId": "A"
         }
@@ -6541,5 +6541,5 @@
   "timezone": "",
   "title": "roq-dashboard",
   "uid": "Afi9GToZz",
-  "version": 19
+  "version": 20
 }
