@@ -517,7 +517,7 @@
       },
       "id": 106,
       "options": {
-        "displayMode": "gradient",
+        "displayMode": "basic",
         "fieldOptions": {
           "calcs": [
             "lastNotNull"
@@ -1106,7 +1106,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "max(absent(roq_updated{source=\"coinbase-pro\",group=\"process\",state=\"heartbeat\"}) OR vector(0))",
+          "expr": "max(absent(roq_updated{source=\"coinbase-pro\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
           "instant": true,
           "refId": "A"
         }
@@ -1197,7 +1197,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "max(absent(roq_updated{source=\"coinbase-pro\",group=\"market_data\",state=\"ready\"}) OR vector(0))",
+          "expr": "max(absent(roq_updated{source=\"coinbase-pro\",connection=\"market_data\",state=\"ready\"}) OR vector(0))",
           "instant": true,
           "refId": "A"
         }
@@ -1288,7 +1288,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "max(absent(roq_updated{source=\"coinbase-pro\",group=\"order_manager\",state=\"ready\"}) OR vector(0))",
+          "expr": "max(absent(roq_updated{source=\"coinbase-pro\",connection=\"order_manager\",state=\"ready\"}) OR vector(0))",
           "instant": true,
           "refId": "A"
         }
@@ -1498,7 +1498,7 @@
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
-        "h": 4,
+        "h": 5,
         "w": 4,
         "x": 10,
         "y": 6
@@ -1588,7 +1588,7 @@
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
-        "h": 4,
+        "h": 5,
         "w": 4,
         "x": 14,
         "y": 6
@@ -1672,6 +1672,62 @@
         "align": false,
         "alignLevel": null
       }
+    },
+    {
+      "cacheTimeout": null,
+      "columns": [
+        {
+          "text": "Avg",
+          "value": "avg"
+        }
+      ],
+      "datasource": null,
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 18,
+        "y": 6
+      },
+      "id": 132,
+      "links": [],
+      "options": {},
+      "pageSize": null,
+      "pluginVersion": "6.5.2",
+      "showHeader": true,
+      "sort": {
+        "col": 0,
+        "desc": true
+      },
+      "styles": [
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 0,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "expr": "count by (connection) (roq_counter{source=\"coinbase-pro\",function=\"disconnect\"})",
+          "instant": true,
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Disconnect",
+      "transform": "timeseries_aggregations",
+      "transparent": true,
+      "type": "table"
     },
     {
       "cacheTimeout": null,
@@ -2022,7 +2078,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 10
+        "y": 11
       },
       "id": 11,
       "panels": [],
@@ -2051,7 +2107,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 11
+        "y": 12
       },
       "id": 2,
       "interval": null,
@@ -2094,7 +2150,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "max(absent(roq_updated{source=\"deribit\",group=\"process\",state=\"heartbeat\"}) OR vector(0))",
+          "expr": "max(absent(roq_updated{source=\"deribit\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
           "instant": true,
           "refId": "A"
         }
@@ -2143,7 +2199,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 11
+        "y": 12
       },
       "id": 34,
       "interval": null,
@@ -2186,7 +2242,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "max(absent(roq_updated{source=\"deribit\",group=\"market_data\",state=\"ready\"}) OR vector(0))",
+          "expr": "max(absent(roq_updated{source=\"deribit\",connection=\"market_data\",state=\"ready\"}) OR vector(0))",
           "instant": true,
           "refId": "A"
         }
@@ -2234,7 +2290,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 11
+        "y": 12
       },
       "id": 35,
       "interval": null,
@@ -2277,7 +2333,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "max(absent(roq_updated{source=\"deribit\",group=\"order_manager\",state=\"ready\"}) OR vector(0))",
+          "expr": "max(absent(roq_updated{source=\"deribit\",connection=\"order_manager\",state=\"ready\"}) OR vector(0))",
           "instant": true,
           "refId": "A"
         }
@@ -2325,7 +2381,7 @@
         "h": 2,
         "w": 2,
         "x": 6,
-        "y": 11
+        "y": 12
       },
       "id": 21,
       "interval": null,
@@ -2413,7 +2469,7 @@
         "h": 2,
         "w": 2,
         "x": 8,
-        "y": 11
+        "y": 12
       },
       "id": 109,
       "interval": null,
@@ -2487,10 +2543,10 @@
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
-        "h": 4,
+        "h": 5,
         "w": 4,
         "x": 10,
-        "y": 11
+        "y": 12
       },
       "hiddenSeries": false,
       "id": 96,
@@ -2577,10 +2633,10 @@
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
-        "h": 4,
+        "h": 5,
         "w": 4,
         "x": 14,
-        "y": 11
+        "y": 12
       },
       "hiddenSeries": false,
       "id": 71,
@@ -2664,6 +2720,62 @@
     },
     {
       "cacheTimeout": null,
+      "columns": [
+        {
+          "text": "Avg",
+          "value": "avg"
+        }
+      ],
+      "datasource": null,
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 18,
+        "y": 12
+      },
+      "id": 131,
+      "links": [],
+      "options": {},
+      "pageSize": null,
+      "pluginVersion": "6.5.2",
+      "showHeader": true,
+      "sort": {
+        "col": 0,
+        "desc": true
+      },
+      "styles": [
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 0,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "expr": "count by (connection) (roq_counter{source=\"deribit\",function=\"disconnect\"})",
+          "instant": true,
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Disconnect",
+      "transform": "timeseries_aggregations",
+      "transparent": true,
+      "type": "table"
+    },
+    {
+      "cacheTimeout": null,
       "colorBackground": false,
       "colorValue": false,
       "colors": [
@@ -2684,7 +2796,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 13
+        "y": 14
       },
       "id": 75,
       "interval": null,
@@ -2769,7 +2881,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 13
+        "y": 14
       },
       "id": 72,
       "interval": null,
@@ -2855,7 +2967,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 13
+        "y": 14
       },
       "id": 69,
       "interval": null,
@@ -2940,7 +3052,7 @@
         "h": 2,
         "w": 2,
         "x": 6,
-        "y": 13
+        "y": 14
       },
       "id": 23,
       "interval": null,
@@ -3005,13 +3117,270 @@
       "valueName": "current"
     },
     {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "format": "cps",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 2,
+        "y": 16
+      },
+      "id": 122,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true,
+        "ymax": 1,
+        "ymin": 0
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "sum(irate(roq_profile_count{source=\"gemini\", function=\"market_by_price\"}[1m]))",
+          "instant": true,
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0,1",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Market by Price",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "",
+          "value": "0"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 4,
+        "y": 16
+      },
+      "id": 123,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true,
+        "ymax": 1,
+        "ymin": 0
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0,1",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Working Orders",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "",
+          "value": "0"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 6,
+        "y": 16
+      },
+      "id": 124,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true,
+        "ymax": 1,
+        "ymin": 0
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "max(roq_clients{source=\"gemini\", event=\"connect\"}) - max(roq_clients{source=\"deribit\", event=\"disconnect\"})",
+          "instant": true,
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0,1",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Clients",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "",
+          "value": "0"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
       "collapsed": false,
       "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 15
+        "y": 18
       },
       "id": 116,
       "panels": [],
@@ -3040,7 +3409,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 16
+        "y": 19
       },
       "id": 117,
       "interval": null,
@@ -3083,7 +3452,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "max(absent(roq_updated{source=\"gemini\",group=\"process\",state=\"heartbeat\"}) OR vector(0))",
+          "expr": "max(absent(roq_updated{source=\"gemini\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
           "instant": true,
           "refId": "A"
         }
@@ -3132,7 +3501,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 16
+        "y": 19
       },
       "id": 118,
       "interval": null,
@@ -3175,7 +3544,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "max(absent(roq_updated{source=\"gemini\",group=\"market_data\",state=\"ready\"}) OR vector(0))",
+          "expr": "max(absent(roq_updated{source=\"gemini\",connection=\"market_data\",state=\"ready\"}) OR vector(0))",
           "instant": true,
           "refId": "A"
         }
@@ -3223,7 +3592,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 16
+        "y": 19
       },
       "id": 119,
       "interval": null,
@@ -3266,7 +3635,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "max(absent(roq_updated{source=\"gemini\",group=\"order_manager\",state=\"ready\"}) OR vector(0))",
+          "expr": "max(absent(roq_updated{source=\"gemini\",connection=\"order_manager\",state=\"ready\"}) OR vector(0))",
           "instant": true,
           "refId": "A"
         }
@@ -3314,7 +3683,7 @@
         "h": 2,
         "w": 2,
         "x": 6,
-        "y": 16
+        "y": 19
       },
       "id": 120,
       "interval": null,
@@ -3402,7 +3771,7 @@
         "h": 2,
         "w": 2,
         "x": 8,
-        "y": 16
+        "y": 19
       },
       "id": 125,
       "interval": null,
@@ -3476,10 +3845,10 @@
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
-        "h": 4,
+        "h": 5,
         "w": 4,
         "x": 10,
-        "y": 16
+        "y": 19
       },
       "hiddenSeries": false,
       "id": 126,
@@ -3566,10 +3935,10 @@
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
-        "h": 4,
+        "h": 5,
         "w": 4,
         "x": 14,
-        "y": 16
+        "y": 19
       },
       "hiddenSeries": false,
       "id": 127,
@@ -3653,6 +4022,62 @@
     },
     {
       "cacheTimeout": null,
+      "columns": [
+        {
+          "text": "Avg",
+          "value": "avg"
+        }
+      ],
+      "datasource": null,
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 18,
+        "y": 19
+      },
+      "id": 130,
+      "links": [],
+      "options": {},
+      "pageSize": null,
+      "pluginVersion": "6.5.2",
+      "showHeader": true,
+      "sort": {
+        "col": 0,
+        "desc": true
+      },
+      "styles": [
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 0,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "expr": "count by (connection) (roq_counter{source=\"gemini\",function=\"disconnect\"})",
+          "instant": true,
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Disconnect",
+      "transform": "timeseries_aggregations",
+      "transparent": true,
+      "type": "table"
+    },
+    {
+      "cacheTimeout": null,
       "colorBackground": false,
       "colorValue": false,
       "colors": [
@@ -3673,7 +4098,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 18
+        "y": 21
       },
       "id": 121,
       "interval": null,
@@ -3737,270 +4162,13 @@
       "valueName": "current"
     },
     {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": null,
-      "format": "cps",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 2,
-        "y": 18
-      },
-      "id": 122,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "options": {},
-      "pluginVersion": "6.4.3",
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": true,
-        "ymax": 1,
-        "ymin": 0
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "expr": "sum(irate(roq_profile_count{source=\"gemini\", function=\"market_by_price\"}[1m]))",
-          "instant": true,
-          "refId": "A"
-        }
-      ],
-      "thresholds": "0,1",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Market by Price",
-      "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "50%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "",
-          "value": "0"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": null,
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 4,
-        "y": 18
-      },
-      "id": 123,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "options": {},
-      "pluginVersion": "6.4.3",
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": true,
-        "ymax": 1,
-        "ymin": 0
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "expr": "",
-          "refId": "A"
-        }
-      ],
-      "thresholds": "0,1",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Working Orders",
-      "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "50%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "",
-          "value": "0"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": null,
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 6,
-        "y": 18
-      },
-      "id": 124,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "options": {},
-      "pluginVersion": "6.4.3",
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": true,
-        "ymax": 1,
-        "ymin": 0
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "expr": "max(roq_clients{source=\"gemini\", event=\"connect\"}) - max(roq_clients{source=\"deribit\", event=\"disconnect\"})",
-          "instant": true,
-          "refId": "A"
-        }
-      ],
-      "thresholds": "0,1",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Clients",
-      "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "50%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "",
-          "value": "0"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
       "collapsed": true,
       "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 20
+        "y": 24
       },
       "id": 63,
       "panels": [
@@ -4387,7 +4555,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 21
+        "y": 25
       },
       "id": 56,
       "panels": [],
@@ -4406,7 +4574,7 @@
         "h": 5,
         "w": 18,
         "x": 0,
-        "y": 22
+        "y": 26
       },
       "hiddenSeries": false,
       "id": 94,
@@ -4500,7 +4668,7 @@
         "h": 6,
         "w": 18,
         "x": 0,
-        "y": 27
+        "y": 31
       },
       "hiddenSeries": false,
       "id": 111,
@@ -4596,7 +4764,7 @@
         "h": 6,
         "w": 6,
         "x": 0,
-        "y": 33
+        "y": 37
       },
       "hiddenSeries": false,
       "id": 112,
@@ -4692,7 +4860,7 @@
         "h": 6,
         "w": 6,
         "x": 6,
-        "y": 33
+        "y": 37
       },
       "hiddenSeries": false,
       "id": 113,
@@ -4788,7 +4956,7 @@
         "h": 6,
         "w": 6,
         "x": 12,
-        "y": 33
+        "y": 37
       },
       "hiddenSeries": false,
       "id": 114,
@@ -4882,7 +5050,7 @@
         "h": 5,
         "w": 18,
         "x": 0,
-        "y": 39
+        "y": 43
       },
       "hiddenSeries": false,
       "id": 110,
@@ -4976,7 +5144,7 @@
         "h": 6,
         "w": 18,
         "x": 0,
-        "y": 44
+        "y": 48
       },
       "hiddenSeries": false,
       "id": 38,
@@ -5072,7 +5240,7 @@
         "h": 6,
         "w": 6,
         "x": 0,
-        "y": 50
+        "y": 54
       },
       "hiddenSeries": false,
       "id": 91,
@@ -5169,7 +5337,7 @@
         "h": 6,
         "w": 6,
         "x": 6,
-        "y": 50
+        "y": 54
       },
       "hiddenSeries": false,
       "id": 92,
@@ -5265,7 +5433,7 @@
         "h": 6,
         "w": 6,
         "x": 12,
-        "y": 50
+        "y": 54
       },
       "hiddenSeries": false,
       "id": 43,
@@ -5360,7 +5528,7 @@
         "h": 6,
         "w": 18,
         "x": 0,
-        "y": 56
+        "y": 60
       },
       "hiddenSeries": false,
       "id": 54,
@@ -5456,7 +5624,7 @@
         "h": 6,
         "w": 6,
         "x": 0,
-        "y": 62
+        "y": 66
       },
       "hiddenSeries": false,
       "id": 66,
@@ -5552,7 +5720,7 @@
         "h": 6,
         "w": 6,
         "x": 6,
-        "y": 62
+        "y": 66
       },
       "hiddenSeries": false,
       "id": 67,
@@ -5648,7 +5816,7 @@
         "h": 6,
         "w": 6,
         "x": 12,
-        "y": 62
+        "y": 66
       },
       "hiddenSeries": false,
       "id": 105,
@@ -5737,7 +5905,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 68
+        "y": 72
       },
       "id": 104,
       "panels": [
@@ -6222,7 +6390,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 69
+        "y": 73
       },
       "id": 13,
       "panels": [
@@ -6326,7 +6494,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 70
+        "y": 74
       },
       "id": 15,
       "panels": [
@@ -6541,5 +6709,5 @@
   "timezone": "",
   "title": "roq-dashboard",
   "uid": "Afi9GToZz",
-  "version": 20
+  "version": 21
 }
