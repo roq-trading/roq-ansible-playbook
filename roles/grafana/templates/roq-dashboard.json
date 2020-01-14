@@ -511,7 +511,7 @@
       "description": "",
       "gridPos": {
         "h": 4,
-        "w": 6,
+        "w": 2,
         "x": 12,
         "y": 1
       },
@@ -534,7 +534,7 @@
               },
               {
                 "color": "red",
-                "value": 80
+                "value": 0.75
               }
             ],
             "unit": "percentunit"
@@ -542,12 +542,12 @@
           "override": {},
           "values": true
         },
-        "orientation": "horizontal"
+        "orientation": "vertical"
       },
       "pluginVersion": "6.5.2",
       "targets": [
         {
-          "expr": "1 - (node_filesystem_free_bytes / node_filesystem_size_bytes)",
+          "expr": "1 - (max(node_filesystem_free_bytes{device!=\"tmpfs\"}) by (device) / max(node_filesystem_size_bytes{device!=\"tmpfs\"}) by (device))",
           "format": "time_series",
           "instant": true,
           "refId": "A"
@@ -1675,46 +1675,42 @@
     },
     {
       "cacheTimeout": null,
-      "columns": [
-        {
-          "text": "Avg",
-          "value": "avg"
-        }
-      ],
       "datasource": null,
-      "fontSize": "100%",
       "gridPos": {
         "h": 5,
-        "w": 4,
+        "w": 2,
         "x": 18,
         "y": 6
       },
       "id": 132,
       "links": [],
-      "options": {},
-      "pageSize": null,
-      "pluginVersion": "6.5.2",
-      "showHeader": true,
-      "sort": {
-        "col": 0,
-        "desc": true
-      },
-      "styles": [
-        {
-          "alias": "",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
+      "options": {
+        "displayMode": "basic",
+        "fieldOptions": {
+          "calcs": [
+            "last"
           ],
-          "decimals": 0,
-          "pattern": "/.*/",
-          "thresholds": [],
-          "type": "number",
-          "unit": "short"
-        }
-      ],
+          "defaults": {
+            "mappings": [],
+            "max": 100,
+            "min": 0,
+            "thresholds": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 2
+              }
+            ]
+          },
+          "override": {},
+          "values": false
+        },
+        "orientation": "vertical"
+      },
+      "pluginVersion": "6.5.2",
       "targets": [
         {
           "expr": "count by (connection) (roq_counter{source=\"coinbase-pro\",function=\"disconnect\"})",
@@ -1725,9 +1721,8 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "Disconnect",
-      "transform": "timeseries_aggregations",
       "transparent": true,
-      "type": "table"
+      "type": "bargauge"
     },
     {
       "cacheTimeout": null,
@@ -2720,46 +2715,41 @@
     },
     {
       "cacheTimeout": null,
-      "columns": [
-        {
-          "text": "Avg",
-          "value": "avg"
-        }
-      ],
       "datasource": null,
-      "fontSize": "100%",
       "gridPos": {
         "h": 5,
-        "w": 4,
+        "w": 2,
         "x": 18,
         "y": 12
       },
       "id": 131,
       "links": [],
-      "options": {},
-      "pageSize": null,
-      "pluginVersion": "6.5.2",
-      "showHeader": true,
-      "sort": {
-        "col": 0,
-        "desc": true
-      },
-      "styles": [
-        {
-          "alias": "",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
+      "options": {
+        "displayMode": "basic",
+        "fieldOptions": {
+          "calcs": [
+            "last"
           ],
-          "decimals": 0,
-          "pattern": "/.*/",
-          "thresholds": [],
-          "type": "number",
-          "unit": "short"
-        }
-      ],
+          "defaults": {
+            "mappings": [],
+            "min": 0,
+            "thresholds": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 2
+              }
+            ]
+          },
+          "override": {},
+          "values": false
+        },
+        "orientation": "vertical"
+      },
+      "pluginVersion": "6.5.2",
       "targets": [
         {
           "expr": "count by (connection) (roq_counter{source=\"deribit\",function=\"disconnect\"})",
@@ -2770,9 +2760,8 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "Disconnect",
-      "transform": "timeseries_aggregations",
       "transparent": true,
-      "type": "table"
+      "type": "bargauge"
     },
     {
       "cacheTimeout": null,
@@ -4022,14 +4011,7 @@
     },
     {
       "cacheTimeout": null,
-      "columns": [
-        {
-          "text": "Avg",
-          "value": "avg"
-        }
-      ],
       "datasource": null,
-      "fontSize": "100%",
       "gridPos": {
         "h": 5,
         "w": 4,
@@ -4038,30 +4020,33 @@
       },
       "id": 130,
       "links": [],
-      "options": {},
-      "pageSize": null,
-      "pluginVersion": "6.5.2",
-      "showHeader": true,
-      "sort": {
-        "col": 0,
-        "desc": true
-      },
-      "styles": [
-        {
-          "alias": "",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
+      "options": {
+        "displayMode": "basic",
+        "fieldOptions": {
+          "calcs": [
+            "last"
           ],
-          "decimals": 0,
-          "pattern": "/.*/",
-          "thresholds": [],
-          "type": "number",
-          "unit": "short"
-        }
-      ],
+          "defaults": {
+            "mappings": [],
+            "min": 0,
+            "thresholds": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 2
+              }
+            ],
+            "title": ""
+          },
+          "override": {},
+          "values": false
+        },
+        "orientation": "vertical"
+      },
+      "pluginVersion": "6.5.2",
       "targets": [
         {
           "expr": "count by (connection) (roq_counter{source=\"gemini\",function=\"disconnect\"})",
@@ -4072,9 +4057,8 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "Disconnect",
-      "transform": "timeseries_aggregations",
       "transparent": true,
-      "type": "table"
+      "type": "bargauge"
     },
     {
       "cacheTimeout": null,
@@ -6709,5 +6693,5 @@
   "timezone": "",
   "title": "roq-dashboard",
   "uid": "Afi9GToZz",
-  "version": 21
+  "version": 22
 }
