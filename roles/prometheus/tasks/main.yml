@@ -39,8 +39,6 @@
       source: pull
       force_source: true
       force_tag: true
-      build:
-        http_timeout: 300
     with_items:
       - "{{ docker_registry_prefix | default('') }}{{ prometheus.docker.name }}:{{ prometheus.docker.tag }}"
       - "{{ docker_registry_prefix | default('') }}{{ node_exporter.docker.name }}:{{ node_exporter.docker.tag }}"

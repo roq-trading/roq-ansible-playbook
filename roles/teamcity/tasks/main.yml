@@ -100,8 +100,6 @@
       tag: "{{ teamcity.docker.tag }}"
       source: pull
       force_source: true
-      build:
-        http_timeout: 300
     notify:
     - restart teamcity
 
@@ -178,8 +176,6 @@
       tag: "{{ teamcity_agent.docker.tag }}"
       source: pull
       force_source: true
-      build:
-        http_timeout: 300
     notify:
     - restart teamcity-agent
   
