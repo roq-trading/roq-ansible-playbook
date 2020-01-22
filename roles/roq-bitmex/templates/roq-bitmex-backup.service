@@ -1,0 +1,10 @@
+[Unit]
+Description=bitmex backup
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/roq-bitmex-backup.sh
+
+[Install]
+WantedBy=multi-user.target

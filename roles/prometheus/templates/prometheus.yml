@@ -100,3 +100,13 @@ scrape_configs:
     static_configs:
       - targets: ['nginx.service:80']
 {% endif %}
+{% if 'roq_bitmex' in groups %}
+
+  - job_name: 'roq-bitmex'
+    metrics_path: '/metrics/roq-bitmex'
+    params:
+      format: [ prometheus ]
+    honor_labels: true
+    static_configs:
+      - targets: ['nginx.service:80']
+{% endif %}

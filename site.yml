@@ -75,6 +75,10 @@
   roles:
     - roq-gemini
 
+- hosts: roq_bitmex
+  roles:
+    - roq-bitmex
+
 - hosts: trading
   roles:
     - prometheus
