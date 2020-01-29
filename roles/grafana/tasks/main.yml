@@ -27,14 +27,13 @@
     - restart grafana
 
   - name: provision dashboards (common)
-    template:
-      src: "templates/{{ item }}"
+    copy:
+      src: "files/{{ item }}"
       dest: "/var/lib/grafana/dashboards/{{ item }}"
       owner: root
       group: root
       mode: 0644
     with_items:
-      - "roq-benchmark.json"
       - "roq-dashboard.json"
     notify:
     - restart grafana

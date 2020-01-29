@@ -523,33 +523,42 @@
             "lastNotNull"
           ],
           "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
             "decimals": 0,
             "mappings": [],
             "max": 1,
             "min": 0,
-            "thresholds": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 0.75
-              }
-            ],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 0.75
+                }
+              ]
+            },
+            "title": "${__series.name}",
             "unit": "percentunit"
           },
-          "override": {},
+          "overrides": [],
           "values": true
         },
-        "orientation": "vertical"
+        "orientation": "vertical",
+        "showUnfilled": false
       },
-      "pluginVersion": "6.5.3",
+      "pluginVersion": "6.6.0",
       "targets": [
         {
           "expr": "1 - (max(node_filesystem_free_bytes{device!=\"tmpfs\"}) by (device) / max(node_filesystem_size_bytes{device!=\"tmpfs\"}) by (device))",
           "format": "time_series",
           "instant": true,
+          "legendFormat": "used",
           "refId": "A"
         }
       ],
@@ -1411,7 +1420,7 @@
       ],
       "datasource": null,
       "decimals": 0,
-      "description": "Quickly spot\n\n(a) how much has been processed,\n(b) is the feed good, and\n(c) has the service restarted.",
+      "description": "",
       "format": "short",
       "gauge": {
         "maxValue": 100,
@@ -1494,7 +1503,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
-      "description": "Quickly spot\n\n(a) how much has been processed,\n(b) is the feed good, and\n(c) has the service restarted.",
+      "description": "",
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -1584,8 +1593,8 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
-      "description": "Represented as a 1-way latency.\n\nCan be measured as\n\n(a) half the time to receive a reply to a heartbeat request, or\n(b) the difference between current time and a timestamp originated from the exchange.",
-      "fill": 0,
+      "description": "",
+      "fill": 1,
       "fillGradient": 0,
       "gridPos": {
         "h": 4,
@@ -1608,7 +1617,7 @@
         "total": false,
         "values": true
       },
-      "lines": false,
+      "lines": true,
       "linewidth": 1,
       "nullPointMode": "null",
       "options": {
@@ -1691,30 +1700,39 @@
             "last"
           ],
           "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
             "mappings": [],
             "max": 100,
             "min": 0,
-            "thresholds": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 2
-              }
-            ]
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 2
+                }
+              ]
+            },
+            "title": "${__series.name}"
           },
-          "override": {},
+          "overrides": [],
           "values": false
         },
-        "orientation": "vertical"
+        "orientation": "vertical",
+        "showUnfilled": false
       },
-      "pluginVersion": "6.5.3",
+      "pluginVersion": "6.6.0",
       "targets": [
         {
-          "expr": "count by (connection) (roq_counter{source=\"coinbase-pro\",function=\"disconnect\"})",
+          "expr": "max by (connection) (roq_counter{source=\"coinbase-pro\",function=\"disconnect\"})",
           "instant": true,
+          "legendFormat": "{{connection}}",
           "refId": "A"
         }
       ],
@@ -2451,7 +2469,7 @@
       ],
       "datasource": null,
       "decimals": 0,
-      "description": "Quickly spot\n\n(a) how much has been processed,\n(b) is the feed good, and\n(c) has the service restarted.",
+      "description": "",
       "format": "short",
       "gauge": {
         "maxValue": 100,
@@ -2534,7 +2552,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
-      "description": "Quickly spot\n\n(a) how much has been processed,\n(b) is the feed good, and\n(c) has the service restarted.",
+      "description": "",
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -2624,8 +2642,8 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
-      "description": "Represented as 1-way latencyRepresented as a 1-way latency.\n\nCan be measured as\n\n(a) half the time to receive a reply to a heartbeat request, or\n(b) the difference between current time and a timestamp originated from the exchange.",
-      "fill": 0,
+      "description": "",
+      "fill": 1,
       "fillGradient": 0,
       "gridPos": {
         "h": 4,
@@ -2648,7 +2666,7 @@
         "total": false,
         "values": true
       },
-      "lines": false,
+      "lines": true,
       "linewidth": 1,
       "nullPointMode": "null",
       "options": {
@@ -2731,31 +2749,39 @@
             "last"
           ],
           "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
             "mappings": [],
             "max": 100,
             "min": 0,
-            "thresholds": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 2
-              }
-            ],
-            "title": ""
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 2
+                }
+              ]
+            },
+            "title": "${__series.name}"
           },
-          "override": {},
+          "overrides": [],
           "values": false
         },
-        "orientation": "vertical"
+        "orientation": "vertical",
+        "showUnfilled": false
       },
-      "pluginVersion": "6.5.3",
+      "pluginVersion": "6.6.0",
       "targets": [
         {
-          "expr": "count by (connection) (roq_counter{source=\"bitmex\",function=\"disconnect\"})",
+          "expr": "max by (connection) (roq_counter{source=\"bitmex\",function=\"disconnect\"})",
           "instant": true,
+          "legendFormat": "{{connection}}",
           "refId": "A"
         }
       ],
@@ -3492,7 +3518,7 @@
       ],
       "datasource": null,
       "decimals": 0,
-      "description": "Quickly spot\n\n(a) how much has been processed,\n(b) is the feed good, and\n(c) has the service restarted.",
+      "description": "",
       "format": "short",
       "gauge": {
         "maxValue": 100,
@@ -3575,7 +3601,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
-      "description": "Quickly spot\n\n(a) how much has been processed,\n(b) is the feed good, and\n(c) has the service restarted.",
+      "description": "",
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -3665,8 +3691,8 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
-      "description": "Represented as 1-way latencyRepresented as a 1-way latency.\n\nCan be measured as\n\n(a) half the time to receive a reply to a heartbeat request, or\n(b) the difference between current time and a timestamp originated from the exchange.",
-      "fill": 0,
+      "description": "",
+      "fill": 1,
       "fillGradient": 0,
       "gridPos": {
         "h": 4,
@@ -3689,7 +3715,7 @@
         "total": false,
         "values": true
       },
-      "lines": false,
+      "lines": true,
       "linewidth": 1,
       "nullPointMode": "null",
       "options": {
@@ -3772,30 +3798,39 @@
             "last"
           ],
           "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
             "mappings": [],
             "max": 100,
             "min": 0,
-            "thresholds": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 2
-              }
-            ]
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 2
+                }
+              ]
+            },
+            "title": "${__series.name}"
           },
-          "override": {},
+          "overrides": [],
           "values": false
         },
-        "orientation": "vertical"
+        "orientation": "vertical",
+        "showUnfilled": false
       },
-      "pluginVersion": "6.5.3",
+      "pluginVersion": "6.6.0",
       "targets": [
         {
-          "expr": "count by (connection) (roq_counter{source=\"deribit\",function=\"disconnect\"})",
+          "expr": "max by (connection) (roq_counter{source=\"deribit\",function=\"disconnect\"})",
           "instant": true,
+          "legendFormat": "{{connection}}",
           "refId": "A"
         }
       ],
@@ -4532,7 +4567,7 @@
       ],
       "datasource": null,
       "decimals": 0,
-      "description": "Quickly spot\n\n(a) how much has been processed,\n(b) is the feed good, and\n(c) has the service restarted.",
+      "description": "",
       "format": "short",
       "gauge": {
         "maxValue": 100,
@@ -4615,7 +4650,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
-      "description": "Quickly spot\n\n(a) how much has been processed,\n(b) is the feed good, and\n(c) has the service restarted.",
+      "description": "",
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -4705,8 +4740,8 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
-      "description": "Represented as 1-way latencyRepresented as a 1-way latency.\n\nCan be measured as\n\n(a) half the time to receive a reply to a heartbeat request, or\n(b) the difference between current time and a timestamp originated from the exchange.",
-      "fill": 0,
+      "description": "",
+      "fill": 1,
       "fillGradient": 0,
       "gridPos": {
         "h": 4,
@@ -4729,7 +4764,7 @@
         "total": false,
         "values": true
       },
-      "lines": false,
+      "lines": true,
       "linewidth": 1,
       "nullPointMode": "null",
       "options": {
@@ -4812,31 +4847,39 @@
             "last"
           ],
           "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
             "mappings": [],
             "max": 100,
             "min": 0,
-            "thresholds": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 2
-              }
-            ],
-            "title": ""
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 2
+                }
+              ]
+            },
+            "title": "${__series.name}"
           },
-          "override": {},
+          "overrides": [],
           "values": false
         },
-        "orientation": "vertical"
+        "orientation": "vertical",
+        "showUnfilled": false
       },
-      "pluginVersion": "6.5.3",
+      "pluginVersion": "6.6.0",
       "targets": [
         {
-          "expr": "count by (connection) (roq_counter{source=\"gemini\",function=\"disconnect\"})",
+          "expr": "max by (connection) (roq_counter{source=\"gemini\",function=\"disconnect\"})",
           "instant": true,
+          "legendFormat": "{{connection}}",
           "refId": "A"
         }
       ],
@@ -7709,7 +7752,7 @@
     }
   ],
   "refresh": "5s",
-  "schemaVersion": 21,
+  "schemaVersion": 22,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -7736,5 +7779,5 @@
   "timezone": "",
   "title": "roq-dashboard",
   "uid": "Afi9GToZz",
-  "version": 14
+  "version": 15
 }
