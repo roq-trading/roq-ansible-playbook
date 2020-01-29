@@ -1468,7 +1468,7 @@
         "fillColor": "rgba(31, 118, 189, 0.18)",
         "full": false,
         "lineColor": "rgb(31, 120, 193)",
-        "show": true,
+        "show": false,
         "ymax": null,
         "ymin": null
       },
@@ -1477,7 +1477,7 @@
         {
           "expr": "sum(roq_events_count{source=\"coinbase-pro\"})",
           "format": "time_series",
-          "instant": false,
+          "instant": true,
           "refId": "A"
         }
       ],
@@ -1687,7 +1687,7 @@
       "datasource": null,
       "gridPos": {
         "h": 4,
-        "w": 2,
+        "w": 4,
         "x": 18,
         "y": 6
       },
@@ -1752,7 +1752,8 @@
         "#d44a3a"
       ],
       "datasource": null,
-      "format": "none",
+      "decimals": 0,
+      "format": "s",
       "gauge": {
         "maxValue": 100,
         "minValue": 0,
@@ -1800,14 +1801,15 @@
         "fillColor": "rgba(31, 118, 189, 0.18)",
         "full": false,
         "lineColor": "rgb(31, 120, 193)",
-        "show": true,
+        "show": false,
         "ymax": 1,
         "ymin": 0
       },
       "tableColumn": "",
       "targets": [
         {
-          "expr": "",
+          "expr": "time() - roq_process{source=\"coinbase-pro\",name=\"start_time\"}",
+          "instant": true,
           "refId": "A"
         }
       ],
@@ -2517,7 +2519,7 @@
         "fillColor": "rgba(31, 118, 189, 0.18)",
         "full": false,
         "lineColor": "rgb(31, 120, 193)",
-        "show": true,
+        "show": false,
         "ymax": null,
         "ymin": null
       },
@@ -2526,7 +2528,7 @@
         {
           "expr": "sum(roq_events_count{source=\"bitmex\"})",
           "format": "time_series",
-          "instant": false,
+          "instant": true,
           "refId": "A"
         }
       ],
@@ -2736,7 +2738,7 @@
       "datasource": null,
       "gridPos": {
         "h": 4,
-        "w": 2,
+        "w": 4,
         "x": 18,
         "y": 11
       },
@@ -2801,7 +2803,8 @@
         "#d44a3a"
       ],
       "datasource": null,
-      "format": "none",
+      "decimals": 0,
+      "format": "s",
       "gauge": {
         "maxValue": 100,
         "minValue": 0,
@@ -2849,14 +2852,15 @@
         "fillColor": "rgba(31, 118, 189, 0.18)",
         "full": false,
         "lineColor": "rgb(31, 120, 193)",
-        "show": true,
+        "show": false,
         "ymax": 1,
         "ymin": 0
       },
       "tableColumn": "",
       "targets": [
         {
-          "expr": "",
+          "expr": "time() - roq_process{source=\"bitmex\",name=\"start_time\"}",
+          "instant": true,
           "refId": "A"
         }
       ],
@@ -3566,7 +3570,7 @@
         "fillColor": "rgba(31, 118, 189, 0.18)",
         "full": false,
         "lineColor": "rgb(31, 120, 193)",
-        "show": true,
+        "show": false,
         "ymax": null,
         "ymin": null
       },
@@ -3575,7 +3579,7 @@
         {
           "expr": "sum(roq_events_count{source=\"deribit\"})",
           "format": "time_series",
-          "instant": false,
+          "instant": true,
           "refId": "A"
         }
       ],
@@ -3785,7 +3789,7 @@
       "datasource": null,
       "gridPos": {
         "h": 4,
-        "w": 2,
+        "w": 4,
         "x": 18,
         "y": 16
       },
@@ -3850,7 +3854,8 @@
         "#d44a3a"
       ],
       "datasource": null,
-      "format": "none",
+      "decimals": 0,
+      "format": "s",
       "gauge": {
         "maxValue": 100,
         "minValue": 0,
@@ -3898,14 +3903,15 @@
         "fillColor": "rgba(31, 118, 189, 0.18)",
         "full": false,
         "lineColor": "rgb(31, 120, 193)",
-        "show": true,
+        "show": false,
         "ymax": 1,
         "ymin": 0
       },
       "tableColumn": "",
       "targets": [
         {
-          "expr": "",
+          "expr": "time() - roq_process{source=\"deribit\",name=\"start_time\"}",
+          "instant": true,
           "refId": "A"
         }
       ],
@@ -4615,7 +4621,7 @@
         "fillColor": "rgba(31, 118, 189, 0.18)",
         "full": false,
         "lineColor": "rgb(31, 120, 193)",
-        "show": true,
+        "show": false,
         "ymax": null,
         "ymin": null
       },
@@ -4624,7 +4630,7 @@
         {
           "expr": "sum(roq_events_count{source=\"gemini\"})",
           "format": "time_series",
-          "instant": false,
+          "instant": true,
           "refId": "A"
         }
       ],
@@ -4834,7 +4840,7 @@
       "datasource": null,
       "gridPos": {
         "h": 4,
-        "w": 2,
+        "w": 4,
         "x": 18,
         "y": 21
       },
@@ -4899,7 +4905,8 @@
         "#d44a3a"
       ],
       "datasource": null,
-      "format": "none",
+      "decimals": 0,
+      "format": "s",
       "gauge": {
         "maxValue": 100,
         "minValue": 0,
@@ -4947,14 +4954,15 @@
         "fillColor": "rgba(31, 118, 189, 0.18)",
         "full": false,
         "lineColor": "rgb(31, 120, 193)",
-        "show": true,
+        "show": false,
         "ymax": 1,
         "ymin": 0
       },
       "tableColumn": "",
       "targets": [
         {
-          "expr": "",
+          "expr": "time() - roq_process{source=\"gemini\",name=\"start_time\"}",
+          "instant": true,
           "refId": "A"
         }
       ],
@@ -7759,7 +7767,7 @@
     "list": []
   },
   "time": {
-    "from": "now-15m",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {
@@ -7779,5 +7787,5 @@
   "timezone": "",
   "title": "roq-dashboard",
   "uid": "Afi9GToZz",
-  "version": 15
+  "version": 32
 }
