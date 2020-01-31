@@ -6,21 +6,6 @@ symbols = "{{ config.symbols }}"
 {% endif %}
 {% endif %}
 
-[market_data]
-{% for (name, value) in config.market_data.items() %}
-  {{ name }} = "{{ value }}"
-{% endfor %}
-
-[order_entry]
-{% for (name, value) in config.order_entry.items() %}
-  {{ name }} = "{{ value }}"
-{% endfor %}
-
-[drop_copy]
-{% for (name, value) in config.drop_copy.items() %}
-  {{ name }} = "{{ value }}"
-{% endfor %}
-
 [order_templates]
 
   [order_templates.default]

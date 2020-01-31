@@ -1,5 +1,5 @@
 [Unit]
-Description=Coinbase Pro Gateway
+Description=coinbase pro gateway service
 After=network-online.target
 Conflicts=roq-coinbase-pro-stop.service
 

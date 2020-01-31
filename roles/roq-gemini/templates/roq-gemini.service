@@ -1,5 +1,5 @@
 [Unit]
-Description=Gemini Gateway
+Description=gemini gateway service
 After=network-online.target
 Conflicts=roq-gemini-stop.service
 

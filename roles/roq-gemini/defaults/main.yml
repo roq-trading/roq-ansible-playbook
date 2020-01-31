@@ -5,24 +5,29 @@ roq_gemini_defaults:
   docker:
     use: "{{ roq_use_docker }}"
     name: "roqtrading/roq-gemini"
-  options: {}
+  service:
+    start: "Mon-Sun *-*-* 00:01:00"
+    stop: "Sat *-*-* 23:59:00"
   cpu_affinity: {}
   logging:
     verbosity: 0
+  name: "gemini"
   net:
-    fix_mkt: "tcp://8.44.203.78:1529"
-    fix_ord: "tcp://8.44.203.78:1528"
+    fix_mkt_uri: "tcp://8.44.203.78:1529"
+    fix_ord_uri: "tcp://8.44.203.78:1528"
     fix_drp_uri: "tcp://8.44.203.78:1530"
   event_log:
     dir: "{{ root }}/var/lib/roq/roq-gemini/"
     sync_freq_secs: 600
   options: {}
+  symbols:
+    - ".*"
   market_data:
-    sender: "TODO"
-    target: "TODO"
+    sender: "TODO: INSERT YOUR SENDER COMPONENT ID HERE"
+    target: "TODO: INSERT YOUR TARGET COMPONENT ID HERE"
   order_entry:
-    sender: "TODO"
-    target: "TODO"
+    sender: "TODO: INSERT YOUR SENDER COMPONENT ID HERE"
+    target: "TODO: INSERT YOUR TARGET COMPONENT ID HERE"
   drop_copy:
-    sender: "TODO"
-    target: "TODO"
+    sender: "TODO: INSERT YOUR SENDER COMPONENT ID HERE"
+    target: "TODO: INSERT YOUR TARGET COMPONENT ID HERE"

@@ -1,8 +1,8 @@
 [Unit]
-Description=Deribit start timer
+Description=deribit gateway timer
 
 [Timer]
-OnCalendar=Mon-Sun *-*-* 00:01:00
+OnCalendar={{ config.service.start }}
 
 [Install]
 WantedBy=multi-user.target

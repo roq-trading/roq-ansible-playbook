@@ -1,5 +1,5 @@
 [Unit]
-Description=Stop deribit
+Description=deribit gateway stop service
 After=network-online.target
 
 [Service]

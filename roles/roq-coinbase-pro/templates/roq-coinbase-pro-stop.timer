@@ -1,8 +1,8 @@
 [Unit]
-Description=Coinbase-Pro stop timer
+Description=coinbase pro gateway stop timer
 
 [Timer]
-OnCalendar=Mon-Sun *-*-* 23:59:00
+OnCalendar={{ config.service.stop }}
 
 [Install]
 WantedBy=multi-user.target

@@ -1,8 +1,8 @@
 [Unit]
-Description=Coinbase-Pro start timer
+Description=coinbase pro gateway timer
 
 [Timer]
-OnCalendar=Mon-Sun *-*-* 00:01:00
+OnCalendar={{ config.service.start }}
 
 [Install]
 WantedBy=multi-user.target

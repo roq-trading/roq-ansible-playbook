@@ -5,11 +5,19 @@ roq_coinbase_pro_defaults:
   docker:
     use: "{{ roq_use_docker }}"
     name: "roqtrading/roq-coinbase-pro"
-  options: {}
+  service:
+    start: "Mon-Sun *-*-* 00:01:00"
+    stop: "Sat *-*-* 23:59:00"
   cpu_affinity: {}
   logging:
     verbosity: 0
+  name: "coinbase-pro"
+  net:
+    fix: "tcp+ssl://fix-public.sandbox.pro.coinbase.com:4198"
+    ws: "wss://ws-feed-public.sandbox.pro.coinbase.com"
+    rest: "https://api-public.sandbox.pro.coinbase.com"
   event_log:
     dir: "{{ root }}/var/lib/roq/roq-coinbase-pro/"
     sync_freq_secs: 600
+  symbols: ".*"
   options: {}

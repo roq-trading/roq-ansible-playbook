@@ -1,5 +1,5 @@
 [Unit]
-Description=Gemini backup timer
+Description=gemini gateway backup timer
 
 [Timer]
 OnCalendar=*-*-* 00:05:00

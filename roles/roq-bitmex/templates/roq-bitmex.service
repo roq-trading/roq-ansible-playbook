@@ -1,5 +1,5 @@
 [Unit]
-Description=bitmex Gateway
+Description=bitmex gateway service
 After=network-online.target
 Conflicts=roq-bitmex-stop.service
 

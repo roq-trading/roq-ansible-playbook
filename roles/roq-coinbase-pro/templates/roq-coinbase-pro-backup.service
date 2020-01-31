@@ -1,5 +1,5 @@
 [Unit]
-Description=Coinbase-Pro backup
+Description=coinbase pro gateway backup service
 After=network-online.target
 
 [Service]

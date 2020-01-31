@@ -1,5 +1,5 @@
 [Unit]
-Description=Deribit Gateway
+Description=deribit gateway service
 After=network-online.target
 Conflicts=roq-deribit-stop.service
 

@@ -5,10 +5,13 @@ roq_deribit_defaults:
   docker:
     use: "{{ roq_use_docker }}"
     name: "roqtrading/roq-deribit"
-  options: {}
+  service:
+    start: "Mon-Sun *-*-* 00:01:00"
+    stop: "Sat *-*-* 23:59:00"
   cpu_affinity: {}
   logging:
     verbosity: 0
+  name: "deribit"
   net:
     fix: "tcp://test.deribit.com:9881"
     ws: "wss://test.deribit.com/ws/api/v2"
@@ -16,3 +19,7 @@ roq_deribit_defaults:
     dir: "{{ root }}/var/lib/roq/roq-deribit/"
     sync_freq_secs: 600
   options: {}
+  symbols:
+    - ".*-PERPETUAL"
+    - ".*-DERIBIT-INDEX"
+    - .*-\\d{2}\\D{3}\\d{2}

@@ -1,5 +1,5 @@
 [Unit]
-Description=Stop bitmex
+Description=bitmex gatewy stop service
 After=network-online.target
 
 [Service]

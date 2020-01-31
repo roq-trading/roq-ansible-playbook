@@ -1,5 +1,5 @@
 [Unit]
-Description=Stop deribit
+Description=coinbase pro gateway stop service
 After=network-online.target
 
 [Service]

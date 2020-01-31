@@ -1,5 +1,5 @@
 [Unit]
-Description=Stop gemini
+Description=gemini gateway stop service
 After=network-online.target
 
 [Service]

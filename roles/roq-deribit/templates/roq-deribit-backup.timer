@@ -1,5 +1,5 @@
 [Unit]
-Description=Deribit backup timer
+Description=deribit gateway backup timer
 
 [Timer]
 OnCalendar=*-*-* 00:05:00

@@ -1,5 +1,5 @@
 [Unit]
-Description=bitmex backup timer
+Description=bitmex gateway backup timer
 
 [Timer]
 OnCalendar=*-*-* 00:05:00

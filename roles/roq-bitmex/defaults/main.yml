@@ -5,24 +5,19 @@ roq_bitmex_defaults:
   docker:
     use: "{{ roq_use_docker }}"
     name: "roqtrading/roq-bitmex"
-  options: {}
+  service:
+    start: "Mon-Sun *-*-* 00:01:00"
+    stop: "Sat *-*-* 23:59:00"
   cpu_affinity: {}
   logging:
     verbosity: 0
+  name: "bitmex"
   net:
-    fix_mkt: "tcp://8.44.203.78:1529"
-    fix_ord: "tcp://8.44.203.78:1528"
-    fix_drp_uri: "tcp://8.44.203.78:1530"
+    ws: "wss://testnet.bitmex.com/realtime"
+    rest: "https://testnet.bitmex.com/api/v1"
   event_log:
     dir: "{{ root }}/var/lib/roq/roq-bitmex/"
     sync_freq_secs: 600
   options: {}
-  market_data:
-    sender: "TODO"
-    target: "TODO"
-  order_entry:
-    sender: "TODO"
-    target: "TODO"
-  drop_copy:
-    sender: "TODO"
-    target: "TODO"
+  symbols:
+    - ".*"

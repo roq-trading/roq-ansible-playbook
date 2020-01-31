@@ -1,5 +1,5 @@
 [Unit]
-Description=bitmex backup
+Description=bitmex gateway backup service
 After=network-online.target
 
 [Service]

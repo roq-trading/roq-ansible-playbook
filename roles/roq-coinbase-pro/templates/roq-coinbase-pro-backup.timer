@@ -1,5 +1,5 @@
 [Unit]
-Description=Coinbase-Pro backup timer
+Description=coinbase pro gateway backup timer
 
 [Timer]
 OnCalendar=*-*-* 00:05:00
