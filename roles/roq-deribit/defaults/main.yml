@@ -20,6 +20,4 @@ roq_deribit_defaults:
     sync_freq_secs: 600
   options: {}
   symbols:
-    - ".*-PERPETUAL"
-    - ".*-DERIBIT-INDEX"
-    - .*-\\d{2}\\D{3}\\d{2}
+    - ".*"
