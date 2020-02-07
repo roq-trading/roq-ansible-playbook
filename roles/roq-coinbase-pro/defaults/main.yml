@@ -17,7 +17,7 @@ roq_coinbase_pro_defaults:
     ws: "wss://ws-feed-public.sandbox.pro.coinbase.com"
     rest: "https://api-public.sandbox.pro.coinbase.com"
   event_log:
-    dir: "{{ root }}/var/lib/roq/roq-coinbase-pro/"
+    dir: "{{ root }}/var/lib/roq"
     sync_freq_secs: 600
   symbols: ".*"
   options: {}

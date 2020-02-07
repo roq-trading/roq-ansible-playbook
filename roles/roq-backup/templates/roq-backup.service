@@ -1,10 +1,10 @@
 [Unit]
-Description=gemini gateway backup service
+Description=backup
 After=network-online.target
 
 [Service]
 Type=oneshot
-ExecStart=/usr/local/bin/roq-gemini-backup.sh
+ExecStart=/usr/local/bin/roq-backup.sh
 
 [Install]
 WantedBy=multi-user.target

@@ -17,7 +17,7 @@ roq_gemini_defaults:
     fix_ord_uri: "tcp://8.44.203.78:1528"
     fix_drp_uri: "tcp://8.44.203.78:1530"
   event_log:
-    dir: "{{ root }}/var/lib/roq/roq-gemini/"
+    dir: "{{ root }}/var/lib/roq"
     sync_freq_secs: 600
   options: {}
   symbols:

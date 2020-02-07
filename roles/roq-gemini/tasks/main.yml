@@ -33,7 +33,6 @@
     with_items:
       - "/etc/roq"
       - "/var/lib/roq"
-      - "/var/lib/roq/roq-gemini"
       - "/var/log/roq"
       - "/var/run/roq"
 
@@ -57,7 +56,6 @@
       mode: 0750
     with_items:
       - "roq-gemini.sh"
-      - "roq-gemini-backup.sh"
 
   - name: install the roq-gemini conda package
     shell: "{{ root }}/miniconda/bin/conda install -y -n base \
@@ -88,14 +86,12 @@
       systemd_services:
       - 'roq-gemini.service'
       - 'roq-gemini-stop.service'
-      - 'roq-gemini-backup.service'
 
   - name: define list of systemd timers
     set_fact:
       systemd_timers:
       - 'roq-gemini.timer'
       - 'roq-gemini-stop.timer'
-      - 'roq-gemini-backup.timer'
 
   - name: define list of systemd units
     set_fact:

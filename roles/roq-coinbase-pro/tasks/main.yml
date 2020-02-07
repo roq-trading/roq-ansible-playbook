@@ -33,7 +33,6 @@
     with_items:
       - "/etc/roq"
       - "/var/lib/roq"
-      - "/var/lib/roq/roq-coinbase-pro"
       - "/var/log/roq"
       - "/var/run/roq"
 
@@ -57,7 +56,6 @@
       mode: 0750
     with_items:
       - "roq-coinbase-pro.sh"
-      - "roq-coinbase-pro-backup.sh"
 
   - name: install the roq-coinbase-pro conda package
     shell: "{{ root }}/miniconda/bin/conda install -y -n base \
@@ -88,14 +86,12 @@
       systemd_services:
       - 'roq-coinbase-pro.service'
       - 'roq-coinbase-pro-stop.service'
-      - 'roq-coinbase-pro-backup.service'
 
   - name: define list of systemd timers
     set_fact:
       systemd_timers:
       - 'roq-coinbase-pro.timer'
       - 'roq-coinbase-pro-stop.timer'
-      - 'roq-coinbase-pro-backup.timer'
 
   - name: define list of systemd units
     set_fact:
