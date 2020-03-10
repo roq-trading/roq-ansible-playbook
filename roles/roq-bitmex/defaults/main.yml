@@ -6,7 +6,7 @@ roq_bitmex_defaults:
     use: "{{ roq_use_docker }}"
     name: "roqtrading/roq-bitmex"
   service:
-    start: "Mon-Sun *-*-* 00:01:00"
+    start: "Sun *-*-* 00:01:00"
     stop: "Sat *-*-* 23:59:00"
   cpu_affinity: {}
   logging:

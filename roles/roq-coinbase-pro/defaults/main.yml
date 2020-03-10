@@ -6,7 +6,7 @@ roq_coinbase_pro_defaults:
     use: "{{ roq_use_docker }}"
     name: "roqtrading/roq-coinbase-pro"
   service:
-    start: "Mon-Sun *-*-* 00:01:00"
+    start: "Sun *-*-* 00:01:00"
     stop: "Sat *-*-* 23:59:00"
   cpu_affinity: {}
   logging:
