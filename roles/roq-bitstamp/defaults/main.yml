@@ -1,0 +1,24 @@
+---
+
+roq_bitstamp_defaults:
+  version: "{{ roq_version }}"
+  docker:
+    use: "{{ roq_use_docker }}"
+    name: "roqtrading/roq-bitstamp"
+  service:
+    start: "Sun *-*-* 00:01:00"
+    stop: "Sat *-*-* 23:59:00"
+  cpu_affinity: {}
+  logging:
+    verbosity: 0
+  name: "bitstamp"
+  net:
+    ws: "wss://ws.bitstamp.net"
+    rest: "https://www.bitstamp.net/api"
+    fix: "tcp+ssl://fix.bitstamp.net:8905"
+  event_log:
+    dir: "{{ root }}/var/lib/roq"
+    sync_freq_secs: 600
+  options: {}
+  symbols:
+    - ".*"

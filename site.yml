@@ -79,6 +79,14 @@
   roles:
     - roq-bitmex
 
+- hosts: roq_bitstamp
+  roles:
+    - roq-bitstamp
+
+- hosts: roq_ftx
+  roles:
+    - roq-ftx
+
 - hosts: trading
   roles:
     - prometheus

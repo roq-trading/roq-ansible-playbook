@@ -1,0 +1,24 @@
+---
+
+roq_ftx_defaults:
+  version: "{{ roq_version }}"
+  docker:
+    use: "{{ roq_use_docker }}"
+    name: "roqtrading/roq-ftx"
+  service:
+    start: "Sun *-*-* 00:01:00"
+    stop: "Sat *-*-* 23:59:00"
+  cpu_affinity: {}
+  logging:
+    verbosity: 0
+  name: "ftx"
+  net:
+    ws: "wss://ftx.com/ws"
+    rest: "https://ftx.com/api"
+    fix: "tcp+ssl://fix.ftx.com:4364"
+  event_log:
+    dir: "{{ root }}/var/lib/roq"
+    sync_freq_secs: 600
+  options: {}
+  symbols:
+    - ".*"
