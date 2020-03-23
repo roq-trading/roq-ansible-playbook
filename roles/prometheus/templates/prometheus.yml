@@ -70,6 +70,26 @@ scrape_configs:
     static_configs:
       - targets: ['nginx.service:80']
 {% endif %}
+{% if 'roq_bitmex' in groups %}
+
+  - job_name: 'roq-bitmex'
+    metrics_path: '/metrics/roq-bitmex'
+    params:
+      format: [ prometheus ]
+    honor_labels: true
+    static_configs:
+      - targets: ['nginx.service:80']
+{% endif %}
+{% if 'roq_bitstamp' in groups %}
+
+  - job_name: 'roq-bitstamp'
+    metrics_path: '/metrics/roq-bitstamp'
+    params:
+      format: [ prometheus ]
+    honor_labels: true
+    static_configs:
+      - targets: ['nginx.service:80']
+{% endif %}
 {% if 'roq_coinbase_pro' in groups %}
 
   - job_name: 'roq-coinbase-pro'
@@ -90,20 +110,20 @@ scrape_configs:
     static_configs:
       - targets: ['nginx.service:80']
 {% endif %}
-{% if 'roq_gemini' in groups %}
+{% if 'roq_ftx' in groups %}
 
-  - job_name: 'roq-gemini'
-    metrics_path: '/metrics/roq-gemini'
+  - job_name: 'roq-ftx'
+    metrics_path: '/metrics/roq-ftx'
     params:
       format: [ prometheus ]
     honor_labels: true
     static_configs:
       - targets: ['nginx.service:80']
 {% endif %}
-{% if 'roq_bitmex' in groups %}
+{% if 'roq_gemini' in groups %}
 
-  - job_name: 'roq-bitmex'
-    metrics_path: '/metrics/roq-bitmex'
+  - job_name: 'roq-gemini'
+    metrics_path: '/metrics/roq-gemini'
     params:
       format: [ prometheus ]
     honor_labels: true

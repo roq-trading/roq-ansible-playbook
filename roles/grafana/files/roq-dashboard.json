@@ -2,6 +2,7 @@
   "annotations": {
     "list": [
       {
+        "$$hashKey": "object:33",
         "builtIn": 1,
         "datasource": "-- Grafana --",
         "enable": true,
@@ -72,7 +73,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.4.3",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -151,7 +151,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.4.3",
       "postfix": " GHz",
       "postfixFontSize": "50%",
@@ -230,7 +229,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.4.3",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -309,7 +307,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.4.3",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -388,7 +385,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.4.3",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -467,7 +463,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.4.3",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -552,7 +547,7 @@
         "orientation": "vertical",
         "showUnfilled": false
       },
-      "pluginVersion": "6.6.0",
+      "pluginVersion": "6.7.1",
       "targets": [
         {
           "expr": "1 - (max(node_filesystem_free_bytes{device!=\"tmpfs\"}) by (device) / max(node_filesystem_size_bytes{device!=\"tmpfs\"}) by (device))",
@@ -609,7 +604,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.4.3",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -688,7 +682,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.4.3",
       "postfix": " GHz",
       "postfixFontSize": "50%",
@@ -767,7 +760,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.4.3",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -846,7 +838,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.4.3",
       "postfix": " ",
       "postfixFontSize": "50%",
@@ -925,7 +916,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.4.3",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -1004,7 +994,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.4.3",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -1051,1050 +1040,6 @@
         "x": 0,
         "y": 5
       },
-      "id": 4,
-      "panels": [],
-      "title": "Coinbase PRO",
-      "type": "row"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": true,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": null,
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 0,
-        "y": 6
-      },
-      "id": 7,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "options": {},
-      "pluginVersion": "6.4.3",
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false,
-        "ymax": 1,
-        "ymin": 0
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "expr": "max(absent(roq_updated{source=\"coinbase-pro\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
-          "instant": true,
-          "refId": "A"
-        }
-      ],
-      "thresholds": "0.5,1",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Service",
-      "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "50%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "UP",
-          "value": "0"
-        },
-        {
-          "op": "=",
-          "text": "DOWN",
-          "value": "1"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": true,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": null,
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 2,
-        "y": 6
-      },
-      "id": 32,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "options": {},
-      "pluginVersion": "6.4.3",
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false,
-        "ymax": 1,
-        "ymin": 0
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "expr": "max(absent(roq_updated{source=\"coinbase-pro\",connection=\"market_data\",state=\"ready\"}) OR vector(0))",
-          "instant": true,
-          "refId": "A"
-        }
-      ],
-      "thresholds": "0.5,1",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Market Data",
-      "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "50%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "READY",
-          "value": "0"
-        },
-        {
-          "op": "=",
-          "text": "NOT READY",
-          "value": "1"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": true,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": null,
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 4,
-        "y": 6
-      },
-      "id": 33,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "options": {},
-      "pluginVersion": "6.4.3",
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false,
-        "ymax": 1,
-        "ymin": 0
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "expr": "max(absent(roq_updated{source=\"coinbase-pro\",connection=\"order_manager\",state=\"ready\"}) OR vector(0))",
-          "instant": true,
-          "refId": "A"
-        }
-      ],
-      "thresholds": "0.5,1",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Order Manager",
-      "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "50%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "READY",
-          "value": "0"
-        },
-        {
-          "op": "=",
-          "text": "NOT READY",
-          "value": "1"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": true,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": null,
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 6,
-        "y": 6
-      },
-      "id": 20,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "options": {},
-      "pluginVersion": "6.4.3",
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": true,
-        "ymax": 1,
-        "ymin": 0
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "expr": "roq_exceptions{source=\"coinbase-pro\"}",
-          "instant": true,
-          "refId": "A"
-        }
-      ],
-      "thresholds": "1,5",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Exceptions",
-      "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "50%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "",
-          "value": "0"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": null,
-      "decimals": null,
-      "description": "",
-      "format": "short",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 8,
-        "y": 6
-      },
-      "id": 95,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "options": {},
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false,
-        "ymax": null,
-        "ymin": null
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "expr": "sum(roq_events_count{source=\"coinbase-pro\"})",
-          "format": "time_series",
-          "instant": true,
-          "refId": "A"
-        }
-      ],
-      "thresholds": "",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Events (total)",
-      "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "50%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "aliasColors": {},
-      "bars": true,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "description": "",
-      "fill": 0,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 4,
-        "w": 4,
-        "x": 10,
-        "y": 6
-      },
-      "hiddenSeries": false,
-      "id": 108,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": false,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "irate(roq_events_count{source=\"coinbase-pro\"}[1m])",
-          "format": "time_series",
-          "instant": false,
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Events (frequency)",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "cps",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": false
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "description": "",
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 4,
-        "w": 4,
-        "x": 14,
-        "y": 6
-      },
-      "hiddenSeries": false,
-      "id": 70,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": false,
-        "hideEmpty": true,
-        "hideZero": true,
-        "max": true,
-        "min": false,
-        "rightSide": true,
-        "show": false,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 0.5,
-      "points": true,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "rate(roq_latency_sum{source=\"coinbase-pro\", function=\"ping\"}[1m]) / on(source, connection, function) rate(roq_latency_count{source=\"coinbase-pro\"}[1m]) / 1000000",
-          "instant": false,
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "External (latency)",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "decimals": null,
-          "format": "ms",
-          "label": "",
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "decimals": 0,
-          "format": "cps",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": false
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": null,
-      "gridPos": {
-        "h": 4,
-        "w": 4,
-        "x": 18,
-        "y": 6
-      },
-      "id": 132,
-      "links": [],
-      "options": {
-        "displayMode": "basic",
-        "fieldOptions": {
-          "calcs": [
-            "last"
-          ],
-          "defaults": {
-            "color": {
-              "mode": "thresholds"
-            },
-            "mappings": [],
-            "max": 100,
-            "min": 0,
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 2
-                }
-              ]
-            },
-            "title": "${__series.name}"
-          },
-          "overrides": [],
-          "values": false
-        },
-        "orientation": "vertical",
-        "showUnfilled": false
-      },
-      "pluginVersion": "6.6.0",
-      "targets": [
-        {
-          "expr": "max by (connection) (roq_counter{source=\"coinbase-pro\",function=\"disconnect\"})",
-          "instant": true,
-          "legendFormat": "{{connection}}",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Disconnect",
-      "transparent": true,
-      "type": "bargauge"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": null,
-      "decimals": 0,
-      "format": "s",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 0,
-        "y": 8
-      },
-      "id": 74,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "options": {},
-      "pluginVersion": "6.4.3",
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false,
-        "ymax": 1,
-        "ymin": 0
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "expr": "time() - roq_process{source=\"coinbase-pro\",name=\"start_time\"}",
-          "instant": true,
-          "refId": "A"
-        }
-      ],
-      "thresholds": "0,1",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Uptime",
-      "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "50%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "",
-          "value": "0"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": null,
-      "format": "cps",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 2,
-        "y": 8
-      },
-      "id": 73,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "options": {},
-      "pluginVersion": "6.4.3",
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": true,
-        "ymax": 1,
-        "ymin": 0
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "expr": "sum(irate(roq_profile_count{source=\"coinbase-pro\", function=\"market_by_price\"}[1m]))",
-          "instant": true,
-          "refId": "A"
-        }
-      ],
-      "thresholds": "0,1",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Market by Price",
-      "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "50%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "",
-          "value": "0"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": null,
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 4,
-        "y": 8
-      },
-      "id": 68,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "options": {},
-      "pluginVersion": "6.4.3",
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": true,
-        "ymax": 1,
-        "ymin": 0
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "expr": "",
-          "refId": "A"
-        }
-      ],
-      "thresholds": "0,1",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Working Orders",
-      "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "50%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "",
-          "value": "0"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": null,
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 6,
-        "y": 8
-      },
-      "id": 22,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "options": {},
-      "pluginVersion": "6.4.3",
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false,
-        "ymax": 1,
-        "ymin": 0
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "expr": "max(roq_clients{source=\"coinbase-pro\", event=\"connect\"}) - max(roq_clients{source=\"coinbase-pro\", event=\"disconnect\"})",
-          "instant": true,
-          "refId": "A"
-        }
-      ],
-      "thresholds": "0,1",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Clients",
-      "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "50%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "",
-          "value": "0"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "collapsed": false,
-      "datasource": null,
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 10
-      },
       "id": 134,
       "panels": [],
       "title": "BitMEX",
@@ -2122,7 +1067,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 11
+        "y": 6
       },
       "id": 135,
       "interval": null,
@@ -2141,7 +1086,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.4.3",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -2214,7 +1158,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 11
+        "y": 6
       },
       "id": 137,
       "interval": null,
@@ -2233,7 +1177,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.4.3",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -2305,7 +1248,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 11
+        "y": 6
       },
       "id": 139,
       "interval": null,
@@ -2324,7 +1267,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.4.3",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -2396,7 +1338,7 @@
         "h": 2,
         "w": 2,
         "x": 6,
-        "y": 11
+        "y": 6
       },
       "id": 141,
       "interval": null,
@@ -2415,7 +1357,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.4.3",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -2484,7 +1425,7 @@
         "h": 2,
         "w": 2,
         "x": 8,
-        "y": 11
+        "y": 6
       },
       "id": 146,
       "interval": null,
@@ -2503,7 +1444,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -2561,7 +1501,7 @@
         "h": 4,
         "w": 4,
         "x": 10,
-        "y": 11
+        "y": 6
       },
       "hiddenSeries": false,
       "id": 143,
@@ -2651,7 +1591,7 @@
         "h": 4,
         "w": 4,
         "x": 14,
-        "y": 11
+        "y": 6
       },
       "hiddenSeries": false,
       "id": 144,
@@ -2740,7 +1680,7 @@
         "h": 4,
         "w": 4,
         "x": 18,
-        "y": 11
+        "y": 6
       },
       "id": 145,
       "links": [],
@@ -2778,7 +1718,7 @@
         "orientation": "vertical",
         "showUnfilled": false
       },
-      "pluginVersion": "6.6.0",
+      "pluginVersion": "6.7.1",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"bitmex\",function=\"disconnect\"})",
@@ -2816,7 +1756,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 13
+        "y": 8
       },
       "id": 136,
       "interval": null,
@@ -2835,7 +1775,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.4.3",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -2902,7 +1841,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 13
+        "y": 8
       },
       "id": 138,
       "interval": null,
@@ -2921,7 +1860,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.4.3",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -2988,7 +1926,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 13
+        "y": 8
       },
       "id": 140,
       "interval": null,
@@ -3007,7 +1945,1071 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true,
+        "ymax": 1,
+        "ymin": 0
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0,1",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Working Orders",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "",
+          "value": "0"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 6,
+        "y": 8
+      },
+      "id": 142,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true,
+        "ymax": 1,
+        "ymin": 0
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "max(roq_clients{source=\"bitmex\", event=\"connect\"}) - max(roq_clients{source=\"bitmex\", event=\"disconnect\"})",
+          "instant": true,
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0,1",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Clients",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "",
+          "value": "0"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 10
+      },
+      "id": 148,
+      "panels": [],
+      "title": "BitStamp",
+      "type": "row"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": true,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 0,
+        "y": 11
+      },
+      "id": 151,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "$$hashKey": "object:424",
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "$$hashKey": "object:425",
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": 1,
+        "ymin": 0
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "max(absent(roq_updated{source=\"bitstamp\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0.5,1",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Service",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "$$hashKey": "object:427",
+          "op": "=",
+          "text": "UP",
+          "value": "0"
+        },
+        {
+          "$$hashKey": "object:428",
+          "op": "=",
+          "text": "DOWN",
+          "value": "1"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": true,
+      "colorPostfix": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 2,
+        "y": 11
+      },
+      "id": 165,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": 1,
+        "ymin": 0
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "max(absent(roq_updated{source=\"bitstamp\",connection=\"market_data\",state=\"ready\"}) OR vector(0))",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0.5,1",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Market Data",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "READY",
+          "value": "0"
+        },
+        {
+          "op": "=",
+          "text": "NOT READY",
+          "value": "1"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": true,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 4,
+        "y": 11
+      },
+      "id": 167,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": 1,
+        "ymin": 0
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "max(absent(roq_updated{source=\"bitstamp\",connection=\"order_manager\",state=\"ready\"}) OR vector(0))",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0.5,1",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Order Manager",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "READY",
+          "value": "0"
+        },
+        {
+          "op": "=",
+          "text": "NOT READY",
+          "value": "1"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": true,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 6,
+        "y": 11
+      },
+      "id": 169,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true,
+        "ymax": 1,
+        "ymin": 0
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "roq_exceptions{source=\"bitstamp\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "1,5",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Exceptions",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "",
+          "value": "0"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "decimals": null,
+      "description": "",
+      "format": "short",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 8,
+        "y": 11
+      },
+      "id": 171,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "sum(roq_events_count{source=\"bitstamp\"})",
+          "format": "time_series",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Events (total)",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "aliasColors": {},
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "description": "",
+      "fill": 0,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 10,
+        "y": 11
+      },
+      "hiddenSeries": false,
+      "id": 172,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(roq_events_count{source=\"bitstamp\"}[1m])",
+          "format": "time_series",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Events (frequency)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "transparent": true,
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "cps",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "description": "",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 14,
+        "y": 11
+      },
+      "hiddenSeries": false,
+      "id": 173,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "hideEmpty": true,
+        "hideZero": true,
+        "max": true,
+        "min": false,
+        "rightSide": true,
+        "show": false,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 0.5,
+      "points": true,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "rate(roq_latency_sum{source=\"bitstamp\", function=\"ping\"}[1m]) / on(source, connection, function) rate(roq_latency_count{source=\"bitstamp\"}[1m]) / 1000000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "External (latency)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "transparent": true,
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": null,
+          "format": "ms",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "decimals": 0,
+          "format": "cps",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": null,
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 18,
+        "y": 11
+      },
+      "id": 174,
+      "links": [],
+      "options": {
+        "displayMode": "basic",
+        "fieldOptions": {
+          "calcs": [
+            "last"
+          ],
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "max": 100,
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 2
+                }
+              ]
+            },
+            "title": "${__series.name}"
+          },
+          "overrides": [],
+          "values": false
+        },
+        "orientation": "vertical",
+        "showUnfilled": false
+      },
+      "pluginVersion": "6.7.1",
+      "targets": [
+        {
+          "expr": "max by (connection) (roq_counter{source=\"bitstamp\",function=\"disconnect\"})",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "{{connection}}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Disconnect",
+      "transparent": true,
+      "type": "bargauge"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "decimals": 0,
+      "format": "s",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 0,
+        "y": 13
+      },
+      "id": 152,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": 1,
+        "ymin": 0
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "time() - roq_process{source=\"bitstamp\",name=\"start_time\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0,1",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Uptime",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "",
+          "value": "0"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "format": "cps",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 2,
+        "y": 13
+      },
+      "id": 166,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true,
+        "ymax": 1,
+        "ymin": 0
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "sum(irate(roq_profile_count{source=\"bitstamp\", function=\"market_by_price\"}[1m]))",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0,1",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Market by Price",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "",
+          "value": "0"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 4,
+        "y": 13
+      },
+      "id": 168,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
       "pluginVersion": "6.4.3",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -3075,7 +3077,7 @@
         "x": 6,
         "y": 13
       },
-      "id": 142,
+      "id": 170,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -3092,7 +3094,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.4.3",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -3116,8 +3117,10 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "max(roq_clients{source=\"bitmex\", event=\"connect\"}) - max(roq_clients{source=\"bitmex\", event=\"disconnect\"})",
+          "expr": "max(roq_clients{source=\"bitstamp\", event=\"connect\"}) - max(roq_clients{source=\"bitstamp\", event=\"disconnect\"})",
           "instant": true,
+          "interval": "",
+          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -3146,6 +3149,1041 @@
         "x": 0,
         "y": 15
       },
+      "id": 4,
+      "panels": [],
+      "title": "Coinbase PRO",
+      "type": "row"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": true,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 0,
+        "y": 16
+      },
+      "id": 7,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": 1,
+        "ymin": 0
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "max(absent(roq_updated{source=\"coinbase-pro\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
+          "instant": true,
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0.5,1",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Service",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "UP",
+          "value": "0"
+        },
+        {
+          "op": "=",
+          "text": "DOWN",
+          "value": "1"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": true,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 2,
+        "y": 16
+      },
+      "id": 32,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": 1,
+        "ymin": 0
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "max(absent(roq_updated{source=\"coinbase-pro\",connection=\"market_data\",state=\"ready\"}) OR vector(0))",
+          "instant": true,
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0.5,1",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Market Data",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "READY",
+          "value": "0"
+        },
+        {
+          "op": "=",
+          "text": "NOT READY",
+          "value": "1"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": true,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 4,
+        "y": 16
+      },
+      "id": 33,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": 1,
+        "ymin": 0
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "max(absent(roq_updated{source=\"coinbase-pro\",connection=\"order_manager\",state=\"ready\"}) OR vector(0))",
+          "instant": true,
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0.5,1",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Order Manager",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "READY",
+          "value": "0"
+        },
+        {
+          "op": "=",
+          "text": "NOT READY",
+          "value": "1"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": true,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 6,
+        "y": 16
+      },
+      "id": 20,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true,
+        "ymax": 1,
+        "ymin": 0
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "roq_exceptions{source=\"coinbase-pro\"}",
+          "instant": true,
+          "refId": "A"
+        }
+      ],
+      "thresholds": "1,5",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Exceptions",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "",
+          "value": "0"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "decimals": null,
+      "description": "",
+      "format": "short",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 8,
+        "y": 16
+      },
+      "id": 95,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "sum(roq_events_count{source=\"coinbase-pro\"})",
+          "format": "time_series",
+          "instant": true,
+          "refId": "A"
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Events (total)",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "aliasColors": {},
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "description": "",
+      "fill": 0,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 10,
+        "y": 16
+      },
+      "hiddenSeries": false,
+      "id": 108,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(roq_events_count{source=\"coinbase-pro\"}[1m])",
+          "format": "time_series",
+          "instant": false,
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Events (frequency)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "transparent": true,
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "cps",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "description": "",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 14,
+        "y": 16
+      },
+      "hiddenSeries": false,
+      "id": 70,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "hideEmpty": true,
+        "hideZero": true,
+        "max": true,
+        "min": false,
+        "rightSide": true,
+        "show": false,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 0.5,
+      "points": true,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "rate(roq_latency_sum{source=\"coinbase-pro\", function=\"ping\"}[1m]) / on(source, connection, function) rate(roq_latency_count{source=\"coinbase-pro\"}[1m]) / 1000000",
+          "instant": false,
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "External (latency)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "transparent": true,
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": null,
+          "format": "ms",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "decimals": 0,
+          "format": "cps",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": null,
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 18,
+        "y": 16
+      },
+      "id": 132,
+      "links": [],
+      "options": {
+        "displayMode": "basic",
+        "fieldOptions": {
+          "calcs": [
+            "last"
+          ],
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "max": 100,
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 2
+                }
+              ]
+            },
+            "title": "${__series.name}"
+          },
+          "overrides": [],
+          "values": false
+        },
+        "orientation": "vertical",
+        "showUnfilled": false
+      },
+      "pluginVersion": "6.7.1",
+      "targets": [
+        {
+          "expr": "max by (connection) (roq_counter{source=\"coinbase-pro\",function=\"disconnect\"})",
+          "instant": true,
+          "legendFormat": "{{connection}}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Disconnect",
+      "transparent": true,
+      "type": "bargauge"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "decimals": 0,
+      "format": "s",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 0,
+        "y": 18
+      },
+      "id": 74,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": 1,
+        "ymin": 0
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "time() - roq_process{source=\"coinbase-pro\",name=\"start_time\"}",
+          "instant": true,
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0,1",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Uptime",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "",
+          "value": "0"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "format": "cps",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 2,
+        "y": 18
+      },
+      "id": 73,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true,
+        "ymax": 1,
+        "ymin": 0
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "sum(irate(roq_profile_count{source=\"coinbase-pro\", function=\"market_by_price\"}[1m]))",
+          "instant": true,
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0,1",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Market by Price",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "",
+          "value": "0"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 4,
+        "y": 18
+      },
+      "id": 68,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true,
+        "ymax": 1,
+        "ymin": 0
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0,1",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Working Orders",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "",
+          "value": "0"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 6,
+        "y": 18
+      },
+      "id": 22,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": 1,
+        "ymin": 0
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "max(roq_clients{source=\"coinbase-pro\", event=\"connect\"}) - max(roq_clients{source=\"coinbase-pro\", event=\"disconnect\"})",
+          "instant": true,
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0,1",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Clients",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "",
+          "value": "0"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 20
+      },
       "id": 11,
       "panels": [],
       "title": "Deribit",
@@ -3173,7 +4211,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 16
+        "y": 21
       },
       "id": 2,
       "interval": null,
@@ -3192,7 +4230,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.4.3",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -3265,7 +4302,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 16
+        "y": 21
       },
       "id": 34,
       "interval": null,
@@ -3284,7 +4321,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.4.3",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -3356,7 +4392,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 16
+        "y": 21
       },
       "id": 35,
       "interval": null,
@@ -3375,7 +4411,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.4.3",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -3447,7 +4482,7 @@
         "h": 2,
         "w": 2,
         "x": 6,
-        "y": 16
+        "y": 21
       },
       "id": 21,
       "interval": null,
@@ -3466,7 +4501,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.4.3",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -3535,7 +4569,7 @@
         "h": 2,
         "w": 2,
         "x": 8,
-        "y": 16
+        "y": 21
       },
       "id": 109,
       "interval": null,
@@ -3554,7 +4588,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -3612,7 +4645,7 @@
         "h": 4,
         "w": 4,
         "x": 10,
-        "y": 16
+        "y": 21
       },
       "hiddenSeries": false,
       "id": 96,
@@ -3702,7 +4735,7 @@
         "h": 4,
         "w": 4,
         "x": 14,
-        "y": 16
+        "y": 21
       },
       "hiddenSeries": false,
       "id": 71,
@@ -3737,6 +4770,8 @@
         {
           "expr": "rate(roq_latency_sum{source=\"deribit\", function=\"ping\"}[1m]) / on(source, connection, function) rate(roq_latency_count{source=\"deribit\"}[1m]) / 1000000",
           "instant": false,
+          "interval": "",
+          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -3791,7 +4826,7 @@
         "h": 4,
         "w": 4,
         "x": 18,
-        "y": 16
+        "y": 21
       },
       "id": 131,
       "links": [],
@@ -3829,7 +4864,7 @@
         "orientation": "vertical",
         "showUnfilled": false
       },
-      "pluginVersion": "6.6.0",
+      "pluginVersion": "6.7.1",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"deribit\",function=\"disconnect\"})",
@@ -3867,7 +4902,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 18
+        "y": 23
       },
       "id": 75,
       "interval": null,
@@ -3886,7 +4921,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.4.3",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -3912,6 +4946,8 @@
         {
           "expr": "time() - roq_process{source=\"deribit\",name=\"start_time\"}",
           "instant": true,
+          "interval": "",
+          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -3953,7 +4989,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 18
+        "y": 23
       },
       "id": 72,
       "interval": null,
@@ -3972,7 +5008,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.4.3",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -4039,7 +5074,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 18
+        "y": 23
       },
       "id": 69,
       "interval": null,
@@ -4058,7 +5093,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.4.3",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -4124,7 +5158,7 @@
         "h": 2,
         "w": 2,
         "x": 6,
-        "y": 18
+        "y": 23
       },
       "id": 23,
       "interval": null,
@@ -4143,7 +5177,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.4.3",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -4195,7 +5228,1070 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 20
+        "y": 25
+      },
+      "id": 150,
+      "panels": [],
+      "title": "FTX",
+      "type": "row"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": true,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 0,
+        "y": 26
+      },
+      "id": 153,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": 1,
+        "ymin": 0
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "max(absent(roq_updated{source=\"ftx\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0.5,1",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Service",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "UP",
+          "value": "0"
+        },
+        {
+          "op": "=",
+          "text": "DOWN",
+          "value": "1"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": true,
+      "colorPostfix": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 2,
+        "y": 26
+      },
+      "id": 155,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": 1,
+        "ymin": 0
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "max(absent(roq_updated{source=\"ftx\",connection=\"market_data\",state=\"ready\"}) OR vector(0))",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0.5,1",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Market Data",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "READY",
+          "value": "0"
+        },
+        {
+          "op": "=",
+          "text": "NOT READY",
+          "value": "1"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": true,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 4,
+        "y": 26
+      },
+      "id": 157,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": 1,
+        "ymin": 0
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "max(absent(roq_updated{source=\"ftx\",connection=\"order_manager\",state=\"ready\"}) OR vector(0))",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0.5,1",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Order Manager",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "READY",
+          "value": "0"
+        },
+        {
+          "op": "=",
+          "text": "NOT READY",
+          "value": "1"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": true,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 6,
+        "y": 26
+      },
+      "id": 159,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true,
+        "ymax": 1,
+        "ymin": 0
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "roq_exceptions{source=\"ftx\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "1,5",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Exceptions",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "",
+          "value": "0"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "decimals": null,
+      "description": "",
+      "format": "short",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 8,
+        "y": 26
+      },
+      "id": 161,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "sum(roq_events_count{source=\"ftx\"})",
+          "format": "time_series",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Events (total)",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "aliasColors": {},
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "description": "",
+      "fill": 0,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 10,
+        "y": 26
+      },
+      "hiddenSeries": false,
+      "id": 162,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(roq_events_count{source=\"ftx\"}[1m])",
+          "format": "time_series",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Events (frequency)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "transparent": true,
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "cps",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "description": "",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 14,
+        "y": 26
+      },
+      "hiddenSeries": false,
+      "id": 163,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "hideEmpty": true,
+        "hideZero": true,
+        "max": true,
+        "min": false,
+        "rightSide": true,
+        "show": false,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 0.5,
+      "points": true,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "rate(roq_latency_sum{source=\"ftx\", function=\"ping\"}[1m]) / on(source, connection, function) rate(roq_latency_count{source=\"ftx\"}[1m]) / 1000000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "External (latency)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "transparent": true,
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": null,
+          "format": "ms",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "decimals": 0,
+          "format": "cps",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": null,
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 18,
+        "y": 26
+      },
+      "id": 164,
+      "links": [],
+      "options": {
+        "displayMode": "basic",
+        "fieldOptions": {
+          "calcs": [
+            "last"
+          ],
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "max": 100,
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 2
+                }
+              ]
+            },
+            "title": "${__series.name}"
+          },
+          "overrides": [],
+          "values": false
+        },
+        "orientation": "vertical",
+        "showUnfilled": false
+      },
+      "pluginVersion": "6.7.1",
+      "targets": [
+        {
+          "expr": "max by (connection) (roq_counter{source=\"ftx\",function=\"disconnect\"})",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "{{connection}}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Disconnect",
+      "transparent": true,
+      "type": "bargauge"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "decimals": 0,
+      "format": "s",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 0,
+        "y": 28
+      },
+      "id": 154,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": 1,
+        "ymin": 0
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "time() - roq_process{source=\"ftx\",name=\"start_time\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0,1",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Uptime",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "",
+          "value": "0"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "format": "cps",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 2,
+        "y": 28
+      },
+      "id": 156,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true,
+        "ymax": 1,
+        "ymin": 0
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "sum(irate(roq_profile_count{source=\"ftx\", function=\"market_by_price\"}[1m]))",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0,1",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Market by Price",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "",
+          "value": "0"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 4,
+        "y": 28
+      },
+      "id": 158,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true,
+        "ymax": 1,
+        "ymin": 0
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0,1",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Working Orders",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "",
+          "value": "0"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 6,
+        "y": 28
+      },
+      "id": 160,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true,
+        "ymax": 1,
+        "ymin": 0
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "max(roq_clients{source=\"ftx\", event=\"connect\"}) - max(roq_clients{source=\"deribit\", event=\"disconnect\"})",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0,1",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Clients",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "",
+          "value": "0"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 30
       },
       "id": 116,
       "panels": [],
@@ -4224,7 +6320,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 21
+        "y": 31
       },
       "id": 117,
       "interval": null,
@@ -4243,7 +6339,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.4.3",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -4316,7 +6411,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 21
+        "y": 31
       },
       "id": 118,
       "interval": null,
@@ -4335,7 +6430,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.4.3",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -4407,7 +6501,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 21
+        "y": 31
       },
       "id": 119,
       "interval": null,
@@ -4426,7 +6520,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.4.3",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -4498,7 +6591,7 @@
         "h": 2,
         "w": 2,
         "x": 6,
-        "y": 21
+        "y": 31
       },
       "id": 120,
       "interval": null,
@@ -4517,7 +6610,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.4.3",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -4586,7 +6678,7 @@
         "h": 2,
         "w": 2,
         "x": 8,
-        "y": 21
+        "y": 31
       },
       "id": 125,
       "interval": null,
@@ -4605,7 +6697,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -4663,7 +6754,7 @@
         "h": 4,
         "w": 4,
         "x": 10,
-        "y": 21
+        "y": 31
       },
       "hiddenSeries": false,
       "id": 126,
@@ -4753,7 +6844,7 @@
         "h": 4,
         "w": 4,
         "x": 14,
-        "y": 21
+        "y": 31
       },
       "hiddenSeries": false,
       "id": 127,
@@ -4842,7 +6933,7 @@
         "h": 4,
         "w": 4,
         "x": 18,
-        "y": 21
+        "y": 31
       },
       "id": 130,
       "links": [],
@@ -4880,7 +6971,7 @@
         "orientation": "vertical",
         "showUnfilled": false
       },
-      "pluginVersion": "6.6.0",
+      "pluginVersion": "6.7.1",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"gemini\",function=\"disconnect\"})",
@@ -4918,7 +7009,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 23
+        "y": 33
       },
       "id": 121,
       "interval": null,
@@ -4937,7 +7028,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.4.3",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -5004,7 +7094,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 23
+        "y": 33
       },
       "id": 122,
       "interval": null,
@@ -5023,7 +7113,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.4.3",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -5090,7 +7179,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 23
+        "y": 33
       },
       "id": 123,
       "interval": null,
@@ -5109,7 +7198,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.4.3",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -5175,7 +7263,7 @@
         "h": 2,
         "w": 2,
         "x": 6,
-        "y": 23
+        "y": 33
       },
       "id": 124,
       "interval": null,
@@ -5194,7 +7282,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.4.3",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -5246,7 +7333,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 25
+        "y": 35
       },
       "id": 63,
       "panels": [
@@ -5633,7 +7720,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 26
+        "y": 36
       },
       "id": 56,
       "panels": [],
@@ -5652,7 +7739,7 @@
         "h": 5,
         "w": 18,
         "x": 0,
-        "y": 27
+        "y": 37
       },
       "hiddenSeries": false,
       "id": 94,
@@ -5746,7 +7833,7 @@
         "h": 6,
         "w": 18,
         "x": 0,
-        "y": 32
+        "y": 42
       },
       "hiddenSeries": false,
       "id": 111,
@@ -5842,7 +7929,7 @@
         "h": 6,
         "w": 6,
         "x": 0,
-        "y": 38
+        "y": 48
       },
       "hiddenSeries": false,
       "id": 112,
@@ -5938,7 +8025,7 @@
         "h": 6,
         "w": 6,
         "x": 6,
-        "y": 38
+        "y": 48
       },
       "hiddenSeries": false,
       "id": 113,
@@ -6034,7 +8121,7 @@
         "h": 6,
         "w": 6,
         "x": 12,
-        "y": 38
+        "y": 48
       },
       "hiddenSeries": false,
       "id": 114,
@@ -6128,7 +8215,7 @@
         "h": 5,
         "w": 18,
         "x": 0,
-        "y": 44
+        "y": 54
       },
       "hiddenSeries": false,
       "id": 110,
@@ -6222,7 +8309,7 @@
         "h": 6,
         "w": 18,
         "x": 0,
-        "y": 49
+        "y": 59
       },
       "hiddenSeries": false,
       "id": 38,
@@ -6318,7 +8405,7 @@
         "h": 6,
         "w": 6,
         "x": 0,
-        "y": 55
+        "y": 65
       },
       "hiddenSeries": false,
       "id": 91,
@@ -6415,7 +8502,7 @@
         "h": 6,
         "w": 6,
         "x": 6,
-        "y": 55
+        "y": 65
       },
       "hiddenSeries": false,
       "id": 92,
@@ -6511,7 +8598,7 @@
         "h": 6,
         "w": 6,
         "x": 12,
-        "y": 55
+        "y": 65
       },
       "hiddenSeries": false,
       "id": 43,
@@ -6606,7 +8693,7 @@
         "h": 6,
         "w": 18,
         "x": 0,
-        "y": 61
+        "y": 71
       },
       "hiddenSeries": false,
       "id": 54,
@@ -6702,7 +8789,7 @@
         "h": 6,
         "w": 6,
         "x": 0,
-        "y": 67
+        "y": 77
       },
       "hiddenSeries": false,
       "id": 66,
@@ -6798,7 +8885,7 @@
         "h": 6,
         "w": 6,
         "x": 6,
-        "y": 67
+        "y": 77
       },
       "hiddenSeries": false,
       "id": 67,
@@ -6894,7 +8981,7 @@
         "h": 6,
         "w": 6,
         "x": 12,
-        "y": 67
+        "y": 77
       },
       "hiddenSeries": false,
       "id": 105,
@@ -6983,7 +9070,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 73
+        "y": 83
       },
       "id": 104,
       "panels": [
@@ -7468,7 +9555,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 74
+        "y": 84
       },
       "id": 13,
       "panels": [
@@ -7572,7 +9659,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 75
+        "y": 85
       },
       "id": 15,
       "panels": [
@@ -7787,5 +9874,8 @@
   "timezone": "",
   "title": "roq-dashboard",
   "uid": "Afi9GToZz",
-  "version": 18
+  "variables": {
+    "list": []
+  },
+  "version": 19
 }
