@@ -1,0 +1,24 @@
+---
+
+roq_hitbtc_defaults:
+  version: "{{ roq_version }}"
+  docker:
+    use: "{{ roq_use_docker }}"
+    name: "roqtrading/roq-hitbtc"
+  service:
+    start: "Sun *-*-* 00:01:00"
+    stop: "Sat *-*-* 23:59:00"
+  cpu_affinity: {}
+  logging:
+    verbosity: 0
+  name: "hitbtc"
+  net:
+    ws: "wss://hitbtc.com/ws"
+    rest: "https://hitbtc.com/api"
+    fix: "tcp+ssl://fix.hitbtc.com:4364"
+  event_log:
+    dir: "{{ root }}/var/lib/roq"
+    sync_freq_secs: 600
+  options: {}
+  symbols:
+    - ".*"

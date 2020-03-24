@@ -130,3 +130,13 @@ scrape_configs:
     static_configs:
       - targets: ['nginx.service:80']
 {% endif %}
+{% if 'roq_hitbtc' in groups %}
+
+  - job_name: 'roq-hitbtc'
+    metrics_path: '/metrics/roq-hitbtc'
+    params:
+      format: [ prometheus ]
+    honor_labels: true
+    static_configs:
+      - targets: ['nginx.service:80']
+{% endif %}
