@@ -1042,7 +1042,7 @@
       },
       "id": 134,
       "panels": [],
-      "title": "BitMEX",
+      "title": "BitMEX (Ireland)",
       "type": "row"
     },
     {
@@ -2084,7 +2084,7 @@
       },
       "id": 148,
       "panels": [],
-      "title": "BitStamp",
+      "title": "BitStamp (Germany)",
       "type": "row"
     },
     {
@@ -3151,7 +3151,7 @@
       },
       "id": 4,
       "panels": [],
-      "title": "Coinbase PRO",
+      "title": "Coinbase PRO (USA, VA)",
       "type": "row"
     },
     {
@@ -4186,7 +4186,7 @@
       },
       "id": 11,
       "panels": [],
-      "title": "Deribit",
+      "title": "Deribit (France)",
       "type": "row"
     },
     {
@@ -5232,7 +5232,7 @@
       },
       "id": 150,
       "panels": [],
-      "title": "FTX",
+      "title": "FTX (Singapore)",
       "type": "row"
     },
     {
@@ -6295,7 +6295,7 @@
       },
       "id": 116,
       "panels": [],
-      "title": "Gemini",
+      "title": "Gemini (USA, NJ)",
       "type": "row"
     },
     {
@@ -7337,7 +7337,7 @@
       },
       "id": 176,
       "panels": [],
-      "title": "HitBTC",
+      "title": "HitBTC (Germany)",
       "type": "row"
     },
     {
@@ -10918,7 +10918,7 @@
     "list": []
   },
   "time": {
-    "from": "now-15m",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {
@@ -10941,5 +10941,5 @@
   "variables": {
     "list": []
   },
-  "version": 20
+  "version": 21
 }

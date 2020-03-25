@@ -87,6 +87,10 @@
   roles:
     - roq-ftx
 
+- hosts: roq_hitbtc
+  roles:
+    - roq-hitbtc
+
 - hosts: trading
   roles:
     - prometheus
