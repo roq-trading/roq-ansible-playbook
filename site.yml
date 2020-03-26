@@ -63,18 +63,6 @@
   roles:
     - roq-influxdb
 
-- hosts: roq_coinbase_pro
-  roles:
-    - roq-coinbase-pro
-
-- hosts: roq_deribit
-  roles:
-    - roq-deribit
-
-- hosts: roq_gemini
-  roles:
-    - roq-gemini
-
 - hosts: roq_bitmex
   roles:
     - roq-bitmex
@@ -83,9 +71,21 @@
   roles:
     - roq-bitstamp
 
+- hosts: roq_coinbase_pro
+  roles:
+    - roq-coinbase-pro
+
+- hosts: roq_deribit
+  roles:
+    - roq-deribit
+
 - hosts: roq_ftx
   roles:
     - roq-ftx
+
+- hosts: roq_gemini
+  roles:
+    - roq-gemini
 
 - hosts: roq_hitbtc
   roles:
