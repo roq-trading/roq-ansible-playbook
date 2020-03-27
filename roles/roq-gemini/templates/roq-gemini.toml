@@ -33,6 +33,9 @@ symbols = "{{ config.symbols }}"
 {% if account.master is defined %}
   master = {{ account.master | lower }}
 {% endif %}
+{% if account.user is defined %}
+  user = "{{ account.user }}"
+{% endif %}
 {% if account.login is defined %}
   login = "{{ account.login }}"
 {% endif %}
