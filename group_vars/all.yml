@@ -120,3 +120,6 @@ roq_coinbase_pro:
   docker:
     name: "roqtrading/roq-coinbase-pro"
     tag: "latest"
+
+roq_license_manager:
+  port: 1235
