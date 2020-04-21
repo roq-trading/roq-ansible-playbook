@@ -7,19 +7,20 @@ Conflicts=roq-coinbase-pro-stop.service
 {% if config.docker.use %}
 TimeoutStartSec=0
 ExecStart=/usr/bin/docker run --rm --name %n -i \
-  --network host \
   --network roq-network \
   --volume {{ root }}/var/tmp:/var/tmp \
+  --volume {{ root }}/etc/roq:/etc/roq \
   --env ROQ_v={{ config.logging.verbosity | default(0) }} \
   --env FLAGS_monitor_port={{ config.metrics.port }} \
-  {{ docker_registry_prefix | default('') }}{{ config.docker.name }}:{{ config.version }}
+  {{ docker_registry_prefix | default('') }}{{ config.docker.name }}:{{ config.version }} \
+  --flagfile "/etc/roq/roq-coinbase-pro.gflags"
 {% else %}
 UMask=0000
 User={{ roq_user }}
 Group={{ roq_user }}
 Environment="ROQ_v={{ config.logging.verbosity }}"
 ExecStart={{ root }}/miniconda/bin/roq-coinbase-pro \
-  --flagfile={{ root }}/etc/roq/roq-coinbase-pro.gflags
+  --flagfile "{{ root }}/etc/roq/roq-coinbase-pro.gflags"
 Restart=on-abnormal
 {% endif %}
 
