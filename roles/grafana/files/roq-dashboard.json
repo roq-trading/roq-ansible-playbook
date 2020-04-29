@@ -547,7 +547,7 @@
         "orientation": "vertical",
         "showUnfilled": false
       },
-      "pluginVersion": "6.7.1",
+      "pluginVersion": "6.7.3",
       "targets": [
         {
           "expr": "1 - (max(node_filesystem_free_bytes{device!=\"tmpfs\"}) by (device) / max(node_filesystem_size_bytes{device!=\"tmpfs\"}) by (device))",
@@ -1819,7 +1819,7 @@
         "orientation": "vertical",
         "showUnfilled": false
       },
-      "pluginVersion": "6.7.1",
+      "pluginVersion": "6.7.3",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"bitmex\",function=\"disconnect\"})",
@@ -2978,7 +2978,7 @@
         "orientation": "vertical",
         "showUnfilled": false
       },
-      "pluginVersion": "6.7.1",
+      "pluginVersion": "6.7.3",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"bitstamp\",function=\"disconnect\"})",
@@ -4121,7 +4121,7 @@
         "orientation": "vertical",
         "showUnfilled": false
       },
-      "pluginVersion": "6.7.1",
+      "pluginVersion": "6.7.3",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"coinbase-pro\",function=\"disconnect\"})",
@@ -4487,7 +4487,7 @@
       },
       "id": 11,
       "panels": [],
-      "title": "Deribit (France)",
+      "title": "Deribit (UK)",
       "type": "row"
     },
     {
@@ -5264,7 +5264,7 @@
         "orientation": "vertical",
         "showUnfilled": false
       },
-      "pluginVersion": "6.7.1",
+      "pluginVersion": "6.7.3",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"deribit\",function=\"disconnect\"})",
@@ -6421,7 +6421,7 @@
         "orientation": "vertical",
         "showUnfilled": false
       },
-      "pluginVersion": "6.7.1",
+      "pluginVersion": "6.7.3",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"ftx\",function=\"disconnect\"})",
@@ -7571,7 +7571,7 @@
         "orientation": "vertical",
         "showUnfilled": false
       },
-      "pluginVersion": "6.7.1",
+      "pluginVersion": "6.7.3",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"gemini\",function=\"disconnect\"})",
@@ -8726,7 +8726,7 @@
         "orientation": "vertical",
         "showUnfilled": false
       },
-      "pluginVersion": "6.7.1",
+      "pluginVersion": "6.7.3",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"hitbtc\",function=\"disconnect\"})",
@@ -11642,5 +11642,5 @@
   "variables": {
     "list": []
   },
-  "version": 22
+  "version": 23
 }
