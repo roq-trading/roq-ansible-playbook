@@ -19,6 +19,7 @@ roq_bitstamp_defaults:
   event_log:
     dir: "{{ root }}/var/lib/roq"
     sync_freq_secs: 600
-  options: {}
+  options:
+    allow_price_inversion: true
   symbols:
     - ".*"
