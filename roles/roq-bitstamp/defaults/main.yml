@@ -14,7 +14,7 @@ roq_bitstamp_defaults:
   name: "bitstamp"
   net:
     ws: "wss://ws.bitstamp.net"
-    rest: "https://www.bitstamp.net/api"
+    rest: "https://www.bitstamp.net"
     fix: "tcp+ssl://fix.bitstamp.net:8905"
   event_log:
     dir: "{{ root }}/var/lib/roq"

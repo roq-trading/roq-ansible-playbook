@@ -14,7 +14,7 @@ roq_hitbtc_defaults:
   name: "hitbtc"
   net:
     ws: "wss://hitbtc.com/ws"
-    rest: "https://hitbtc.com/api"
+    rest: "https://hitbtc.com"
     fix: "tcp+ssl://fix.hitbtc.com:4364"
   event_log:
     dir: "{{ root }}/var/lib/roq"

@@ -14,7 +14,7 @@ roq_bitmex_defaults:
   name: "bitmex"
   net:
     ws: "wss://testnet.bitmex.com/realtime"
-    rest: "https://testnet.bitmex.com/api/v1"
+    rest: "https://testnet.bitmex.com"
   event_log:
     dir: "{{ root }}/var/lib/roq"
     sync_freq_secs: 600

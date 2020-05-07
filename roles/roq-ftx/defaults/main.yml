@@ -14,7 +14,7 @@ roq_ftx_defaults:
   name: "ftx"
   net:
     ws: "wss://ftx.com/ws"
-    rest: "https://ftx.com/api"
+    rest: "https://ftx.com"
     fix: "tcp+ssl://fix.ftx.com:4364"
   event_log:
     dir: "{{ root }}/var/lib/roq"
