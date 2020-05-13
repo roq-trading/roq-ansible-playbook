@@ -8,18 +8,17 @@ roq_gemini_defaults:
   service:
     start: "Sun *-*-* 00:01:00"
     stop: "Sat *-*-* 23:59:00"
-  cpu_affinity: {}
   logging:
     verbosity: 0
-  name: "gemini"
-  net:
+  options:
+    name: "gemini"
+    config_file: "{{ root }}/etc/roq/roq-gemini.toml"
+    event_log_dir: "{{ root }}/var/lib/roq"
+    client_listen_address: "{{ root }}/var/tmp/roq-gemini.sock"
+    metrics_listen_address: "{{ root }}/var/tmp/roq-gemini_metrics.sock"
     fix_mkt_uri: "tcp://8.44.203.78:1529"
     fix_ord_uri: "tcp://8.44.203.78:1528"
     fix_drp_uri: "tcp://8.44.203.78:1530"
-  event_log:
-    dir: "{{ root }}/var/lib/roq"
-    sync_freq_secs: 600
-  options: {}
   symbols:
     - ".*"
   market_data:

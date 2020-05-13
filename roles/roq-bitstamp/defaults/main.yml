@@ -8,18 +8,17 @@ roq_bitstamp_defaults:
   service:
     start: "Sun *-*-* 00:01:00"
     stop: "Sat *-*-* 23:59:00"
-  cpu_affinity: {}
   logging:
     verbosity: 0
-  name: "bitstamp"
-  net:
-    ws: "wss://ws.bitstamp.net"
-    rest: "https://www.bitstamp.net"
-    fix: "tcp+ssl://fix.bitstamp.net:8905"
-  event_log:
-    dir: "{{ root }}/var/lib/roq"
-    sync_freq_secs: 600
   options:
+    name: "bitstamp"
+    config_file: "{{ root }}/etc/roq/roq-bitstamp.toml"
+    event_log_dir: "{{ root }}/var/lib/roq"
+    client_listen_address: "{{ root }}/var/tmp/roq-bitstamp.sock"
+    metrics_listen_address: "{{ root }}/var/tmp/roq-bitstamp_metrics.sock"
+    ws_uri: "wss://ws.bitstamp.net"
+    rest_uri: "https://www.bitstamp.net"
+    fix_uri: "tcp+ssl://fix.bitstamp.net:8905"
     allow_price_inversion: true
   symbols:
     - ".*"

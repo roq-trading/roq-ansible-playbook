@@ -8,16 +8,15 @@ roq_coinbase_pro_defaults:
   service:
     start: "Sun *-*-* 00:01:00"
     stop: "Sat *-*-* 23:59:00"
-  cpu_affinity: {}
   logging:
     verbosity: 0
-  name: "coinbase-pro"
-  net:
-    fix: "tcp+ssl://fix-public.sandbox.pro.coinbase.com:4198"
-    ws: "wss://ws-feed-public.sandbox.pro.coinbase.com"
-    rest: "https://api-public.sandbox.pro.coinbase.com"
-  event_log:
-    dir: "{{ root }}/var/lib/roq"
-    sync_freq_secs: 600
+  options:
+    name: "coinbase-pro"
+    config_file: "{{ root }}/etc/roq/roq-coinbase-pro.toml"
+    event_log_dir: "{{ root }}/var/lib/roq"
+    client_listen_address: "{{ root }}/var/tmp/roq-coinbase-pro.sock"
+    metrics_listen_address: "{{ root }}/var/tmp/roq-coinbase-pro_metrics.sock"
+    fix_uri: "tcp+ssl://fix-public.sandbox.pro.coinbase.com:4198"
+    ws_uri: "wss://ws-feed-public.sandbox.pro.coinbase.com"
+    rest_uri: "https://api-public.sandbox.pro.coinbase.com"
   symbols: ".*"
-  options: {}

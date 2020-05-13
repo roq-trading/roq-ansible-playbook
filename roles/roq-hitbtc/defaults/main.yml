@@ -8,17 +8,16 @@ roq_hitbtc_defaults:
   service:
     start: "Sun *-*-* 00:01:00"
     stop: "Sat *-*-* 23:59:00"
-  cpu_affinity: {}
   logging:
     verbosity: 0
-  name: "hitbtc"
-  net:
-    ws: "wss://hitbtc.com/ws"
-    rest: "https://hitbtc.com"
-    fix: "tcp+ssl://fix.hitbtc.com:4364"
-  event_log:
-    dir: "{{ root }}/var/lib/roq"
-    sync_freq_secs: 600
-  options: {}
+  options:
+    name: "hitbtc"
+    config_file: "{{ root }}/etc/roq/roq-hitbtc.toml"
+    event_log_dir: "{{ root }}/var/lib/roq"
+    client_listen_address: "{{ root }}/var/tmp/roq-hitbtc.sock"
+    metrics_listen_address: "{{ root }}/var/tmp/roq-hitbtc_metrics.sock"
+    ws_uri: "wss://hitbtc.com/ws"
+    rest_uri: "https://hitbtc.com"
+    fix_uri: "tcp+ssl://fix.hitbtc.com:4364"
   symbols:
     - ".*"
