@@ -91,6 +91,10 @@
   roles:
     - roq-hitbtc
 
+- hosts: roq_kraken
+  roles:
+    - roq-kraken
+
 - hosts: trading
   roles:
     - prometheus

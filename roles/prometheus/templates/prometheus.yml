@@ -140,3 +140,13 @@ scrape_configs:
     static_configs:
       - targets: ['nginx.service:80']
 {% endif %}
+{% if 'roq_kraken' in groups %}
+
+  - job_name: 'roq-kraken'
+    metrics_path: '/metrics/roq-kraken'
+    params:
+      format: [ prometheus ]
+    honor_labels: true
+    static_configs:
+      - targets: ['nginx.service:80']
+{% endif %}
