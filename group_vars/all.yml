@@ -96,7 +96,8 @@ teamcity:
 teamcity_agent:
   docker:
     name: "jetbrains/teamcity-agent"
-    tag: "latest"
+    tag: "2019.2.4"
+#    tag: "latest"
 
 nginx:
   http_port: 80
