@@ -70,6 +70,16 @@ scrape_configs:
     static_configs:
       - targets: ['nginx.service:80']
 {% endif %}
+{% if 'roq_binance' in groups %}
+
+  - job_name: 'roq-binance'
+    metrics_path: '/metrics/roq-binance'
+    params:
+      format: [ prometheus ]
+    honor_labels: true
+    static_configs:
+      - targets: ['nginx.service:80']
+{% endif %}
 {% if 'roq_bitmex' in groups %}
 
   - job_name: 'roq-bitmex'

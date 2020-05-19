@@ -63,6 +63,10 @@
   roles:
     - roq-influxdb
 
+- hosts: roq_binance
+  roles:
+    - roq-binance
+
 - hosts: roq_bitmex
   roles:
     - roq-bitmex
