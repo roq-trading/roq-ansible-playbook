@@ -4,6 +4,8 @@ All notable changes will be documented in this file.
 
 ## Head
 
+## 0.3.7 &ndash; 2020-05-27
+
 ### Changed
 
 * Gateway options (flags) haved been simplified (by removing artificial data structures)
