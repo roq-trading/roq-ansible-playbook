@@ -18,5 +18,6 @@ roq_binance_defaults:
     metrics_listen_address: "{{ root }}/var/tmp/roq-binance_metrics.sock"
     rest_uri: "https://testnet.binance.com"
     ws_uri: "wss://testnet.binance.com/realtime"
+    cache_mbp_allow_price_inversion: true
   symbols:
     - ".*"
