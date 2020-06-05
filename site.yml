@@ -47,14 +47,6 @@
     - redis
     - influxdb
 
-- hosts: roq_benchmark
-  roles:
-    - roq-benchmark
-
-- hosts: roq_samples
-  roles:
-    - roq-samples
-
 - hosts: roq_simulator
   roles:
     - roq-simulator

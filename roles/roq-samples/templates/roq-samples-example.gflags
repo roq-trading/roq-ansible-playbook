@@ -1,7 +1,0 @@
---name=example-{{ item }}
-{% for (key, value) in config.cpu_affinity.items() %}
---{{ key }}-affinity={{ value|int + item|int - 1 }}
-{% endfor %}
-{% for (key, value) in config.options.items() %}
---{{ key }}={{ value }}
-{% endfor %}

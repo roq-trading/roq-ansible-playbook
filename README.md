@@ -159,14 +159,6 @@ OnLoad drivers.
 * [redis](roles/redis/README.md) to install Redis
 * [influxdb](roles/influxdb/README.md) to install InfluxDB
 
-### [roq\_benchmark]
-
-* [roq-benchmark](roles/roq-benchmark/README.md) to install the Roq Benchmark Suite.
-
-### [roq\_samples]
-
-* [roq-samples](roles/roq-samples/README.md) to install Roq Samples
-
 ### [roq\_simulator]
 
 * [roq-simulator](roles/roq-simulator/README.md) to install the Roq Simulator
@@ -175,13 +167,41 @@ OnLoad drivers.
 
 * [roq-influxdb](roles/roq-influxdb/README.md) to install the Roq InfluxDB Feed Handler
 
+### [roq\_binance]
+
+* [roq-binance](roles/roq-coinbase-pro/README.md) to install the Roq Binance Gateway
+
+### [roq\_bitmex]
+
+* [roq-bitmex](roles/roq-bitmex/README.md) to install the Roq BitMEX Gateway
+
+### [roq\_bitstamp]
+
+* [roq-bitstamp](roles/roq-bitstamp/README.md) to install the Roq BitStamp Gateway
+
 ### [roq\_coinbase\_pro]
 
 * [roq-coinbase-pro](roles/roq-coinbase-pro/README.md) to install the Roq Coinbase/Pro Gateway
 
 ### [roq\_deribit]
 
-* [roq-deribit](roles/roq-deribit/README.md) to install the Roq Coinbase/Pro Gateway
+* [roq-deribit](roles/roq-deribit/README.md) to install the Roq Deribit Gateway
+
+### [roq\_ftx]
+
+* [roq-ftx](roles/roq-ftx/README.md) to install the Roq FTX Gateway
+
+### [roq\_gemini]
+
+* [roq-gemini](roles/roq-gemini/README.md) to install the Roq Gemini Gateway
+
+### [roq\_hitbtc]
+
+* [roq-hitbtc](roles/roq-hitbtc/README.md) to install the Roq HitBTC Gateway
+
+### [roq\_kraken]
+
+* [roq-kraken](roles/roq-kraken/README.md) to install the Roq Kraken Gateway
 
 
 ### [trading]
@@ -201,6 +221,7 @@ OnLoad drivers.
 ### [all]
 
 * [nginx](roles/nginx/README.md) to install the nginx front-end
+* [roq-backup](roles/roq-backup/README.md) to install Roq backup
 
 
 ## Links

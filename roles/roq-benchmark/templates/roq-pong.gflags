@@ -1,4 +1,0 @@
---name=client-{{ item }}
---metrics=/var/tmp/roq-pong-{{ item }}_metrics.sock
---dispatcher-affinity={{ (item | int - 1) + 5 }}
---create-orders=1
