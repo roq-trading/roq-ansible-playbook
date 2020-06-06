@@ -4,6 +4,8 @@ All notable changes will be documented in this file.
 
 ## Head
 
+## 0.3.8 &ndash; 2020-06-06
+
 ### Changed
 
 * Documentation has been reviewed
