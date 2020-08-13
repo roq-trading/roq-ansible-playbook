@@ -4,6 +4,10 @@ All notable changes will be documented in this file.
 
 ## Head
 
+### Added
+
+* [Grafana] Adding the `GF_SECURITY_DISABLE_INITIAL_ADMIN_CREATION` flag
+
 ## 0.4.2 &ndash; 2020-07-27
 
 ## 0.4.1 &ndash; 2020-07-17

@@ -26,6 +26,7 @@ ExecStart=/usr/bin/docker run --rm --name %n \
   --env GF_DATABASE_USER={{ grafana.postgres.user }} \
   --env GF_DATABASE_PASSWORD={{ grafana.postgres.password }} \
   --env GF_PATHS_PROVISIONING={{ root }}/etc/grafana/provisioning \
+  --env GF_SECURITY_DISABLE_INITIAL_ADMIN_CREATION=true \
   {{ docker_registry_prefix | default('') }}{{ grafana.docker.name }}:{{ grafana.docker.tag }}
 
 [Install]
