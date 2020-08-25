@@ -1,0 +1,9 @@
+---
+
+- name: create nginx config
+  set_fact:
+    nginx_config: >
+        {{ nginx_defaults | combine(nginx | default({}), recursive=True) }}
+    cacheable: true
+  tags:
+    - always

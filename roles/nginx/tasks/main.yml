@@ -1,11 +1,5 @@
 ---
 
-- name: detect product_name
-  set_fact:
-    product_name: "{{ product_name if product_name is defined else 'Roq Trading Solutions' }}"
-  tags:
-    - nginx
-
 - block:
 
   - name: create directories
@@ -17,19 +11,10 @@
       mode: 0755
     with_items:
       - "{{ root }}/var/www"
-      - "{{ root }}/var/www/html"
       - "{{ root }}/etc/nginx"
       - "{{ root }}/etc/nginx/conf.d"
     notify:
     - reload nginx
-  
-  - name: create index.html
-    template:
-      src: "templates/index.html"
-      dest: "{{ root }}/var/www/html/index.html"
-      owner: root
-      mode: 0644
-    when: '"web" not in groups'
   
   - name: available sites
     template:
@@ -44,8 +29,8 @@
   
   - name: docker pull images
     docker_image:
-      name: "{{ docker_registry_prefix | default('') }}{{ nginx.docker.name }}"
-      tag: "{{ nginx.docker.tag }}"
+      name: "{{ docker_registry_prefix | default('') }}{{ nginx_config.docker.name }}"
+      tag: "{{ nginx_config.docker.tag }}"
       source: pull
       force_source: true
       force_tag: true

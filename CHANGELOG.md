@@ -4,9 +4,17 @@ All notable changes will be documented in this file.
 
 ## Head
 
+### Changed
+
+* [nginx] simpler config management
+
 ### Added
 
-* [Grafana] Adding the `GF_SECURITY_DISABLE_INITIAL_ADMIN_CREATION` flag
+* [grafana] adding the `GF_SECURITY_DISABLE_INITIAL_ADMIN_CREATION` flag
+
+### Removed
+
+* certbot, netdata and nexus
 
 ## 0.4.2 &ndash; 2020-07-27
 

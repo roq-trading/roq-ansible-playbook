@@ -1,9 +1,0 @@
-[Unit]
-Description=certbot renew timer
-
-[Timer]
-OnCalendar=daily
-Persistent=true
-
-[Install]
-WantedBy=multi-user.target

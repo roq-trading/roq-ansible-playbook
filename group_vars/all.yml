@@ -24,12 +24,6 @@ influxdb:
     name: "library/influxdb"
     tag: "latest"
 
-netdata:
-  port: 19999
-  docker:
-    name: "titpetric/netdata"
-    tag: "latest"
-
 grafana:
   port: 3000
   docker:
@@ -71,17 +65,12 @@ gogs:
   http_port: 10080
   docker:
     name: "gogs/gogs"
-    tag: "latest"
+#    tag: "latest"
+    tag: "0.12.0"
   postgres:
     user: "gogs"
     password: "secret"
     database: "gogs"
-
-nexus:
-  port: 8081
-  docker:
-    name: "sonatype/nexus3"
-    tag: "latest"
 
 teamcity:
   port: 8111
@@ -99,13 +88,6 @@ teamcity_agent:
     tag: "2019.2.4"
 #    tag: "latest"
 
-nginx:
-  http_port: 80
-  https_port: 443
-  docker:
-    name: "library/nginx"
-    tag: "latest"
-
 roq_deribit:
   metrics:
     port: 12301
@@ -122,5 +104,8 @@ roq_coinbase_pro:
     name: "roqtrading/roq-coinbase-pro"
     tag: "latest"
 
-roq_license_manager:
-  port: 1235
+nginx_defaults:
+  http_port: 80
+  docker:
+    name: "library/nginx"
+    tag: "latest"
