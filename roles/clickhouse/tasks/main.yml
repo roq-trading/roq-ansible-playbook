@@ -1,0 +1,51 @@
+---
+
+- block:
+
+  - name: create directories
+    file:
+      path: "{{ item }}"
+      state: directory
+      owner: root
+      group: root
+      mode: 0755
+    with_items:
+      - "{{ root }}/var/lib/clickhouse"
+    notify:
+    - restart clickhouse
+
+  - name: pull docker images
+    docker_image:
+      name: "{{ docker_registry_prefix | default('') }}{{ clickhouse_config.docker.name }}-{{ item }}"
+      tag: "{{ clickhouse_config.docker.tag }}"
+      source: pull
+      force_source: true
+      force_tag: true
+    with_items:
+      - "server"
+      - "client"
+    notify:
+    - restart clickhouse
+
+  - name: create systemd service
+    template:
+      src: "templates/clickhouse.service"
+      dest: "/etc/systemd/system/clickhouse.service"
+      owner: root
+      group: root
+      mode: 0644
+    register: clickhouse_service
+    notify:
+    - restart clickhouse
+
+  - name: enable the clickhouse service
+    systemd:
+      name: "clickhouse.service"
+      state: restarted
+      enabled: true
+      daemon_reload: true
+    when: clickhouse_service.changed
+
+  become: "{{ 'true' if become_user is defined else 'false' }}"
+  tags:
+    - clickhouse

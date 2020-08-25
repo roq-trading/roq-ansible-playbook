@@ -4,4 +4,4 @@ sudo docker exec \
   --interactive \
   --tty \
   postgres.service \
-  psql --username "{{ postgres.user }}" $@
+  psql --username "{{ postgres_config.user }}" $@

@@ -1,9 +1,36 @@
 ---
 
-- name: create nginx config
-  set_fact:
-    nginx_config: >
-        {{ nginx_defaults | combine(nginx | default({}), recursive=True) }}
-    cacheable: true
+- block:
+
+  - name: create postgres config
+    set_fact:
+      postgres_config: >
+          {{ postgres_defaults | combine(postgres | default({}), recursive=True) }}
+      cacheable: true
+
+  - name: create clickhouse config
+    set_fact:
+      clickhouse_config: >
+          {{ clickhouse_defaults | combine(clickhouse | default({}), recursive=True) }}
+      cacheable: true
+
+  - name: create grafana config
+    set_fact:
+      grafana_config: >
+          {{ grafana_defaults | combine(grafana | default({}), recursive=True) }}
+      cacheable: true
+
+  - name: create gogs config
+    set_fact:
+      gogs_config: >
+          {{ gogs_defaults | combine(gogs | default({}), recursive=True) }}
+      cacheable: true
+
+  - name: create nginx config
+    set_fact:
+      nginx_config: >
+          {{ nginx_defaults | combine(nginx | default({}), recursive=True) }}
+      cacheable: true
+
   tags:
     - always

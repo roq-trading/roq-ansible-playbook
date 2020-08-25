@@ -14,8 +14,8 @@
 
   - name: pull docker image
     docker_image:
-      name: "{{ docker_registry_prefix | default('') }}{{ postgres.docker.name }}"
-      tag: "{{ postgres.docker.tag }}"
+      name: "{{ docker_registry_prefix | default('') }}{{ postgres_config.docker.name }}"
+      tag: "{{ postgres_config.docker.tag }}"
       source: pull
       force_source: true
       force_tag: true

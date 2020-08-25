@@ -7,10 +7,12 @@ All notable changes will be documented in this file.
 ### Changed
 
 * [nginx] simpler config management
+* [grafana] now using sqlite3
+* [gogs] now using sqlite3
 
 ### Added
 
-* [grafana] adding the `GF_SECURITY_DISABLE_INITIAL_ADMIN_CREATION` flag
+* ClickHouse
 
 ### Removed
 

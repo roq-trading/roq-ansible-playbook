@@ -43,6 +43,7 @@
   roles:
     - redis
     - influxdb
+    - clickhouse
 
 - hosts: roq_simulator
   roles:

@@ -29,6 +29,6 @@ tar -cjf "$SNAPSHOT" -C "$DATA" .
 
 SNAPSHOT="{{ backups }}/postgres/native/$TIMESTAMP.gz"
 echo "Creating $POSTGRES..."
-docker exec postgres.service pg_dumpall --username "{{ postgres.user }}" | gzip > "$SNAPSHOT"
+docker exec postgres.service pg_dumpall --username "{{ postgres_config.user }}" | gzip > "$SNAPSHOT"
 
 echo "Done!"

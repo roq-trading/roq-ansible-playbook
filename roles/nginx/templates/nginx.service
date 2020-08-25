@@ -1,5 +1,5 @@
 [Unit]
-Description=Nginx
+Description=nginx
 Wants=network-online.target docker.service
 After=network-online.target docker.service
 
@@ -16,9 +16,6 @@ ExecStart=/usr/bin/docker run --rm --name %n -i \
   --network roq-network \
   --volume {{ root }}/etc/nginx/conf.d:/etc/nginx/conf.d:ro \
   --volume {{ root }}/var/www:/var/www:ro \
-{% if 'web' in groups %}
-  --volume {{ root }}/etc/letsencrypt:/etc/letsencrypt:ro \
-{% endif %}
   --volume {{ root }}/var/tmp:/metrics \
   {{ docker_registry_prefix | default('') }}{{ nginx_defaults.docker.name }}:{{ nginx_defaults.docker.tag }}
 

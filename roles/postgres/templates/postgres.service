@@ -11,15 +11,15 @@ CPUAffinity={{ cpu_affinity.zone_3 }}
 {% endif %}
 ExecStartPre=-/usr/bin/docker stop %n
 ExecStartPre=-/usr/bin/docker rm %n
-# publish port {{ postgres.port }} for provisioning purposes
+# publish port {{ postgres_config.port }} for provisioning purposes
 ExecStart=/usr/bin/docker run --rm --name %n \
-  --publish {{ postgres.port }}:{{ postgres.port }} \
+  --publish {{ postgres_config.port }}:{{ postgres_config.port }} \
   --network roq-network \
   --volume {{ root }}/var/lib/postgres:/var/lib/postgresql/data \
   --volume {{ root }}/var/run/postgres:/var/run/postgresql \
-  --env POSTGRES_USER={{ postgres.user }} \
-  --env POSTGRES_PASSWORD={{ postgres.password }} \
-  {{ docker_registry_prefix | default('') }}{{ postgres.docker.name }}:{{ postgres.docker.tag }}
+  --env POSTGRES_USER={{ postgres_config.user }} \
+  --env POSTGRES_PASSWORD={{ postgres_config.password }} \
+  {{ docker_registry_prefix | default('') }}{{ postgres_config.docker.name }}:{{ postgres_config.docker.tag }}
 
 [Install]
 WantedBy=multi-user.target

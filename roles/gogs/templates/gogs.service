@@ -1,8 +1,7 @@
 [Unit]
 Description=Gogs
-After=docker.service postgres.service
+After=docker.service
 Requires=docker.service
-Wants=postgres.service
 
 [Service]
 TimeoutStartSec=0
@@ -15,11 +14,11 @@ ExecStartPre=-/usr/bin/docker rm %n
 ExecStartPre=/bin/mkdir -p {{ root }}/var/run/backups/gogs/native
 # TODO(thraneh): app.ini doesn't control the SSH listen ports... bug?
 ExecStart=/usr/bin/docker run --rm --name %n \
-  --publish {{ gogs.ssh_port }}:22 \
+  --publish {{ gogs_config.ssh_port }}:22 \
   --network roq-network \
   --volume {{ root }}/var/lib/gogs:/data \
   --volume {{ root }}/var/run/backups/gogs/native:/var/lib/gogs/backups \
-  {{ docker_registry_prefix | default('') }}{{ gogs.docker.name }}:{{ gogs.docker.tag }}
+  {{ docker_registry_prefix | default('') }}{{ gogs_config.docker.name }}:{{ gogs_config.docker.tag }}
 
 [Install]
 WantedBy=multi-user.target

@@ -1,0 +1,7 @@
+---
+- name: restart clickhouse
+  service:
+    name: clickhouse
+    state: restarted
+    enabled: yes
+  become: true

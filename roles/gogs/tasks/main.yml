@@ -22,52 +22,10 @@
     notify:
     - restart gogs
 
-  - name: create encrypted password
-    shell: "echo -n `echo -n {{ gogs.postgres.password }}{{ gogs.postgres.user }} | md5sum | awk '{print $1}'`"
-    register: encrypted_password
-
-  - name: create postgres user
-    postgresql_user:
-      name: "{{ gogs.postgres.user }}"
-      password: "md5{{ encrypted_password.stdout_lines[0] }}"
-      encrypted: true
-      role_attr_flags: "CREATEDB,NOSUPERUSER"
-      login_host: "localhost"
-      port: "{{ postgres.port }}"
-      login_user: "{{ postgres.user }}"
-      login_password: "{{ postgres.password }}"
-    notify:
-    - restart gogs
-
-  - name: create postgres database
-    postgresql_db:
-      name: "{{ gogs.postgres.database }}"
-      encoding: "UTF-8"
-      owner: "{{ gogs.postgres.user }}"
-      login_host: "localhost"
-      port: "{{ postgres.port }}"
-      login_user: "{{ postgres.user }}"
-      login_password: "{{ postgres.password }}"
-    notify:
-    - restart gogs
-
-  - name: grant postgres user priviliges
-    postgresql_privs:
-      db: "{{ gogs.postgres.database }}"
-      privs: "ALL"
-      objs: "ALL_IN_SCHEMA"
-      role: "{{ gogs.postgres.user }}"
-      login_host: "localhost"
-      port: "{{ postgres.port }}"
-      login_user: "{{ postgres.user }}"
-      login_password: "{{ postgres.password }}"
-    notify:
-    - restart gogs
-
   - name: pull docker image
     docker_image:
-      name: "{{ docker_registry_prefix | default('') }}{{ gogs.docker.name }}"
-      tag: "{{ gogs.docker.tag }}"
+      name: "{{ docker_registry_prefix | default('') }}{{ gogs_config.docker.name }}"
+      tag: "{{ gogs_config.docker.tag }}"
       source: pull
       force_source: true
       force_tag: true

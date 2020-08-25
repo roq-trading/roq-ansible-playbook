@@ -4,4 +4,4 @@ sudo docker exec \
   --interactive \
   --tty \
   postgres.service \
-  pg_dump --username "{{ postgres.user }}" $@
+  pg_dump --username "{{ postgres_config.user }}" $@

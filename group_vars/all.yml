@@ -24,15 +24,19 @@ influxdb:
     name: "library/influxdb"
     tag: "latest"
 
-grafana:
+# note! name is without -server/-client extension
+clickhouse_defaults:
+  port: 9000
+  http_port: 8123
+  docker:
+    name: "yandex/clickhouse"
+    tag: "latest"
+
+grafana_defaults:
   port: 3000
   docker:
     name: "grafana/grafana"
     tag: "latest"
-  postgres:
-    user: "grafana"
-    password: "secret"
-    database: "grafana"
 
 alertmanager:
   port: 9093
@@ -52,7 +56,7 @@ prometheus:
     name: "prom/prometheus"
     tag: "latest"
 
-postgres:
+postgres_defaults:
   port: 5432
   user: "postgres"
   password: "admin"
@@ -60,17 +64,13 @@ postgres:
     name: "library/postgres"
     tag: "10"
 
-gogs:
+gogs_defaults:
   ssh_port: 10022
   http_port: 10080
   docker:
     name: "gogs/gogs"
 #    tag: "latest"
     tag: "0.12.0"
-  postgres:
-    user: "gogs"
-    password: "secret"
-    database: "gogs"
 
 teamcity:
   port: 8111

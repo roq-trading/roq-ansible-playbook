@@ -1,0 +1,22 @@
+[Unit]
+Description=clickhouse
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+{% if cpu_affinity is defined %}
+CPUAffinity={{ cpu_affinity.zone_2 }}
+{% endif %}
+ExecStartPre=-/usr/bin/docker stop %n
+ExecStartPre=-/usr/bin/docker rm %n
+ExecStart=/usr/bin/docker run --rm --name %n \
+  --network roq-network \
+  --publish {{ clickhouse_config.port }}:9000 \
+  --publish {{ clickhouse_config.http_port }}:8123 \
+  --volume {{ root }}/var/lib/clickhouse:/var/lib/clickhouse \
+  {{ docker_registry_prefix | default('') }}{{ clickhouse_config.docker.name }}-server:{{ clickhouse_config.docker.tag }}
+
+[Install]
+WantedBy=multi-user.target

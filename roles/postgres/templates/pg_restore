@@ -4,4 +4,4 @@ sudo docker exec \
   --interactive \
   --tty \
   postgres.service \
-  pg_restore --username "{{ postgres.user }}" $@
+  pg_restore --username "{{ postgres_config.user }}" $@
