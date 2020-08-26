@@ -1,8 +1,7 @@
 [Unit]
 Description=Teamcity
-After=docker.service postgres.service
+After=docker.service
 Requires=docker.service
-Wants=postgres.service
 
 [Service]
 TimeoutStartSec=0

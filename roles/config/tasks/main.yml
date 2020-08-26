@@ -2,12 +2,6 @@
 
 - block:
 
-  - name: create postgres config
-    set_fact:
-      postgres_config: >
-          {{ postgres_defaults | combine(postgres | default({}), recursive=True) }}
-      cacheable: true
-
   - name: create clickhouse config
     set_fact:
       clickhouse_config: >

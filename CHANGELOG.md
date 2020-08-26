@@ -6,9 +6,11 @@ All notable changes will be documented in this file.
 
 ### Changed
 
-* [nginx] simpler config management
-* [grafana] now using sqlite3
-* [gogs] now using sqlite3
+* NGINX now has simpler config
+* Part of removing the Postgres dependency
+  * Grafana now uses sqlite3
+  * Gogs now uses sqlite3
+  * TeamCity now uses HSQL
 
 ### Added
 
@@ -16,7 +18,8 @@ All notable changes will be documented in this file.
 
 ### Removed
 
-* certbot, netdata and nexus
+* Postgres dependency was removed due to complexities around database upgrades
+* Simplifying: certbot, netdata and nexus not required
 
 ## 0.4.2 &ndash; 2020-07-27
 

@@ -31,7 +31,6 @@
 - hosts: all
   roles:
     - conda
-    - postgres
 
 - hosts: dev
   roles:

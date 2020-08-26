@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-sudo docker exec \
-  --interactive \
-  --tty \
-  postgres.service \
-  psql --username "{{ postgres_config.user }}" $@

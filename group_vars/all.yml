@@ -56,14 +56,6 @@ prometheus:
     name: "prom/prometheus"
     tag: "latest"
 
-postgres_defaults:
-  port: 5432
-  user: "postgres"
-  password: "admin"
-  docker:
-    name: "library/postgres"
-    tag: "10"
-
 gogs_defaults:
   ssh_port: 10022
   http_port: 10080
@@ -77,10 +69,6 @@ teamcity:
   docker:
     name: "jetbrains/teamcity-server"
     tag: "latest"
-  postgres:
-    user: "teamcity"
-    password: "secret"
-    database: "teamcity"
 
 teamcity_agent:
   docker:
