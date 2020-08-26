@@ -14,15 +14,8 @@
     - baseline
     - kernel
     - chrony
-    - sysstat
-    - sysadmin
     - python
     - docker
-
-- hosts: secure
-  roles:
-    - sshd
-    - fail2ban
 
 - hosts: onload
   roles:

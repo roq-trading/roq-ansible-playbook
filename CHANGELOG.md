@@ -6,20 +6,28 @@ All notable changes will be documented in this file.
 
 ### Changed
 
-* NGINX now has simpler config
-* Part of removing the Postgres dependency
+* NGINX config has been simplified
+* As a result of removing the Postgres dependency:
   * Grafana now uses sqlite3
   * Gogs now uses sqlite3
-  * TeamCity now uses HSQL
+  * TeamCity now uses HSQLDB
 
 ### Added
 
-* ClickHouse
+* ClickHouse as a new (experimental) time-series database
 
 ### Removed
 
-* Postgres dependency was removed due to complexities around database upgrades
-* Simplifying: certbot, netdata and nexus not required
+* The following roles have been removed
+  * certbot
+  * fail2ban
+  * netdata
+  * nexus
+  * sshd
+  * sysadmin
+  * sysstat
+* The Postgres dependency was removed due to hard-to-automate complexities
+  around database upgrades
 
 ## 0.4.2 &ndash; 2020-07-27
 

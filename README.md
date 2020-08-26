@@ -7,20 +7,18 @@ Features
 
 * Typical server configuration
   * Keep kernel up to date
-  * Install sysadmin tools
   * Install Docker
-  * Secure SSH
-  * Create conda environment
-  * Install Postgres
-  * Install InfluxDB
+  * Install Miniconda
   * Install Redis
+  * Install InfluxDB
+  * Install ClickHouse
   * Install Prometheus
   * Install Grafana
-  * Install Nginx
-* Roq gateways
-  * Install binaries (using conda or Docker)
+  * Install NGINX
+* Gateways
+  * Install binaries (using Conda or Docker)
   * Auto-generate config files from YAML
-  * Install systemd scripts
+  * Install systemd service and timer scripts
 
 
 Direct third-party dependencies
@@ -39,7 +37,7 @@ Direct third-party dependencies
 
 Ansible 2.7 (or higher) is required.
 
-This is how to install Ansible using conda
+This is how to install Ansible using Conda
 
 ```bash
 wget -N https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
