@@ -61,8 +61,7 @@ gogs_defaults:
   http_port: 10080
   docker:
     name: "gogs/gogs"
-#    tag: "latest"
-    tag: "0.12.0"
+    tag: "latest"
 
 teamcity:
   port: 8111
