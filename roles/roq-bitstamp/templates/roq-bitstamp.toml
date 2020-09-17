@@ -1,15 +1,21 @@
 {% if config.symbols is defined %}
+{% if config.symbols is mapping %}
+[symbols]
+{% for key, value in config.symbols.items() %}
+{% if value is iterable and value is not string %}
+  {{ key }} = [ {{ '"' + value | join('", "') + '"' }} ]
+{% else %}
+  {{ key }} = "{{ value }}"
+{% endif %}
+{% endfor %}
+{% else %}
 {% if config.symbols is iterable and config.symbols is not string %}
 symbols = [ {{ '"' + config.symbols | join('", "') + '"' }} ]
 {% else %}
 symbols = "{{ config.symbols }}"
 {% endif %}
 {% endif %}
-
-[order_templates]
-
-  [order_templates.default]
-  self_trade_prevention = 'D'
+{% endif %}
 
 [accounts]
 {% for (name, account) in config.accounts.items() %}
