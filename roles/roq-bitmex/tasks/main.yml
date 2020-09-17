@@ -8,119 +8,17 @@
   tags:
     - always
 
-- name: configuration (debug)
-  debug:
-    var: config
-    verbosity: 1
-  tags:
-    - always
-
-- name: shorter variable name for config
-  set_fact:
-    config: "{{ roq_bitmex_config }}"
-  tags:
-    - roq-bitmex
-
 - block:
 
-  - name: create required directories
-    file:
-      path: "{{ root }}/{{ item }}"
-      state: directory
-      owner: "{{ roq_user }}"
-      # group: "{{ roq_user }}"
-      mode: 0770
-    with_items:
-      - "/etc/roq"
-      - "/var/lib/roq"
-      - "/var/log/roq"
-      - "/var/run/roq"
+  - name: shorter variable name for config
+    set_fact:
+      config: "{{ roq_bitmex_config }}"
 
-  - name: create config files
-    template:
-      src: "templates/{{ item | basename }}"
-      dest: "{{ root }}/etc/roq/{{ item }}"
-      owner: "{{ roq_user }}"
-      group: "{{ roq_user }}"
-      mode: 0644
-    with_items:
-      - "roq-bitmex.toml"
-      - "roq-bitmex.gflags"
+  - name: install
+    include_role:
+      name: common
+      tasks_from: gateway
 
-  - name: create run scripts
-    template:
-      src: "templates/{{ item }}"
-      dest: "{{ root }}/usr/local/bin/{{ item }}"
-      owner: "{{ roq_user }}"
-      # group: "{{ roq_user }}"
-      mode: 0750
-    with_items:
-      - "roq-bitmex.sh"
-
-  - name: install the roq-bitmex conda package
-    shell: "{{ root }}/miniconda/bin/conda install -y -n base \
-      roq-bitmex{{ '' if config.version == 'latest' else '==%s'|format(config.version) }}"
-  
   when: "'roq_bitmex' in group_names"
-  become: "{{ 'true' if become_user is defined else 'false' }}"
-  tags:
-    - roq-bitmex
-
-##############
-### SERVER ###
-##############
-
-- block:
-
-  - name: docker pull images
-    docker_image:
-      name: "{{ docker_registry_prefix | default('') }}{{ config.docker.name }}"
-      tag: "{{ config.version }}"
-      source: pull
-      force_source: true
-      force_tag: true
-    when: config.docker.use
-
-  - name: define list of systemd services
-    set_fact:
-      systemd_services:
-      - 'roq-bitmex.service'
-      - 'roq-bitmex-stop.service'
-
-  - name: define list of systemd timers
-    set_fact:
-      systemd_timers:
-      - 'roq-bitmex.timer'
-      - 'roq-bitmex-stop.timer'
-
-  - name: define list of systemd units
-    set_fact:
-      systemd_units:
-      - '{{ systemd_services }} + {{ systemd_timers }}'
-
-  - name: create systemd units
-    template:
-      src: "templates/{{ item }}"
-      dest: "/etc/systemd/system/{{ item }}"
-      owner: root
-      group: root
-      mode: 0644
-    with_items: "{{ systemd_units }}"
-
-  - name: enable systemd units
-    systemd:
-      name: "{{ item }}"
-      enabled: false
-      daemon_reload: true
-    with_items: "{{ systemd_units }}"
-
-  - name: start systemd timers
-    systemd:
-      name: "{{ item }}"
-      state: started
-    with_items: "{{ systemd_timers }}"
-
-  when: become_user is defined and 'roq_bitmex' in group_names
-  become: true
   tags:
     - roq-bitmex

@@ -4,6 +4,10 @@ All notable changes will be documented in this file.
 
 ## Head
 
+### Changed
+
+* All gateways are now installed by re-using common tasks and templates
+
 ## 0.4.3 &ndash; 2020-09-02
 
 ### Changed

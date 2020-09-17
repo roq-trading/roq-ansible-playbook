@@ -1,0 +1,3 @@
+# options for the roq-{{ config.options.name }} gateway
+
+{{ config.options | roq_gflags_options }}

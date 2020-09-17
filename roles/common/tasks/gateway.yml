@@ -1,0 +1,95 @@
+---
+
+#################################
+### WORKS WITHOUT BECOME_USER ###
+#################################
+
+- block:
+
+  - name: create directories
+    file:
+      path: "{{ root }}/{{ item }}"
+      state: directory
+      owner: "{{ roq_user }}"
+      # group: "{{ roq_user }}"
+      mode: 0770
+    with_items:
+      - "/etc/roq"
+      - "/var/lib/roq"
+      - "/var/log/roq"
+      - "/var/run/roq"
+
+  - name: create files
+    template:
+      src: "gateway/{{ item | basename }}"
+      dest: "{{ item | dirname }}/roq-{{ item | basename | replace('item', config.options.name) }}"
+      mode: "{{ 0755 if (item | splitext | last == '.sh') else 0644 }}"
+    with_items:
+      - "{{ root }}/etc/roq/item.toml"
+      - "{{ root }}/etc/roq/item.gflags"
+      - "{{ root }}/usr/local/bin/item.sh"
+
+  - name: install conda package
+    shell: "{{ root }}/miniconda/bin/conda install -y -n base \
+      roq-{{ config.options.name }}{{ '' if config.version == 'latest' else '==%s'|format(config.version) }}"
+  
+  become: "{{ 'true' if become_user is defined else 'false' }}"
+
+############################################
+### ONLY IF BECOME_USER HAS BEEN DEFINED ###
+############################################
+
+- block:
+
+  - name: create systemd files
+    template:
+      src: "gateway/{{ item | basename }}"
+      dest: "{{ item | dirname }}/roq-{{ item | basename | replace('item', config.options.name) }}"
+      mode: "{{ 0755 if (item | splitext | last == '.sh') else 0644 }}"
+    with_items:
+      - "/etc/systemd/system/item.service"
+      - "/etc/systemd/system/item.timer"
+      - "/etc/systemd/system/item-stop.service"
+      - "/etc/systemd/system/item-stop.timer"
+
+  - name: docker pull images
+    docker_image:
+      name: "{{ docker_registry_prefix | default('') }}{{ config.docker.name }}"
+      tag: "{{ config.version }}"
+      source: pull
+      force_source: true
+      force_tag: true
+    when: config.docker.use
+
+  - name: define list of systemd services
+    set_fact:
+      systemd_services:
+      - 'roq-{{ config.options.name }}.service'
+      - 'roq-{{ config.options.name }}-stop.service'
+
+  - name: define list of systemd timers
+    set_fact:
+      systemd_timers:
+      - 'roq-{{ config.options.name }}.timer'
+      - 'roq-{{ config.options.name }}-stop.timer'
+
+  - name: define list of systemd units
+    set_fact:
+      systemd_units:
+      - '{{ systemd_services }} + {{ systemd_timers }}'
+
+  - name: enable systemd units
+    systemd:
+      name: "{{ item }}"
+      enabled: false
+      daemon_reload: true
+    with_items: "{{ systemd_units }}"
+
+  - name: start systemd timers
+    systemd:
+      name: "{{ item }}"
+      state: started
+    with_items: "{{ systemd_timers }}"
+
+  when: become_user is defined
+  become: true

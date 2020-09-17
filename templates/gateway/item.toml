@@ -1,0 +1,35 @@
+# config file for the roq-{{ config.options.name }} gateway
+
+# symbols to subscribe from exchange
+{{ config.symbols | roq_toml_symbols }}
+
+# exchange accounts
+{{ config.accounts | roq_toml_accounts }}
+
+# clients (trading strategies)
+{{ config.users | roq_toml_users }}
+{%- if config.market_data is defined %}
+
+# gemini, only
+[market_data]
+{% for (name, value) in config.market_data.items() %}
+  {{ name }} = "{{ value }}"
+{% endfor %}
+{%- endif %}
+{%- if config.order_entry is defined %}
+
+# gemini, only
+[order_entry]
+{% for (name, value) in config.order_entry.items() %}
+  {{ name }} = "{{ value }}"
+{% endfor %}
+{%- endif %}
+
+{%- if config.drop_copy is defined %}
+
+# gemini, only
+[drop_copy]
+{% for (name, value) in config.drop_copy.items() %}
+  {{ name }} = "{{ value }}"
+{% endfor %}
+{%- endif %}
