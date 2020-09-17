@@ -19,4 +19,7 @@ roq_deribit_defaults:
     ws_uri: "wss://test.deribit.com/ws/api/v2"
     fix_uri: "tcp://test.deribit.com:9881"
   symbols:
-    - ".*"
+    include:
+      - ".*"
+    exclude:
+      - "USDT-.*"
