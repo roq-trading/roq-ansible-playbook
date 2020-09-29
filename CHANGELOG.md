@@ -4,6 +4,11 @@ All notable changes will be documented in this file.
 
 ## Head
 
+### Added
+
+* roq-clickhouse
+* roq-redis
+
 ## 0.4.4 &ndash; 2020-09-20
 
 ### Changed

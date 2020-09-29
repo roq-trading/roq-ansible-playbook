@@ -1,0 +1,12 @@
+--name={{ config.name }}
+--listen={{ root }}/var/tmp/roq-clickhouse.sock
+--metrics={{ root }}/var/tmp/roq-clickhouse_metrics.sock
+{% for (key, value) in config.cpu_affinity.items() %}
+--{{ key }}-affinity={{ value }}
+{% endfor %}
+{% for (key, value) in config.clickhouse.items() %}
+--clickhouse-{{ key }}={{ value }}
+{% endfor %}
+{% for (key, value) in config.options.items() %}
+--{{ key }}={{ value }}
+{% endfor %}

@@ -1,0 +1,18 @@
+---
+
+roq_clickhouse_defaults:
+  version: "{{ roq_version }}"
+  docker:
+    use: "{{ roq_use_docker }}"
+    name: "roqtrading/roq-clickhouse"
+  name: "clickhouse"
+  options:
+    poll_freq_secs: 60
+  cpu_affinity: {}
+  logging:
+    verbosity: 0
+  clickhouse:
+    host: "localhost"
+    port: 8123
+    database: "roq"
+    create: true

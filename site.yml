@@ -33,17 +33,25 @@
 
 - hosts: trading
   roles:
-    - redis
-    - influxdb
     - clickhouse
+    - influxdb
+    - redis
 
 - hosts: roq_simulator
   roles:
     - roq-simulator
 
+- hosts: roq_clickhouse
+  roles:
+    - roq-clickhouse
+
 - hosts: roq_influxdb
   roles:
     - roq-influxdb
+
+- hosts: roq_redis
+  roles:
+    - roq-redis
 
 - hosts: roq_binance
   roles:
