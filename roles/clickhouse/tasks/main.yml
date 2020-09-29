@@ -46,6 +46,13 @@
       daemon_reload: true
     when: clickhouse_service.changed
 
+  - name: create clickhouse-client script
+    template:
+      src: "templates/clickhouse-client"
+      dest: "{{ root }}/usr/local/bin/clickhouse-client"
+      owner: "{{ roq_user }}"
+      mode: 0750
+
   become: "{{ 'true' if become_user is defined else 'false' }}"
   tags:
     - clickhouse

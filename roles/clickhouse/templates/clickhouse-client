@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+sudo docker run \
+  --interactive \
+  --tty \
+  --rm \
+  --network roq-network \
+  yandex/clickhouse-client \
+  --host clickhouse.service \
+  $@
