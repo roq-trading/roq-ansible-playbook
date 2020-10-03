@@ -4,9 +4,6 @@
 {% for (key, value) in config.cpu_affinity.items() %}
 --{{ key }}-affinity={{ value }}
 {% endfor %}
-{% for (key, value) in config.influxdb.items() %}
---influxdb-{{ key }}={{ value }}
-{% endfor %}
 {% for (key, value) in config.options.items() %}
 --{{ key }}={{ value }}
 {% endfor %}
