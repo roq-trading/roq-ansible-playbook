@@ -1,4 +1,9 @@
 <?xml version="1.0"?>
 <yandex>
+  <logger>
+    <level replace="replace">information</level>
+    <console replace="replace">1</console>
+  </logger>
+  <listen_host replace="replace">0.0.0.0</listen_host>
   <keep_alive_timeout replace="replace">60</keep_alive_timeout>
 </yandex>
