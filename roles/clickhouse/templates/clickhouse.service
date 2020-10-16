@@ -16,6 +16,7 @@ ExecStart=/usr/bin/docker run --rm --name %n \
   --publish {{ clickhouse_config.port }}:9000 \
   --publish {{ clickhouse_config.http_port }}:8123 \
   --volume {{ root }}/var/lib/clickhouse:/var/lib/clickhouse \
+  --volume {{ root }}/etc/clickhouse:/etc/clickhouse-server/config.d \
   {{ docker_registry_prefix | default('') }}{{ clickhouse_config.docker.name }}-server:{{ clickhouse_config.docker.tag }}
 
 [Install]

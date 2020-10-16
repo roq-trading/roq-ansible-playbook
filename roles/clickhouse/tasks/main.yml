@@ -10,7 +10,18 @@
       group: root
       mode: 0755
     with_items:
+      - "{{ root }}/etc/clickhouse"
       - "{{ root }}/var/lib/clickhouse"
+    notify:
+    - restart clickhouse
+
+  - name: create server config
+    template:
+      src: "templates/server_config.xml"
+      dest: "{{ root }}/etc/clickhouse/server_config.xml"
+      owner: root
+      group: root
+      mode: 0644
     notify:
     - restart clickhouse
 

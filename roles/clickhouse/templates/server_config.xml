@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<yandex>
+  <keep_alive_timeout replace="replace">60</keep_alive_timeout>
+</yandex>
