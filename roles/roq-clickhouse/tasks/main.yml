@@ -34,6 +34,7 @@
       - "/var/lib/roq"
       - "/var/log/roq"
       - "/var/run/roq"
+      - "/etc/roq"
 
   - name: create config
     template:

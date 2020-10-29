@@ -1,5 +1,5 @@
 [Unit]
-Description=Roq InfluxDB Feed Handler
+Description=Roq ClickHouse Feed Handler
 After=network-online.target
 
 [Service]
