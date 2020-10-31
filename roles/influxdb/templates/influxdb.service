@@ -17,6 +17,7 @@ ExecStart=/usr/bin/docker run --rm --name %n \
   --volume {{ root }}/var/lib/influxdb:/var/lib/influxdb \
   --env INFLUXDB_HTTP_ENABLED=true \
   --env INFLUXDB_HTTP_BIND_ADDRESS=:8086 \
+  --env INFLUXDB_HTTP_FLUX_ENABLED=true \
   --env INFLUXDB_REPORTING_DISABLED=true \
   {{ docker_registry_prefix | default('') }}{{ influxdb.docker.name }}:{{ influxdb.docker.tag }}
 
