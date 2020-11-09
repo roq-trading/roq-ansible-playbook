@@ -4,6 +4,8 @@ All notable changes will be documented in this file.
 
 ## Head
 
+* Add publish port (Docker) for the redis systemd service
+
 ### Added
 
 * roq-clickhouse
