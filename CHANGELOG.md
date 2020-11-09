@@ -4,6 +4,10 @@ All notable changes will be documented in this file.
 
 ## Head
 
+## 0.4.5 &ndash; 2020-11-09
+
+### Changed
+
 * Add publish port (Docker) for the redis systemd service
 
 ### Added
