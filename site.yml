@@ -13,7 +13,6 @@
     - config
     - baseline
     - kernel
-    - chrony
     - python
     - docker
 

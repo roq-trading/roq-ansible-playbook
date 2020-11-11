@@ -4,6 +4,16 @@ All notable changes will be documented in this file.
 
 ## Head
 
+### Changed
+
+* Ubuntu 20.04 support
+
+  * pip3 instead of pip
+
+### Removed
+
+* chrony
+
 ## 0.4.5 &ndash; 2020-11-09
 
 ### Changed
