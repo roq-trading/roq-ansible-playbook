@@ -31,7 +31,6 @@
       # group: "{{ roq_user }}"
       mode: 0770
     with_items:
-      - "/etc/roq"
       - "/var/lib/roq"
       - "/var/log/roq"
       - "/var/run/roq"
@@ -39,7 +38,7 @@
   - name: create config
     template:
       src: "templates/{{ item }}"
-      dest: "{{ root }}/etc/roq/{{ item }}"
+      dest: "{{ root }}/usr/local/etc/{{ item }}"
       owner: "{{ roq_user }}"
       # group: "{{ roq_user }}"
       mode: 0640
@@ -56,11 +55,11 @@
       mode: 0750
 
   - name: install the roq-simulator conda package
-    shell: "{{ root }}/miniconda/bin/conda install -y -n base \
+    shell: "{{ root }}/opt/miniconda3/bin/conda install -y -n base \
       roq-simulator{{ '' if config.version == 'latest' else '==%s'|format(config.version) }}"
   
   - name: install the roq-data conda package
-    shell: "{{ root }}/miniconda/bin/conda install -y -n base \
+    shell: "{{ root }}/opt/miniconda3/bin/conda install -y -n base \
       roq-data{{ '' if config.version == 'latest' else '==%s'|format(config.version) }}"
 
   when: "'roq_simulator' in group_names"

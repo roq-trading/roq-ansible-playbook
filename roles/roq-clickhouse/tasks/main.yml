@@ -34,29 +34,28 @@
       - "/var/lib/roq"
       - "/var/log/roq"
       - "/var/run/roq"
-      - "/etc/roq"
+      - "/usr/local/etc/roq-clickhouse"
 
   - name: create config
     template:
       src: "templates/{{ item }}"
-      dest: "{{ root }}/etc/roq/{{ item }}"
+      dest: "{{ root }}/usr/local/etc/roq-clickhouse/{{ item }}"
       owner: "{{ roq_user }}"
       # group: "{{ roq_user }}"
       mode: 0640
     with_items:
-      - "roq-clickhouse.gflags"
+      - "options.gflags"
 
-
-  - name: create run scripts
+  - name: create shell script
     template:
-      src: "templates/roq-clickhouse.sh"
-      dest: "{{ root }}/usr/local/bin/roq-clickhouse.sh"
+      src: "templates/roq-clickhouse"
+      dest: "{{ root }}/usr/local/bin/roq-clickhouse"
       owner: "{{ roq_user }}"
       # group: "{{ roq_user }}"
-      mode: 0750
+      mode: 0755
 
   - name: install the roq-clickhouse conda package
-    shell: "{{ root }}/miniconda/bin/conda install -y -n base \
+    shell: "{{ root }}/opt/conda/bin/conda install -y -n base \
       roq-clickhouse{{ '' if config.version == 'latest' else '==%s'|format(config.version) }}"
 
   when: "'roq_clickhouse' in group_names"

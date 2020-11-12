@@ -3,7 +3,7 @@
 - block:
 
   - name: install compiler toolchain
-    shell: "{{ root }}/miniconda/bin/conda install -y -n base {{ item }}"
+    shell: "{{ root }}/opt/conda/bin/conda install -y -n base {{ item }}"
     with_items:
       - "{{ conda_cc }}"
       - "{{ conda_cxx }}"

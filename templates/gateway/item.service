@@ -9,18 +9,18 @@ TimeoutStartSec=0
 ExecStart=/usr/bin/docker run --rm --name %n -i \
   --network roq-network \
   --volume {{ root }}/var/tmp:/var/tmp \
-  --volume {{ root }}/etc/roq:/etc/roq \
+  --volume {{ root }}/usr/local/etc/roq-{{ config.options.name }}:/usr/local/etc/roq-{{ config.options.name }} \
   --env ROQ_v={{ config.logging.verbosity | default(0) }} \
   --env FLAGS_monitor_port={{ config.metrics.port }} \
   {{ docker_registry_prefix | default('') }}{{ config.docker.name }}:{{ config.version }} \
-  --flagfile "/etc/roq/roq-{{ config.options.name }}.gflags"
+  --flagfile "/usr/local/etc/roq-{{ config.options.name }}/options.gflags"
 {% else %}
 UMask=0000
 User={{ roq_user if roq_user is defined else ansible_user_id }}
 Group={{ roq_user if roq_user is defined else ansible_user_id }}
 Environment="ROQ_v={{ config.logging.verbosity }}"
-ExecStart={{ root }}/miniconda/bin/roq-{{ config.options.name }} \
-  --flagfile "{{ root }}/etc/roq/roq-{{ config.options.name }}.gflags"
+ExecStart={{ root }}/opt/conda/bin/roq-{{ config.options.name }} \
+  --flagfile "{{ root }}/usr/local/etc/roq-{{ config.options.name }}/options.gflags"
 Restart=on-abnormal
 {% endif %}
 

@@ -80,14 +80,14 @@
       daemon_reload: true
     when: teamcity_server_service.changed
 
-  - name: create scripts
+  - name: create shell script
     template:
       src: "templates/{{ item }}"
       dest: "{{ root }}/usr/local/bin/{{ item }}"
       owner: "{{ roq_user }}"
-      mode: 0750
+      mode: 0755
     with_items:
-      - "teamcity-backup.sh"
+      - "teamcity-backup"
 
   - name: define list of systemd services
     set_fact:

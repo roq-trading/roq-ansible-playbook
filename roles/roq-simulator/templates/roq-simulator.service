@@ -8,20 +8,20 @@ TimeoutStartSec=0
 ExecStart=/usr/bin/docker run --rm --name %n -i \
   --network roq-network \
   --volume {{ root }}/var/tmp:/var/tmp \
-  --volume {{ root }}/etc/roq:/etc/roq \
+  --volume {{ root }}/usr/local/etc:/usr/local/etc \
   --env ROQ_v={{ config.logging.verbosity }} \
   {{ docker_registry_prefix | default('') }}{{ config.docker.name }}:{{ config.version }} \
   /miniconda/bin/roq-simulator \
-  --flagfile "/etc/roq/roq-simulator.gflags"
+  --flagfile "/usr/local/etc/roq-simulator.gflags"
 {% else %}
 User={{ roq_user }}
 Group={{ roq_user }}
 UMask=0000
 Restart=on-abnormal
 Environment="ROQ_v={{ config.logging.verbosity }}"
-ExecStart={{ root }}/miniconda/bin/roq-simulator \
-  --flagfile "{{ root }}/etc/roq/roq-simulator.gflags" \
-  "{{ root }}/miniconda/share/roq/data/USTP_Multi_20180223.csv"
+ExecStart={{ root }}/opt/miniconda3/bin/roq-simulator \
+  --flagfile "{{ root }}/usr/local/etc/roq-simulator.gflags" \
+  "{{ root }}/opt/miniconda3/share/roq/data/USTP_Multi_20180223.csv"
 {% endif %}
 
 [Install]

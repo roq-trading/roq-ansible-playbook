@@ -7,7 +7,7 @@
       path: "{{ item }}"
       state: directory
     with_items:
-      - "{{ root }}/miniconda"
+      - "{{ root }}/opt/conda"
   
   - name: download {{ anaconda.url }}/miniconda/{{ miniconda_sh }}
     get_url:
@@ -22,15 +22,15 @@
       owner: "{{ roq_user }}"
       state: link
   
-  - name: install {{ root }}/miniconda
-    shell: "bash {{ root }}/usr/local/bin/{{ miniconda_sh }} -b -u -p {{ root }}/miniconda"
+  - name: install {{ root }}/conda
+    shell: "bash {{ root }}/usr/local/bin/{{ miniconda_sh }} -b -u -p {{ root }}/opt/conda"
     args:
-      creates: "{{ root }}/miniconda/bin/activate"
+      creates: "{{ root }}/opt/conda/bin/activate"
   
-  - name: create {{ root }}/miniconda/.condarc
+  - name: create {{ root }}/opt/conda/.condarc
     template:
       src: "templates/condarc"
-      dest: "{{ root }}/miniconda/.condarc"
+      dest: "{{ root }}/opt/conda/.condarc"
       mode: 0644
   
   become: "{{ 'true' if become_user is defined else 'false' }}"

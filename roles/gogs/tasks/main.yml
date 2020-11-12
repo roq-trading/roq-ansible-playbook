@@ -49,14 +49,14 @@
       daemon_reload: true
     when: gogs_service.changed
 
-  - name: create scripts
+  - name: create shell script
     template:
       src: "templates/{{ item }}"
       dest: "{{ root }}/usr/local/bin/{{ item }}"
       owner: "{{ roq_user }}"
-      mode: 0750
+      mode: 0755
     with_items:
-      - "gogs-backup.sh"
+      - "gogs-backup"
 
   - name: define list of systemd services
     set_fact:

@@ -2,8 +2,8 @@
 
 set -e
 
-ARGS="${@:-"--flagfile={{ root }}/etc/roq/roq-simulator.gflags"}"
+ARGS="${@:-"--flagfile={{ root }}/usr/local/etc/roq-simulator.gflags"}"
 
 # FIXME(thraneh): need a better approach to discovering files, e.g. now-1bday
-"{{ root }}/miniconda/bin/roq-simulator" "$ARGS" \
-  "{{ root }}/miniconda/share/roq/data/USTP_Multi_20180223.csv"
+"{{ root }}/opt/miniconda3/bin/roq-simulator" "$ARGS" \
+  "{{ root }}/opt/miniconda3/share/roq/data/USTP_Multi_20180223.csv"

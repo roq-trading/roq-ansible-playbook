@@ -12,7 +12,7 @@ roq_deribit_defaults:
     verbosity: 0
   options:
     name: "deribit"
-    config_file: "{{ root }}/etc/roq/roq-deribit.toml"
+    config_file: "{{ root }}/usr/local/etc/roq-deribit/config.toml"
     event_log_dir: "{{ root }}/var/lib/roq"
     client_listen_address: "{{ root }}/var/tmp/roq-deribit.sock"
     metrics_listen_address: "{{ root }}/var/tmp/roq-deribit_metrics.sock"

@@ -6,9 +6,13 @@ All notable changes will be documented in this file.
 
 ### Changed
 
+* Miniconda3 now installed to /opt/conda
+
+* Configuration and options now installed to /usr/local/etc
+
 * Ubuntu 20.04 support
 
-  * pip3 instead of pip
+  * using python3/pip3 instead of python/pip
 
 ### Removed
 

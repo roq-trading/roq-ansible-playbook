@@ -1,5 +1,5 @@
 [Unit]
-Description=Roq InfluxDB Feed Handler
+Description=roq-redis adapter service
 After=network-online.target
 
 [Service]
@@ -8,11 +8,10 @@ TimeoutStartSec=0
 ExecStart=/usr/bin/docker run --rm --name %n -i \
   --network roq-network \
   --volume {{ root }}/var/tmp:/var/tmp \
-  --volume {{ root }}/etc/roq:/etc/roq \
+  --volume {{ root }}/usr/local/etc/roq-redis:/usr/local/etc/roq-redis \
   --env ROQ_v={{ config.logging.verbosity }} \
   {{ docker_registry_prefix | default('') }}{{ config.docker.name }}:{{ config.version }} \
-  /miniconda/bin/roq-redis \
-  --flagfile "/etc/roq/roq-redis.gflags" \
+  --flagfile "/usr/local/etc/roq-redis/options.gflags" \
   "{{ root }}/var/lib/roq"
 {% else %}
 User={{ roq_user }}
@@ -20,8 +19,8 @@ Group={{ roq_user }}
 UMask=0000
 Restart=on-abnormal
 Environment="ROQ_v={{ config.logging.verbosity }}"
-ExecStart={{ root }}/miniconda/bin/roq-redis \
-  --flagfile "{{ root }}/etc/roq/roq-redis.gflags" \
+ExecStart={{ root }}/opt/conda/bin/roq-redis \
+  --flagfile "{{ root }}/usr/local/etc/roq-redis/options.gflags" \
   "{{ root }}/var/lib/roq"
 {% endif %}
 

@@ -2,9 +2,9 @@
 
 set -e
 
-ARGS="${@:-"--flagfile={{ root }}/etc/roq/roq-clickhouse.gflags"}"
+ARGS="${@:-"--flagfile={{ root }}/usr/local/etc/roq-influxdb/options.gflags"}"
 
-"{{ root }}/miniconda/bin/roq-clickhouse" "$ARGS" \
+"{{ root }}/opt/conda/bin/roq-influxdb" "$ARGS" \
 {% if 'roq_simulator' in groups %}
   "{{ root }}/var/tmp/roq-simulator.roq" \
 {% endif %}

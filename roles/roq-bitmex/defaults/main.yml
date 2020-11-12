@@ -12,7 +12,7 @@ roq_bitmex_defaults:
     verbosity: 0
   options:
     name: "bitmex"
-    config_file: "{{ root }}/etc/roq/roq-bitmex.toml"
+    config_file: "{{ root }}/usr/local/etc/roq-bitmex/config.toml"
     event_log_dir: "{{ root }}/var/lib/roq"
     client_listen_address: "{{ root }}/var/tmp/roq-bitmex.sock"
     metrics_listen_address: "{{ root }}/var/tmp/roq-bitmex_metrics.sock"

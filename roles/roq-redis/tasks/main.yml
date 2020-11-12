@@ -34,28 +34,28 @@
       - "/var/lib/roq"
       - "/var/log/roq"
       - "/var/run/roq"
+      - "/usr/local/etc/roq-redis"
 
   - name: create config
     template:
       src: "templates/{{ item }}"
-      dest: "{{ root }}/etc/roq/{{ item }}"
+      dest: "{{ root }}/usr/local/etc/roq-redis/{{ item }}"
       owner: "{{ roq_user }}"
       # group: "{{ roq_user }}"
       mode: 0640
     with_items:
-      - "roq-redis.gflags"
+      - "options.gflags"
 
-
-  - name: create run scripts
+  - name: create shell script
     template:
-      src: "templates/roq-redis.sh"
-      dest: "{{ root }}/usr/local/bin/roq-redis.sh"
+      src: "templates/roq-redis"
+      dest: "{{ root }}/usr/local/bin/roq-redis"
       owner: "{{ roq_user }}"
       # group: "{{ roq_user }}"
-      mode: 0750
+      mode: 0755
 
   - name: install the roq-redis conda package
-    shell: "{{ root }}/miniconda/bin/conda install -y -n base \
+    shell: "{{ root }}/opt/conda/bin/conda install -y -n base \
       roq-redis{{ '' if config.version == 'latest' else '==%s'|format(config.version) }}"
 
   when: "'roq_redis' in group_names"

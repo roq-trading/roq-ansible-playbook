@@ -34,28 +34,28 @@
       - "/var/lib/roq"
       - "/var/log/roq"
       - "/var/run/roq"
+      - "/usr/local/etc/roq-influxdb"
 
   - name: create config
     template:
       src: "templates/{{ item }}"
-      dest: "{{ root }}/etc/roq/{{ item }}"
+      dest: "{{ root }}/usr/local/etc/roq-influxdb/{{ item }}"
       owner: "{{ roq_user }}"
       # group: "{{ roq_user }}"
       mode: 0640
     with_items:
-      - "roq-influxdb.gflags"
+      - "options.gflags"
 
-
-  - name: create run scripts
+  - name: create shell script
     template:
-      src: "templates/roq-influxdb.sh"
-      dest: "{{ root }}/usr/local/bin/roq-influxdb.sh"
+      src: "templates/roq-influxdb"
+      dest: "{{ root }}/usr/local/bin/roq-influxdb"
       owner: "{{ roq_user }}"
       # group: "{{ roq_user }}"
-      mode: 0750
+      mode: 0755
 
   - name: install the roq-influxdb conda package
-    shell: "{{ root }}/miniconda/bin/conda install -y -n base \
+    shell: "{{ root }}/opt/conda/bin/conda install -y -n base \
       roq-influxdb{{ '' if config.version == 'latest' else '==%s'|format(config.version) }}"
 
   - name: create influxdb database

@@ -49,12 +49,12 @@
       daemon_reload: true
     when: redis_service.changed
 
-  - name: create redis-cli script
+  - name: create shell script
     template:
       src: "templates/redis-cli"
       dest: "{{ root }}/usr/local/bin/redis-cli"
       owner: "{{ roq_user }}"
-      mode: 0750
+      mode: 0755
 
   become: "{{ 'true' if become_user is defined else 'false' }}"
   tags:

@@ -4,7 +4,7 @@ After=network-online.target
 
 [Service]
 Type=oneshot
-ExecStart=/usr/local/bin/roq-backup.sh
+ExecStart=/usr/local/bin/roq-backup
 
 [Install]
 WantedBy=multi-user.target

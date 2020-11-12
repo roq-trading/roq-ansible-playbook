@@ -14,23 +14,30 @@
       # group: "{{ roq_user }}"
       mode: 0770
     with_items:
-      - "/etc/roq"
       - "/var/lib/roq"
       - "/var/log/roq"
       - "/var/run/roq"
+      - "/usr/local/etc/roq-{{ config.options.name }}"
 
-  - name: create files
+  - name: create config and options
+    template:
+      src: "gateway/{{ item }}"
+      dest: "{{ root }}/usr/local/etc/roq-{{ config.options.name }}"
+      mode: 0644
+    with_items:
+      - "options.gflags"
+      - "config.toml"
+
+  - name: create shell script
     template:
       src: "gateway/{{ item | basename }}"
       dest: "{{ item | dirname }}/roq-{{ item | basename | replace('item', config.options.name) }}"
-      mode: "{{ 0755 if (item | splitext | last == '.sh') else 0644 }}"
+      mode: 0755
     with_items:
-      - "{{ root }}/etc/roq/item.toml"
-      - "{{ root }}/etc/roq/item.gflags"
-      - "{{ root }}/usr/local/bin/item.sh"
+      - "{{ root }}/usr/local/bin/item"
 
   - name: install conda package
-    shell: "{{ root }}/miniconda/bin/conda install -y -n base \
+    shell: "{{ root }}/opt/conda/bin/conda install -y -n base \
       roq-{{ config.options.name }}{{ '' if config.version == 'latest' else '==%s'|format(config.version) }}"
   
   become: "{{ 'true' if become_user is defined else 'false' }}"
