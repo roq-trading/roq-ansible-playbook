@@ -19,7 +19,7 @@ mkdir -p {{ backups }}/gogs/{raw,native}
 TIMESTAMP=$(date -u +'%Y%m%d-%H%M%S')
 
 # raw backup
-DATA="{{ root }}/var/lib/gogs"
+DATA="{{ root }}/var/lib/gogs/data"
 SNAPSHOT="{{ backups }}/gogs/raw/$TIMESTAMP.tar.bz2"
 echo "Creating $SNAPSHOT..."
 tar -cjf "$SNAPSHOT" -C "$DATA" .

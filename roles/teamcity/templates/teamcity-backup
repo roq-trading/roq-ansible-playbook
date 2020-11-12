@@ -20,7 +20,7 @@ TIMESTAMP=$(date -u +'%Y%m%d-%H%M%S')
 
 # raw backup
 
-DATA="{{ root }}/var/lib/teamcity"
+DATA="{{ root }}/var/lib/teamcity/server"
 SNAPSHOT="{{ backups }}/teamcity/raw/$TIMESTAMP.tar.bz2"
 echo "Creating $SNAPSHOT..."
 tar -cjf "$SNAPSHOT" -C "$DATA" .

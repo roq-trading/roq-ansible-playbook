@@ -13,12 +13,12 @@ ExecStartPre=-/usr/bin/docker stop %n
 ExecStartPre=-/usr/bin/docker rm %n
 ExecStart=/usr/bin/docker run --rm --name %n \
   --network roq-network \
-  --volume {{ root }}/etc/alertmanager:/etc/alertmanager:ro \
+  --volume {{ root }}/usr/local/etc/alertmanager:/etc/alertmanager:ro \
   --volume {{ root }}/var/lib/alertmanager:/var/lib/alertmanager \
   {{ docker_registry_prefix | default('') }}{{ alertmanager.docker.name }}:{{ alertmanager.docker.tag }} \
   --web.external-url=http://localhost/alertmanager \
-  --config.file={{ root }}/etc/alertmanager/alertmanager.yml \
-  --storage.path={{ root }}/var/lib/alertmanager
+  --config.file=/etc/alertmanager/alertmanager.yml \
+  --storage.path=/var/lib/alertmanager
 
 [Install]
 WantedBy=multi-user.target

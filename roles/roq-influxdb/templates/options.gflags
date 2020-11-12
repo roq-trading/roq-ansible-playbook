@@ -1,6 +1,6 @@
 --name={{ config.name }}
---listen={{ root }}/var/tmp/roq-influxdb.sock
---metrics={{ root }}/var/tmp/roq-influxdb_metrics.sock
+--listen={{ root }}/run/roq-influxdb.sock
+--metrics={{ root }}/run/roq/metrics/roq-influxdb.sock
 {% for (key, value) in config.cpu_affinity.items() %}
 --{{ key }}-affinity={{ value }}
 {% endfor %}

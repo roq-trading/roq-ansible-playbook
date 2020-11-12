@@ -4,13 +4,4 @@ set -e
 
 ARGS="${@:-"--flagfile={{ root }}/usr/local/etc/roq-influxdb/options.gflags"}"
 
-"{{ root }}/opt/conda/bin/roq-influxdb" "$ARGS" \
-{% if 'roq_simulator' in groups %}
-  "{{ root }}/var/tmp/roq-simulator.roq" \
-{% endif %}
-{% if 'roq_deribit' in groups %}
-  "{{ root }}/var/tmp/roq-deribit.roq" \
-{% endif %}
-{% if 'roq_coinbase_pro' in groups %}
-  "{{ root }}/var/tmp/roq-coinbase-pro.roq"
-{% endif %}
+"{{ root }}/opt/conda/bin/roq-influxdb" "{{ root }}/var/lib/roq/event-logs" "$ARGS"

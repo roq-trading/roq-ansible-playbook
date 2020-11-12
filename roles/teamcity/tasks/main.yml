@@ -12,7 +12,7 @@
     with_items:
       - "{{ root }}/var/lib/teamcity"
     notify:
-    - restart teamcity
+    - restart teamcity-server
     - restart teamcity-agent
 
   - name: create directories
@@ -23,13 +23,15 @@
       group: root
       mode: 0755
     with_items:
+      - "{{ root }}/var/lib/teamcity/server"
+      - "{{ root }}/var/lib/teamcity/backups"
       - "{{ root }}/var/log/teamcity"
     notify:
-    - restart teamcity
+    - restart teamcity-server
 
   - name: create directories
     file:
-      path: "{{ root }}/etc/teamcity-agent-{{ item }}"
+      path: "{{ root }}/var/lib/teamcity/agent-{{ item }}"
       state: directory
       owner: root
       group: root
@@ -59,7 +61,7 @@
       source: pull
       force_source: true
     notify:
-    - restart teamcity
+    - restart teamcity-server
 
   - name: create systemd service
     template:
@@ -70,7 +72,7 @@
       mode: 0644
     register: teamcity_server_service
     notify:
-    - restart teamcity
+    - restart teamcity-server
   
   - name: enable the teamcity-server service
     systemd:

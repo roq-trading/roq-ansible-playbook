@@ -6,9 +6,12 @@ All notable changes will be documented in this file.
 
 ### Changed
 
-* Miniconda3 now installed to /opt/conda
+* Directory changes to match Linux' FSH
 
-* Configuration and options now installed to /usr/local/etc
+  * /opt/conda -- Miniconda3
+  * /usr/local/etc -- configurations
+  * /run/roq -- unix sockets
+  * /var/lib/roq -- event-logs
 
 * Ubuntu 20.04 support
 

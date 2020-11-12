@@ -11,15 +11,15 @@
       mode: 0755
     with_items:
       - "{{ root }}/var/www"
-      - "{{ root }}/etc/nginx"
-      - "{{ root }}/etc/nginx/conf.d"
+      - "{{ root }}/usr/local/etc/nginx"
+      - "{{ root }}/usr/local/etc/nginx/conf.d"
     notify:
     - reload nginx
   
   - name: available sites
     template:
       src: "templates/{{ item }}"
-      dest: "{{ root }}/etc/nginx/conf.d/{{ item }}"
+      dest: "{{ root }}/usr/local/etc/nginx/conf.d/{{ item }}"
       owner: root
       mode: 0644
     with_items:

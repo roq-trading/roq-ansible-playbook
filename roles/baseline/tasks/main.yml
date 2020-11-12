@@ -11,17 +11,15 @@
       path: "{{ item }}"
       state: directory
     with_items:
-      - "{{ root }}/etc"
       - "{{ root }}/opt"
+      - "{{ root }}/run"
       - "{{ root }}/usr"
       - "{{ root }}/usr/local"
       - "{{ root }}/usr/local/bin"
+      - "{{ root }}/usr/local/etc"
       - "{{ root }}/var"
       - "{{ root }}/var/lib"
-      - "{{ root }}/var/log"
-      - "{{ root }}/var/run"
-      - "{{ root }}/var/run/backups"
-      - "{{ root }}/var/tmp"
+      - "{{ root }}/var/log"  # XXX review (only used by teamcity)
 
 # TODO(thraneh): or maybe the condition should be root != '/' ?
   when: become_user is not defined

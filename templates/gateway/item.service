@@ -19,6 +19,8 @@ UMask=0000
 User={{ roq_user if roq_user is defined else ansible_user_id }}
 Group={{ roq_user if roq_user is defined else ansible_user_id }}
 Environment="ROQ_v={{ config.logging.verbosity }}"
+ExecStartPre=+/bin/mkdir -p {{ root }}/run/roq
+ExecStartPre=+/bin/chown {{ roq_user if roq_user is defined else ansible_user_id }}:{{ roq_user if roq_user is defined else ansible_user_id }} {{ root }}/run/roq
 ExecStart={{ root }}/opt/conda/bin/roq-{{ config.options.name }} \
   --flagfile "{{ root }}/usr/local/etc/roq-{{ config.options.name }}/options.gflags"
 Restart=on-abnormal

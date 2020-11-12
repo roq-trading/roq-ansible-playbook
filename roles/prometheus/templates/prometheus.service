@@ -14,12 +14,12 @@ ExecStartPre=-/usr/bin/docker rm %n
 ExecStart=/usr/bin/docker run --rm --name %n \
   --user 0:0 \
   --network roq-network \
-  --volume {{ root }}/etc/prometheus:/etc/prometheus:ro \
+  --volume {{ root }}/usr/local/etc/prometheus:/etc/prometheus:ro \
   --volume {{ root }}/var/lib/prometheus:/var/lib/prometheus \
   {{ docker_registry_prefix | default('') }}{{ prometheus.docker.name }}:{{ prometheus.docker.tag }} \
   --web.external-url=http://localhost/prometheus \
-  --config.file={{ root }}/etc/prometheus/prometheus.yml \
-  --storage.tsdb.path={{ root }}/var/lib/prometheus
+  --config.file=/etc/prometheus/prometheus.yml \
+  --storage.tsdb.path=/var/lib/prometheus
 
 [Install]
 WantedBy=multi-user.target

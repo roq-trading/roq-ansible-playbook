@@ -1,5 +1,5 @@
 [Unit]
-Description=Teamcity
+Description=teamcity server
 After=docker.service
 Requires=docker.service
 
@@ -11,12 +11,11 @@ CPUAffinity={{ cpu_affinity.zone_3 }}
 {% endif %}
 ExecStartPre=-/usr/bin/docker stop %n
 ExecStartPre=-/usr/bin/docker rm %n
-ExecStartPre=/bin/mkdir -p {{ root }}/var/run/backups/teamcity/native
 ExecStart=/usr/bin/docker run --rm --name %n \
   --network roq-network \
-  --volume {{ root }}/var/lib/teamcity:/data/teamcity_server/datadir \
+  --volume {{ root }}/var/lib/teamcity/server:/data/teamcity_server/datadir \
   --volume {{ root }}/var/log/teamcity:/opt/teamcity/logs \
-  --volume {{ root }}/var/run/backups/teamcity/native:/var/backups/teamcity \
+  --volume {{ root }}/var/lib/teamcity/backups:/var/backups/teamcity \
   --env TEAMCITY_CONTEXT=teamcity \
   {{ docker_registry_prefix | default('') }}{{ teamcity.docker.name }}:{{ teamcity.docker.tag }}
 

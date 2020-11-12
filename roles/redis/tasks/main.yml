@@ -8,7 +8,7 @@
       state: directory
       mode: 0755
     with_items:
-    - "{{ root }}/etc/redis"
+    - "{{ root }}/usr/local/etc/redis"
     - "{{ root }}/var/lib/redis"
     notify:
     - restart redis
@@ -16,7 +16,7 @@
   - name: create config file
     template:
       src: "templates/redis.conf"
-      dest: "{{ root }}/etc/redis/redis.conf"
+      dest: "{{ root }}/usr/local/etc/redis/redis.conf"
       owner: root
       group: root
       mode: 0644

@@ -29,11 +29,10 @@
       state: directory
       owner: "{{ roq_user }}"
       # group: "{{ roq_user }}"
-      mode: 0770
+      mode: 0755
     with_items:
       - "/var/lib/roq"
-      - "/var/log/roq"
-      - "/var/run/roq"
+      - "/var/lib/roq/event-logs"
       - "/usr/local/etc/roq-redis"
 
   - name: create config

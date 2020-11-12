@@ -11,13 +11,12 @@ CPUAffinity={{ cpu_affinity.zone_3 }}
 {% endif %}
 ExecStartPre=-/usr/bin/docker stop %n
 ExecStartPre=-/usr/bin/docker rm %n
-ExecStartPre=/bin/mkdir -p {{ root }}/var/run/backups/gogs/native
 # TODO(thraneh): app.ini doesn't control the SSH listen ports... bug?
 ExecStart=/usr/bin/docker run --rm --name %n \
   --publish {{ gogs_config.ssh_port }}:22 \
   --network roq-network \
-  --volume {{ root }}/var/lib/gogs:/data \
-  --volume {{ root }}/var/run/backups/gogs/native:/var/lib/gogs/backups \
+  --volume {{ root }}/var/lib/gogs/data:/data \
+  --volume {{ root }}/var/lib/gogs/backup:/var/lib/gogs/backups \
   {{ docker_registry_prefix | default('') }}{{ gogs_config.docker.name }}:{{ gogs_config.docker.tag }}
 
 [Install]

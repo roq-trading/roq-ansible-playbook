@@ -14,7 +14,7 @@ ExecStartPre=-/usr/bin/docker rm %n
 ExecStart=/usr/bin/docker run --rm --name %n \
   --user 0:0 \
   --network roq-network \
-  --volume {{ root }}/etc/redis/redis.conf:/usr/local/etc/redis/redis.conf:ro \
+  --volume {{ root }}/usr/local/etc/redis/redis.conf:/usr/local/etc/redis/redis.conf:ro \
   --volume {{ root }}/var/lib/redis:/data \
   --publish {{ redis.port }}:{{ redis.port }} \
   {{ docker_registry_prefix | default('') }}{{ redis.docker.name }}:{{ redis.docker.tag }} \

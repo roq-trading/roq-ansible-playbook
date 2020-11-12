@@ -13,9 +13,9 @@ roq_hitbtc_defaults:
   options:
     name: "hitbtc"
     config_file: "{{ root }}/usr/local/etc/roq-hitbtc/config.toml"
-    event_log_dir: "{{ root }}/var/lib/roq"
-    client_listen_address: "{{ root }}/var/tmp/roq-hitbtc.sock"
-    metrics_listen_address: "{{ root }}/var/tmp/roq-hitbtc_metrics.sock"
+    event_log_dir: "{{ root }}/var/lib/roq/event-logs"
+    client_listen_address: "{{ root }}/run/roq/roq-hitbtc.sock"
+    metrics_listen_address: "{{ root }}/run/roq/metrics/roq-hitbtc.sock"
     ws_uri: "wss://hitbtc.com/ws"
     rest_uri: "https://hitbtc.com"
     fix_uri: "tcp+ssl://fix.hitbtc.com:4364"

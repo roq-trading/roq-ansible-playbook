@@ -10,9 +10,9 @@
       group: root
       mode: 0755
     with_items:
-      - "{{ root }}/etc/prometheus"
+      - "{{ root }}/usr/local/etc/prometheus"
       - "{{ root }}/var/lib/prometheus"
-      - "{{ root }}/etc/alertmanager"
+      - "{{ root }}/usr/local/etc/alertmanager"
       - "{{ root }}/var/lib/alertmanager"
     notify:
     - restart prometheus
@@ -21,7 +21,7 @@
   - name: create config files
     template:
       src: "templates/{{ item | basename }}"
-      dest: "{{ root }}/etc/{{ item }}"
+      dest: "{{ root }}/usr/local/etc/{{ item }}"
       owner: root
       group: root
       mode: 0644

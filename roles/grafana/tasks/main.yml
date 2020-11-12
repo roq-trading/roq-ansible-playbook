@@ -7,19 +7,19 @@
       path: "{{ item }}"
       state: directory
     with_items:
+      - "{{ root }}/usr/local/etc/grafana"
+      - "{{ root }}/usr/local/etc/grafana/provisioning"
+      - "{{ root }}/usr/local/etc/grafana/provisioning/dashboards"
+      - "{{ root }}/usr/local/etc/grafana/provisioning/datasources"
       - "{{ root }}/var/lib/grafana"
       - "{{ root }}/var/lib/grafana/dashboards"
-      - "{{ root }}/etc/grafana"
-      - "{{ root }}/etc/grafana/provisioning"
-      - "{{ root }}/etc/grafana/provisioning/datasources"
-      - "{{ root }}/etc/grafana/provisioning/dashboards"
     notify:
     - restart grafana
 
   - name: provision datasources
     template:
       src: "templates/datasources.yml"
-      dest: "/etc/grafana/provisioning/datasources/all.yml"
+      dest: "{{ root }}/usr/local/etc/grafana/provisioning/datasources/all.yml"
       owner: root
       group: root
       mode: 0644
@@ -41,7 +41,7 @@
   - name: provision dashboards
     template:
       src: "templates/dashboards.yml"
-      dest: "/etc/grafana/provisioning/dashboards/all.yml"
+      dest: "{{ root }}/usr/local/etc/grafana/provisioning/dashboards/all.yml"
       owner: root
       group: root
       mode: 0644

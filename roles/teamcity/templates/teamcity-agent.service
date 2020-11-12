@@ -1,5 +1,5 @@
 [Unit]
-Description=Teamcity agent {{ item }}
+Description=teamcity agent-{{ item }}
 After=docker.service teamcity-server.service
 Requires=docker.service
 Wants=teamcity.service
@@ -14,7 +14,7 @@ ExecStartPre=-/usr/bin/docker stop %n
 ExecStartPre=-/usr/bin/docker rm %n
 ExecStart=/usr/bin/docker run --rm --name %n \
   --network roq-network \
-  --volume {{ root }}/etc/teamcity-agent-{{ item }}:/data/teamcity_agent/conf \
+  --volume {{ root }}/var/lib/teamcity/agent-{{ item }}:/data/teamcity_agent/conf \
   --env SERVER_URL=http://teamcity-server.service:{{ teamcity.port }}/teamcity/ \
   --env AGENT_NAME=agent_{{ item }} \
   --env DOCKER_IN_DOCKER=start \

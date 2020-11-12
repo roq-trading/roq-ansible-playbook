@@ -13,9 +13,9 @@ roq_gemini_defaults:
   options:
     name: "gemini"
     config_file: "{{ root }}/usr/local/etc/roq-gemini/config.toml"
-    event_log_dir: "{{ root }}/var/lib/roq"
-    client_listen_address: "{{ root }}/var/tmp/roq-gemini.sock"
-    metrics_listen_address: "{{ root }}/var/tmp/roq-gemini_metrics.sock"
+    event_log_dir: "{{ root }}/var/lib/roq/event-logs"
+    client_listen_address: "{{ root }}/run/roq/roq-gemini.sock"
+    metrics_listen_address: "{{ root }}/run/roq/metrics/roq-gemini.sock"
     fix_mkt_uri: "tcp://8.44.203.78:1529"
     fix_ord_uri: "tcp://8.44.203.78:1528"
     fix_drp_uri: "tcp://8.44.203.78:1530"
