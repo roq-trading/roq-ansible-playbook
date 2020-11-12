@@ -16,6 +16,8 @@ All notable changes will be documented in this file.
 
 ### Removed
 
+* roq-simulator
+
 * chrony
 
 ## 0.4.5 &ndash; 2020-11-09

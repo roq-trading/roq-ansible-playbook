@@ -36,10 +36,6 @@
     - influxdb
     - redis
 
-- hosts: roq_simulator
-  roles:
-    - roq-simulator
-
 - hosts: roq_clickhouse
   roles:
     - roq-clickhouse
