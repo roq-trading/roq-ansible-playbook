@@ -18,20 +18,55 @@ mkdir -p {{ backups }}/gogs/{raw,native}
 
 TIMESTAMP=$(date -u +'%Y%m%d-%H%M%S')
 
-# raw backup
-DATA="{{ root }}/var/lib/gogs/data"
-SNAPSHOT="{{ backups }}/gogs/raw/$TIMESTAMP.tar.bz2"
-echo "Creating $SNAPSHOT..."
-tar -cjf "$SNAPSHOT" -C "$DATA" .
+#######################
+###  NATIVE BACKUP  ###
+#######################
 
-# native backup
+# note! https://github.com/gogs/gogs/issues/4339
+# remember the --tempdir command-line flag
+
 echo "Creating native backup..."
-SNAPSHOT="{{ backups }}/gogs"
+
+NATIVE_BACKUP="{{ backups }}/gogs"
+
+echo "Create native..."
 sudo docker exec gogs.service /bin/bash -c 'rm -rf native && mkdir -p native && USER=git ./gogs backup && mv gogs-backup-*.zip native/.; exit'
-sudo docker cp gogs.service:/app/gogs/native "$SNAPSHOT/."
+
+echo "Copy to $NATIVE_BACKUP..."
+sudo docker cp gogs.service:/app/gogs/native "$NATIVE_BACKUP/."
+
+echo "Clean-up"
 sudo docker exec gogs.service /bin/bash -c 'rm -rf native; exit'
 
-# note! how to restore: https://github.com/gogs/gogs/issues/4339 -- remember the --tempdir command-line flag
+echo "Success"
+
+####################
+###  RAW BACKUP  ###
+####################
+
+# note! this is a last-resort backup
+# there are no guarantees that files are captured consistently
+
+RAW_IN="{{ root }}/var/lib/gogs/data"
+RAW_FILE="$TIMESTAMP.tar.bz2"
+RAW_OUT="{{ root }}/var/lib/gogs/backups/raw/$RAW_FILE"
+RAW_BACKUP="{{ backups }}/gogs/raw/"
+
+echo "Create $RAW_OUT..."
+mkdir -p "$(dirname $RAW_OUT)"
+tar -cjf "$RAW_OUT" -C "$RAW_IN" .
+
+echo "Copy to $RAW_BACKUP..."
+cp "$RAW_OUT" "$RAW_BACKUP"
+
+echo "Clean-up"
+rm "$RAW_OUT"
+
+echo "Success"
+
+##############
+###  DONE  ###
+##############
 
 echo "Done!"
 exit 0

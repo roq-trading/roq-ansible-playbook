@@ -1,5 +1,5 @@
 --name={{ config.name }}
---listen={{ root }}/run/roq-redis.sock
+--listen={{ root }}/run/roq/roq-redis.sock
 --metrics={{ root }}/run/roq/metrics/roq-redis.sock
 {% for (key, value) in config.cpu_affinity.items() %}
 --{{ key }}-affinity={{ value }}

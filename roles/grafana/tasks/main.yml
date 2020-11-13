@@ -110,17 +110,19 @@
       mode: 0644
     with_items: "{{ systemd_units }}"
 
-  - name: enable systemd units
+  - name: disable systemd services
+    systemd:
+      name: "{{ item }}"
+      enabled: false
+      daemon_reload: true
+    with_items: "{{ systemd_services }}"
+
+  - name: enable and start systemd timers
     systemd:
       name: "{{ item }}"
       enabled: true
-      daemon_reload: true
-    with_items: "{{ systemd_units }}"
-
-  - name: start systemd timers
-    systemd:
-      name: "{{ item }}"
       state: started
+      daemon_reload: true
     with_items: "{{ systemd_timers }}"
   
   become: "{{ 'true' if become_user is defined else 'false' }}"

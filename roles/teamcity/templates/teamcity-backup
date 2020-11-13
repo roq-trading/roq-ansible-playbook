@@ -18,18 +18,60 @@ mkdir -p {{ backups }}/teamcity/{raw,native}
 
 TIMESTAMP=$(date -u +'%Y%m%d-%H%M%S')
 
-# raw backup
+#######################
+###  NATIVE BACKUP  ###
+#######################
 
-DATA="{{ root }}/var/lib/teamcity/server"
-SNAPSHOT="{{ backups }}/teamcity/raw/$TIMESTAMP.tar.bz2"
-echo "Creating $SNAPSHOT..."
-tar -cjf "$SNAPSHOT" -C "$DATA" .
+# note! does *NOT* work with HSQLDB2, seeing this: "Cannot access HSQLDB database as it is locked by another process"
+if false; then
 
-# native backup
+NATIVE_FILE="$TIMESTAMP.zip"
+NATIVE_OUT_DOCKER="/var/lib/teamcity/backups/native/$NATIVE_FILE"
+NATIVE_OUT="{{ root }}$NATIVE_OUT_DOCKER"
+NATIVE_BACKUP="{{ backups }}/teamcity/native/"
 
-SNAPSHOT="/var/backups/teamcity/native/$TIMESTAMP.zip"
-echo "Creating $SNAPSHOT..."
-docker exec teamcity.service \
-  bash -c "cd /opt/teamcity/bin; TEAMCITY_APP_DIR=../webapps/teamcity /opt/teamcity/bin/maintainDB.sh backup --include-config --include-database --include-build-logs --include-personal-changes --include-supplementary-data --backup-file $SNAPSHOT"
+echo "Create $SNAPSHOT..."
+mkdir -p "$(dirname $NATIVE_OUT)"
+docker exec teamcity-server.service \
+  bash -c "cd /opt/teamcity/bin; TEAMCITY_APP_DIR=../webapps/teamcity /opt/teamcity/bin/maintainDB.sh backup --include-config --include-database --include-build-logs --include-personal-changes --include-supplementary-data --backup-file $NATIVE_OUT_DOCKER"
+
+echo "Copy to $NATIVE_BACKUP..."
+cp "$NATIVE_OUT" "$NATIVE_BACKUP"
+
+echo "Clean-up"
+rm "$NATIVE_OUT"
+
+echo "Success"
+
+fi
+
+####################
+###  RAW BACKUP  ###
+####################
+
+# note! this is a last-resort backup
+# there are no guarantees that files are captured consistently
+
+
+RAW_IN="{{ root }}/var/lib/teamcity/server"
+RAW_FILE="$TIMESTAMP.tar.bz2"
+RAW_OUT="{{ root }}/var/lib/teamcity/backups/raw/$RAW_FILE"
+RAW_BACKUP="{{ backups }}/teamcity/raw/"
+
+echo "Create $RAW_OUT..."
+mkdir -p "$(dirname $RAW_OUT)"
+tar -cjf "$RAW_OUT" -C "$RAW_IN" .
+
+echo "Copy to $RAW_BACKUP..."
+cp "$RAW_OUT" "$RAW_BACKUP"
+
+echo "Clean-up"
+rm "$RAW_OUT"
+
+echo "Success"
+
+##############
+###  DONE  ###
+##############
 
 echo "Done!"

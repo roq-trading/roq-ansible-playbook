@@ -1,5 +1,5 @@
 [Unit]
-Description=TeamCity backup
+Description=teamcity backup
 After=network-online.target
 
 [Service]

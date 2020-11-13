@@ -6,12 +6,37 @@
     file:
       path: "{{ item }}"
       state: directory
+      owner: root
+      group: root
+      mode: 0755
     with_items:
     - "{{ root }}/var/lib/gogs"
+    notify:
+    - restart gogs
+
+  - name: create directories
+    file:
+      path: "{{ item }}"
+      state: directory
+      owner: root
+      group: root
+      mode: 0750
+    with_items:
     - "{{ root }}/var/lib/gogs/data"
+    - "{{ root }}/var/lib/gogs/backups"
+    notify:
+    - restart gogs
+
+  - name: create directories
+    file:
+      path: "{{ item }}"
+      state: directory
+      owner: root
+      group: root
+      mode: 0755
+    with_items:
     - "{{ root }}/var/lib/gogs/data/gogs"
     - "{{ root }}/var/lib/gogs/data/gogs/conf"
-    - "{{ root }}/var/lib/gogs/backups"
     notify:
     - restart gogs
 
@@ -84,17 +109,19 @@
       mode: 0644
     with_items: "{{ systemd_units }}"
 
-  - name: enable systemd units
+  - name: disable systemd services
+    systemd:
+      name: "{{ item }}"
+      enabled: false
+      daemon_reload: true
+    with_items: "{{ systemd_services }}"
+
+  - name: enable and start systemd timers
     systemd:
       name: "{{ item }}"
       enabled: true
-      daemon_reload: true
-    with_items: "{{ systemd_units }}"
-
-  - name: start systemd timers
-    systemd:
-      name: "{{ item }}"
       state: started
+      daemon_reload: true
     with_items: "{{ systemd_timers }}"
 
   become: "{{ 'true' if become_user is defined else 'false' }}"

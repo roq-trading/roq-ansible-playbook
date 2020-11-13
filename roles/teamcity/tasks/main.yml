@@ -8,7 +8,7 @@
       state: directory
       owner: root
       group: root
-      mode: 0700
+      mode: 0755
     with_items:
       - "{{ root }}/var/lib/teamcity"
     notify:
@@ -21,7 +21,7 @@
       state: directory
       owner: root
       group: root
-      mode: 0755
+      mode: 0750
     with_items:
       - "{{ root }}/var/lib/teamcity/server"
       - "{{ root }}/var/lib/teamcity/backups"
@@ -35,7 +35,7 @@
       state: directory
       owner: root
       group: root
-      mode: 0755
+      mode: 0750
     with_sequence: start=1 end={{ teamcity_agent_count | int }}
     notify:
     - restart teamcity-agent
@@ -115,17 +115,19 @@
       mode: 0644
     with_items: "{{ systemd_units }}"
 
-  - name: enable systemd units
+  - name: disable systemd services
+    systemd:
+      name: "{{ item }}"
+      enabled: false
+      daemon_reload: true
+    with_items: "{{ systemd_services }}"
+
+  - name: enable and start systemd timers
     systemd:
       name: "{{ item }}"
       enabled: true
-      daemon_reload: true
-    with_items: "{{ systemd_units }}"
-
-  - name: start systemd timers
-    systemd:
-      name: "{{ item }}"
       state: started
+      daemon_reload: true
     with_items: "{{ systemd_timers }}"
 
 # agent

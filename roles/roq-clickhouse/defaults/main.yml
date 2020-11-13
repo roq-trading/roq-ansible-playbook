@@ -11,3 +11,4 @@ roq_clickhouse_defaults:
   options:
     name: "clickhouse"
     uri: "http://localhost:8123"
+    database: "roq"

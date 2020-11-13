@@ -6,11 +6,9 @@ roq_influxdb_defaults:
     use: "{{ roq_use_docker }}"
     name: "roqtrading/roq-influxdb"
   name: "influxdb"
-  options:
-    poll_freq_secs: 60
-    uri: "http://localhost:8086"
-    database: "roq"
-    influxdb_create: true
-  cpu_affinity: {}
   logging:
     verbosity: 0
+  options:
+    name: "influxdb"
+    uri: "http://localhost:8086"
+    database: "roq"
