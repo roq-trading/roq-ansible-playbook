@@ -2,6 +2,6 @@
 
 set -e
 
-ARGS="${@:-"--flagfile={{ root }}/usr/local/etc/roq-clickhouse/options.gflags"}"
+ARGS="${@:-"--flagfile={{ (root + '/usr/local/etc/roq-clickhouse/options.gflags') | roq_realpath }}"}"
 
-"{{ root }}/opt/conda/bin/roq-clickhouse" "{{ root }}/var/lib/roq/event-logs" "$ARGS"
+"{{ (root + '/opt/conda/bin/roq-clickhouse') | roq_realpath }}" "{{ (root + '/var/lib/roq/event-logs') | roq_realpath }}" "$ARGS"

@@ -13,13 +13,13 @@ UMask=0000
 ExecReload=/usr/bin/docker kill -s HUP %n
 ExecStartPre=-/usr/bin/docker stop %n
 ExecStartPre=-/usr/bin/docker rm %n
-ExecStartPre=+/bin/mkdir -p {{ root }}/run/roq
-ExecStartPre=+/bin/chown {{ roq_user if roq_user is defined else ansible_user_id }}:{{ roq_user if roq_user is defined else ansible_user_id }} {{ root }}/run/roq
+ExecStartPre=+/bin/mkdir -p {{ (root + '/run/roq') | roq_realpath }}
+ExecStartPre=+/bin/chown {{ roq_user if roq_user is defined else ansible_user_id }}:{{ roq_user if roq_user is defined else ansible_user_id }} {{ (root + '/run/roq') | roq_realpath }}
 ExecStart=/usr/bin/docker run --rm --name %n -i \
   --network roq-network \
-  --volume {{ root }}/usr/local/etc/nginx/conf.d:/etc/nginx/conf.d:ro \
-  --volume {{ root }}/var/www:/var/www:ro \
-  --volume {{ root }}/run/roq:/run/roq \
+  --volume {{ (root + '/usr/local/etc/nginx/conf.d') | roq_realpath }}:/etc/nginx/conf.d:ro \
+  --volume {{ (root + '/var/www') | roq_realpath }}:/var/www:ro \
+  --volume {{ (root + '/run/roq') | roq_realpath }}:/run/roq \
   {{ docker_registry_prefix | default('') }}{{ nginx_defaults.docker.name }}:{{ nginx_defaults.docker.tag }}
 
 [Install]

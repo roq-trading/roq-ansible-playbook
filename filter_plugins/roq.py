@@ -3,6 +3,12 @@
 from collections.abc import Mapping, Iterable
 from numbers import Number
 
+from os.path import normpath
+
+
+def format_realpath(value):
+    # note! realpath will follow symlinks, e.g. /var => /private/var on OSX
+    return normpath(value).replace('//', '/')
 
 def _format_toml_simple(value):
     if isinstance(value, Mapping):
@@ -61,6 +67,7 @@ def format_gflags_options(options):
 class FilterModule(object):
     def filters(self):
         return dict(
+            roq_realpath=format_realpath,
             roq_toml_symbols=format_toml_symbols,
             roq_toml_accounts=format_toml_accounts,
             roq_toml_users=format_toml_users,

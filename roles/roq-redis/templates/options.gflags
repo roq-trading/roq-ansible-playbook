@@ -1,12 +1,3 @@
---name={{ config.name }}
---listen={{ root }}/run/roq/roq-redis.sock
---metrics={{ root }}/run/roq/metrics/roq-redis.sock
-{% for (key, value) in config.cpu_affinity.items() %}
---{{ key }}-affinity={{ value }}
-{% endfor %}
-{% for (key, value) in config.redis.items() %}
---redis-{{ key }}={{ value }}
-{% endfor %}
 {% for (key, value) in config.options.items() %}
 --{{ key }}={{ value }}
 {% endfor %}

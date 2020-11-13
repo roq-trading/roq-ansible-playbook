@@ -2,6 +2,6 @@
 
 set -e
 
-ARGS="${@:-"--flagfile={{ root }}/usr/local/etc/roq-influxdb/options.gflags"}"
+ARGS="${@:-"--flagfile={{ (root + '/usr/local/etc') | roq_realpath }}/roq-influxdb/options.gflags"}"
 
-"{{ root }}/opt/conda/bin/roq-influxdb" "{{ root }}/var/lib/roq/event-logs" "$ARGS"
+"{{ (root + '/opt/conda/bin') | roq_realpath }}/roq-influxdb" "{{ (root + '/var/lib/roq/event-logs') | roq_realpath }}" "$ARGS"

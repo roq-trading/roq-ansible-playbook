@@ -53,9 +53,9 @@ fi
 # there are no guarantees that files are captured consistently
 
 
-RAW_IN="{{ root }}/var/lib/teamcity/server"
+RAW_IN="{{ (root + '/var/lib/teamcity/server') | roq_realpath }}"
 RAW_FILE="$TIMESTAMP.tar.bz2"
-RAW_OUT="{{ root }}/var/lib/teamcity/backups/raw/$RAW_FILE"
+RAW_OUT="{{ (root + '/var/lib/teamcity/backups/raw') | roq_realpath }}/$RAW_FILE"
 RAW_BACKUP="{{ backups }}/teamcity/raw/"
 
 echo "Create $RAW_OUT..."

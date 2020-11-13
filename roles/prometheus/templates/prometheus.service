@@ -1,5 +1,5 @@
 [Unit]
-Description=Prometheus
+Description=prometheus
 After=docker.service
 Requires=docker.service
 
@@ -14,8 +14,8 @@ ExecStartPre=-/usr/bin/docker rm %n
 ExecStart=/usr/bin/docker run --rm --name %n \
   --user 0:0 \
   --network roq-network \
-  --volume {{ root }}/usr/local/etc/prometheus:/etc/prometheus:ro \
-  --volume {{ root }}/var/lib/prometheus:/var/lib/prometheus \
+  --volume {{ (root + '/usr/local/etc/prometheus') | roq_realpath }}:/etc/prometheus:ro \
+  --volume {{ (root + '/var/lib/prometheus') | roq_realpath }}:/var/lib/prometheus \
   {{ docker_registry_prefix | default('') }}{{ prometheus.docker.name }}:{{ prometheus.docker.tag }} \
   --web.external-url=http://localhost/prometheus \
   --config.file=/etc/prometheus/prometheus.yml \

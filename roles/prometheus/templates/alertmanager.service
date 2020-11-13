@@ -1,5 +1,5 @@
 [Unit]
-Description=AlertManager
+Description=alertmanager
 After=docker.service
 Requires=docker.service
 
@@ -13,8 +13,8 @@ ExecStartPre=-/usr/bin/docker stop %n
 ExecStartPre=-/usr/bin/docker rm %n
 ExecStart=/usr/bin/docker run --rm --name %n \
   --network roq-network \
-  --volume {{ root }}/usr/local/etc/alertmanager:/etc/alertmanager:ro \
-  --volume {{ root }}/var/lib/alertmanager:/var/lib/alertmanager \
+  --volume {{ (root + '/usr/local/etc/alertmanager') | roq_realpath }}:/etc/alertmanager:ro \
+  --volume {{ (root + '/var/lib/alertmanager') | roq_realpath }}:/var/lib/alertmanager \
   {{ docker_registry_prefix | default('') }}{{ alertmanager.docker.name }}:{{ alertmanager.docker.tag }} \
   --web.external-url=http://localhost/alertmanager \
   --config.file=/etc/alertmanager/alertmanager.yml \

@@ -6,13 +6,8 @@ roq_redis_defaults:
     use: "{{ roq_use_docker }}"
     name: "roqtrading/roq-redis"
   name: "redis"
-  options:
-    poll_freq_secs: 60
-  cpu_affinity: {}
   logging:
     verbosity: 0
-  redis:
-    host: "localhost"
-    port: 6379
-    database: "roq"
-    create: true
+  options:
+    name: "redis"
+    uri: "tcp://localhost:6379"

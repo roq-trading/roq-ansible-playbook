@@ -1,5 +1,5 @@
 [Unit]
-Description=Redis
+Description=redis
 After=docker.service
 Requires=docker.service
 
@@ -14,8 +14,8 @@ ExecStartPre=-/usr/bin/docker rm %n
 ExecStart=/usr/bin/docker run --rm --name %n \
   --user 0:0 \
   --network roq-network \
-  --volume {{ root }}/usr/local/etc/redis/redis.conf:/usr/local/etc/redis/redis.conf:ro \
-  --volume {{ root }}/var/lib/redis:/data \
+  --volume {{ (root + '/usr/local/etc/redis/redis.conf') | roq_realpath }}:/usr/local/etc/redis/redis.conf:ro \
+  --volume {{ (root + '/var/lib/redis') | roq_realpath }}:/data \
   --publish {{ redis.port }}:{{ redis.port }} \
   {{ docker_registry_prefix | default('') }}{{ redis.docker.name }}:{{ redis.docker.tag }} \
   redis-server /usr/local/etc/redis/redis.conf

@@ -1,5 +1,5 @@
 [Unit]
-Description=Gogs backup
+Description=gogs backup
 After=network-online.target
 
 [Service]

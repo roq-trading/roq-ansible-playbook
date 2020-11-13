@@ -1,5 +1,5 @@
 [Unit]
-Description=roq-{{ config.options.name }} gateway stop service
+Description=roq-{{ config.options.name }} gateway stop
 After=network-online.target
 
 [Service]

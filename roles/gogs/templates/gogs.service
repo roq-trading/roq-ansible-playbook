@@ -1,5 +1,5 @@
 [Unit]
-Description=Gogs
+Description=gogs
 After=docker.service
 Requires=docker.service
 
@@ -15,8 +15,8 @@ ExecStartPre=-/usr/bin/docker rm %n
 ExecStart=/usr/bin/docker run --rm --name %n \
   --publish {{ gogs_config.ssh_port }}:22 \
   --network roq-network \
-  --volume {{ root }}/var/lib/gogs/data:/data \
-  --volume {{ root }}/var/lib/gogs/backups:/var/lib/gogs/backups \
+  --volume {{ (root + '/var/lib/gogs/data') | roq_realpath }}:/data \
+  --volume {{ (root + '/var/lib/gogs/backups') | roq_realpath }}:/var/lib/gogs/backups \
   {{ docker_registry_prefix | default('') }}{{ gogs_config.docker.name }}:{{ gogs_config.docker.tag }}
 
 [Install]

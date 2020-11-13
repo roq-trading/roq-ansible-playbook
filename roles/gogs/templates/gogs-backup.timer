@@ -1,5 +1,5 @@
 [Unit]
-Description=Gogs backup timer
+Description=gogs backup timer
 
 [Timer]
 OnCalendar=*-*-* 22:45:00

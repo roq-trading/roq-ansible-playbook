@@ -13,9 +13,9 @@ ExecStartPre=-/usr/bin/docker stop %n
 ExecStartPre=-/usr/bin/docker rm %n
 ExecStart=/usr/bin/docker run --rm --name %n \
   --network roq-network \
-  --volume {{ root }}/var/lib/teamcity/server:/data/teamcity_server/datadir \
-  --volume {{ root }}/var/log/teamcity:/opt/teamcity/logs \
-  --volume {{ root }}/var/lib/teamcity/backups:/var/lib/teamcity/backups \
+  --volume {{ (root + '/var/lib/teamcity/server') | roq_realpath }}:/data/teamcity_server/datadir \
+  --volume {{ (root + '/var/log/teamcity') | roq_realpath }}:/opt/teamcity/logs \
+  --volume {{ (root + '/var/lib/teamcity/backups') | roq_realpath }}:/var/lib/teamcity/backups \
   --env TEAMCITY_CONTEXT=teamcity \
   {{ docker_registry_prefix | default('') }}{{ teamcity.docker.name }}:{{ teamcity.docker.tag }}
 

@@ -1,5 +1,5 @@
 [Unit]
-Description=roq-redis adapter service
+Description=roq-redis adapter
 After=network-online.target
 
 [Service]
@@ -7,8 +7,8 @@ After=network-online.target
 TimeoutStartSec=0
 ExecStart=/usr/bin/docker run --rm --name %n -i \
   --network roq-network \
-  --volume {{ root }}/var/lib/roq/event-logs:/var/lib/roq/event-logs \
-  --volume {{ root }}/usr/local/etc/roq-redis:/usr/local/etc/roq-redis \
+  --volume {{ (root + '/var/lib/roq/event-logs') | roq_realpath }}:/var/lib/roq/event-logs \
+  --volume {{ (root + '/usr/local/etc/roq-redis') | roq_realpath }}:/usr/local/etc/roq-redis \
   --env ROQ_v={{ config.logging.verbosity }} \
   {{ docker_registry_prefix | default('') }}{{ config.docker.name }}:{{ config.version }} \
   --flagfile "/usr/local/etc/roq-redis/options.gflags" \
@@ -19,9 +19,9 @@ Group={{ roq_user }}
 UMask=0000
 Restart=on-abnormal
 Environment="ROQ_v={{ config.logging.verbosity }}"
-ExecStart={{ root }}/opt/conda/bin/roq-redis \
-  --flagfile "{{ root }}/usr/local/etc/roq-redis/options.gflags" \
-  "{{ root }}/var/lib/roq/event-logs"
+ExecStart={{ (root + '/opt/conda/bin/roq-redis') | roq_realpath }} \
+  --flagfile "{{ (root + '/usr/local/etc/roq-redis/options.gflags') | roq_realpath }}" \
+  "{{ (root + '/var/lib/roq/event-logs') | roq_realpath }}"
 {% endif %}
 
 [Install]

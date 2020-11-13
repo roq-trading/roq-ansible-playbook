@@ -47,9 +47,9 @@ echo "Success"
 # note! this is a last-resort backup
 # there are no guarantees that files are captured consistently
 
-RAW_IN="{{ root }}/var/lib/gogs/data"
+RAW_IN="{{ (root + '/var/lib/gogs/data') | roq_realpath }}"
 RAW_FILE="$TIMESTAMP.tar.bz2"
-RAW_OUT="{{ root }}/var/lib/gogs/backups/raw/$RAW_FILE"
+RAW_OUT="{{ (root + '/var/lib/gogs/backups/raw') | roq_realpath }}/$RAW_FILE"
 RAW_BACKUP="{{ backups }}/gogs/raw/"
 
 echo "Create $RAW_OUT..."

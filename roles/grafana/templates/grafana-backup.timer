@@ -1,5 +1,5 @@
 [Unit]
-Description=Grafana backup timer
+Description=grafana backup timer
 
 [Timer]
 OnCalendar=*-*-* 22:45:00

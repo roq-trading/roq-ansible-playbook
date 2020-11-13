@@ -1,5 +1,5 @@
 [Unit]
-Description=backup timer
+Description=roq backup timer
 
 [Timer]
 OnCalendar=*-*-* 00:05:00

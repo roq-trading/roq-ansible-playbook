@@ -16,7 +16,7 @@ done
 
 mkdir -p "{{ backups }}/roq/event-logs"
 
-rsync -av "{{ root }}/var/lib/roq/event-logs/" "{{ backups }}/roq/event-logs"
+rsync -av "{{ (root + '/var/lib/roq/event-logs') | roq_realpath }}/" "{{ (backups + '/roq/event-logs') | roq_realpath }}"
 
 # TODO(thraneh): remove older files from source
 
