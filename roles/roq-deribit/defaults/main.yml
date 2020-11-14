@@ -22,4 +22,4 @@ roq_deribit_defaults:
     include:
       - ".*"
     exclude:
-      - "USDT-.*"
+      - ".*USDT.*"

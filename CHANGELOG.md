@@ -6,6 +6,12 @@ All notable changes will be documented in this file.
 
 ### Changed
 
+* Deribit
+
+  * Now excluding all USDT symbols by default.
+    The reason for this is that some symbols cause failure on
+    market data subscription, e.g. BTC-USDT-VIX.
+
 * Directory changes to match Linux' FSH
 
   * /opt/conda -- Miniconda3
