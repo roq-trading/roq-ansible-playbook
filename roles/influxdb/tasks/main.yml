@@ -45,10 +45,13 @@
 
   - name: create shell script
     template:
-      src: "templates/influx"
-      dest: "{{ root }}/usr/local/bin/influx"
+      src: "templates/{{ item }}"
+      dest: "{{ root }}/usr/local/bin/{{ item }}"
       owner: "{{ roq_user }}"
       mode: 0755
+    with_items:
+      - flux
+      - influx
 
   become: "{{ 'true' if become_user is defined else 'false' }}"
   tags:

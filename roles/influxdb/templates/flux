@@ -6,4 +6,6 @@ docker exec \
   influxdb.service \
   influx \
   -precision rfc3339 \
+  -type flux \
+  -path-prefix /api/v2/query \
   $@

@@ -30,13 +30,13 @@ echo "Creating native backup..."
 NATIVE_BACKUP="{{ backups }}/gogs"
 
 echo "Create native..."
-sudo docker exec gogs.service /bin/bash -c 'rm -rf native && mkdir -p native && USER=git ./gogs backup && mv gogs-backup-*.zip native/.; exit'
+docker exec gogs.service /bin/bash -c 'rm -rf native && mkdir -p native && USER=git ./gogs backup && mv gogs-backup-*.zip native/.; exit'
 
 echo "Copy to $NATIVE_BACKUP..."
-sudo docker cp gogs.service:/app/gogs/native "$NATIVE_BACKUP/."
+docker cp gogs.service:/app/gogs/native "$NATIVE_BACKUP/."
 
 echo "Clean-up"
-sudo docker exec gogs.service /bin/bash -c 'rm -rf native; exit'
+docker exec gogs.service /bin/bash -c 'rm -rf native; exit'
 
 echo "Success"
 
