@@ -51,7 +51,7 @@
       mode: 0755
     with_items:
       - flux
-      - influx
+      - influxql
 
   become: "{{ 'true' if become_user is defined else 'false' }}"
   tags:
