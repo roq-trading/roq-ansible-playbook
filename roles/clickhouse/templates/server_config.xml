@@ -6,5 +6,4 @@
   </logger>
   <listen_host replace="replace">0.0.0.0</listen_host>
   <keep_alive_timeout replace="replace">60</keep_alive_timeout>
-  <joined_subquery_requires_alias>1</joined_subquery_requires_alias>
 </yandex>
