@@ -17,11 +17,14 @@
 
   - name: create server config
     template:
-      src: "templates/server_config.xml"
-      dest: "{{ root }}/usr/local/etc/clickhouse/server_config.xml"
+      src: "templates/{{ item }}"
+      dest: "{{ root }}/usr/local/etc/clickhouse/{{ item }}"
       owner: root
       group: root
       mode: 0644
+    with_items:
+      - "server_config.xml"
+      - "users.xml"
     notify:
     - restart clickhouse
 

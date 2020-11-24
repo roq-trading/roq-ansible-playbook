@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<yandex>
+  <users>
+    <default>
+      <joined_subquery_requires_alias>0</joined_subquery_requires_alias>
+    </default>
+  </users>
+</yandex>
