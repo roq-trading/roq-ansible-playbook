@@ -12,3 +12,4 @@ roq_influxdb_defaults:
     name: "influxdb"
     uri: "http://localhost:8086"
     database: "roq"
+    create_database: true
