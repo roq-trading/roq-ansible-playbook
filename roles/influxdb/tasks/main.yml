@@ -16,8 +16,8 @@
 
   - name: pull docker image
     docker_image:
-      name: "{{ docker_registry_prefix | default('') }}{{ influxdb.docker.name }}"
-      tag: "{{ influxdb.docker.tag }}"
+      name: "{{ docker_registry_prefix | default('') }}{{ influxdb_config.docker.name }}"
+      tag: "{{ influxdb_config.docker.tag }}"
       source: pull
       force_source: true
       force_tag: true

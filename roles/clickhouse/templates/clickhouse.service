@@ -12,9 +12,11 @@ CPUAffinity={{ cpu_affinity.zone_2 }}
 ExecStartPre=-/usr/bin/docker stop %n
 ExecStartPre=-/usr/bin/docker rm %n
 ExecStart=/usr/bin/docker run --rm --name %n \
+  --user 0:0 \
   --network roq-network \
   --publish {{ clickhouse_config.port }}:9000 \
   --publish {{ clickhouse_config.http_port }}:8123 \
+  --publish {{ clickhouse_config.metrics_port }}:8001 \
   --volume {{ (root + '/var/lib/clickhouse') | roq_realpath }}:/var/lib/clickhouse \
   --volume {{ (root + '/usr/local/etc/clickhouse') | roq_realpath }}:/etc/clickhouse-server/config.d \
   {{ docker_registry_prefix | default('') }}{{ clickhouse_config.docker.name }}-server:{{ clickhouse_config.docker.tag }}

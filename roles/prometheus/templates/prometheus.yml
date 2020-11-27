@@ -2,7 +2,7 @@ global:
   scrape_interval: 5s
 
 rule_files:
-  - "alert.rules"
+  - 'alert.rules'
 
 alerting:
   alertmanagers:
@@ -20,14 +20,28 @@ scrape_configs:
   - job_name: 'node_exporter'
     static_configs:
       - targets: ['node-exporter.service:{{ node_exporter.port }}']
+{% if 'trading' in groups %}
 
+  - job_name: 'clickhouse'
+    metrics_path: '/metrics'
+    static_configs:
+      - targets: ['clickhouse.service:{{ clickhouse_config.metrics_port }}']
+
+  - job_name: 'influxdb'
+    metrics_path: '/metrics'
+    static_configs:
+      - targets: ['influxdb.service:{{ influxdb_config.port }}']
+    metric_relabel_configs:
+      - source_labels: [__name__]
+        target_label: __name__
+        replacement: 'influxdb_$1'
+{% endif %}
 {% if 'roq_binance' in groups %}
 
   - job_name: 'roq-binance'
     metrics_path: '/metrics/roq-binance'
     params:
       format: [ prometheus ]
-    honor_labels: true
     static_configs:
       - targets: ['nginx.service:{{ nginx_config.http_port }}']
 {% endif %}
@@ -37,7 +51,6 @@ scrape_configs:
     metrics_path: '/metrics/roq-bitmex'
     params:
       format: [ prometheus ]
-    honor_labels: true
     static_configs:
       - targets: ['nginx.service:{{ nginx_config.http_port }}']
 {% endif %}
@@ -47,7 +60,6 @@ scrape_configs:
     metrics_path: '/metrics/roq-bitstamp'
     params:
       format: [ prometheus ]
-    honor_labels: true
     static_configs:
       - targets: ['nginx.service:{{ nginx_config.http_port }}']
 {% endif %}
@@ -57,7 +69,6 @@ scrape_configs:
     metrics_path: '/metrics/roq-coinbase-pro'
     params:
       format: [ prometheus ]
-    honor_labels: true
     static_configs:
       - targets: ['nginx.service:{{ nginx_config.http_port }}']
 {% endif %}
@@ -67,7 +78,6 @@ scrape_configs:
     metrics_path: '/metrics/roq-deribit'
     params:
       format: [ prometheus ]
-    honor_labels: true
     static_configs:
       - targets: ['nginx.service:{{ nginx_config.http_port }}']
 {% endif %}
@@ -77,7 +87,6 @@ scrape_configs:
     metrics_path: '/metrics/roq-ftx'
     params:
       format: [ prometheus ]
-    honor_labels: true
     static_configs:
       - targets: ['nginx.service:{{ nginx_config.http_port }}']
 {% endif %}
@@ -87,7 +96,6 @@ scrape_configs:
     metrics_path: '/metrics/roq-gemini'
     params:
       format: [ prometheus ]
-    honor_labels: true
     static_configs:
       - targets: ['nginx.service:{{ nginx_config.http_port }}']
 {% endif %}
@@ -97,7 +105,6 @@ scrape_configs:
     metrics_path: '/metrics/roq-hitbtc'
     params:
       format: [ prometheus ]
-    honor_labels: true
     static_configs:
       - targets: ['nginx.service:{{ nginx_config.http_port }}']
 {% endif %}
@@ -107,7 +114,6 @@ scrape_configs:
     metrics_path: '/metrics/roq-kraken'
     params:
       format: [ prometheus ]
-    honor_labels: true
     static_configs:
       - targets: ['nginx.service:{{ nginx_config.http_port }}']
 {% endif %}

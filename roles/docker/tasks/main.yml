@@ -47,6 +47,7 @@
   - name: find distribution version
     command: "/usr/bin/lsb_release -cs"
     register: ubuntu_version
+    changed_when: false
 
   - name: get distribution name
     set_fact: 
@@ -169,6 +170,7 @@
     shell: "docker network inspect roq-network"
     register: roq_network_exists
     failed_when: roq_network_exists.rc < 0 or roq_network_exists.rc > 1
+    changed_when: false
 
   - name: create roq network
     shell: "docker network create --driver overlay --attachable roq-network"

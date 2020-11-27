@@ -11,6 +11,14 @@
       mode: 0755
     with_items:
       - "{{ root }}/usr/local/etc/clickhouse"
+    notify:
+    - restart clickhouse
+
+  - name: create directories (ownership managed by docker image)
+    file:
+      path: "{{ item }}"
+      state: directory
+    with_items:
       - "{{ root }}/var/lib/clickhouse"
     notify:
     - restart clickhouse

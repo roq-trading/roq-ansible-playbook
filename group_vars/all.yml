@@ -12,24 +12,26 @@ roq_version: "latest"
 
 roq_use_docker: false
 
-redis:
-  port: 6379
+alertmanager:
+  port: 9093
   docker:
-    name: "library/redis"
-    tag: "latest"
-
-influxdb:
-  port: 8086
-  docker:
-    name: "library/influxdb"
+    name: "prom/alertmanager"
     tag: "latest"
 
 # note! name is without -server/-client extension
 clickhouse_defaults:
   port: 9000
   http_port: 8123
+  metrics_port: 8001
   docker:
     name: "yandex/clickhouse"
+    tag: "latest"
+
+gogs_defaults:
+  ssh_port: 10022
+  http_port: 10080
+  docker:
+    name: "gogs/gogs"
     tag: "latest"
 
 grafana_defaults:
@@ -38,10 +40,16 @@ grafana_defaults:
     name: "grafana/grafana"
     tag: "latest"
 
-alertmanager:
-  port: 9093
+influxdb_defaults:
+  port: 8086
   docker:
-    name: "prom/alertmanager"
+    name: "library/influxdb"
+    tag: "latest"
+
+nginx_defaults:
+  http_port: 80
+  docker:
+    name: "library/nginx"
     tag: "latest"
 
 node_exporter:
@@ -56,11 +64,10 @@ prometheus:
     name: "prom/prometheus"
     tag: "latest"
 
-gogs_defaults:
-  ssh_port: 10022
-  http_port: 10080
+redis_defaults:
+  port: 6379
   docker:
-    name: "gogs/gogs"
+    name: "library/redis"
     tag: "latest"
 
 teamcity:
@@ -89,10 +96,4 @@ roq_coinbase_pro:
     sock: "coinbase-pro.metrics.sock"
   docker:
     name: "roqtrading/roq-coinbase-pro"
-    tag: "latest"
-
-nginx_defaults:
-  http_port: 80
-  docker:
-    name: "library/nginx"
     tag: "latest"

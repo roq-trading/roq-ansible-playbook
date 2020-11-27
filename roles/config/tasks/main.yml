@@ -20,10 +20,22 @@
           {{ gogs_defaults | combine(gogs | default({}), recursive=True) }}
       cacheable: true
 
+  - name: create influxdb config
+    set_fact:
+      influxdb_config: >
+          {{ influxdb_defaults | combine(influxdb | default({}), recursive=True) }}
+      cacheable: true
+
   - name: create nginx config
     set_fact:
       nginx_config: >
           {{ nginx_defaults | combine(nginx | default({}), recursive=True) }}
+      cacheable: true
+
+  - name: create redis config
+    set_fact:
+      redis_config: >
+          {{ redis_defaults | combine(redis | default({}), recursive=True) }}
       cacheable: true
 
   tags:

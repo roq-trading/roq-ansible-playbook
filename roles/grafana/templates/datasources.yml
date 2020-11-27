@@ -11,11 +11,22 @@ datasources:
     type: "prometheus"
     url: "http://prometheus.service:{{ prometheus.port }}/prometheus"
     version: 1
+{% if 'trading' in groups %}
+
+  - name: "ClickHouse"
+    orgId: 1
+    access: "proxy"
+    editable: true
+    isDefault: false
+    type: "clickhouse"
+    url: "http://clickhouse.service:{{ clickhouse_config.http_port }}"
+
   - name: "InfluxDB"
     orgId: 1
     access: "proxy"
     editable: true
     isDefault: false
     type: "influxdb"
-    url: "http://influxdb.service:{{ influxdb.port }}"
+    url: "http://influxdb.service:{{ influxdb_config.port }}"
     version: 1
+{% endif %}

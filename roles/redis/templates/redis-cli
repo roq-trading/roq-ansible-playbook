@@ -5,4 +5,4 @@ docker run \
   --tty \
   --rm \
   redis \
-  redis-cli -h redis.service -p {{ redis.port }}
+  redis-cli -h redis.service -p {{ redis_config.port }}

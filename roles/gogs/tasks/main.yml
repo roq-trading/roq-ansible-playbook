@@ -14,7 +14,7 @@
     notify:
     - restart gogs
 
-  - name: create directories
+  - name: create directories (locked down)
     file:
       path: "{{ item }}"
       state: directory
@@ -22,19 +22,16 @@
       group: root
       mode: 0750
     with_items:
-    - "{{ root }}/var/lib/gogs/data"
     - "{{ root }}/var/lib/gogs/backups"
     notify:
     - restart gogs
 
-  - name: create directories
+  - name: create directories (ownership managed by docker image)
     file:
       path: "{{ item }}"
       state: directory
-      owner: root
-      group: root
-      mode: 0755
     with_items:
+    - "{{ root }}/var/lib/gogs/data"
     - "{{ root }}/var/lib/gogs/data/gogs"
     - "{{ root }}/var/lib/gogs/data/gogs/conf"
     notify:
@@ -44,7 +41,6 @@
     template:
       src: "templates/app.ini"
       dest: "{{ root }}/var/lib/gogs/data/gogs/conf/app.ini"
-      owner: root
       mode: 0644
     notify:
     - restart gogs
