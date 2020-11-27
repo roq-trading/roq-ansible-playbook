@@ -67,13 +67,6 @@
     shell: '{{ root }}/opt/conda/bin/conda list -f roq-influxdb | sed -n "s/^roq-influxdb\s*\([0-9]\+\.[0-9]\+\.[0-9]\+\).*/\1/p"'
     register: current_version
     changed_when: "current_version.stdout != previous_version.stdout"
-
-#  - name: create influxdb retention policy
-#    uri:
-#      url: "http://localhost:8086/query"
-#      method: POST
-#      body: "q=CREATE RETENTION POLICY \"week\" ON \"{{ config.options.database }}\" DURATION 1w REPLICATION 1"
-#      status_code: 200
   
   when: "'roq_influxdb' in group_names"
   become: "{{ 'true' if become_user is defined else 'false' }}"
