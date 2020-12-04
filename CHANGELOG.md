@@ -4,6 +4,8 @@ All notable changes will be documented in this file.
 
 ## Head
 
+## 0.5.0 &ndash; 2020-12-04
+
 ### Changed
 
 * Deribit
