@@ -4,6 +4,12 @@ All notable changes will be documented in this file.
 
 ## Head
 
+### Changed
+
+* TeamCity
+
+  * Now using teamcity-minimal-agent
+
 ## 0.5.0 &ndash; 2020-12-04
 
 ### Changed

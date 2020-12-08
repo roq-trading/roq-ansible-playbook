@@ -78,9 +78,8 @@ teamcity:
 
 teamcity_agent:
   docker:
-    name: "jetbrains/teamcity-agent"
-    tag: "2019.2.4"
-#    tag: "latest"
+    name: "jetbrains/teamcity-minimal-agent"
+    tag: "latest"
 
 roq_deribit:
   metrics:
