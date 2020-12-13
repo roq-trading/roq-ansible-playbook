@@ -26,6 +26,7 @@
 # https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04
 # https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04
 # https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04
+# https://docs.docker.com/engine/install/ubuntu/
 
 - block:
 
@@ -35,7 +36,7 @@
         - "apt-transport-https"
         - "ca-certificates"
         - "curl"
-        - "gnupg2"
+        - "gnupg-agent"
         - "software-properties-common"
       state: present
 
@@ -60,7 +61,10 @@
 
   - name: install docker-ce
     apt:
-      name: "docker-ce"
+      name:
+      - "docker-ce"
+      - "docker-ce-cli"
+      - "containerd.io"
       update_cache: yes
     register: docker_ce_install
     notify:

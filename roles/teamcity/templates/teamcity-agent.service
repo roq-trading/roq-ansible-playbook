@@ -1,8 +1,7 @@
 [Unit]
 Description=teamcity agent-{{ item }}
-After=docker.service teamcity-server.service
+After=docker.service
 Requires=docker.service
-Wants=teamcity.service
 
 [Service]
 TimeoutStartSec=0

@@ -1,7 +1,7 @@
 [Unit]
 Description=node-exporter
-Wants=network-online.target
-After=network-online.target
+After=docker.service
+Requires=docker.service
 
 [Service]
 TimeoutStartSec=0

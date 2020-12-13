@@ -1,5 +1,6 @@
 [Unit]
 Description=roq-{{ config.options.name }} gateway
+Wants=network-online.target
 After=network-online.target
 Conflicts=roq-{{ config.options.name }}-stop.service
 
