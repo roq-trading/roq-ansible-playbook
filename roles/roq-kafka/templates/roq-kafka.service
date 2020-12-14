@@ -1,0 +1,28 @@
+[Unit]
+Description=roq-kafka adapter
+After=network-online.target
+
+[Service]
+{% if config.docker.use %}
+TimeoutStartSec=0
+ExecStart=/usr/bin/docker run --rm --name %n -i \
+  --network roq-network \
+  --volume {{ (root + '/var/lib/roq/event-logs') | roq_realpath }}:/var/lib/roq/event-logs \
+  --volume {{ (root + '/usr/local/etc/roq-kafka') | roq_realpath }}:/usr/local/etc/roq-kafka \
+  --env ROQ_v={{ config.logging.verbosity }} \
+  {{ docker_registry_prefix | default('') }}{{ config.docker.name }}:{{ config.version }} \
+  --flagfile "/usr/local/etc/roq-kafka/options.gflags" \
+  "/var/lib/roq/event-logs"
+{% else %}
+User={{ roq_user }}
+Group={{ roq_user }}
+UMask=0000
+# Restart=on-abnormal
+Environment="ROQ_v={{ config.logging.verbosity }}"
+ExecStart={{ (root + '/opt/conda/bin/roq-kafka') | roq_realpath }} \
+  --flagfile "{{ (root + '/usr/local/etc/roq-kafka/options.gflags') | roq_realpath }}" \
+  "{{ (root + '/var/lib/roq/event-logs') | roq_realpath }}"
+{% endif %}
+
+[Install]
+WantedBy=multi-user.target

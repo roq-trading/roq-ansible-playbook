@@ -1,0 +1,7 @@
+---
+
+roq_tools_defaults:
+  version: "{{ roq_version }}"
+  docker:
+    use: "{{ roq_use_docker }}"
+    name: "roqtrading/roq-tools"

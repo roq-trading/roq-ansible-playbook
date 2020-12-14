@@ -23,6 +23,7 @@
 - hosts: all
   roles:
     - conda
+    - roq-tools
 
 - hosts: dev
   roles:
@@ -47,6 +48,10 @@
 - hosts: roq_redis
   roles:
     - roq-redis
+
+- hosts: roq_kafka
+  roles:
+    - roq-kafka
 
 - hosts: roq_binance
   roles:

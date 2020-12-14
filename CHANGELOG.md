@@ -10,6 +10,11 @@ All notable changes will be documented in this file.
 
   * Now using teamcity-minimal-agent
 
+* Added
+
+  * roq-tools
+  * roq-kafka
+
 ## 0.5.0 &ndash; 2020-12-04
 
 ### Changed

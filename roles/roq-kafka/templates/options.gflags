@@ -1,0 +1,3 @@
+{% for (key, value) in config.options.items() %}
+--{{ key }}={{ value }}
+{% endfor %}
