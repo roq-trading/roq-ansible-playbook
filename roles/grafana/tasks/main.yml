@@ -7,19 +7,19 @@
       path: "{{ item }}"
       state: directory
     with_items:
-      - "{{ root }}/usr/local/etc/grafana"
-      - "{{ root }}/usr/local/etc/grafana/provisioning"
-      - "{{ root }}/usr/local/etc/grafana/provisioning/dashboards"
-      - "{{ root }}/usr/local/etc/grafana/provisioning/datasources"
-      - "{{ root }}/var/lib/grafana"
-      - "{{ root }}/var/lib/grafana/dashboards"
+      - "{{ directory_config.usr_local_etc }}/grafana"
+      - "{{ directory_config.usr_local_etc }}/grafana/provisioning"
+      - "{{ directory_config.usr_local_etc }}/grafana/provisioning/dashboards"
+      - "{{ directory_config.usr_local_etc }}/grafana/provisioning/datasources"
+      - "{{ directory_config.var_lib }}/grafana"
+      - "{{ directory_config.var_lib }}/grafana/dashboards"
     notify:
     - restart grafana
 
   - name: provision datasources
     template:
       src: "templates/datasources.yml"
-      dest: "{{ root }}/usr/local/etc/grafana/provisioning/datasources/all.yml"
+      dest: "{{ directory_config.usr_local_etc }}/grafana/provisioning/datasources/all.yml"
       owner: root
       group: root
       mode: 0644
@@ -41,7 +41,7 @@
   - name: provision dashboards
     template:
       src: "templates/dashboards.yml"
-      dest: "{{ root }}/usr/local/etc/grafana/provisioning/dashboards/all.yml"
+      dest: "{{ directory_config.usr_local_etc }}/grafana/provisioning/dashboards/all.yml"
       owner: root
       group: root
       mode: 0644
@@ -80,7 +80,7 @@
   - name: create shell script
     template:
       src: "templates/{{ item }}"
-      dest: "{{ root }}/usr/local/bin/{{ item }}"
+      dest: "{{ directory_config.usr_local_bin }}/{{ item }}"
       owner: "{{ roq_user }}"
       mode: 0755
     with_items:

@@ -2,6 +2,6 @@
 
 set -e
 
-ARGS="${@:-"--flagfile={{ (root + '/usr/local/etc') | roq_realpath }}/roq-kafka/options.gflags"}"
+ARGS="${@:-"--flagfile={{ directory_config.usr_local_etc }}/roq-kafka/options.gflags"}"
 
-"{{ (root + '/opt/conda/bin') | roq_realpath }}/roq-kafka" "{{ (root + '/var/lib/roq/data') | roq_realpath }}" "$ARGS"
+"{{ (directory_config.opt + '/conda/bin') | roq_realpath }}/roq-kafka" "{{ (directory_config.var_lib + '/roq/data') | roq_realpath }}" "$ARGS"

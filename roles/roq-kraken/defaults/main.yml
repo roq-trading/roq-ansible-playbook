@@ -12,10 +12,10 @@ roq_kraken_defaults:
     verbosity: 0
   options:
     name: "kraken"
-    config_file: "{{ root }}/usr/local/etc/roq-kraken/config.toml"
-    event_log_dir: "{{ root }}/var/lib/roq/data"
-    client_listen_address: "{{ root }}/run/roq/roq-kraken.sock"
-    metrics_listen_address: "{{ root }}/run/roq/metrics/roq-kraken.sock"
+    config_file: "{{ directory_config.usr_local_etc }}/roq-kraken/config.toml"
+    event_log_dir: "{{ directory_config.var_lib }}/roq/data"
+    client_listen_address: "{{ directory_config.run }}/roq/roq-kraken.sock"
+    metrics_listen_address: "{{ directory_config.run }}/roq/metrics/roq-kraken.sock"
     rest_uri: "https://api.kraken.com"
     ws_public_uri: "wss://beta-ws.kraken.com"
     ws_private_uri: "wss://beta-ws-auth.kraken.com"

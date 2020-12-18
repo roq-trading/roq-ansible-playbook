@@ -12,6 +12,23 @@ roq_version: "latest"
 
 roq_use_docker: false
 
+# FSH
+
+directory_defaults:
+  opt: "{{ (root + '/opt/') | roq_realpath }}"
+  run: "{{ (root + '/run/') | roq_realpath }}"
+  usr: "{{ (root + '/usr/') | roq_realpath }}"
+  usr_local: "{{ (root + '/usr/local/') | roq_realpath }}"
+  usr_local_bin: "{{ (root + '/usr/local/bin/') | roq_realpath }}"
+  usr_local_etc: "{{ (root + '/usr/local/etc/') | roq_realpath }}"
+  var: "{{ (root + '/var/lib/') | roq_realpath }}"
+  var_lib: "{{ (root + '/var/lib/') | roq_realpath }}"
+  var_log: "{{ (root + '/var/log/') | roq_realpath }}"
+  var_tmp: "{{ (root + '/var/tmp/') | roq_realpath }}"
+  var_www: "{{ (root + '/var/www/') | roq_realpath }}"
+
+# services
+
 # note! name is without -server/-client extension
 clickhouse_defaults:
   port: 9000
@@ -65,6 +82,8 @@ nginx_defaults:
     tag: "latest"
   upstream: {}
   server_location: []
+
+# gateways
 
 roq_deribit:
   metrics:

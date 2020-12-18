@@ -2,6 +2,6 @@
 
 set -e
 
-ARGS="${@:-"--flagfile={{ (root + '/usr/local/etc/roq-redis/options.gflags') | roq_realpath }}"}"
+ARGS="${@:-"--flagfile={{ (directory_config.usr_local_etc + '/roq-redis/options.gflags') | roq_realpath }}"}"
 
-"{{ (root + '/opt/conda/bin/roq-redis') | roq_realpath }}" "{{ (root + '/var/lib/roq') | roq_realpath }}" "$ARGS"
+"{{ (directory_config.opt + '/conda/bin/roq-redis') | roq_realpath }}" "{{ (directory_config.var_lib + '/roq') | roq_realpath }}" "$ARGS"

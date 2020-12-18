@@ -12,10 +12,10 @@ roq_bitstamp_defaults:
     verbosity: 0
   options:
     name: "bitstamp"
-    config_file: "{{ root }}/usr/local/etc/roq-bitstamp/config.toml"
-    event_log_dir: "{{ root }}/var/lib/roq/data"
-    client_listen_address: "{{ root }}/run/roq/roq-bitstamp.sock"
-    metrics_listen_address: "{{ root }}/run/roq/metrics/roq-bitstamp.sock"
+    config_file: "{{ directory_config.usr_local_etc }}/roq-bitstamp/config.toml"
+    event_log_dir: "{{ directory_config.var_lib }}/roq/data"
+    client_listen_address: "{{ directory_config.run }}/roq/roq-bitstamp.sock"
+    metrics_listen_address: "{{ directory_config.run }}/roq/metrics/roq-bitstamp.sock"
     ws_uri: "wss://ws.bitstamp.net"
     rest_uri: "https://www.bitstamp.net"
     fix_uri: "tcp+ssl://fix.bitstamp.net:8905"

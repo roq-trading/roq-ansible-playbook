@@ -25,20 +25,20 @@
 
   - name: create required directories
     file:
-      path: "{{ root }}/{{ item }}"
+      path: "{{ item }}"
       state: directory
       owner: "{{ roq_user }}"
       # group: "{{ roq_user }}"
       mode: 0755
     with_items:
-      - "/var/lib/roq"
-      - "/var/lib/roq/data"
-      - "/usr/local/etc/roq-redis"
+      - "{{ directory_config.var_lib }}/roq"
+      - "{{ directory_config.var_lib }}/roq/data"
+      - "{{ directory_config.usr_local_etc }}/roq-redis"
 
   - name: create config
     template:
       src: "templates/{{ item }}"
-      dest: "{{ root }}/usr/local/etc/roq-redis/{{ item }}"
+      dest: "{{ directory_config.usr_local_etc }}/roq-redis/{{ item }}"
       owner: "{{ roq_user }}"
       # group: "{{ roq_user }}"
       mode: 0640
@@ -48,13 +48,13 @@
   - name: create shell script
     template:
       src: "templates/roq-redis"
-      dest: "{{ root }}/usr/local/bin/roq-redis"
+      dest: "{{ directory_config.usr_local_bin }}/roq-redis"
       owner: "{{ roq_user }}"
       # group: "{{ roq_user }}"
       mode: 0755
 
   - name: install the roq-redis conda package
-    shell: "{{ root }}/opt/conda/bin/conda install -y -n base \
+    shell: "{{ directory_config.opt }}/conda/bin/conda install -y -n base \
       roq-redis{{ '' if config.version == 'latest' else '==%s'|format(config.version) }}"
 
   when: "'roq_redis' in group_names"

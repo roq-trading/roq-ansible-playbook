@@ -14,7 +14,7 @@ ExecStartPre=-/usr/bin/docker rm %n
 ExecStart=/usr/bin/docker run --rm --name %n \
   --network roq-network \
   --publish {{ influxdb_config.port }}:8086 \
-  --volume {{ (root + '/var/lib/influxdb') | roq_realpath }}:/var/lib/influxdb \
+  --volume {{ directory_config.var_lib }}/influxdb:/var/lib/influxdb \
   --env INFLUXDB_HTTP_ENABLED=true \
   --env INFLUXDB_HTTP_BIND_ADDRESS=:8086 \
   --env INFLUXDB_HTTP_FLUX_ENABLED=true \

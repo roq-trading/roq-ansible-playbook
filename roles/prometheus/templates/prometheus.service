@@ -14,8 +14,8 @@ ExecStartPre=-/usr/bin/docker rm %n
 ExecStart=/usr/bin/docker run --rm --name %n \
   --user 0:0 \
   --network roq-network \
-  --volume {{ (root + '/usr/local/etc/prometheus') | roq_realpath }}:/etc/prometheus:ro \
-  --volume {{ (root + '/var/lib/prometheus') | roq_realpath }}:/var/lib/prometheus \
+  --volume {{ directory_config.usr_local_etc }}/prometheus:/etc/prometheus:ro \
+  --volume {{ directory_config.var_lib }}/prometheus:/var/lib/prometheus \
   {{ docker_registry_prefix | default('') }}{{ prometheus_config.docker.name }}:{{ prometheus_config.docker.tag }} \
   --web.external-url=http://localhost/prometheus \
   --config.file=/etc/prometheus/prometheus.yml \

@@ -10,8 +10,8 @@ roq_influxdb_defaults:
     verbosity: 0
   options:
     name: "influxdb"
-    metrics_listen_address: "{{ root }}/run/roq/metrics/roq-influxdb.sock"
-    event_log_dir: "{{ root }}/var/lib/roq/data"
+    metrics_listen_address: "{{ directory_config.run }}/roq/metrics/roq-influxdb.sock"
+    event_log_dir: "{{ directory_config.var_lib }}/roq/data"
     uri: "http://localhost:8086"
     database_name: "roq"
     create_database: true

@@ -2,6 +2,12 @@
 
 - block:
 
+  - name: create directory config
+    set_fact:
+      directory_config: >
+          {{ directory_defaults | combine(directory | default({}), recursive=True) }}
+      cacheable: true
+
   - name: create clickhouse config
     set_fact:
       clickhouse_config: >

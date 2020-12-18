@@ -11,15 +11,15 @@
       path: "{{ item }}"
       state: directory
     with_items:
-      - "{{ root }}/opt"
-      - "{{ root }}/run"
-      - "{{ root }}/usr"
-      - "{{ root }}/usr/local"
-      - "{{ root }}/usr/local/bin"
-      - "{{ root }}/usr/local/etc"
-      - "{{ root }}/var"
-      - "{{ root }}/var/lib"
-      - "{{ root }}/var/log"  # XXX review (only used by teamcity)
+      - "{{ directory_config.opt }}"
+      - "{{ directory_config.run }}"
+      - "{{ directory_config.usr }}"
+      - "{{ directory_config.usr_local }}"
+      - "{{ directory_config.usr_local_bin }}"
+      - "{{ directory_config.usr_local_etc }}"
+      - "{{ directory_config.var }}"
+      - "{{ directory_config.var_lib }}"
+      - "{{ directory_config.var_log }}"  # XXX review (only used by teamcity)
 
 # TODO(thraneh): or maybe the condition should be root != '/' ?
   when: become_user is not defined
@@ -64,12 +64,12 @@
   - name: download epel-release-latest
     get_url:
       url: "http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm"
-      dest: "{{ root }}/opt"
+      dest: "{{ directory_config.opt }}"
     when: install_epel_release == true
 
   - name: install epel-release from download
     yum:
-      name: "{{ root }}/opt/epel-release-latest-7.noarch.rpm"
+      name: "{{ directory_config.opt }}/epel-release-latest-7.noarch.rpm"
       state: present
     when: install_epel_release == true
 

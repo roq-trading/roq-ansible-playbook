@@ -8,15 +8,15 @@
       state: directory
       mode: 0755
     with_items:
-    - "{{ root }}/usr/local/etc/redis"
-    - "{{ root }}/var/lib/redis"
+    - "{{ directory_config.usr_local_etc }}/redis"
+    - "{{ directory_config.var_lib }}/redis"
     notify:
     - restart redis
 
   - name: create config file
     template:
       src: "templates/redis.conf"
-      dest: "{{ root }}/usr/local/etc/redis/redis.conf"
+      dest: "{{ directory_config.usr_local_etc }}/redis/redis.conf"
       owner: root
       group: root
       mode: 0644
@@ -52,7 +52,7 @@
   - name: create shell script
     template:
       src: "templates/redis-cli"
-      dest: "{{ root }}/usr/local/bin/redis-cli"
+      dest: "{{ directory_config.usr_local_bin }}/redis-cli"
       owner: "{{ roq_user }}"
       mode: 0755
 

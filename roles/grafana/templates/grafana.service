@@ -14,8 +14,8 @@ ExecStartPre=-/usr/bin/docker rm %n
 ExecStart=/usr/bin/docker run --rm --name %n \
   --user 0:0 \
   --network roq-network \
-  --volume {{ (root + '/var/lib/grafana') | roq_realpath }}:/var/lib/grafana \
-  --volume {{ (root + '/usr/local/etc/grafana/provisioning') | roq_realpath }}:/etc/grafana/provisioning \
+  --volume {{ directory_config.var_lib }}/grafana:/var/lib/grafana \
+  --volume {{ directory_config.usr_local_etc }}/grafana/provisioning:/etc/grafana/provisioning \
   --env GF_SERVER_ROOT_URL=%%(protocol)s://%%(domain)s:%%(http_port)s/grafana/ \
   --env GF_SERVER_HTTP_ADDR=0.0.0.0 \
   --env GF_SERVER_HTTP_PORT={{ grafana_config.port }} \

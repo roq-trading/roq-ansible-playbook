@@ -10,7 +10,7 @@
       group: root
       mode: 0755
     with_items:
-      - "{{ root }}/usr/local/etc/clickhouse"
+      - "{{ directory_config.usr_local_etc }}/clickhouse"
     notify:
     - restart clickhouse
 
@@ -19,14 +19,14 @@
       path: "{{ item }}"
       state: directory
     with_items:
-      - "{{ root }}/var/lib/clickhouse"
+      - "{{ directory_config.var_lib }}/clickhouse"
     notify:
     - restart clickhouse
 
   - name: create server config
     template:
       src: "templates/{{ item }}"
-      dest: "{{ root }}/usr/local/etc/clickhouse/{{ item }}"
+      dest: "{{ directory_config.usr_local_etc }}/clickhouse/{{ item }}"
       owner: root
       group: root
       mode: 0644
@@ -71,7 +71,7 @@
   - name: create shell script
     template:
       src: "templates/clickhouse-client"
-      dest: "{{ root }}/usr/local/bin/clickhouse-client"
+      dest: "{{ directory_config.usr_local_bin }}/clickhouse-client"
       owner: "{{ roq_user }}"
       mode: 0755
 

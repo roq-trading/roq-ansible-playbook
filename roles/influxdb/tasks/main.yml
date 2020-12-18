@@ -10,7 +10,7 @@
       group: root
       mode: 0755
     with_items:
-      - "{{ root }}/var/lib/influxdb"
+      - "{{ directory_config.var_lib }}/influxdb"
     notify:
     - restart influxdb
 
@@ -46,7 +46,7 @@
   - name: create shell script
     template:
       src: "templates/{{ item }}"
-      dest: "{{ root }}/usr/local/bin/{{ item }}"
+      dest: "{{ directory_config.usr_local_bin }}/{{ item }}"
       owner: "{{ roq_user }}"
       mode: 0755
     with_items:

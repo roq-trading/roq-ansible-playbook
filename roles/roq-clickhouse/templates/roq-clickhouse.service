@@ -7,8 +7,8 @@ After=network-online.target
 TimeoutStartSec=0
 ExecStart=/usr/bin/docker run --rm --name %n -i \
   --network roq-network \
-  --volume {{ (root + '/var/lib/roq/data') | roq_realpath }}:/var/lib/roq/data \
-  --volume {{ (root + '/usr/local/etc/roq-clickhouse') | roq_realpath }}:/usr/local/etc/roq-clickhouse \
+  --volume {{ directory_config.var_lib }}/roq/data:/var/lib/roq/data \
+  --volume {{ directory_config.usr_local_etc }}/roq-clickhouse:/usr/local/etc/roq-clickhouse \
   --env ROQ_v={{ config.logging.verbosity }} \
   {{ docker_registry_prefix | default('') }}{{ config.docker.name }}:{{ config.version }} \
   --flagfile "/usr/local/etc/roq-clickhouse/options.gflags" \
@@ -19,9 +19,9 @@ Group={{ roq_user }}
 UMask=0000
 # Restart=on-abnormal
 Environment="ROQ_v={{ config.logging.verbosity }}"
-ExecStart={{ (root + '/opt/conda/bin/roq-clickhouse') | roq_realpath }} \
-  --flagfile "{{ (root + '/usr/local/etc/roq-clickhouse/options.gflags') | roq_realpath }}" \
-  "{{ (root + '/var/lib/roq/data') | roq_realpath }}"
+ExecStart={{ directory_config.opt }}/conda/bin/roq-clickhouse \
+  --flagfile "{{ directory_config.usr_local_etc }}/roq-clickhouse/options.gflags" \
+  "{{ directory_config.var_lib }}/roq/data"
 {% endif %}
 
 [Install]

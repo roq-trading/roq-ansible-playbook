@@ -9,8 +9,8 @@ Conflicts=roq-{{ config.options.name }}-stop.service
 TimeoutStartSec=0
 ExecStart=/usr/bin/docker run --rm --name %n -i \
   --network roq-network \
-  --volume {{ (root + '/var/tmp') | roq_realpath }}:/var/tmp \
-  --volume {{ (root + '/usr/local/etc/roq-' + config.options.name) | roq_realpath }}:/usr/local/etc/roq-{{ config.options.name }} \
+  --volume {{ (directory_config.var_tmp) | roq_realpath }}:/var/tmp \
+  --volume {{ (directory_config.usr_local_etc + '/roq-' + config.options.name) | roq_realpath }}:/usr/local/etc/roq-{{ config.options.name }} \
   --env ROQ_v={{ config.logging.verbosity | default(0) }} \
   --env FLAGS_monitor_port={{ config.metrics.port }} \
   {{ docker_registry_prefix | default('') }}{{ config.docker.name }}:{{ config.version }} \
@@ -20,10 +20,10 @@ UMask=0000
 User={{ roq_user if roq_user is defined else ansible_user_id }}
 Group={{ roq_user if roq_user is defined else ansible_user_id }}
 Environment="ROQ_v={{ config.logging.verbosity }}"
-ExecStartPre=+/bin/mkdir -p {{ (root + '/run/roq') | roq_realpath }}
-ExecStartPre=+/bin/chown {{ roq_user if roq_user is defined else ansible_user_id }}:{{ roq_user if roq_user is defined else ansible_user_id }} {{ (root + '/run/roq') | roq_realpath }}
-ExecStart={{ (root + '/opt/conda/bin/roq-' + config.options.name) | roq_realpath }} \
-  --flagfile "{{ (root + '/usr/local/etc/roq-' + config.options.name) | roq_realpath }}/options.gflags"
+ExecStartPre=+/bin/mkdir -p {{ (directory_config.run + '/roq') | roq_realpath }}
+ExecStartPre=+/bin/chown {{ roq_user if roq_user is defined else ansible_user_id }}:{{ roq_user if roq_user is defined else ansible_user_id }} {{ (directory_config.run + '/roq') | roq_realpath }}
+ExecStart={{ (directory_config.opt + '/conda/bin/roq-' + config.options.name) | roq_realpath }} \
+  --flagfile "{{ (directory_config.usr_local_etc + '/roq-' + config.options.name) | roq_realpath }}/options.gflags"
 Restart=on-abnormal
 {% endif %}
 

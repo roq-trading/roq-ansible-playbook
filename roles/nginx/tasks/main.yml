@@ -10,16 +10,17 @@
       group: root
       mode: 0755
     with_items:
-      - "{{ root }}/var/www"
-      - "{{ root }}/usr/local/etc/nginx"
-      - "{{ root }}/usr/local/etc/nginx/conf.d"
+      - "{{ directory_config.var_log }}/nginx"
+      - "{{ directory_config.var_www }}"
+      - "{{ directory_config.usr_local_etc }}/nginx"
+      - "{{ directory_config.usr_local_etc }}/nginx/conf.d"
     notify:
     - reload nginx
   
   - name: available sites
     template:
       src: "templates/{{ item }}"
-      dest: "{{ root }}/usr/local/etc/nginx/conf.d/{{ item }}"
+      dest: "{{ directory_config.usr_local_etc }}/nginx/conf.d/{{ item }}"
       owner: root
       mode: 0644
     with_items:

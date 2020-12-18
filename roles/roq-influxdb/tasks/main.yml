@@ -25,20 +25,20 @@
 
   - name: create required directories
     file:
-      path: "{{ root }}/{{ item }}"
+      path: "{{ item }}"
       state: directory
       owner: "{{ roq_user }}"
       # group: "{{ roq_user }}"
       mode: 0755
     with_items:
-      - "/var/lib/roq"
-      - "/var/lib/roq/data"
-      - "/usr/local/etc/roq-influxdb"
+      - "{{ directory_config.var_lib }}/roq"
+      - "{{ directory_config.var_lib }}/roq/data"
+      - "{{ directory_config.usr_local_etc }}/roq-influxdb"
 
   - name: create config
     template:
       src: "templates/{{ item }}"
-      dest: "{{ root }}/usr/local/etc/roq-influxdb/{{ item }}"
+      dest: "{{ directory_config.usr_local_etc }}/roq-influxdb/{{ item }}"
       owner: "{{ roq_user }}"
       # group: "{{ roq_user }}"
       mode: 0640
@@ -48,23 +48,23 @@
   - name: create shell script
     template:
       src: "templates/roq-influxdb"
-      dest: "{{ root }}/usr/local/bin/roq-influxdb"
+      dest: "{{ directory_config.usr_local_bin }}/roq-influxdb"
       owner: "{{ roq_user }}"
       # group: "{{ roq_user }}"
       mode: 0755
 
   - name: check previous version
-    shell: '{{ root }}/opt/conda/bin/conda list -f roq-influxdb | sed -n "s/^roq-influxdb\s*\([0-9]\+\.[0-9]\+\.[0-9]\+\).*/\1/p"'
+    shell: '{{ directory_config.opt }}/conda/bin/conda list -f roq-influxdb | sed -n "s/^roq-influxdb\s*\([0-9]\+\.[0-9]\+\.[0-9]\+\).*/\1/p"'
     register: previous_version
     changed_when: false
 
   - name: install conda package
-    shell: "{{ root }}/opt/conda/bin/conda install -y -n base \
+    shell: "{{ directory_config.opt }}/conda/bin/conda install -y -n base \
       roq-influxdb{{ '' if config.version == 'latest' else '==%s'|format(config.version) }}"
     changed_when: false
 
   - name: check current version
-    shell: '{{ root }}/opt/conda/bin/conda list -f roq-influxdb | sed -n "s/^roq-influxdb\s*\([0-9]\+\.[0-9]\+\.[0-9]\+\).*/\1/p"'
+    shell: '{{ directory_config.opt }}/conda/bin/conda list -f roq-influxdb | sed -n "s/^roq-influxdb\s*\([0-9]\+\.[0-9]\+\.[0-9]\+\).*/\1/p"'
     register: current_version
     changed_when: "current_version.stdout != previous_version.stdout"
   

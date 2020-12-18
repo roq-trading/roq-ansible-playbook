@@ -98,13 +98,13 @@
 #  - name: download container-selinux
 #    get_url:
 #      url: "http://mirror.centos.org/centos/7/extras/x86_64/Packages/container-selinux-2.74-1.el7.noarch.rpm"
-#      dest: "{{ root }}/opt"
+#      dest: "{{ directory_config.opt }}"
 #      mode: 0644
 #    when: install_container_selinux == true
 #
 #  - name: install container-selinux
 #    yum:
-#      name: "{{ root }}/opt/container-selinux-2.74-1.el7.noarch.rpm"
+#      name: "{{ directory_config.opt }}/container-selinux-2.74-1.el7.noarch.rpm"
 #      state: present
 #    when: install_container_selinux == true
 

@@ -25,20 +25,20 @@
 
   - name: create required directories
     file:
-      path: "{{ root }}/{{ item }}"
+      path: "{{ item }}"
       state: directory
       owner: "{{ roq_user }}"
       # group: "{{ roq_user }}"
       mode: 0755
     with_items:
-      - "/var/lib/roq"
-      - "/var/lib/roq/data"
-      - "/usr/local/etc/roq-clickhouse"
+      - "{{ directory_config.var_lib }}/roq"
+      - "{{ directory_config.var_lib }}/roq/data"
+      - "{{ directory_config.usr_local_etc }}/roq-clickhouse"
 
   - name: create config
     template:
       src: "templates/{{ item }}"
-      dest: "{{ root }}/usr/local/etc/roq-clickhouse/{{ item }}"
+      dest: "{{ directory_config.usr_local_etc }}/roq-clickhouse/{{ item }}"
       owner: "{{ roq_user }}"
       # group: "{{ roq_user }}"
       mode: 0640
@@ -48,23 +48,23 @@
   - name: create shell script
     template:
       src: "templates/roq-clickhouse"
-      dest: "{{ root }}/usr/local/bin/roq-clickhouse"
+      dest: "{{ directory_config.usr_local_bin }}/roq-clickhouse"
       owner: "{{ roq_user }}"
       # group: "{{ roq_user }}"
       mode: 0755
 
   - name: check previous version
-    shell: '{{ root }}/opt/conda/bin/conda list -f roq-clickhouse | sed -n "s/^roq-clickhouse\s*\([0-9]\+\.[0-9]\+\.[0-9]\+\).*/\1/p"'
+    shell: '{{ directory_config.opt }}/conda/bin/conda list -f roq-clickhouse | sed -n "s/^roq-clickhouse\s*\([0-9]\+\.[0-9]\+\.[0-9]\+\).*/\1/p"'
     register: previous_version
     changed_when: false
 
   - name: install conda package
-    shell: "{{ root }}/opt/conda/bin/conda install -y -n base \
+    shell: "{{ directory_config.opt }}/conda/bin/conda install -y -n base \
       roq-clickhouse{{ '' if config.version == 'latest' else '==%s'|format(config.version) }}"
     changed_when: false
 
   - name: check current version
-    shell: '{{ root }}/opt/conda/bin/conda list -f roq-clickhouse | sed -n "s/^roq-clickhouse\s*\([0-9]\+\.[0-9]\+\.[0-9]\+\).*/\1/p"'
+    shell: '{{ directory_config.opt }}/conda/bin/conda list -f roq-clickhouse | sed -n "s/^roq-clickhouse\s*\([0-9]\+\.[0-9]\+\.[0-9]\+\).*/\1/p"'
     register: current_version
     changed_when: "current_version.stdout != previous_version.stdout"
 
