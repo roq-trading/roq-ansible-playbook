@@ -13,7 +13,7 @@ roq_ftx_defaults:
   options:
     name: "ftx"
     config_file: "{{ root }}/usr/local/etc/roq-ftx/config.toml"
-    event_log_dir: "{{ root }}/var/lib/roq/event-logs"
+    event_log_dir: "{{ root }}/var/lib/roq/data"
     client_listen_address: "{{ root }}/run/roq/roq-ftx.sock"
     metrics_listen_address: "{{ root }}/run/roq/metrics/roq-ftx.sock"
     ws_uri: "wss://ftx.com/ws"

@@ -15,7 +15,7 @@ ExecStart=/usr/bin/docker run --rm --name %n \
   --network roq-network \
   --volume {{ (root + '/usr/local/etc/alertmanager') | roq_realpath }}:/etc/alertmanager:ro \
   --volume {{ (root + '/var/lib/alertmanager') | roq_realpath }}:/var/lib/alertmanager \
-  {{ docker_registry_prefix | default('') }}{{ alertmanager.docker.name }}:{{ alertmanager.docker.tag }} \
+  {{ docker_registry_prefix | default('') }}{{ alertmanager_config.docker.name }}:{{ alertmanager_config.docker.tag }} \
   --web.external-url=http://localhost/alertmanager \
   --config.file=/etc/alertmanager/alertmanager.yml \
   --storage.path=/var/lib/alertmanager

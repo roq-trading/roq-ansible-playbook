@@ -16,38 +16,36 @@
     - python
     - docker
 
-- hosts: onload
-  roles:
-    - onload
-
 - hosts: all
   roles:
     - conda
     - roq-tools
 
-- hosts: dev
-  roles:
-    - toolchain
-    - virtualbox
-    - vagrant
-
-- hosts: trading
+- hosts: clickhouse
   roles:
     - clickhouse
-    - influxdb
-    - redis
 
 - hosts: roq_clickhouse
   roles:
     - roq-clickhouse
 
+- hosts: influxdb
+  roles:
+    - influxdb
+
 - hosts: roq_influxdb
   roles:
     - roq-influxdb
 
+- hosts: redis
+  roles:
+    - redis
+
 - hosts: roq_redis
   roles:
     - roq-redis
+
+# TODO: kafka
 
 - hosts: roq_kafka
   roles:
@@ -93,11 +91,6 @@
   roles:
     - prometheus
     - grafana
-
-- hosts: cicd
-  roles:
-    - gogs
-    - teamcity
 
 - hosts: all
   roles:

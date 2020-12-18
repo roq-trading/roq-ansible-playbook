@@ -9,10 +9,9 @@ datasources:
     editable: true
     isDefault: true
     type: "prometheus"
-    url: "http://prometheus.service:{{ prometheus.port }}/prometheus"
+    url: "http://prometheus.service:{{ prometheus_config.port }}/prometheus"
     version: 1
-{% if 'trading' in groups %}
-
+{% if 'clickhouse' in groups %}
   - name: "ClickHouse"
     orgId: 1
     access: "proxy"
@@ -20,7 +19,8 @@ datasources:
     isDefault: false
     type: "clickhouse"
     url: "http://clickhouse.service:{{ clickhouse_config.http_port }}"
-
+{% endif %}
+{% if 'influxdb' in groups %}
   - name: "InfluxDB"
     orgId: 1
     access: "proxy"

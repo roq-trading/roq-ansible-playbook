@@ -10,6 +10,8 @@ roq_kafka_defaults:
     verbosity: 0
   options:
     name: "kafka"
-    uri: "http://localhost:8086"
+    metrics_listen_address: "{{ root }}/run/roq/metrics/roq-kafka.sock"
+    event_log_dir: "{{ root }}/var/lib/roq/data"
+    uri: "tcp://localhost:9092"
     database_name: "roq"
     create_database: true

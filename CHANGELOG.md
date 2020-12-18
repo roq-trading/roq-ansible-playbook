@@ -6,14 +6,17 @@ All notable changes will be documented in this file.
 
 ### Changed
 
-* TeamCity
-
-  * Now using teamcity-minimal-agent
-
 * Added
 
   * roq-tools
   * roq-kafka
+
+### Removed
+
+* gogs
+* teamcity
+* virtualbox
+* vagrant
 
 ## 0.5.0 &ndash; 2020-12-04
 

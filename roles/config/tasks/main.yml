@@ -8,34 +8,46 @@
           {{ clickhouse_defaults | combine(clickhouse | default({}), recursive=True) }}
       cacheable: true
 
-  - name: create grafana config
-    set_fact:
-      grafana_config: >
-          {{ grafana_defaults | combine(grafana | default({}), recursive=True) }}
-      cacheable: true
-
-  - name: create gogs config
-    set_fact:
-      gogs_config: >
-          {{ gogs_defaults | combine(gogs | default({}), recursive=True) }}
-      cacheable: true
-
   - name: create influxdb config
     set_fact:
       influxdb_config: >
           {{ influxdb_defaults | combine(influxdb | default({}), recursive=True) }}
       cacheable: true
 
-  - name: create nginx config
-    set_fact:
-      nginx_config: >
-          {{ nginx_defaults | combine(nginx | default({}), recursive=True) }}
-      cacheable: true
-
   - name: create redis config
     set_fact:
       redis_config: >
           {{ redis_defaults | combine(redis | default({}), recursive=True) }}
+      cacheable: true
+
+  - name: create node_exporter config
+    set_fact:
+      node_exporter_config: >
+          {{ node_exporter_defaults | combine(node_exporter | default({}), recursive=True) }}
+      cacheable: true
+
+  - name: create prometheus config
+    set_fact:
+      prometheus_config: >
+          {{ prometheus_defaults | combine(prometheus | default({}), recursive=True) }}
+      cacheable: true
+
+  - name: create alertmanager config
+    set_fact:
+      alertmanager_config: >
+          {{ alertmanager_defaults | combine(alertmanager | default({}), recursive=True) }}
+      cacheable: true
+
+  - name: create grafana config
+    set_fact:
+      grafana_config: >
+          {{ grafana_defaults | combine(grafana | default({}), recursive=True) }}
+      cacheable: true
+
+  - name: create nginx config
+    set_fact:
+      nginx_config: >
+          {{ nginx_defaults | combine(nginx | default({}), recursive=True) }}
       cacheable: true
 
   tags:

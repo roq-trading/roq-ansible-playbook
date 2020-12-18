@@ -16,7 +16,7 @@ ExecStart=/usr/bin/docker run --rm --name %n \
   --network roq-network \
   --volume {{ (root + '/usr/local/etc/prometheus') | roq_realpath }}:/etc/prometheus:ro \
   --volume {{ (root + '/var/lib/prometheus') | roq_realpath }}:/var/lib/prometheus \
-  {{ docker_registry_prefix | default('') }}{{ prometheus.docker.name }}:{{ prometheus.docker.tag }} \
+  {{ docker_registry_prefix | default('') }}{{ prometheus_config.docker.name }}:{{ prometheus_config.docker.tag }} \
   --web.external-url=http://localhost/prometheus \
   --config.file=/etc/prometheus/prometheus.yml \
   --storage.tsdb.path=/var/lib/prometheus

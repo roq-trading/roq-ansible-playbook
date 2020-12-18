@@ -16,7 +16,7 @@ ExecStart=/usr/bin/docker run --rm --name %n -i \
   --security-opt apparmor=unconfined \
   --network roq-network \
   --volume /run/systemd:/run/systemd \
-  {{ docker_registry_prefix | default('') }}{{ node_exporter.docker.name }}:{{ node_exporter.docker.tag }} \
+  {{ docker_registry_prefix | default('') }}{{ node_exporter_config.docker.name }}:{{ node_exporter_config.docker.tag }} \
   --collector.systemd \
   --collector.interrupts \
   --collector.processes

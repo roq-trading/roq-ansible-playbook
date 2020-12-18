@@ -13,7 +13,7 @@ roq_binance_defaults:
   options:
     name: "binance"
     config_file: "{{ root }}/usr/local/etc/roq-binance/config.toml"
-    event_log_dir: "{{ root }}/var/lib/roq/event-logs"
+    event_log_dir: "{{ root }}/var/lib/roq/data"
     client_listen_address: "{{ root }}/run/roq/roq-binance.sock"
     metrics_listen_address: "{{ root }}/run/roq/metrics/roq-binance.sock"
     rest_uri: "https://testnet.binance.com"

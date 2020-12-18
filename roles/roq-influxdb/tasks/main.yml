@@ -32,7 +32,7 @@
       mode: 0755
     with_items:
       - "/var/lib/roq"
-      - "/var/lib/roq/event-logs"
+      - "/var/lib/roq/data"
       - "/usr/local/etc/roq-influxdb"
 
   - name: create config

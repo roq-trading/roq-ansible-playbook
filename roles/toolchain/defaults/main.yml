@@ -1,4 +1,0 @@
----
-
-conda_cc: '{{ "clang_osx-64" if ansible_os_family == "Darwin" else "gcc_linux-64" }}'
-conda_cxx: '{{ "clangxx_osx-64" if ansible_os_family == "Darwin" else "gxx_linux-64" }}'
