@@ -28,6 +28,15 @@
     notify:
       - restart nginx
   
+  - name: logrotate
+    template:
+      src: "templates/logrotate.conf"
+      dest: "{{ directory_config.etc }}/logrotate.d/nginx"
+      owner: root
+      mode: 0644
+    notify:
+      - restart logrotate
+
   - name: docker pull images
     docker_image:
       name: "{{ docker_registry_prefix | default('') }}{{ nginx_config.docker.name }}"

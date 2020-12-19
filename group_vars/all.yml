@@ -15,9 +15,11 @@ roq_use_docker: false
 # FSH
 
 directory_defaults:
+  etc: "{{ (root + '/etc/') | roq_realpath }}"
   opt: "{{ (root + '/opt/') | roq_realpath }}"
   run: "{{ (root + '/run/') | roq_realpath }}"
   usr: "{{ (root + '/usr/') | roq_realpath }}"
+  usr_bin: "{{ (root + '/usr/bin/') | roq_realpath }}"
   usr_local: "{{ (root + '/usr/local/') | roq_realpath }}"
   usr_local_bin: "{{ (root + '/usr/local/bin/') | roq_realpath }}"
   usr_local_etc: "{{ (root + '/usr/local/etc/') | roq_realpath }}"

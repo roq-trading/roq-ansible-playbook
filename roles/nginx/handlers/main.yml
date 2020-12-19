@@ -11,3 +11,9 @@
     name: nginx
     state: reloaded
   become: true
+
+- name: restart logrotate
+  service:
+    name: logrotate
+    state: restarted
+  become: true

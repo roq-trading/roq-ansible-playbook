@@ -19,7 +19,7 @@
       - "{{ directory_config.usr_local_etc }}"
       - "{{ directory_config.var }}"
       - "{{ directory_config.var_lib }}"
-      - "{{ directory_config.var_log }}"  # XXX review (only used by teamcity)
+      - "{{ directory_config.var_log }}"  # XXX review (only used by nginx)
 
 # TODO(thraneh): or maybe the condition should be root != '/' ?
   when: become_user is not defined
