@@ -5,7 +5,7 @@ anaconda:
   sources:
     - "defaults"
 
-miniconda_sh: 'Miniconda3-latest-{{ "MacOSX" if ansible_os_family == "Darwin" else "Linux" }}-x86_64.sh'
+miniconda_sh: 'Miniconda3-latest-{{ "MacOSX" if ansible_os_family == "Darwin" else "Linux" }}-{{ ansible_architecture }}.sh'
 
 roq:
   url: "https://roq-trading.com"

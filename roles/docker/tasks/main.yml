@@ -50,13 +50,28 @@
     register: ubuntu_version
     changed_when: false
 
+  - name: distribution version (debug)
+    debug:
+      var: ubuntu_version
+      verbosity: 1
+
   - name: get distribution name
     set_fact: 
       distribution: "{{ ansible_distribution | lower }}"
 
+  - name: find distribution architecture
+    command: "dpkg --print-architecture"
+    register: dpkg_architecture
+    changed_when: false
+
+  - name: distribution architecture (debug)
+    debug:
+      var: dpkg_architecture
+      verbosity: 1
+
   - name: add docker repository
     apt_repository:
-      repo: "deb [arch=amd64] https://download.docker.com/linux/{{ distribution }} {{ ubuntu_version.stdout }} stable"
+      repo: "deb [arch={{ dpkg_architecture.stdout }}] https://download.docker.com/linux/{{ distribution }} {{ ubuntu_version.stdout }} stable"
       state: present
 
   - name: install docker-ce

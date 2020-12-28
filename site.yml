@@ -16,7 +16,7 @@
     - python
     - docker
 
-- hosts: all
+- hosts: trading
   roles:
     - conda
     - roq-tools

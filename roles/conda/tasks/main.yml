@@ -34,5 +34,6 @@
       mode: 0644
   
   become: "{{ 'true' if become_user is defined else 'false' }}"
+  when: ansible_architecture == "x86_64"
   tags:
     - conda
