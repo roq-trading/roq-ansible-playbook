@@ -6,6 +6,8 @@ All notable changes will be documented in this file.
 
 ### Changed
 
+* Using Miniforge3
+
 * Added
 
   * roq-tools

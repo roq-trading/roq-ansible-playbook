@@ -9,31 +9,23 @@
     with_items:
       - "{{ directory_config.opt }}/conda"
   
-  - name: download {{ anaconda.url }}/miniconda/{{ miniconda_sh }}
+  - name: download installer
     get_url:
-      url: "{{ anaconda.url }}/miniconda/{{ miniconda_sh }}"
+      url: "{{ conda.url }}/{{ conda.script }}"
       dest: "{{ directory_config.opt }}"
       mode: 0644
   
-  - name: create {{ directory_config.usr_local_bin }}/{{ miniconda_sh }}
-    file:
-      src: "{{ directory_config.opt }}/{{ miniconda_sh }}"
-      dest: "{{ directory_config.usr_local_bin }}/{{ miniconda_sh }}"
-      owner: "{{ roq_user }}"
-      state: link
-  
-  - name: install {{ directory_config.usr_local_bin }}/conda
-    shell: "bash {{ directory_config.usr_local_bin }}/{{ miniconda_sh }} -b -u -p {{ directory_config.opt }}/conda"
+  - name: install
+    shell: "bash {{ directory_config.opt }}/{{ conda.script }} -b -u -p {{ directory_config.opt }}/conda"
     args:
       creates: "{{ directory_config.opt }}/conda/bin/activate"
   
-  - name: create {{ directory_config.opt }}/conda/.condarc
+  - name: create .condarc
     template:
       src: "templates/condarc"
       dest: "{{ directory_config.opt }}/conda/.condarc"
       mode: 0644
   
   become: "{{ 'true' if become_user is defined else 'false' }}"
-  when: ansible_architecture == "x86_64"
   tags:
     - conda

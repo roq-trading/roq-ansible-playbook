@@ -1,11 +1,10 @@
 ---
 
-anaconda:
-  url: "https://repo.continuum.io"
+conda:
+  url: "https://github.com/conda-forge/miniforge/releases/latest/download"
+  script: 'Miniforge3-{{ "MacOSX" if ansible_os_family == "Darwin" else "Linux" }}-{{ ansible_architecture }}.sh'
   sources:
-    - "defaults"
-
-miniconda_sh: 'Miniconda3-latest-{{ "MacOSX" if ansible_os_family == "Darwin" else "Linux" }}-{{ ansible_architecture }}.sh'
+    - "conda-forge"
 
 roq:
   url: "https://roq-trading.com"

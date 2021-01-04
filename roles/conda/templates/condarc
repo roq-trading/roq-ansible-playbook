@@ -3,6 +3,6 @@ channels:
 {% if roq.url is defined %}
   - {{ roq.url }}/conda/{{ roq_conda_channel }}
 {% endif %}
-{% for source in anaconda.sources %}
+{% for source in conda.sources %}
   - {{ source }}
 {% endfor %}
