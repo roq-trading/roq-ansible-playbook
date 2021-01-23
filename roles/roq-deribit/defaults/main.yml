@@ -10,7 +10,7 @@ roq_deribit_defaults:
     stop: "Sat *-*-* 23:59:00"
   logging:
     verbosity: 0
-  options:
+  flags:
     name: "deribit"
     config_file: "{{ directory_config.usr_local_etc }}/roq-deribit/config.toml"
     event_log_dir: "{{ directory_config.var_lib }}/roq/data"

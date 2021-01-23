@@ -8,7 +8,7 @@ roq_clickhouse_defaults:
   name: "clickhouse"
   logging:
     verbosity: 0
-  options:
+  flags:
     name: "clickhouse"
     metrics_listen_address: "{{ directory_config.run }}/roq/metrics/roq-clickhouse.sock"
     event_log_dir: "{{ directory_config.var_lib }}/roq/data"

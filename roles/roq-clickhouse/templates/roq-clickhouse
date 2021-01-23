@@ -2,6 +2,6 @@
 
 set -e
 
-ARGS="${@:-"--flagfile={{ directory_config.usr_local_etc }}/roq-clickhouse/options.gflags"}"
+ARGS="${@:-"--flagfile={{ directory_config.usr_local_etc }}/roq-clickhouse/flags.cfg"}"
 
 "{{ directory_config.opt }}/conda/bin/roq-clickhouse" "{{ directory_config.var_lib }}/roq/data" "$ARGS"

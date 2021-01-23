@@ -16,37 +16,37 @@
     with_items:
       - "{{ directory_config.var_lib }}/roq"
       - "{{ directory_config.var_lib }}/roq/data"
-      - "{{ directory_config.usr_local_etc }}//roq-{{ config.options.name }}"
+      - "{{ directory_config.usr_local_etc }}//roq-{{ config.flags.name }}"
 
-  - name: create config and options
+  - name: create config and flagfile
     template:
       src: "gateway/{{ item }}"
-      dest: "{{ directory_config.usr_local_etc }}/roq-{{ config.options.name }}"
+      dest: "{{ directory_config.usr_local_etc }}/roq-{{ config.flags.name }}"
       mode: 0644
     with_items:
-      - "options.gflags"
+      - "flags.cfg"
       - "config.toml"
 
   - name: create shell script
     template:
       src: "gateway/{{ item | basename }}"
-      dest: "{{ item | dirname }}/roq-{{ item | basename | replace('item', config.options.name) }}"
+      dest: "{{ item | dirname }}/roq-{{ item | basename | replace('item', config.flags.name) }}"
       mode: 0755
     with_items:
       - "{{ directory_config.usr_local_bin }}/item"
 
   - name: check previous version
-    shell: '{{ directory_config.opt }}/conda/bin/conda list -f roq-{{ config.options.name }} | sed -n "s/^roq-{{ config.options.name }}\s*\([0-9]\+\.[0-9]\+\.[0-9]\+\).*/\1/p"'
+    shell: '{{ directory_config.opt }}/conda/bin/conda list -f roq-{{ config.flags.name }} | sed -n "s/^roq-{{ config.flags.name }}\s*\([0-9]\+\.[0-9]\+\.[0-9]\+\).*/\1/p"'
     register: previous_version
     changed_when: false
 
   - name: install conda package
     shell: "{{ directory_config.opt }}/conda/bin/conda install -y -n base 
-      roq-{{ config.options.name }}{{ '' if config.version == 'latest' else '==%s'|format(config.version) }}"
+      roq-{{ config.flags.name }}{{ '' if config.version == 'latest' else '==%s'|format(config.version) }}"
     changed_when: false
   
   - name: check current version
-    shell: '{{ directory_config.opt }}/conda/bin/conda list -f roq-{{ config.options.name }} | sed -n "s/^roq-{{ config.options.name }}\s*\([0-9]\+\.[0-9]\+\.[0-9]\+\).*/\1/p"'
+    shell: '{{ directory_config.opt }}/conda/bin/conda list -f roq-{{ config.flags.name }} | sed -n "s/^roq-{{ config.flags.name }}\s*\([0-9]\+\.[0-9]\+\.[0-9]\+\).*/\1/p"'
     register: current_version
     changed_when: "current_version.stdout != previous_version.stdout"
 
@@ -61,7 +61,7 @@
   - name: create systemd files
     template:
       src: "gateway/{{ item | basename }}"
-      dest: "{{ item | dirname }}/roq-{{ item | basename | replace('item', config.options.name) }}"
+      dest: "{{ item | dirname }}/roq-{{ item | basename | replace('item', config.flags.name) }}"
       mode: "{{ 0755 if (item | splitext | last == '.sh') else 0644 }}"
     with_items:
       - "/etc/systemd/system/item.service"
@@ -81,14 +81,14 @@
   - name: define list of systemd services
     set_fact:
       systemd_services:
-      - 'roq-{{ config.options.name }}.service'
-      - 'roq-{{ config.options.name }}-stop.service'
+      - 'roq-{{ config.flags.name }}.service'
+      - 'roq-{{ config.flags.name }}-stop.service'
 
   - name: define list of systemd timers
     set_fact:
       systemd_timers:
-      - 'roq-{{ config.options.name }}.timer'
-      - 'roq-{{ config.options.name }}-stop.timer'
+      - 'roq-{{ config.flags.name }}.timer'
+      - 'roq-{{ config.flags.name }}-stop.timer'
 
   - name: disable systemd services
     systemd:

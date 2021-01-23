@@ -43,7 +43,7 @@
       # group: "{{ roq_user }}"
       mode: 0640
     with_items:
-      - "options.gflags"
+      - "flags.cfg"
 
   - name: create shell script
     template:

@@ -11,7 +11,7 @@ ExecStart=/usr/bin/docker run --rm --name %n -i \
   --volume {{ (directory_config.usr_local_etc + '/roq-influxdb') | roq_realpath }}:/usr/local/etc/roq-influxdb \
   --env ROQ_v={{ config.logging.verbosity }} \
   {{ docker_registry_prefix | default('') }}{{ config.docker.name }}:{{ config.version }} \
-  --flagfile "/usr/local/etc/roq-influxdb/options.gflags" \
+  --flagfile "/usr/local/etc/roq-influxdb/flags.cfg" \
   "/var/lib/roq/data"
 {% else %}
 User={{ roq_user }}
@@ -20,7 +20,7 @@ UMask=0000
 # Restart=on-abnormal
 Environment="ROQ_v={{ config.logging.verbosity }}"
 ExecStart={{ (directory_config.opt + '/conda/bin/roq-influxdb') | roq_realpath }} \
-  --flagfile "{{ (directory_config.usr_local_etc + '/roq-influxdb/options.gflags') | roq_realpath }}" \
+  --flagfile "{{ (directory_config.usr_local_etc + '/roq-influxdb/flags.cfg') | roq_realpath }}" \
   "{{ (directory_config.var_lib + '/roq/data') | roq_realpath }}"
 {% endif %}
 

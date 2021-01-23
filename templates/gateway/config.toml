@@ -1,4 +1,4 @@
-# config file for the roq-{{ config.options.name }} gateway
+# config file for the roq-{{ config.flags.name }} gateway
 
 # symbols to subscribe from exchange
 {{ config.symbols | roq_toml_symbols }}

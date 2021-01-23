@@ -8,7 +8,7 @@ roq_influxdb_defaults:
   name: "influxdb"
   logging:
     verbosity: 0
-  options:
+  flags:
     name: "influxdb"
     metrics_listen_address: "{{ directory_config.run }}/roq/metrics/roq-influxdb.sock"
     event_log_dir: "{{ directory_config.var_lib }}/roq/data"

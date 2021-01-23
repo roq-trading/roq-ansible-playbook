@@ -2,9 +2,9 @@
 
 set -e
 
-BIN="{{ (directory_config.opt + '/conda/bin/roq-' + config.options.name) | roq_realpath }}"
+BIN="{{ (directory_config.opt + '/conda/bin/roq-' + config.flags.name) | roq_realpath }}"
 
-ARGS="${@:-"--flagfile={{ (directory_config.usr_local_etc + '/roq-' + config.options.name) | roq_realpath }}/options.gflags"}"
+ARGS="${@:-"--flagfile={{ (directory_config.usr_local_etc + '/roq-' + config.flags.name) | roq_realpath }}/flags.cfg"}"
 
 if [[ $- == *i* ]]; then
   exec "$BIN" "$ARGS"

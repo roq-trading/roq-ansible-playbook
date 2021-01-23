@@ -6,6 +6,7 @@ All notable changes will be documented in this file.
 
 ### Changed
 
+* All Roq services now use `flags` (instead of `options`)
 * Using Miniforge3
 
 * Added

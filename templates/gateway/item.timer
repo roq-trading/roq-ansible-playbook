@@ -1,5 +1,5 @@
 [Unit]
-Description=roq-{{ config.options.name }} timer
+Description=roq-{{ config.flags.name }} timer
 
 [Timer]
 OnCalendar={{ config.service.start }}
