@@ -14,4 +14,3 @@ roq_influxdb_defaults:
     event_log_dir: "{{ directory_config.var_lib }}/roq/data"
     uri: "http://localhost:8086"
     database_name: "roq"
-    create_database: true

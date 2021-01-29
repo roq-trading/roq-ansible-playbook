@@ -41,7 +41,7 @@
       dest: "{{ directory_config.usr_local_etc }}/roq-influxdb/{{ item }}"
       owner: "{{ roq_user }}"
       # group: "{{ roq_user }}"
-      mode: 0640
+      mode: 0644
     with_items:
       - "flags.cfg"
 
