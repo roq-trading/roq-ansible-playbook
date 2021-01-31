@@ -19,6 +19,5 @@ roq_bitstamp_defaults:
     ws_uri: "wss://ws.bitstamp.net"
     rest_uri: "https://www.bitstamp.net"
     fix_uri: "tcp+ssl://fix.bitstamp.net:8905"
-    cache_mbp_allow_price_inversion: true
   symbols:
     - ".*"
