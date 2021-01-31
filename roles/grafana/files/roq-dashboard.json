@@ -2965,13 +2965,634 @@
       "type": "row"
     },
     {
-      "collapsed": false,
+      "collapsed": true,
       "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
         "y": 16
+      },
+      "id": 253,
+      "panels": [
+        {
+          "cacheTimeout": null,
+          "colorBackground": true,
+          "colorValue": false,
+          "colors": [
+            "#d44a3a",
+            "rgba(237, 129, 40, 0.89)",
+            "#299c46"
+          ],
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
+          "format": "none",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
+          "gridPos": {
+            "h": 2,
+            "w": 2,
+            "x": 0,
+            "y": 17
+          },
+          "id": 254,
+          "interval": null,
+          "links": [],
+          "mappingType": 1,
+          "mappingTypes": [
+            {
+              "name": "value to text",
+              "value": 1
+            },
+            {
+              "name": "range to text",
+              "value": 2
+            }
+          ],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "pluginVersion": "6.4.3",
+          "postfix": "",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
+          "rangeMaps": [
+            {
+              "from": "null",
+              "text": "N/A",
+              "to": "null"
+            }
+          ],
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": false,
+            "ymax": null,
+            "ymin": null
+          },
+          "tableColumn": "",
+          "targets": [
+            {
+              "expr": "ceil(node_systemd_unit_state{name=\"kafka.service\",state=\"active\"})",
+              "interval": "",
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "thresholds": "0,1",
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Service",
+          "type": "singlestat",
+          "valueFontSize": "80%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "UP",
+              "value": "1"
+            },
+            {
+              "op": "=",
+              "text": "DOWN",
+              "value": "0"
+            }
+          ],
+          "valueName": "current"
+        },
+        {
+          "cacheTimeout": null,
+          "colorBackground": true,
+          "colorValue": false,
+          "colors": [
+            "#299c46",
+            "rgba(237, 129, 40, 0.89)",
+            "#d44a3a"
+          ],
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
+          "format": "none",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
+          "gridPos": {
+            "h": 2,
+            "w": 2,
+            "x": 2,
+            "y": 17
+          },
+          "id": 255,
+          "interval": null,
+          "links": [],
+          "mappingType": 1,
+          "mappingTypes": [
+            {
+              "name": "value to text",
+              "value": 1
+            },
+            {
+              "name": "range to text",
+              "value": 2
+            }
+          ],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "pluginVersion": "6.4.3",
+          "postfix": "",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
+          "rangeMaps": [
+            {
+              "from": "null",
+              "text": "N/A",
+              "to": "null"
+            }
+          ],
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": false,
+            "ymax": 1,
+            "ymin": 0
+          },
+          "tableColumn": "",
+          "targets": [
+            {
+              "expr": "absent(rate(node_systemd_unit_state{name=\"roq-kafka.service\",state=\"active\"}[10s])) or vector(0)",
+              "interval": "",
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "thresholds": "0.1,1",
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Adapter",
+          "type": "singlestat",
+          "valueFontSize": "80%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "UP",
+              "value": "0"
+            },
+            {
+              "op": "=",
+              "text": "DOWN",
+              "value": "1"
+            }
+          ],
+          "valueName": "current"
+        },
+        {
+          "cacheTimeout": null,
+          "colorBackground": false,
+          "colorValue": false,
+          "colors": [
+            "#299c46",
+            "rgba(237, 129, 40, 0.89)",
+            "#d44a3a"
+          ],
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
+          "format": "short",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
+          "gridPos": {
+            "h": 2,
+            "w": 2,
+            "x": 6,
+            "y": 17
+          },
+          "id": 256,
+          "interval": null,
+          "links": [],
+          "mappingType": 1,
+          "mappingTypes": [
+            {
+              "name": "value to text",
+              "value": 1
+            },
+            {
+              "name": "range to text",
+              "value": 2
+            }
+          ],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "pluginVersion": "6.4.3",
+          "postfix": "",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
+          "rangeMaps": [
+            {
+              "from": "null",
+              "text": "N/A",
+              "to": "null"
+            }
+          ],
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": true,
+            "ymax": 1,
+            "ymin": 0
+          },
+          "tableColumn": "",
+          "targets": [
+            {
+              "expr": "max(roq_export{source=\"kafka\", name=\"messages\"})",
+              "instant": true,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "thresholds": "0,1",
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Events (total)",
+          "transparent": true,
+          "type": "singlestat",
+          "valueFontSize": "50%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "",
+              "value": "0"
+            }
+          ],
+          "valueName": "current"
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "custom": {},
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 0,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 4,
+            "w": 3,
+            "x": 10,
+            "y": 17
+          },
+          "hiddenSeries": false,
+          "id": 257,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "hideEmpty": true,
+            "hideZero": true,
+            "max": true,
+            "min": false,
+            "rightSide": true,
+            "show": false,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.3.7",
+          "pointradius": 0.5,
+          "points": true,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "sum by (source, name) (irate(roq_events{job=\"roq-kafka\"}[1m]))",
+              "hide": false,
+              "instant": false,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Parse Events (frequency)",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "transparent": true,
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:1473",
+              "decimals": 0,
+              "format": "cps",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "$$hashKey": "object:1474",
+              "decimals": 0,
+              "format": "cps",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "custom": {},
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 0,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 4,
+            "w": 3,
+            "x": 13,
+            "y": 17
+          },
+          "hiddenSeries": false,
+          "id": 258,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "hideEmpty": true,
+            "hideZero": true,
+            "max": true,
+            "min": false,
+            "rightSide": true,
+            "show": false,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.3.7",
+          "pointradius": 0.5,
+          "points": true,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "sum by (source, table) (irate(roq_export{name='messages',source='kafka'}[1m]))",
+              "hide": false,
+              "instant": false,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Export Events (frequency)",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "transparent": true,
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:1473",
+              "decimals": 0,
+              "format": "cps",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "$$hashKey": "object:1474",
+              "decimals": 0,
+              "format": "cps",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "custom": {},
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 0,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 4,
+            "w": 3,
+            "x": 16,
+            "y": 17
+          },
+          "hiddenSeries": false,
+          "id": 259,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "hideEmpty": true,
+            "hideZero": true,
+            "max": true,
+            "min": false,
+            "rightSide": true,
+            "show": false,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.3.7",
+          "pointradius": 0.5,
+          "points": true,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "sum by (source, table) (irate(roq_export{name='bytes', source='kafka'}[1m]))",
+              "hide": false,
+              "instant": false,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Export (bytes)",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "transparent": true,
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:1427",
+              "decimals": 0,
+              "format": "Bps",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "$$hashKey": "object:1428",
+              "decimals": 0,
+              "format": "cps",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        }
+      ],
+      "title": "Kafka",
+      "type": "row"
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 17
       },
       "id": 212,
       "panels": [],
@@ -3006,7 +3627,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 17
+        "y": 18
       },
       "id": 213,
       "interval": null,
@@ -3105,7 +3726,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 17
+        "y": 18
       },
       "id": 215,
       "interval": null,
@@ -3203,7 +3824,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 17
+        "y": 18
       },
       "id": 217,
       "interval": null,
@@ -3301,7 +3922,7 @@
         "h": 2,
         "w": 2,
         "x": 6,
-        "y": 17
+        "y": 18
       },
       "id": 219,
       "interval": null,
@@ -3396,7 +4017,7 @@
         "h": 2,
         "w": 2,
         "x": 8,
-        "y": 17
+        "y": 18
       },
       "id": 221,
       "interval": null,
@@ -3481,7 +4102,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 17
+        "y": 18
       },
       "hiddenSeries": false,
       "id": 222,
@@ -3581,7 +4202,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 17
+        "y": 18
       },
       "hiddenSeries": false,
       "id": 223,
@@ -3688,7 +4309,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 17
+        "y": 18
       },
       "hiddenSeries": false,
       "id": 224,
@@ -3806,7 +4427,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 17
+        "y": 18
       },
       "id": 225,
       "links": [],
@@ -3867,7 +4488,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 19
+        "y": 20
       },
       "id": 214,
       "interval": null,
@@ -3960,7 +4581,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 19
+        "y": 20
       },
       "id": 216,
       "interval": null,
@@ -4053,7 +4674,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 19
+        "y": 20
       },
       "id": 218,
       "interval": null,
@@ -4143,7 +4764,7 @@
         "h": 2,
         "w": 2,
         "x": 6,
-        "y": 19
+        "y": 20
       },
       "id": 220,
       "interval": null,
@@ -4215,7 +4836,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 21
+        "y": 22
       },
       "id": 134,
       "panels": [],
@@ -4250,7 +4871,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 22
+        "y": 23
       },
       "id": 135,
       "interval": null,
@@ -4347,7 +4968,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 22
+        "y": 23
       },
       "id": 137,
       "interval": null,
@@ -4443,7 +5064,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 22
+        "y": 23
       },
       "id": 139,
       "interval": null,
@@ -4539,7 +5160,7 @@
         "h": 2,
         "w": 2,
         "x": 6,
-        "y": 22
+        "y": 23
       },
       "id": 141,
       "interval": null,
@@ -4632,7 +5253,7 @@
         "h": 2,
         "w": 2,
         "x": 8,
-        "y": 22
+        "y": 23
       },
       "id": 146,
       "interval": null,
@@ -4715,7 +5336,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 22
+        "y": 23
       },
       "hiddenSeries": false,
       "id": 143,
@@ -4815,7 +5436,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 22
+        "y": 23
       },
       "hiddenSeries": false,
       "id": 189,
@@ -4922,7 +5543,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 22
+        "y": 23
       },
       "hiddenSeries": false,
       "id": 144,
@@ -5040,7 +5661,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 22
+        "y": 23
       },
       "id": 145,
       "links": [],
@@ -5100,7 +5721,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 24
+        "y": 25
       },
       "id": 136,
       "interval": null,
@@ -5191,7 +5812,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 24
+        "y": 25
       },
       "id": 138,
       "interval": null,
@@ -5282,7 +5903,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 24
+        "y": 25
       },
       "id": 140,
       "interval": null,
@@ -5372,7 +5993,7 @@
         "h": 2,
         "w": 2,
         "x": 6,
-        "y": 24
+        "y": 25
       },
       "id": 142,
       "interval": null,
@@ -5442,7 +6063,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 26
+        "y": 27
       },
       "id": 148,
       "panels": [],
@@ -5477,7 +6098,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 27
+        "y": 28
       },
       "id": 151,
       "interval": null,
@@ -5580,7 +6201,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 27
+        "y": 28
       },
       "id": 165,
       "interval": null,
@@ -5678,7 +6299,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 27
+        "y": 28
       },
       "id": 167,
       "interval": null,
@@ -5776,7 +6397,7 @@
         "h": 2,
         "w": 2,
         "x": 6,
-        "y": 27
+        "y": 28
       },
       "id": 169,
       "interval": null,
@@ -5871,7 +6492,7 @@
         "h": 2,
         "w": 2,
         "x": 8,
-        "y": 27
+        "y": 28
       },
       "id": 171,
       "interval": null,
@@ -5956,7 +6577,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 27
+        "y": 28
       },
       "hiddenSeries": false,
       "id": 172,
@@ -6056,7 +6677,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 27
+        "y": 28
       },
       "hiddenSeries": false,
       "id": 190,
@@ -6163,7 +6784,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 27
+        "y": 28
       },
       "hiddenSeries": false,
       "id": 173,
@@ -6281,7 +6902,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 27
+        "y": 28
       },
       "id": 174,
       "links": [],
@@ -6342,7 +6963,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 29
+        "y": 30
       },
       "id": 152,
       "interval": null,
@@ -6435,7 +7056,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 29
+        "y": 30
       },
       "id": 166,
       "interval": null,
@@ -6528,7 +7149,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 29
+        "y": 30
       },
       "id": 168,
       "interval": null,
@@ -6618,7 +7239,7 @@
         "h": 2,
         "w": 2,
         "x": 6,
-        "y": 29
+        "y": 30
       },
       "id": 170,
       "interval": null,
@@ -6690,7 +7311,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 31
+        "y": 32
       },
       "id": 4,
       "panels": [],
@@ -6725,7 +7346,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 32
+        "y": 33
       },
       "id": 7,
       "interval": null,
@@ -6815,7 +7436,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 32
+        "y": 33
       },
       "id": 32,
       "interval": null,
@@ -6911,7 +7532,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 32
+        "y": 33
       },
       "id": 33,
       "interval": null,
@@ -7007,7 +7628,7 @@
         "h": 2,
         "w": 2,
         "x": 6,
-        "y": 32
+        "y": 33
       },
       "id": 20,
       "interval": null,
@@ -7100,7 +7721,7 @@
         "h": 2,
         "w": 2,
         "x": 8,
-        "y": 32
+        "y": 33
       },
       "id": 95,
       "interval": null,
@@ -7183,7 +7804,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 32
+        "y": 33
       },
       "hiddenSeries": false,
       "id": 108,
@@ -7283,7 +7904,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 32
+        "y": 33
       },
       "hiddenSeries": false,
       "id": 191,
@@ -7390,7 +8011,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 32
+        "y": 33
       },
       "hiddenSeries": false,
       "id": 70,
@@ -7508,7 +8129,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 32
+        "y": 33
       },
       "id": 132,
       "links": [],
@@ -7568,7 +8189,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 34
+        "y": 35
       },
       "id": 74,
       "interval": null,
@@ -7659,7 +8280,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 34
+        "y": 35
       },
       "id": 73,
       "interval": null,
@@ -7750,7 +8371,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 34
+        "y": 35
       },
       "id": 68,
       "interval": null,
@@ -7840,7 +8461,7 @@
         "h": 2,
         "w": 2,
         "x": 6,
-        "y": 34
+        "y": 35
       },
       "id": 22,
       "interval": null,
@@ -7910,7 +8531,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 36
+        "y": 37
       },
       "id": 11,
       "panels": [],
@@ -7945,7 +8566,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 37
+        "y": 38
       },
       "id": 2,
       "interval": null,
@@ -8042,7 +8663,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 37
+        "y": 38
       },
       "id": 34,
       "interval": null,
@@ -8138,7 +8759,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 37
+        "y": 38
       },
       "id": 35,
       "interval": null,
@@ -8234,7 +8855,7 @@
         "h": 2,
         "w": 2,
         "x": 6,
-        "y": 37
+        "y": 38
       },
       "id": 21,
       "interval": null,
@@ -8327,7 +8948,7 @@
         "h": 2,
         "w": 2,
         "x": 8,
-        "y": 37
+        "y": 38
       },
       "id": 109,
       "interval": null,
@@ -8410,7 +9031,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 37
+        "y": 38
       },
       "hiddenSeries": false,
       "id": 96,
@@ -8508,7 +9129,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 37
+        "y": 38
       },
       "hiddenSeries": false,
       "id": 192,
@@ -8615,7 +9236,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 37
+        "y": 38
       },
       "hiddenSeries": false,
       "id": 71,
@@ -8733,7 +9354,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 37
+        "y": 38
       },
       "id": 131,
       "links": [],
@@ -8793,7 +9414,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 39
+        "y": 40
       },
       "id": 75,
       "interval": null,
@@ -8886,7 +9507,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 39
+        "y": 40
       },
       "id": 72,
       "interval": null,
@@ -8977,7 +9598,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 39
+        "y": 40
       },
       "id": 69,
       "interval": null,
@@ -9067,7 +9688,7 @@
         "h": 2,
         "w": 2,
         "x": 6,
-        "y": 39
+        "y": 40
       },
       "id": 23,
       "interval": null,
@@ -9137,7 +9758,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 41
+        "y": 42
       },
       "id": 150,
       "panels": [],
@@ -9172,7 +9793,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 42
+        "y": 43
       },
       "id": 153,
       "interval": null,
@@ -9271,7 +9892,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 42
+        "y": 43
       },
       "id": 155,
       "interval": null,
@@ -9369,7 +9990,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 42
+        "y": 43
       },
       "id": 157,
       "interval": null,
@@ -9467,7 +10088,7 @@
         "h": 2,
         "w": 2,
         "x": 6,
-        "y": 42
+        "y": 43
       },
       "id": 159,
       "interval": null,
@@ -9562,7 +10183,7 @@
         "h": 2,
         "w": 2,
         "x": 8,
-        "y": 42
+        "y": 43
       },
       "id": 161,
       "interval": null,
@@ -9647,7 +10268,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 42
+        "y": 43
       },
       "hiddenSeries": false,
       "id": 162,
@@ -9747,7 +10368,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 42
+        "y": 43
       },
       "hiddenSeries": false,
       "id": 193,
@@ -9854,7 +10475,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 42
+        "y": 43
       },
       "hiddenSeries": false,
       "id": 163,
@@ -9972,7 +10593,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 42
+        "y": 43
       },
       "id": 164,
       "links": [],
@@ -10033,7 +10654,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 44
+        "y": 45
       },
       "id": 154,
       "interval": null,
@@ -10126,7 +10747,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 44
+        "y": 45
       },
       "id": 156,
       "interval": null,
@@ -10219,7 +10840,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 44
+        "y": 45
       },
       "id": 158,
       "interval": null,
@@ -10309,7 +10930,7 @@
         "h": 2,
         "w": 2,
         "x": 6,
-        "y": 44
+        "y": 45
       },
       "id": 160,
       "interval": null,
@@ -10381,7 +11002,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 46
+        "y": 47
       },
       "id": 116,
       "panels": [],
@@ -10416,7 +11037,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 47
+        "y": 48
       },
       "id": 117,
       "interval": null,
@@ -10513,7 +11134,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 47
+        "y": 48
       },
       "id": 118,
       "interval": null,
@@ -10609,7 +11230,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 47
+        "y": 48
       },
       "id": 119,
       "interval": null,
@@ -10705,7 +11326,7 @@
         "h": 2,
         "w": 2,
         "x": 6,
-        "y": 47
+        "y": 48
       },
       "id": 120,
       "interval": null,
@@ -10798,7 +11419,7 @@
         "h": 2,
         "w": 2,
         "x": 8,
-        "y": 47
+        "y": 48
       },
       "id": 125,
       "interval": null,
@@ -10881,7 +11502,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 47
+        "y": 48
       },
       "hiddenSeries": false,
       "id": 126,
@@ -10979,7 +11600,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 47
+        "y": 48
       },
       "hiddenSeries": false,
       "id": 194,
@@ -11086,7 +11707,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 47
+        "y": 48
       },
       "hiddenSeries": false,
       "id": 127,
@@ -11204,7 +11825,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 47
+        "y": 48
       },
       "id": 130,
       "links": [],
@@ -11264,7 +11885,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 49
+        "y": 50
       },
       "id": 121,
       "interval": null,
@@ -11355,7 +11976,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 49
+        "y": 50
       },
       "id": 122,
       "interval": null,
@@ -11446,7 +12067,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 49
+        "y": 50
       },
       "id": 123,
       "interval": null,
@@ -11536,7 +12157,7 @@
         "h": 2,
         "w": 2,
         "x": 6,
-        "y": 49
+        "y": 50
       },
       "id": 124,
       "interval": null,
@@ -11606,7 +12227,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 51
+        "y": 52
       },
       "id": 176,
       "panels": [],
@@ -11641,7 +12262,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 52
+        "y": 53
       },
       "id": 177,
       "interval": null,
@@ -11740,7 +12361,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 52
+        "y": 53
       },
       "id": 179,
       "interval": null,
@@ -11838,7 +12459,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 52
+        "y": 53
       },
       "id": 181,
       "interval": null,
@@ -11936,7 +12557,7 @@
         "h": 2,
         "w": 2,
         "x": 6,
-        "y": 52
+        "y": 53
       },
       "id": 183,
       "interval": null,
@@ -12031,7 +12652,7 @@
         "h": 2,
         "w": 2,
         "x": 8,
-        "y": 52
+        "y": 53
       },
       "id": 185,
       "interval": null,
@@ -12116,7 +12737,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 52
+        "y": 53
       },
       "hiddenSeries": false,
       "id": 186,
@@ -12216,7 +12837,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 52
+        "y": 53
       },
       "hiddenSeries": false,
       "id": 195,
@@ -12323,7 +12944,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 52
+        "y": 53
       },
       "hiddenSeries": false,
       "id": 187,
@@ -12441,7 +13062,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 52
+        "y": 53
       },
       "id": 188,
       "links": [],
@@ -12502,7 +13123,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 54
+        "y": 55
       },
       "id": 178,
       "interval": null,
@@ -12595,7 +13216,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 54
+        "y": 55
       },
       "id": 180,
       "interval": null,
@@ -12688,7 +13309,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 54
+        "y": 55
       },
       "id": 182,
       "interval": null,
@@ -12778,7 +13399,7 @@
         "h": 2,
         "w": 2,
         "x": 6,
-        "y": 54
+        "y": 55
       },
       "id": 184,
       "interval": null,
@@ -12850,7 +13471,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 56
+        "y": 57
       },
       "id": 197,
       "panels": [],
@@ -12885,7 +13506,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 57
+        "y": 58
       },
       "id": 198,
       "interval": null,
@@ -12984,7 +13605,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 57
+        "y": 58
       },
       "id": 200,
       "interval": null,
@@ -13082,7 +13703,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 57
+        "y": 58
       },
       "id": 202,
       "interval": null,
@@ -13180,7 +13801,7 @@
         "h": 2,
         "w": 2,
         "x": 6,
-        "y": 57
+        "y": 58
       },
       "id": 205,
       "interval": null,
@@ -13275,7 +13896,7 @@
         "h": 2,
         "w": 2,
         "x": 8,
-        "y": 57
+        "y": 58
       },
       "id": 206,
       "interval": null,
@@ -13360,7 +13981,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 57
+        "y": 58
       },
       "hiddenSeries": false,
       "id": 207,
@@ -13460,7 +14081,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 57
+        "y": 58
       },
       "hiddenSeries": false,
       "id": 208,
@@ -13567,7 +14188,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 57
+        "y": 58
       },
       "hiddenSeries": false,
       "id": 209,
@@ -13685,7 +14306,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 57
+        "y": 58
       },
       "id": 210,
       "links": [],
@@ -13746,7 +14367,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 59
+        "y": 60
       },
       "id": 199,
       "interval": null,
@@ -13839,7 +14460,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 59
+        "y": 60
       },
       "id": 201,
       "interval": null,
@@ -13932,7 +14553,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 59
+        "y": 60
       },
       "id": 203,
       "interval": null,
@@ -14022,7 +14643,7 @@
         "h": 2,
         "w": 2,
         "x": 6,
-        "y": 59
+        "y": 60
       },
       "id": 204,
       "interval": null,
@@ -14094,7 +14715,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 61
+        "y": 62
       },
       "id": 63,
       "panels": [],
@@ -14120,7 +14741,7 @@
         "h": 5,
         "w": 10,
         "x": 0,
-        "y": 62
+        "y": 63
       },
       "hiddenSeries": false,
       "id": 65,
@@ -14222,7 +14843,7 @@
         "h": 5,
         "w": 10,
         "x": 10,
-        "y": 62
+        "y": 63
       },
       "hiddenSeries": false,
       "id": 40,
@@ -14324,7 +14945,7 @@
         "h": 5,
         "w": 10,
         "x": 0,
-        "y": 67
+        "y": 68
       },
       "hiddenSeries": false,
       "id": 39,
@@ -14426,7 +15047,7 @@
         "h": 5,
         "w": 10,
         "x": 10,
-        "y": 67
+        "y": 68
       },
       "hiddenSeries": false,
       "id": 64,
@@ -14516,7 +15137,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 72
+        "y": 73
       },
       "id": 56,
       "panels": [],
@@ -14542,7 +15163,7 @@
         "h": 5,
         "w": 18,
         "x": 0,
-        "y": 73
+        "y": 74
       },
       "hiddenSeries": false,
       "id": 94,
@@ -14644,7 +15265,7 @@
         "h": 6,
         "w": 18,
         "x": 0,
-        "y": 78
+        "y": 79
       },
       "hiddenSeries": false,
       "id": 111,
@@ -14748,7 +15369,7 @@
         "h": 6,
         "w": 6,
         "x": 0,
-        "y": 84
+        "y": 85
       },
       "hiddenSeries": false,
       "id": 112,
@@ -14852,7 +15473,7 @@
         "h": 6,
         "w": 6,
         "x": 6,
-        "y": 84
+        "y": 85
       },
       "hiddenSeries": false,
       "id": 113,
@@ -14956,7 +15577,7 @@
         "h": 6,
         "w": 6,
         "x": 12,
-        "y": 84
+        "y": 85
       },
       "hiddenSeries": false,
       "id": 114,
@@ -15058,7 +15679,7 @@
         "h": 5,
         "w": 18,
         "x": 0,
-        "y": 90
+        "y": 91
       },
       "hiddenSeries": false,
       "id": 110,
@@ -15160,7 +15781,7 @@
         "h": 6,
         "w": 18,
         "x": 0,
-        "y": 95
+        "y": 96
       },
       "hiddenSeries": false,
       "id": 38,
@@ -15266,7 +15887,7 @@
         "h": 6,
         "w": 6,
         "x": 0,
-        "y": 101
+        "y": 102
       },
       "hiddenSeries": false,
       "id": 91,
@@ -15371,7 +15992,7 @@
         "h": 6,
         "w": 6,
         "x": 6,
-        "y": 101
+        "y": 102
       },
       "hiddenSeries": false,
       "id": 92,
@@ -15475,7 +16096,7 @@
         "h": 6,
         "w": 6,
         "x": 12,
-        "y": 101
+        "y": 102
       },
       "hiddenSeries": false,
       "id": 43,
@@ -15578,7 +16199,7 @@
         "h": 6,
         "w": 18,
         "x": 0,
-        "y": 107
+        "y": 108
       },
       "hiddenSeries": false,
       "id": 54,
@@ -15682,7 +16303,7 @@
         "h": 6,
         "w": 6,
         "x": 0,
-        "y": 113
+        "y": 114
       },
       "hiddenSeries": false,
       "id": 66,
@@ -15786,7 +16407,7 @@
         "h": 6,
         "w": 6,
         "x": 6,
-        "y": 113
+        "y": 114
       },
       "hiddenSeries": false,
       "id": 67,
@@ -15890,7 +16511,7 @@
         "h": 6,
         "w": 6,
         "x": 12,
-        "y": 113
+        "y": 114
       },
       "hiddenSeries": false,
       "id": 105,
@@ -15980,7 +16601,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 119
+        "y": 120
       },
       "id": 104,
       "panels": [],
@@ -16006,7 +16627,7 @@
         "h": 5,
         "w": 18,
         "x": 0,
-        "y": 120
+        "y": 121
       },
       "hiddenSeries": false,
       "id": 98,
@@ -16109,7 +16730,7 @@
         "h": 5,
         "w": 18,
         "x": 0,
-        "y": 125
+        "y": 126
       },
       "hiddenSeries": false,
       "id": 102,
@@ -16212,7 +16833,7 @@
         "h": 5,
         "w": 18,
         "x": 0,
-        "y": 130
+        "y": 131
       },
       "hiddenSeries": false,
       "id": 99,
@@ -16315,7 +16936,7 @@
         "h": 5,
         "w": 18,
         "x": 0,
-        "y": 135
+        "y": 136
       },
       "hiddenSeries": false,
       "id": 100,
@@ -16418,7 +17039,7 @@
         "h": 5,
         "w": 18,
         "x": 0,
-        "y": 140
+        "y": 141
       },
       "hiddenSeries": false,
       "id": 101,
@@ -16531,5 +17152,5 @@
   "timezone": "",
   "title": "roq-dashboard",
   "uid": "Afi9GToZz",
-  "version": 2
+  "version": 3
 }
