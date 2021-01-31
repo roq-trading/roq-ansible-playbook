@@ -587,7 +587,7 @@
         },
         "showUnfilled": false
       },
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "targets": [
         {
           "expr": "1 - (max(node_filesystem_free_bytes{device!=\"tmpfs\"}) by (device) / max(node_filesystem_size_bytes{device!=\"tmpfs\"}) by (device))",
@@ -1116,6 +1116,1863 @@
         "x": 0,
         "y": 5
       },
+      "id": 13,
+      "panels": [],
+      "title": "ClickHouse",
+      "type": "row"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": true,
+      "colorValue": false,
+      "colors": [
+        "#d44a3a",
+        "rgba(237, 129, 40, 0.89)",
+        "#299c46"
+      ],
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 0,
+        "y": 6
+      },
+      "id": 9,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "ceil(node_systemd_unit_state{name=\"clickhouse.service\",state=\"active\"})",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0,1",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Service",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "UP",
+          "value": "1"
+        },
+        {
+          "op": "=",
+          "text": "DOWN",
+          "value": "0"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": true,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 2,
+        "y": 6
+      },
+      "id": 6,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": 1,
+        "ymin": 0
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "absent(rate(node_systemd_unit_state{name=\"roq-clickhouse.service\",state=\"active\"}[10s])) or vector(0)",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0.1,1",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Adapter",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "UP",
+          "value": "0"
+        },
+        {
+          "op": "=",
+          "text": "DOWN",
+          "value": "1"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "format": "short",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 6,
+        "y": 6
+      },
+      "id": 235,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true,
+        "ymax": 1,
+        "ymin": 0
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "max(roq_export{source=\"clickhouse\", name=\"messages\"})",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0,1",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Events (total)",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "",
+          "value": "0"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 0,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 10,
+        "y": 6
+      },
+      "hiddenSeries": false,
+      "id": 239,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "hideEmpty": true,
+        "hideZero": true,
+        "max": true,
+        "min": false,
+        "rightSide": true,
+        "show": false,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.7",
+      "pointradius": 0.5,
+      "points": true,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum by (source, name) (irate(roq_events{job=\"roq-clickhouse\"}[1m]))",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Parse Events (frequency)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "transparent": true,
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:1473",
+          "decimals": 0,
+          "format": "cps",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:1474",
+          "decimals": 0,
+          "format": "cps",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 0,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 13,
+        "y": 6
+      },
+      "hiddenSeries": false,
+      "id": 251,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "hideEmpty": true,
+        "hideZero": true,
+        "max": true,
+        "min": false,
+        "rightSide": true,
+        "show": false,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.7",
+      "pointradius": 0.5,
+      "points": true,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum by (source, table) (irate(roq_export{name='messages',source='influxdb'}[1m]))",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Export Events (frequency)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "transparent": true,
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:1473",
+          "decimals": 0,
+          "format": "cps",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:1474",
+          "decimals": 0,
+          "format": "cps",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 0,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 16,
+        "y": 6
+      },
+      "hiddenSeries": false,
+      "id": 233,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "hideEmpty": true,
+        "hideZero": true,
+        "max": true,
+        "min": false,
+        "rightSide": true,
+        "show": false,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.7",
+      "pointradius": 0.5,
+      "points": true,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum by (source, table) (irate(roq_export{name='bytes', source='clickhouse'}[1m]))",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Export (bytes)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "transparent": true,
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:1427",
+          "decimals": 0,
+          "format": "Bps",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:1428",
+          "decimals": 0,
+          "format": "cps",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 10
+      },
+      "id": 241,
+      "panels": [],
+      "title": "InfluxDB",
+      "type": "row"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": true,
+      "colorValue": false,
+      "colors": [
+        "#d44a3a",
+        "rgba(237, 129, 40, 0.89)",
+        "#299c46"
+      ],
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 0,
+        "y": 11
+      },
+      "id": 8,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "ceil(node_systemd_unit_state{name=\"influxdb.service\",state=\"active\"})",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0,1",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Service",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "UP",
+          "value": "1"
+        },
+        {
+          "op": "=",
+          "text": "DOWN",
+          "value": "0"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": true,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 2,
+        "y": 11
+      },
+      "id": 228,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": 1,
+        "ymin": 0
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "absent(rate(node_systemd_unit_state{name=\"roq-influxdb.service\",state=\"active\"}[10s])) or vector(0)",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0.1,1",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Adapter",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "UP",
+          "value": "0"
+        },
+        {
+          "op": "=",
+          "text": "DOWN",
+          "value": "1"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "format": "short",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 6,
+        "y": 11
+      },
+      "id": 236,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true,
+        "ymax": 1,
+        "ymin": 0
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "max(roq_export{source=\"influxdb\", name=\"messages\"})",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0,1",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Events (total)",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "",
+          "value": "0"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 0,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 10,
+        "y": 11
+      },
+      "hiddenSeries": false,
+      "id": 242,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "hideEmpty": true,
+        "hideZero": true,
+        "max": true,
+        "min": false,
+        "rightSide": true,
+        "show": false,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.7",
+      "pointradius": 0.5,
+      "points": true,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum by (source, name) (irate(roq_events{job=\"roq-influxdb\"}[1m]))",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Parse Events (frequency)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "transparent": true,
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:1473",
+          "decimals": 0,
+          "format": "cps",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:1474",
+          "decimals": 0,
+          "format": "cps",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 0,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 13,
+        "y": 11
+      },
+      "hiddenSeries": false,
+      "id": 234,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "hideEmpty": true,
+        "hideZero": true,
+        "max": true,
+        "min": false,
+        "rightSide": true,
+        "show": false,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.7",
+      "pointradius": 0.5,
+      "points": true,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum by (source, table) (irate(roq_export{name='messages',source='influxdb'}[1m]))",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Export Events (frequency)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "transparent": true,
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:1473",
+          "decimals": 0,
+          "format": "cps",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:1474",
+          "decimals": 0,
+          "format": "cps",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 0,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 16,
+        "y": 11
+      },
+      "hiddenSeries": false,
+      "id": 244,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "hideEmpty": true,
+        "hideZero": true,
+        "max": true,
+        "min": false,
+        "rightSide": true,
+        "show": false,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.7",
+      "pointradius": 0.5,
+      "points": true,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum by (source, table) (irate(roq_export{name='bytes', source='influxdb'}[1m]))",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Export (bytes)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "transparent": true,
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:1427",
+          "decimals": 0,
+          "format": "Bps",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:1428",
+          "decimals": 0,
+          "format": "cps",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "collapsed": true,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 15
+      },
+      "id": 246,
+      "panels": [
+        {
+          "cacheTimeout": null,
+          "colorBackground": true,
+          "colorValue": false,
+          "colors": [
+            "#d44a3a",
+            "rgba(237, 129, 40, 0.89)",
+            "#299c46"
+          ],
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
+          "format": "none",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
+          "gridPos": {
+            "h": 2,
+            "w": 2,
+            "x": 0,
+            "y": 16
+          },
+          "id": 226,
+          "interval": null,
+          "links": [],
+          "mappingType": 1,
+          "mappingTypes": [
+            {
+              "name": "value to text",
+              "value": 1
+            },
+            {
+              "name": "range to text",
+              "value": 2
+            }
+          ],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "pluginVersion": "6.4.3",
+          "postfix": "",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
+          "rangeMaps": [
+            {
+              "from": "null",
+              "text": "N/A",
+              "to": "null"
+            }
+          ],
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": false,
+            "ymax": null,
+            "ymin": null
+          },
+          "tableColumn": "",
+          "targets": [
+            {
+              "expr": "ceil(node_systemd_unit_state{name=\"redis.service\",state=\"active\"})",
+              "refId": "A"
+            }
+          ],
+          "thresholds": "0,1",
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Service",
+          "type": "singlestat",
+          "valueFontSize": "80%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "UP",
+              "value": "1"
+            },
+            {
+              "op": "=",
+              "text": "DOWN",
+              "value": "0"
+            }
+          ],
+          "valueName": "current"
+        },
+        {
+          "cacheTimeout": null,
+          "colorBackground": true,
+          "colorValue": false,
+          "colors": [
+            "#299c46",
+            "rgba(237, 129, 40, 0.89)",
+            "#d44a3a"
+          ],
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
+          "format": "none",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
+          "gridPos": {
+            "h": 2,
+            "w": 2,
+            "x": 2,
+            "y": 16
+          },
+          "id": 229,
+          "interval": null,
+          "links": [],
+          "mappingType": 1,
+          "mappingTypes": [
+            {
+              "name": "value to text",
+              "value": 1
+            },
+            {
+              "name": "range to text",
+              "value": 2
+            }
+          ],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "pluginVersion": "6.4.3",
+          "postfix": "",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
+          "rangeMaps": [
+            {
+              "from": "null",
+              "text": "N/A",
+              "to": "null"
+            }
+          ],
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": false,
+            "ymax": 1,
+            "ymin": 0
+          },
+          "tableColumn": "",
+          "targets": [
+            {
+              "expr": "absent(rate(node_systemd_unit_state{name=\"roq-redis.service\",state=\"active\"}[10s])) or vector(0)",
+              "interval": "",
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "thresholds": "0.1,1",
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Adapter",
+          "type": "singlestat",
+          "valueFontSize": "80%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "UP",
+              "value": "0"
+            },
+            {
+              "op": "=",
+              "text": "DOWN",
+              "value": "1"
+            }
+          ],
+          "valueName": "current"
+        },
+        {
+          "cacheTimeout": null,
+          "colorBackground": false,
+          "colorValue": false,
+          "colors": [
+            "#299c46",
+            "rgba(237, 129, 40, 0.89)",
+            "#d44a3a"
+          ],
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
+          "format": "short",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
+          "gridPos": {
+            "h": 2,
+            "w": 2,
+            "x": 6,
+            "y": 16
+          },
+          "id": 247,
+          "interval": null,
+          "links": [],
+          "mappingType": 1,
+          "mappingTypes": [
+            {
+              "name": "value to text",
+              "value": 1
+            },
+            {
+              "name": "range to text",
+              "value": 2
+            }
+          ],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "pluginVersion": "6.4.3",
+          "postfix": "",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
+          "rangeMaps": [
+            {
+              "from": "null",
+              "text": "N/A",
+              "to": "null"
+            }
+          ],
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": true,
+            "ymax": 1,
+            "ymin": 0
+          },
+          "tableColumn": "",
+          "targets": [
+            {
+              "expr": "max(roq_export{source=\"redis\", name=\"messages\"})",
+              "instant": true,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "thresholds": "0,1",
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Events (total)",
+          "transparent": true,
+          "type": "singlestat",
+          "valueFontSize": "50%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "",
+              "value": "0"
+            }
+          ],
+          "valueName": "current"
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "custom": {},
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 0,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 4,
+            "w": 3,
+            "x": 10,
+            "y": 16
+          },
+          "hiddenSeries": false,
+          "id": 248,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "hideEmpty": true,
+            "hideZero": true,
+            "max": true,
+            "min": false,
+            "rightSide": true,
+            "show": false,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.3.7",
+          "pointradius": 0.5,
+          "points": true,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "sum by (source, name) (irate(roq_events{job=\"roq-redis\"}[1m]))",
+              "hide": false,
+              "instant": false,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Parse Events (frequency)",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "transparent": true,
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:1473",
+              "decimals": 0,
+              "format": "cps",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "$$hashKey": "object:1474",
+              "decimals": 0,
+              "format": "cps",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "custom": {},
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 0,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 4,
+            "w": 3,
+            "x": 13,
+            "y": 16
+          },
+          "hiddenSeries": false,
+          "id": 249,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "hideEmpty": true,
+            "hideZero": true,
+            "max": true,
+            "min": false,
+            "rightSide": true,
+            "show": false,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.3.7",
+          "pointradius": 0.5,
+          "points": true,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "sum by (source, table) (irate(roq_export{name='messages',source='redis'}[1m]))",
+              "hide": false,
+              "instant": false,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Export Events (frequency)",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "transparent": true,
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:1473",
+              "decimals": 0,
+              "format": "cps",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "$$hashKey": "object:1474",
+              "decimals": 0,
+              "format": "cps",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "custom": {},
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 0,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 4,
+            "w": 3,
+            "x": 16,
+            "y": 16
+          },
+          "hiddenSeries": false,
+          "id": 250,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "hideEmpty": true,
+            "hideZero": true,
+            "max": true,
+            "min": false,
+            "rightSide": true,
+            "show": false,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.3.7",
+          "pointradius": 0.5,
+          "points": true,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "sum by (source, table) (irate(roq_export{name='bytes', source='redis'}[1m]))",
+              "hide": false,
+              "instant": false,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Export (bytes)",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "transparent": true,
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:1427",
+              "decimals": 0,
+              "format": "Bps",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "$$hashKey": "object:1428",
+              "decimals": 0,
+              "format": "cps",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        }
+      ],
+      "title": "Redis",
+      "type": "row"
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 16
+      },
       "id": 212,
       "panels": [],
       "title": "Binance",
@@ -1149,7 +3006,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 6
+        "y": 17
       },
       "id": 213,
       "interval": null,
@@ -1248,7 +3105,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 6
+        "y": 17
       },
       "id": 215,
       "interval": null,
@@ -1346,7 +3203,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 6
+        "y": 17
       },
       "id": 217,
       "interval": null,
@@ -1444,7 +3301,7 @@
         "h": 2,
         "w": 2,
         "x": 6,
-        "y": 6
+        "y": 17
       },
       "id": 219,
       "interval": null,
@@ -1539,7 +3396,7 @@
         "h": 2,
         "w": 2,
         "x": 8,
-        "y": 6
+        "y": 17
       },
       "id": 221,
       "interval": null,
@@ -1624,7 +3481,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 6
+        "y": 17
       },
       "hiddenSeries": false,
       "id": 222,
@@ -1644,7 +3501,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1724,7 +3581,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 6
+        "y": 17
       },
       "hiddenSeries": false,
       "id": 223,
@@ -1748,7 +3605,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -1831,7 +3688,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 6
+        "y": 17
       },
       "hiddenSeries": false,
       "id": 224,
@@ -1855,7 +3712,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -1949,7 +3806,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 6
+        "y": 17
       },
       "id": 225,
       "links": [],
@@ -1965,7 +3822,7 @@
         },
         "showUnfilled": false
       },
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"binance\",function=\"disconnect\"})",
@@ -2010,7 +3867,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 8
+        "y": 19
       },
       "id": 214,
       "interval": null,
@@ -2103,7 +3960,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 8
+        "y": 19
       },
       "id": 216,
       "interval": null,
@@ -2196,7 +4053,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 8
+        "y": 19
       },
       "id": 218,
       "interval": null,
@@ -2286,7 +4143,7 @@
         "h": 2,
         "w": 2,
         "x": 6,
-        "y": 8
+        "y": 19
       },
       "id": 220,
       "interval": null,
@@ -2358,7 +4215,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 10
+        "y": 21
       },
       "id": 134,
       "panels": [],
@@ -2393,7 +4250,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 11
+        "y": 22
       },
       "id": 135,
       "interval": null,
@@ -2490,7 +4347,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 11
+        "y": 22
       },
       "id": 137,
       "interval": null,
@@ -2586,7 +4443,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 11
+        "y": 22
       },
       "id": 139,
       "interval": null,
@@ -2682,7 +4539,7 @@
         "h": 2,
         "w": 2,
         "x": 6,
-        "y": 11
+        "y": 22
       },
       "id": 141,
       "interval": null,
@@ -2775,7 +4632,7 @@
         "h": 2,
         "w": 2,
         "x": 8,
-        "y": 11
+        "y": 22
       },
       "id": 146,
       "interval": null,
@@ -2858,7 +4715,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 11
+        "y": 22
       },
       "hiddenSeries": false,
       "id": 143,
@@ -2878,7 +4735,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2958,7 +4815,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 11
+        "y": 22
       },
       "hiddenSeries": false,
       "id": 189,
@@ -2982,7 +4839,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -3065,7 +4922,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 11
+        "y": 22
       },
       "hiddenSeries": false,
       "id": 144,
@@ -3089,7 +4946,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -3183,7 +5040,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 11
+        "y": 22
       },
       "id": 145,
       "links": [],
@@ -3199,7 +5056,7 @@
         },
         "showUnfilled": false
       },
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"bitmex\",function=\"disconnect\"})",
@@ -3243,7 +5100,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 13
+        "y": 24
       },
       "id": 136,
       "interval": null,
@@ -3334,7 +5191,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 13
+        "y": 24
       },
       "id": 138,
       "interval": null,
@@ -3425,7 +5282,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 13
+        "y": 24
       },
       "id": 140,
       "interval": null,
@@ -3515,7 +5372,7 @@
         "h": 2,
         "w": 2,
         "x": 6,
-        "y": 13
+        "y": 24
       },
       "id": 142,
       "interval": null,
@@ -3585,7 +5442,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 15
+        "y": 26
       },
       "id": 148,
       "panels": [],
@@ -3620,7 +5477,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 16
+        "y": 27
       },
       "id": 151,
       "interval": null,
@@ -3723,7 +5580,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 16
+        "y": 27
       },
       "id": 165,
       "interval": null,
@@ -3821,7 +5678,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 16
+        "y": 27
       },
       "id": 167,
       "interval": null,
@@ -3919,7 +5776,7 @@
         "h": 2,
         "w": 2,
         "x": 6,
-        "y": 16
+        "y": 27
       },
       "id": 169,
       "interval": null,
@@ -4014,7 +5871,7 @@
         "h": 2,
         "w": 2,
         "x": 8,
-        "y": 16
+        "y": 27
       },
       "id": 171,
       "interval": null,
@@ -4099,7 +5956,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 16
+        "y": 27
       },
       "hiddenSeries": false,
       "id": 172,
@@ -4119,7 +5976,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -4199,7 +6056,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 16
+        "y": 27
       },
       "hiddenSeries": false,
       "id": 190,
@@ -4223,7 +6080,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -4306,7 +6163,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 16
+        "y": 27
       },
       "hiddenSeries": false,
       "id": 173,
@@ -4330,7 +6187,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -4424,7 +6281,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 16
+        "y": 27
       },
       "id": 174,
       "links": [],
@@ -4440,7 +6297,7 @@
         },
         "showUnfilled": false
       },
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"bitstamp\",function=\"disconnect\"})",
@@ -4485,7 +6342,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 18
+        "y": 29
       },
       "id": 152,
       "interval": null,
@@ -4578,7 +6435,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 18
+        "y": 29
       },
       "id": 166,
       "interval": null,
@@ -4671,7 +6528,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 18
+        "y": 29
       },
       "id": 168,
       "interval": null,
@@ -4761,7 +6618,7 @@
         "h": 2,
         "w": 2,
         "x": 6,
-        "y": 18
+        "y": 29
       },
       "id": 170,
       "interval": null,
@@ -4833,7 +6690,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 20
+        "y": 31
       },
       "id": 4,
       "panels": [],
@@ -4868,7 +6725,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 21
+        "y": 32
       },
       "id": 7,
       "interval": null,
@@ -4958,7 +6815,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 21
+        "y": 32
       },
       "id": 32,
       "interval": null,
@@ -5054,7 +6911,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 21
+        "y": 32
       },
       "id": 33,
       "interval": null,
@@ -5150,7 +7007,7 @@
         "h": 2,
         "w": 2,
         "x": 6,
-        "y": 21
+        "y": 32
       },
       "id": 20,
       "interval": null,
@@ -5243,7 +7100,7 @@
         "h": 2,
         "w": 2,
         "x": 8,
-        "y": 21
+        "y": 32
       },
       "id": 95,
       "interval": null,
@@ -5326,7 +7183,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 21
+        "y": 32
       },
       "hiddenSeries": false,
       "id": 108,
@@ -5346,7 +7203,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -5426,7 +7283,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 21
+        "y": 32
       },
       "hiddenSeries": false,
       "id": 191,
@@ -5450,7 +7307,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -5533,7 +7390,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 21
+        "y": 32
       },
       "hiddenSeries": false,
       "id": 70,
@@ -5557,7 +7414,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -5651,7 +7508,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 21
+        "y": 32
       },
       "id": 132,
       "links": [],
@@ -5667,7 +7524,7 @@
         },
         "showUnfilled": false
       },
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"coinbase-pro\",function=\"disconnect\"})",
@@ -5711,7 +7568,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 23
+        "y": 34
       },
       "id": 74,
       "interval": null,
@@ -5802,7 +7659,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 23
+        "y": 34
       },
       "id": 73,
       "interval": null,
@@ -5893,7 +7750,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 23
+        "y": 34
       },
       "id": 68,
       "interval": null,
@@ -5983,7 +7840,7 @@
         "h": 2,
         "w": 2,
         "x": 6,
-        "y": 23
+        "y": 34
       },
       "id": 22,
       "interval": null,
@@ -6053,7 +7910,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 25
+        "y": 36
       },
       "id": 11,
       "panels": [],
@@ -6088,7 +7945,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 26
+        "y": 37
       },
       "id": 2,
       "interval": null,
@@ -6185,7 +8042,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 26
+        "y": 37
       },
       "id": 34,
       "interval": null,
@@ -6281,7 +8138,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 26
+        "y": 37
       },
       "id": 35,
       "interval": null,
@@ -6377,7 +8234,7 @@
         "h": 2,
         "w": 2,
         "x": 6,
-        "y": 26
+        "y": 37
       },
       "id": 21,
       "interval": null,
@@ -6470,7 +8327,7 @@
         "h": 2,
         "w": 2,
         "x": 8,
-        "y": 26
+        "y": 37
       },
       "id": 109,
       "interval": null,
@@ -6553,7 +8410,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 26
+        "y": 37
       },
       "hiddenSeries": false,
       "id": 96,
@@ -6573,7 +8430,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -6651,7 +8508,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 26
+        "y": 37
       },
       "hiddenSeries": false,
       "id": 192,
@@ -6675,7 +8532,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -6758,7 +8615,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 26
+        "y": 37
       },
       "hiddenSeries": false,
       "id": 71,
@@ -6782,7 +8639,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -6876,7 +8733,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 26
+        "y": 37
       },
       "id": 131,
       "links": [],
@@ -6892,7 +8749,7 @@
         },
         "showUnfilled": false
       },
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"deribit\",function=\"disconnect\"})",
@@ -6936,7 +8793,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 28
+        "y": 39
       },
       "id": 75,
       "interval": null,
@@ -7029,7 +8886,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 28
+        "y": 39
       },
       "id": 72,
       "interval": null,
@@ -7120,7 +8977,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 28
+        "y": 39
       },
       "id": 69,
       "interval": null,
@@ -7210,7 +9067,7 @@
         "h": 2,
         "w": 2,
         "x": 6,
-        "y": 28
+        "y": 39
       },
       "id": 23,
       "interval": null,
@@ -7280,7 +9137,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 30
+        "y": 41
       },
       "id": 150,
       "panels": [],
@@ -7315,7 +9172,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 31
+        "y": 42
       },
       "id": 153,
       "interval": null,
@@ -7414,7 +9271,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 31
+        "y": 42
       },
       "id": 155,
       "interval": null,
@@ -7512,7 +9369,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 31
+        "y": 42
       },
       "id": 157,
       "interval": null,
@@ -7610,7 +9467,7 @@
         "h": 2,
         "w": 2,
         "x": 6,
-        "y": 31
+        "y": 42
       },
       "id": 159,
       "interval": null,
@@ -7705,7 +9562,7 @@
         "h": 2,
         "w": 2,
         "x": 8,
-        "y": 31
+        "y": 42
       },
       "id": 161,
       "interval": null,
@@ -7790,7 +9647,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 31
+        "y": 42
       },
       "hiddenSeries": false,
       "id": 162,
@@ -7810,7 +9667,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -7890,7 +9747,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 31
+        "y": 42
       },
       "hiddenSeries": false,
       "id": 193,
@@ -7914,7 +9771,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -7997,7 +9854,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 31
+        "y": 42
       },
       "hiddenSeries": false,
       "id": 163,
@@ -8021,7 +9878,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -8115,7 +9972,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 31
+        "y": 42
       },
       "id": 164,
       "links": [],
@@ -8131,7 +9988,7 @@
         },
         "showUnfilled": false
       },
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"ftx\",function=\"disconnect\"})",
@@ -8176,7 +10033,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 33
+        "y": 44
       },
       "id": 154,
       "interval": null,
@@ -8269,7 +10126,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 33
+        "y": 44
       },
       "id": 156,
       "interval": null,
@@ -8362,7 +10219,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 33
+        "y": 44
       },
       "id": 158,
       "interval": null,
@@ -8452,7 +10309,7 @@
         "h": 2,
         "w": 2,
         "x": 6,
-        "y": 33
+        "y": 44
       },
       "id": 160,
       "interval": null,
@@ -8524,7 +10381,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 35
+        "y": 46
       },
       "id": 116,
       "panels": [],
@@ -8559,7 +10416,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 36
+        "y": 47
       },
       "id": 117,
       "interval": null,
@@ -8656,7 +10513,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 36
+        "y": 47
       },
       "id": 118,
       "interval": null,
@@ -8752,7 +10609,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 36
+        "y": 47
       },
       "id": 119,
       "interval": null,
@@ -8848,7 +10705,7 @@
         "h": 2,
         "w": 2,
         "x": 6,
-        "y": 36
+        "y": 47
       },
       "id": 120,
       "interval": null,
@@ -8941,7 +10798,7 @@
         "h": 2,
         "w": 2,
         "x": 8,
-        "y": 36
+        "y": 47
       },
       "id": 125,
       "interval": null,
@@ -9024,7 +10881,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 36
+        "y": 47
       },
       "hiddenSeries": false,
       "id": 126,
@@ -9044,7 +10901,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -9122,7 +10979,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 36
+        "y": 47
       },
       "hiddenSeries": false,
       "id": 194,
@@ -9146,7 +11003,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -9229,7 +11086,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 36
+        "y": 47
       },
       "hiddenSeries": false,
       "id": 127,
@@ -9253,7 +11110,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -9347,7 +11204,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 36
+        "y": 47
       },
       "id": 130,
       "links": [],
@@ -9363,7 +11220,7 @@
         },
         "showUnfilled": false
       },
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"gemini\",function=\"disconnect\"})",
@@ -9407,7 +11264,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 38
+        "y": 49
       },
       "id": 121,
       "interval": null,
@@ -9498,7 +11355,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 38
+        "y": 49
       },
       "id": 122,
       "interval": null,
@@ -9589,7 +11446,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 38
+        "y": 49
       },
       "id": 123,
       "interval": null,
@@ -9679,7 +11536,7 @@
         "h": 2,
         "w": 2,
         "x": 6,
-        "y": 38
+        "y": 49
       },
       "id": 124,
       "interval": null,
@@ -9749,7 +11606,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 40
+        "y": 51
       },
       "id": 176,
       "panels": [],
@@ -9784,7 +11641,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 41
+        "y": 52
       },
       "id": 177,
       "interval": null,
@@ -9883,7 +11740,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 41
+        "y": 52
       },
       "id": 179,
       "interval": null,
@@ -9981,7 +11838,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 41
+        "y": 52
       },
       "id": 181,
       "interval": null,
@@ -10079,7 +11936,7 @@
         "h": 2,
         "w": 2,
         "x": 6,
-        "y": 41
+        "y": 52
       },
       "id": 183,
       "interval": null,
@@ -10174,7 +12031,7 @@
         "h": 2,
         "w": 2,
         "x": 8,
-        "y": 41
+        "y": 52
       },
       "id": 185,
       "interval": null,
@@ -10259,7 +12116,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 41
+        "y": 52
       },
       "hiddenSeries": false,
       "id": 186,
@@ -10279,7 +12136,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -10359,7 +12216,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 41
+        "y": 52
       },
       "hiddenSeries": false,
       "id": 195,
@@ -10383,7 +12240,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -10466,7 +12323,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 41
+        "y": 52
       },
       "hiddenSeries": false,
       "id": 187,
@@ -10490,7 +12347,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -10584,7 +12441,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 41
+        "y": 52
       },
       "id": 188,
       "links": [],
@@ -10600,7 +12457,7 @@
         },
         "showUnfilled": false
       },
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"hitbtc\",function=\"disconnect\"})",
@@ -10645,7 +12502,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 43
+        "y": 54
       },
       "id": 178,
       "interval": null,
@@ -10738,7 +12595,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 43
+        "y": 54
       },
       "id": 180,
       "interval": null,
@@ -10831,7 +12688,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 43
+        "y": 54
       },
       "id": 182,
       "interval": null,
@@ -10921,7 +12778,7 @@
         "h": 2,
         "w": 2,
         "x": 6,
-        "y": 43
+        "y": 54
       },
       "id": 184,
       "interval": null,
@@ -10993,7 +12850,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 45
+        "y": 56
       },
       "id": 197,
       "panels": [],
@@ -11028,7 +12885,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 46
+        "y": 57
       },
       "id": 198,
       "interval": null,
@@ -11127,7 +12984,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 46
+        "y": 57
       },
       "id": 200,
       "interval": null,
@@ -11225,7 +13082,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 46
+        "y": 57
       },
       "id": 202,
       "interval": null,
@@ -11323,7 +13180,7 @@
         "h": 2,
         "w": 2,
         "x": 6,
-        "y": 46
+        "y": 57
       },
       "id": 205,
       "interval": null,
@@ -11362,7 +13219,7 @@
         "ymax": 1,
         "ymin": 0
       },
-      "tableColumn": "roq_exceptions{instance=\"nginx.service:80\", job=\"roq-kraken\", source=\"kraken\"}",
+      "tableColumn": "",
       "targets": [
         {
           "expr": "roq_exceptions{source=\"kraken\"}",
@@ -11418,7 +13275,7 @@
         "h": 2,
         "w": 2,
         "x": 8,
-        "y": 46
+        "y": 57
       },
       "id": 206,
       "interval": null,
@@ -11503,7 +13360,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 46
+        "y": 57
       },
       "hiddenSeries": false,
       "id": 207,
@@ -11523,7 +13380,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -11603,7 +13460,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 46
+        "y": 57
       },
       "hiddenSeries": false,
       "id": 208,
@@ -11627,7 +13484,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -11710,7 +13567,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 46
+        "y": 57
       },
       "hiddenSeries": false,
       "id": 209,
@@ -11734,7 +13591,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -11828,7 +13685,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 46
+        "y": 57
       },
       "id": 210,
       "links": [],
@@ -11844,7 +13701,7 @@
         },
         "showUnfilled": false
       },
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"kraken\",function=\"disconnect\"})",
@@ -11889,7 +13746,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 48
+        "y": 59
       },
       "id": 199,
       "interval": null,
@@ -11928,7 +13785,7 @@
         "ymax": 1,
         "ymin": 0
       },
-      "tableColumn": "{instance=\"nginx.service:80\", job=\"roq-kraken\", name=\"start_time\", source=\"kraken\"}",
+      "tableColumn": "",
       "targets": [
         {
           "expr": "time() - roq_process{source=\"kraken\",name=\"start_time\"}",
@@ -11982,7 +13839,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 48
+        "y": 59
       },
       "id": 201,
       "interval": null,
@@ -12075,7 +13932,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 48
+        "y": 59
       },
       "id": 203,
       "interval": null,
@@ -12165,7 +14022,7 @@
         "h": 2,
         "w": 2,
         "x": 6,
-        "y": 48
+        "y": 59
       },
       "id": 204,
       "interval": null,
@@ -12237,7 +14094,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 50
+        "y": 61
       },
       "id": 63,
       "panels": [],
@@ -12263,7 +14120,7 @@
         "h": 5,
         "w": 10,
         "x": 0,
-        "y": 51
+        "y": 62
       },
       "hiddenSeries": false,
       "id": 65,
@@ -12287,7 +14144,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -12365,7 +14222,7 @@
         "h": 5,
         "w": 10,
         "x": 10,
-        "y": 51
+        "y": 62
       },
       "hiddenSeries": false,
       "id": 40,
@@ -12389,7 +14246,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -12467,7 +14324,7 @@
         "h": 5,
         "w": 10,
         "x": 0,
-        "y": 56
+        "y": 67
       },
       "hiddenSeries": false,
       "id": 39,
@@ -12491,7 +14348,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -12569,7 +14426,7 @@
         "h": 5,
         "w": 10,
         "x": 10,
-        "y": 56
+        "y": 67
       },
       "hiddenSeries": false,
       "id": 64,
@@ -12593,7 +14450,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -12659,7 +14516,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 61
+        "y": 72
       },
       "id": 56,
       "panels": [],
@@ -12685,7 +14542,7 @@
         "h": 5,
         "w": 18,
         "x": 0,
-        "y": 62
+        "y": 73
       },
       "hiddenSeries": false,
       "id": 94,
@@ -12709,7 +14566,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -12787,7 +14644,7 @@
         "h": 6,
         "w": 18,
         "x": 0,
-        "y": 67
+        "y": 78
       },
       "hiddenSeries": false,
       "id": 111,
@@ -12811,7 +14668,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 0.5,
       "points": false,
       "renderer": "flot",
@@ -12891,7 +14748,7 @@
         "h": 6,
         "w": 6,
         "x": 0,
-        "y": 73
+        "y": 84
       },
       "hiddenSeries": false,
       "id": 112,
@@ -12915,7 +14772,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -12995,7 +14852,7 @@
         "h": 6,
         "w": 6,
         "x": 6,
-        "y": 73
+        "y": 84
       },
       "hiddenSeries": false,
       "id": 113,
@@ -13019,7 +14876,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -13099,7 +14956,7 @@
         "h": 6,
         "w": 6,
         "x": 12,
-        "y": 73
+        "y": 84
       },
       "hiddenSeries": false,
       "id": 114,
@@ -13123,7 +14980,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -13201,7 +15058,7 @@
         "h": 5,
         "w": 18,
         "x": 0,
-        "y": 79
+        "y": 90
       },
       "hiddenSeries": false,
       "id": 110,
@@ -13225,7 +15082,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -13303,7 +15160,7 @@
         "h": 6,
         "w": 18,
         "x": 0,
-        "y": 84
+        "y": 95
       },
       "hiddenSeries": false,
       "id": 38,
@@ -13327,7 +15184,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 0.5,
       "points": false,
       "renderer": "flot",
@@ -13409,7 +15266,7 @@
         "h": 6,
         "w": 6,
         "x": 0,
-        "y": 90
+        "y": 101
       },
       "hiddenSeries": false,
       "id": 91,
@@ -13433,7 +15290,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -13514,7 +15371,7 @@
         "h": 6,
         "w": 6,
         "x": 6,
-        "y": 90
+        "y": 101
       },
       "hiddenSeries": false,
       "id": 92,
@@ -13538,7 +15395,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -13618,7 +15475,7 @@
         "h": 6,
         "w": 6,
         "x": 12,
-        "y": 90
+        "y": 101
       },
       "hiddenSeries": false,
       "id": 43,
@@ -13642,7 +15499,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -13721,7 +15578,7 @@
         "h": 6,
         "w": 18,
         "x": 0,
-        "y": 96
+        "y": 107
       },
       "hiddenSeries": false,
       "id": 54,
@@ -13745,7 +15602,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 0.5,
       "points": false,
       "renderer": "flot",
@@ -13825,7 +15682,7 @@
         "h": 6,
         "w": 6,
         "x": 0,
-        "y": 102
+        "y": 113
       },
       "hiddenSeries": false,
       "id": 66,
@@ -13849,7 +15706,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 0.5,
       "points": false,
       "renderer": "flot",
@@ -13929,7 +15786,7 @@
         "h": 6,
         "w": 6,
         "x": 6,
-        "y": 102
+        "y": 113
       },
       "hiddenSeries": false,
       "id": 67,
@@ -13953,7 +15810,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 0.5,
       "points": false,
       "renderer": "flot",
@@ -14033,7 +15890,7 @@
         "h": 6,
         "w": 6,
         "x": 12,
-        "y": 102
+        "y": 113
       },
       "hiddenSeries": false,
       "id": 105,
@@ -14057,7 +15914,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 0.5,
       "points": false,
       "renderer": "flot",
@@ -14123,7 +15980,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 108
+        "y": 119
       },
       "id": 104,
       "panels": [],
@@ -14149,7 +16006,7 @@
         "h": 5,
         "w": 18,
         "x": 0,
-        "y": 109
+        "y": 120
       },
       "hiddenSeries": false,
       "id": 98,
@@ -14173,7 +16030,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -14252,7 +16109,7 @@
         "h": 5,
         "w": 18,
         "x": 0,
-        "y": 114
+        "y": 125
       },
       "hiddenSeries": false,
       "id": 102,
@@ -14276,7 +16133,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -14355,7 +16212,7 @@
         "h": 5,
         "w": 18,
         "x": 0,
-        "y": 119
+        "y": 130
       },
       "hiddenSeries": false,
       "id": 99,
@@ -14379,7 +16236,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -14458,7 +16315,7 @@
         "h": 5,
         "w": 18,
         "x": 0,
-        "y": 124
+        "y": 135
       },
       "hiddenSeries": false,
       "id": 100,
@@ -14482,7 +16339,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -14561,7 +16418,7 @@
         "h": 5,
         "w": 18,
         "x": 0,
-        "y": 129
+        "y": 140
       },
       "hiddenSeries": false,
       "id": 101,
@@ -14585,7 +16442,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.7",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -14644,1491 +16501,6 @@
         "align": false,
         "alignLevel": null
       }
-    },
-    {
-      "collapsed": false,
-      "datasource": null,
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 134
-      },
-      "id": 13,
-      "panels": [],
-      "title": "Adapter",
-      "type": "row"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": true,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 0,
-        "y": 135
-      },
-      "id": 6,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "pluginVersion": "6.4.3",
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false,
-        "ymax": 1,
-        "ymin": 0
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "expr": "absent(rate(node_systemd_unit_state{name=\"roq-clickhouse.service\",state=\"active\"}[10s])) or vector(0)",
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "thresholds": "0.1,1",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "ClickHouse",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "UP",
-          "value": "0"
-        },
-        {
-          "op": "=",
-          "text": "DOWN",
-          "value": "1"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": true,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 2,
-        "y": 135
-      },
-      "id": 228,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "pluginVersion": "6.4.3",
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false,
-        "ymax": 1,
-        "ymin": 0
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "expr": "absent(rate(node_systemd_unit_state{name=\"roq-influxdb.service\",state=\"active\"}[10s])) or vector(0)",
-          "refId": "A"
-        }
-      ],
-      "thresholds": "0.1,1",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "InfluxDB",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "UP",
-          "value": "0"
-        },
-        {
-          "op": "=",
-          "text": "DOWN",
-          "value": "1"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": true,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 4,
-        "y": 135
-      },
-      "id": 229,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "pluginVersion": "6.4.3",
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false,
-        "ymax": 1,
-        "ymin": 0
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "expr": "absent(rate(node_systemd_unit_state{name=\"roq-redis.service\",state=\"active\"}[10s])) or vector(0)",
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "thresholds": "0.1,1",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Redis",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "UP",
-          "value": "0"
-        },
-        {
-          "op": "=",
-          "text": "DOWN",
-          "value": "1"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": true,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 6,
-        "y": 135
-      },
-      "id": 230,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "pluginVersion": "6.4.3",
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false,
-        "ymax": 1,
-        "ymin": 0
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "expr": "absent(rate(node_systemd_unit_state{name=\"roq-kafka.service\",state=\"active\"}[10s])) or vector(0)",
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "thresholds": "0.1,1",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Kafka",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "UP",
-          "value": "0"
-        },
-        {
-          "op": "=",
-          "text": "DOWN",
-          "value": "1"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {},
-          "links": []
-        },
-        "overrides": []
-      },
-      "fill": 0,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 5,
-        "w": 10,
-        "x": 8,
-        "y": 135
-      },
-      "hiddenSeries": false,
-      "id": 233,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": false,
-        "hideEmpty": true,
-        "hideZero": true,
-        "max": true,
-        "min": false,
-        "rightSide": true,
-        "show": false,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.3.5",
-      "pointradius": 0.5,
-      "points": true,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "sum by (source, table) (irate(roq_export{name='bytes'}[1m]))",
-          "hide": false,
-          "instant": false,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Export (bytes)",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:1427",
-          "decimals": 0,
-          "format": "Bps",
-          "label": "",
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:1428",
-          "decimals": 0,
-          "format": "cps",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": false
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "format": "short",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 0,
-        "y": 137
-      },
-      "id": 235,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "pluginVersion": "6.4.3",
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": true,
-        "ymax": 1,
-        "ymin": 0
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "expr": "max(roq_export{source=\"clickhouse\", name=\"messages\"})",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "thresholds": "0,1",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Messages",
-      "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "50%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "",
-          "value": "0"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "format": "short",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 2,
-        "y": 137
-      },
-      "id": 236,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "pluginVersion": "6.4.3",
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": true,
-        "ymax": 1,
-        "ymin": 0
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "expr": "max(roq_export{source=\"influxdb\", name=\"messages\"})",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "thresholds": "0,1",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Messages",
-      "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "50%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "",
-          "value": "0"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "format": "short",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 4,
-        "y": 137
-      },
-      "id": 237,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "pluginVersion": "6.4.3",
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": true,
-        "ymax": 1,
-        "ymin": 0
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "expr": "max(roq_export{source=\"redis\", name=\"messages\"})",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "thresholds": "0,1",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Messages",
-      "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "50%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "",
-          "value": "0"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "format": "short",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 6,
-        "y": 137
-      },
-      "id": 238,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "pluginVersion": "6.4.3",
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": true,
-        "ymax": 1,
-        "ymin": 0
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "expr": "max(roq_export{source=\"kafka\", name=\"messages\"})",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "thresholds": "0,1",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Messages",
-      "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "50%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "",
-          "value": "0"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {},
-          "links": []
-        },
-        "overrides": []
-      },
-      "fill": 0,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 6,
-        "w": 8,
-        "x": 0,
-        "y": 139
-      },
-      "hiddenSeries": false,
-      "id": 239,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": false,
-        "hideEmpty": true,
-        "hideZero": true,
-        "max": true,
-        "min": false,
-        "rightSide": true,
-        "show": false,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.3.5",
-      "pointradius": 0.5,
-      "points": true,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "sum by (source, name) (irate(roq_events[1m]))",
-          "hide": false,
-          "instant": false,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Events (read from event-logs)",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:1473",
-          "decimals": 0,
-          "format": "cps",
-          "label": "",
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:1474",
-          "decimals": 0,
-          "format": "cps",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": false
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {},
-          "links": []
-        },
-        "overrides": []
-      },
-      "fill": 0,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 5,
-        "w": 10,
-        "x": 8,
-        "y": 140
-      },
-      "hiddenSeries": false,
-      "id": 234,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": false,
-        "hideEmpty": true,
-        "hideZero": true,
-        "max": true,
-        "min": false,
-        "rightSide": true,
-        "show": false,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.3.5",
-      "pointradius": 0.5,
-      "points": true,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "sum by (source, table) (irate(roq_export{name='messages'}[1m]))",
-          "hide": false,
-          "instant": false,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Events (exported to service)",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:1473",
-          "decimals": 0,
-          "format": "cps",
-          "label": "",
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:1474",
-          "decimals": 0,
-          "format": "cps",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": false
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "collapsed": false,
-      "datasource": null,
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 145
-      },
-      "id": 15,
-      "panels": [],
-      "title": "Services",
-      "type": "row"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": true,
-      "colorValue": false,
-      "colors": [
-        "#d44a3a",
-        "rgba(237, 129, 40, 0.89)",
-        "#299c46"
-      ],
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 0,
-        "y": 146
-      },
-      "id": 9,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "pluginVersion": "6.4.3",
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false,
-        "ymax": null,
-        "ymin": null
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "expr": "ceil(node_systemd_unit_state{name=\"clickhouse.service\",state=\"active\"})",
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "thresholds": "0,1",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "ClickHouse",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "UP",
-          "value": "1"
-        },
-        {
-          "op": "=",
-          "text": "DOWN",
-          "value": "0"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": true,
-      "colorValue": false,
-      "colors": [
-        "#d44a3a",
-        "rgba(237, 129, 40, 0.89)",
-        "#299c46"
-      ],
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 2,
-        "y": 146
-      },
-      "id": 8,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "pluginVersion": "6.4.3",
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false,
-        "ymax": null,
-        "ymin": null
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "expr": "ceil(node_systemd_unit_state{name=\"influxdb.service\",state=\"active\"})",
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "thresholds": "0,1",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "InfluxDB",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "UP",
-          "value": "1"
-        },
-        {
-          "op": "=",
-          "text": "DOWN",
-          "value": "0"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": true,
-      "colorValue": false,
-      "colors": [
-        "#d44a3a",
-        "rgba(237, 129, 40, 0.89)",
-        "#299c46"
-      ],
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 4,
-        "y": 146
-      },
-      "id": 226,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "pluginVersion": "6.4.3",
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false,
-        "ymax": null,
-        "ymin": null
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "expr": "ceil(node_systemd_unit_state{name=\"redis.service\",state=\"active\"})",
-          "refId": "A"
-        }
-      ],
-      "thresholds": "0,1",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Redis",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "UP",
-          "value": "1"
-        },
-        {
-          "op": "=",
-          "text": "DOWN",
-          "value": "0"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": true,
-      "colorValue": false,
-      "colors": [
-        "#d44a3a",
-        "rgba(237, 129, 40, 0.89)",
-        "#299c46"
-      ],
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 6,
-        "y": 146
-      },
-      "id": 227,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "pluginVersion": "6.4.3",
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false,
-        "ymax": null,
-        "ymin": null
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "expr": "ceil(node_systemd_unit_state{name=\"kafka.service\",state=\"active\"})",
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "thresholds": "0,1",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Kafka",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "UP",
-          "value": "1"
-        },
-        {
-          "op": "=",
-          "text": "DOWN",
-          "value": "0"
-        }
-      ],
-      "valueName": "current"
     }
   ],
   "refresh": "10s",
@@ -16139,7 +16511,7 @@
     "list": []
   },
   "time": {
-    "from": "now-15m",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {
