@@ -34,8 +34,8 @@
 
   - name: create systemd service
     template:
-      src: "templates/redis.service"
-      dest: "/etc/systemd/system/redis.service"
+      src: "templates/redis-server.service"
+      dest: "/etc/systemd/system/redis-server.service"
       owner: root
       group: root
       mode: 0644
@@ -43,7 +43,7 @@
 
   - name: enable the redis service
     systemd:
-      name: "redis.service"
+      name: "redis-server.service"
       state: restarted
       enabled: true
       daemon_reload: true

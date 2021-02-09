@@ -51,8 +51,8 @@
 
   - name: create systemd service
     template:
-      src: "templates/clickhouse.service"
-      dest: "/etc/systemd/system/clickhouse.service"
+      src: "templates/clickhouse-server.service"
+      dest: "/etc/systemd/system/clickhouse-server.service"
       owner: root
       group: root
       mode: 0644
@@ -62,7 +62,7 @@
 
   - name: enable the clickhouse service
     systemd:
-      name: "clickhouse.service"
+      name: "clickhouse-server.service"
       state: restarted
       enabled: true
       daemon_reload: true

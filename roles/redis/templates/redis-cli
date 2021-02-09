@@ -4,5 +4,9 @@ docker run \
   --interactive \
   --tty \
   --rm \
+  --network roq-network \
   redis \
-  redis-cli -h redis.service -p {{ redis_config.port }}
+  redis-cli \
+    -h redis-server.service \
+    -p {{ redis_config.port }} \
+    $@

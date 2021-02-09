@@ -5,5 +5,5 @@ docker exec \
   --tty \
   influxdb.service \
   influx \
-  -precision rfc3339 \
-  $@
+    -precision rfc3339 \
+    $@

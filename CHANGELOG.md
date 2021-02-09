@@ -4,6 +4,13 @@ All notable changes will be documented in this file.
 
 ## Head
 
+### Changed
+
+* Service names now matching binaries
+
+  * `clickhouse-server`
+  * `redis-server`
+
 ## 0.6.0 &ndash; 2021-02-02
 
 ### Changed

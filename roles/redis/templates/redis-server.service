@@ -1,5 +1,5 @@
 [Unit]
-Description=redis
+Description=redis server
 After=docker.service
 Requires=docker.service
 

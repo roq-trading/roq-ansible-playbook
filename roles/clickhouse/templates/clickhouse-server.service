@@ -1,5 +1,5 @@
 [Unit]
-Description=clickhouse
+Description=clickhouse server
 After=docker.service
 Requires=docker.service
 
