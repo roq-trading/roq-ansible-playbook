@@ -25,7 +25,7 @@ scrape_configs:
   - job_name: 'clickhouse'
     metrics_path: '/metrics'
     static_configs:
-      - targets: ['clickhouse.service:{{ clickhouse_config.metrics_port }}']
+      - targets: ['clickhouse-server.service:{{ clickhouse_config.metrics_port }}']
 
   - job_name: 'influxdb'
     metrics_path: '/metrics'

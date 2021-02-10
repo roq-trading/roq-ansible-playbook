@@ -6,5 +6,5 @@ docker run \
   --rm \
   --network roq-network \
   yandex/clickhouse-client \
-    --host clickhouse.service \
+    --host clickhouse-server.service \
     $@
