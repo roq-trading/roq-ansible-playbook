@@ -1,4 +1,23 @@
-*.retry
-.*.swp
+# vim
+*.sw[po]
 
-__pycache__
+# cmake
+*.[ao]
+*.cmake
+*.so
+CMake*.in
+CMakeCache.txt
+CMakeFiles/
+DartConfiguration.tcl
+Makefile
+Testing/
+build/
+compile_commands.json*
+install_manifest.txt
+lib/
+
+# cpack
+_CPack_Packages/
+
+# debian
+*.deb
