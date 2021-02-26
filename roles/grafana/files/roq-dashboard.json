@@ -588,7 +588,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "targets": [
         {
           "expr": "1 - (max(node_filesystem_free_bytes{device!=\"tmpfs\"}) by (device) / max(node_filesystem_size_bytes{device!=\"tmpfs\"}) by (device))",
@@ -1450,7 +1450,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -1557,7 +1557,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -1664,7 +1664,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -2068,7 +2068,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -2175,7 +2175,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -2282,7 +2282,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -2688,7 +2688,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -2795,7 +2795,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -2902,7 +2902,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -4124,7 +4124,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -4163,14 +4163,16 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:633",
           "format": "cps",
           "label": null,
           "logBase": 1,
           "max": null,
-          "min": null,
+          "min": "0",
           "show": true
         },
         {
+          "$$hashKey": "object:634",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -4228,7 +4230,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -4335,7 +4337,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -4446,7 +4448,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"binance\",function=\"disconnect\"})",
@@ -5359,7 +5361,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -5398,14 +5400,16 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:679",
           "format": "cps",
           "label": null,
           "logBase": 1,
           "max": null,
-          "min": null,
+          "min": "0",
           "show": true
         },
         {
+          "$$hashKey": "object:680",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -5463,7 +5467,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -5570,7 +5574,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -5681,7 +5685,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"bitmex\",function=\"disconnect\"})",
@@ -6601,7 +6605,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -6640,14 +6644,16 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:725",
           "format": "cps",
           "label": null,
           "logBase": 1,
           "max": null,
-          "min": null,
+          "min": "0",
           "show": true
         },
         {
+          "$$hashKey": "object:726",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -6705,7 +6711,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -6812,7 +6818,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -6923,7 +6929,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"bitstamp\",function=\"disconnect\"})",
@@ -7829,7 +7835,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -7868,14 +7874,16 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:771",
           "format": "cps",
           "label": null,
           "logBase": 1,
           "max": null,
-          "min": null,
+          "min": "0",
           "show": true
         },
         {
+          "$$hashKey": "object:772",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -7933,7 +7941,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -8040,7 +8048,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -8151,7 +8159,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"coinbase-pro\",function=\"disconnect\"})",
@@ -9057,7 +9065,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -9094,14 +9102,16 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:817",
           "format": "cps",
           "label": null,
           "logBase": 1,
           "max": null,
-          "min": null,
+          "min": "0",
           "show": true
         },
         {
+          "$$hashKey": "object:818",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -9159,7 +9169,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -9266,7 +9276,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -9377,7 +9387,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"deribit\",function=\"disconnect\"})",
@@ -10295,7 +10305,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -10334,14 +10344,16 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:863",
           "format": "cps",
           "label": null,
           "logBase": 1,
           "max": null,
-          "min": null,
+          "min": "0",
           "show": true
         },
         {
+          "$$hashKey": "object:864",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -10399,7 +10411,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -10506,7 +10518,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -10617,7 +10629,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"ftx\",function=\"disconnect\"})",
@@ -11530,7 +11542,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -11567,14 +11579,16 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:909",
           "format": "cps",
           "label": null,
           "logBase": 1,
           "max": null,
-          "min": null,
+          "min": "0",
           "show": true
         },
         {
+          "$$hashKey": "object:910",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -11632,7 +11646,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -11739,7 +11753,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -11850,7 +11864,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"gemini\",function=\"disconnect\"})",
@@ -12766,7 +12780,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -12805,14 +12819,16 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:955",
           "format": "cps",
           "label": null,
           "logBase": 1,
           "max": null,
-          "min": null,
+          "min": "0",
           "show": true
         },
         {
+          "$$hashKey": "object:956",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -12870,7 +12886,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -12977,7 +12993,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -13088,7 +13104,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"hitbtc\",function=\"disconnect\"})",
@@ -14011,7 +14027,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -14050,14 +14066,16 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:1001",
           "format": "cps",
           "label": null,
           "logBase": 1,
           "max": null,
-          "min": null,
+          "min": "0",
           "show": true
         },
         {
+          "$$hashKey": "object:1002",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -14115,7 +14133,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -14222,7 +14240,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -14260,6 +14278,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:1074",
           "decimals": null,
           "format": "ms",
           "label": "",
@@ -14269,6 +14288,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:1075",
           "decimals": 0,
           "format": "cps",
           "label": null,
@@ -14333,7 +14353,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"kraken\",function=\"disconnect\"})",
@@ -14776,7 +14796,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -14878,7 +14898,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -14980,7 +15000,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -15082,7 +15102,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -15198,7 +15218,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -15300,7 +15320,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 0.5,
       "points": false,
       "renderer": "flot",
@@ -15404,7 +15424,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -15508,7 +15528,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -15612,7 +15632,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -15714,7 +15734,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -15816,7 +15836,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 0.5,
       "points": false,
       "renderer": "flot",
@@ -15922,7 +15942,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -16027,7 +16047,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -16131,7 +16151,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -16234,7 +16254,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 0.5,
       "points": false,
       "renderer": "flot",
@@ -16338,7 +16358,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 0.5,
       "points": false,
       "renderer": "flot",
@@ -16442,7 +16462,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 0.5,
       "points": false,
       "renderer": "flot",
@@ -16546,7 +16566,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 0.5,
       "points": false,
       "renderer": "flot",
@@ -16662,7 +16682,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -16765,7 +16785,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -16868,7 +16888,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -16971,7 +16991,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -17074,7 +17094,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -17163,5 +17183,5 @@
   "timezone": "",
   "title": "roq-dashboard",
   "uid": "Afi9GToZz",
-  "version": 7
+  "version": 8
 }
