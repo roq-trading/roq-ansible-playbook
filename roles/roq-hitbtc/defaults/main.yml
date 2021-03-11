@@ -17,7 +17,6 @@ roq_hitbtc_defaults:
     client_listen_address: "{{ directory_config.run }}/roq/roq-hitbtc.sock"
     metrics_listen_address: "{{ directory_config.run }}/roq/metrics/roq-hitbtc.sock"
     ws_uri: "wss://hitbtc.com/ws"
-    rest_uri: "https://hitbtc.com"
     # fix_uri: "tcp+ssl://fix.hitbtc.com:4364"
   symbols:
     - ".*"
