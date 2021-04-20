@@ -55,6 +55,10 @@
   roles:
     - roq-binance
 
+- hosts: roq_binance_futures
+  roles:
+    - roq-binance-futures
+
 - hosts: roq_bitmex
   roles:
     - roq-bitmex

@@ -575,7 +575,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "targets": [
         {
           "expr": "1 - (max(node_filesystem_free_bytes{device!=\"tmpfs\"}) by (device) / max(node_filesystem_size_bytes{device!=\"tmpfs\"}) by (device))",
@@ -1418,7 +1418,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -1524,7 +1524,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -1630,7 +1630,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -1910,6 +1910,94 @@
         "defaults": {},
         "overrides": []
       },
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 4,
+        "y": 11
+      },
+      "id": 168,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true,
+        "ymax": 1,
+        "ymin": 0
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0,1",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Working Orders",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "",
+          "value": "0"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "format": "short",
       "gauge": {
         "maxValue": 100,
@@ -2029,7 +2117,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -2135,7 +2223,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -2241,7 +2329,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -2306,6 +2394,188 @@
       }
     },
     {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "format": "cps",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 2,
+        "y": 13
+      },
+      "id": 166,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true,
+        "ymax": 1,
+        "ymin": 0
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "sum(irate(roq_profile_count{source=\"bitstamp\", function=\"market_by_price\"}[1m]))",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0,1",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Market by Price",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "",
+          "value": "0"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 6,
+        "y": 13
+      },
+      "id": 170,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true,
+        "ymax": 1,
+        "ymin": 0
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "max(roq_clients{source=\"bitstamp\", event=\"connect\"}) - max(roq_clients{source=\"bitstamp\", event=\"disconnect\"})",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0,1",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Clients",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "",
+          "value": "0"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
       "collapsed": false,
       "datasource": null,
       "gridPos": {
@@ -2316,7 +2586,7 @@
       },
       "id": 212,
       "panels": [],
-      "title": "Binance",
+      "title": "Binance (Japan?)",
       "type": "row"
     },
     {
@@ -2418,7 +2688,6 @@
     {
       "cacheTimeout": null,
       "colorBackground": true,
-      "colorPostfix": false,
       "colorValue": false,
       "colors": [
         "#299c46",
@@ -2444,7 +2713,7 @@
         "x": 2,
         "y": 16
       },
-      "id": 215,
+      "id": 254,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -2484,7 +2753,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "max(absent(roq_updated{source=\"binance\",connection=\"market_data\",state=\"ready\"}) OR vector(0))",
+          "expr": "max(absent(roq_updated{source=\"binance\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -2494,19 +2763,19 @@
       "thresholds": "0.5,1",
       "timeFrom": null,
       "timeShift": null,
-      "title": "Market Data",
+      "title": "Service",
       "transparent": true,
       "type": "singlestat",
       "valueFontSize": "50%",
       "valueMaps": [
         {
           "op": "=",
-          "text": "READY",
+          "text": "UP",
           "value": "0"
         },
         {
           "op": "=",
-          "text": "NOT READY",
+          "text": "DOWN",
           "value": "1"
         }
       ],
@@ -2831,7 +3100,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2936,7 +3205,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -3042,7 +3311,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -3152,7 +3421,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"binance\",function=\"disconnect\"})",
@@ -3539,6 +3808,1243 @@
         "x": 0,
         "y": 20
       },
+      "id": 253,
+      "panels": [],
+      "title": "Binance Futures (Japan?)",
+      "type": "row"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": true,
+      "colorPostfix": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 0,
+        "y": 21
+      },
+      "id": 215,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": 1,
+        "ymin": 0
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "max(absent(roq_updated{source=\"binance-futures\",connection=\"market_data\",state=\"ready\"}) OR vector(0))",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0.5,1",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Market Data",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "READY",
+          "value": "0"
+        },
+        {
+          "op": "=",
+          "text": "NOT READY",
+          "value": "1"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": true,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 2,
+        "y": 21
+      },
+      "id": 255,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": 1,
+        "ymin": 0
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "max(absent(roq_updated{source=\"binance-futures\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0.5,1",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Service",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "UP",
+          "value": "0"
+        },
+        {
+          "op": "=",
+          "text": "DOWN",
+          "value": "1"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": true,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 4,
+        "y": 21
+      },
+      "id": 256,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": 1,
+        "ymin": 0
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "max(absent(roq_updated{source=\"binance-futures\",connection=\"order_manager\",state=\"ready\"}) OR vector(0))",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0.5,1",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Order Manager",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "READY",
+          "value": "0"
+        },
+        {
+          "op": "=",
+          "text": "NOT READY",
+          "value": "1"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": true,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 6,
+        "y": 21
+      },
+      "id": 257,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true,
+        "ymax": 1,
+        "ymin": 0
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "roq_exceptions{source=\"binance-futures\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "1,5",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Exceptions",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "",
+          "value": "0"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "decimals": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "format": "short",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 8,
+        "y": 21
+      },
+      "id": 262,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(roq_events_count{source=\"binance-futures\"})",
+          "format": "time_series",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Events (total)",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "aliasColors": {},
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 0,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 10,
+        "y": 21
+      },
+      "hiddenSeries": false,
+      "id": 263,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "irate(roq_events_count{source=\"binance-futures\"}[1m])",
+          "format": "time_series",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Events (frequency)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "transparent": true,
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:633",
+          "format": "cps",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:634",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 13,
+        "y": 21
+      },
+      "hiddenSeries": false,
+      "id": 264,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "hideEmpty": true,
+        "hideZero": true,
+        "max": true,
+        "min": false,
+        "rightSide": true,
+        "show": false,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.4",
+      "pointradius": 0.5,
+      "points": true,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "irate(roq_profile_sum{source=\"binance-futures\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"binance-futures\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Processing (latency)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "transparent": true,
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:514",
+          "decimals": null,
+          "format": "µs",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:515",
+          "decimals": 0,
+          "format": "cps",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 16,
+        "y": 21
+      },
+      "hiddenSeries": false,
+      "id": 265,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "hideEmpty": true,
+        "hideZero": true,
+        "max": true,
+        "min": false,
+        "rightSide": true,
+        "show": false,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.4",
+      "pointradius": 0.5,
+      "points": true,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "irate(roq_latency_sum{source=\"binance-futures\", function=\"ping\"}[1m]) / on(source, connection, function) irate(roq_latency_count{source=\"binance-futures\"}[1m]) / 1000000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "External (latency)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "transparent": true,
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": null,
+          "format": "ms",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "decimals": 0,
+          "format": "cps",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "displayName": "${__series.name}",
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 2
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 19,
+        "y": 21
+      },
+      "id": 266,
+      "links": [],
+      "options": {
+        "displayMode": "basic",
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": false,
+        "text": {}
+      },
+      "pluginVersion": "7.5.4",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "max by (connection) (roq_counter{source=\"binance-futures\",function=\"disconnect\"})",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "{{connection}}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Disconnects",
+      "transparent": true,
+      "type": "bargauge"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "decimals": 0,
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "format": "s",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 0,
+        "y": 23
+      },
+      "id": 258,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": 1,
+        "ymin": 0
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "time() - roq_process{source=\"binance-futures\",name=\"start_time\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0,1",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Uptime",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "",
+          "value": "0"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "format": "cps",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 2,
+        "y": 23
+      },
+      "id": 259,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true,
+        "ymax": 1,
+        "ymin": 0
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(irate(roq_profile_count{source=\"binance-futures\", function=\"market_by_price\"}[1m]))",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0,1",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Market by Price",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "",
+          "value": "0"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 4,
+        "y": 23
+      },
+      "id": 260,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true,
+        "ymax": 1,
+        "ymin": 0
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0,1",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Working Orders",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "",
+          "value": "0"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 6,
+        "y": 23
+      },
+      "id": 261,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true,
+        "ymax": 1,
+        "ymin": 0
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "max(roq_clients{source=\"binance-futures\", event=\"connect\"}) - max(roq_clients{source=\"binance-futures\", event=\"disconnect\"})",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0,1",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Clients",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "",
+          "value": "0"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 25
+      },
       "id": 134,
       "panels": [],
       "title": "BitMEX (Ireland)",
@@ -3570,7 +5076,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 21
+        "y": 26
       },
       "id": 135,
       "interval": null,
@@ -3665,7 +5171,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 21
+        "y": 26
       },
       "id": 137,
       "interval": null,
@@ -3759,7 +5265,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 21
+        "y": 26
       },
       "id": 139,
       "interval": null,
@@ -3853,7 +5359,7 @@
         "h": 2,
         "w": 2,
         "x": 6,
-        "y": 21
+        "y": 26
       },
       "id": 141,
       "interval": null,
@@ -3944,7 +5450,7 @@
         "h": 2,
         "w": 2,
         "x": 8,
-        "y": 21
+        "y": 26
       },
       "id": 146,
       "interval": null,
@@ -4026,7 +5532,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 21
+        "y": 26
       },
       "hiddenSeries": false,
       "id": 143,
@@ -4046,7 +5552,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -4127,7 +5633,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 21
+        "y": 26
       },
       "hiddenSeries": false,
       "id": 189,
@@ -4151,7 +5657,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -4233,7 +5739,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 21
+        "y": 26
       },
       "hiddenSeries": false,
       "id": 144,
@@ -4257,7 +5763,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -4350,7 +5856,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 21
+        "y": 26
       },
       "id": 145,
       "links": [],
@@ -4367,7 +5873,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"bitmex\",function=\"disconnect\"})",
@@ -4409,7 +5915,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 23
+        "y": 28
       },
       "id": 136,
       "interval": null,
@@ -4498,7 +6004,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 23
+        "y": 28
       },
       "id": 138,
       "interval": null,
@@ -4587,7 +6093,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 23
+        "y": 28
       },
       "id": 140,
       "interval": null,
@@ -4675,7 +6181,7 @@
         "h": 2,
         "w": 2,
         "x": 6,
-        "y": 23
+        "y": 28
       },
       "id": 142,
       "interval": null,
@@ -4745,7 +6251,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 25
+        "y": 30
       },
       "id": 148,
       "panels": [],
@@ -4778,7 +6284,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 26
+        "y": 31
       },
       "id": 151,
       "interval": null,
@@ -4879,7 +6385,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 26
+        "y": 31
       },
       "id": 165,
       "interval": null,
@@ -4975,7 +6481,7 @@
         "h": 2,
         "w": 2,
         "x": 4,
-        "y": 26
+        "y": 31
       },
       "id": 167,
       "interval": null,
@@ -5071,7 +6577,7 @@
         "h": 2,
         "w": 2,
         "x": 6,
-        "y": 26
+        "y": 31
       },
       "id": 169,
       "interval": null,
@@ -5164,7 +6670,7 @@
         "h": 2,
         "w": 2,
         "x": 8,
-        "y": 26
+        "y": 31
       },
       "id": 171,
       "interval": null,
@@ -5248,7 +6754,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 26
+        "y": 31
       },
       "hiddenSeries": false,
       "id": 172,
@@ -5268,7 +6774,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -5349,7 +6855,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 26
+        "y": 31
       },
       "hiddenSeries": false,
       "id": 190,
@@ -5373,7 +6879,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -5455,7 +6961,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 26
+        "y": 31
       },
       "hiddenSeries": false,
       "id": 173,
@@ -5479,7 +6985,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -5572,7 +7078,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 26
+        "y": 31
       },
       "id": 174,
       "links": [],
@@ -5589,7 +7095,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"bitstamp\",function=\"disconnect\"})",
@@ -5632,7 +7138,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 28
+        "y": 33
       },
       "id": 152,
       "interval": null,
@@ -5678,1211 +7184,6 @@
           "instant": true,
           "interval": "",
           "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "thresholds": "0,1",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Uptime",
-      "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "50%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "",
-          "value": "0"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "format": "cps",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 2,
-        "y": 28
-      },
-      "id": 166,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "pluginVersion": "6.4.3",
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": true,
-        "ymax": 1,
-        "ymin": 0
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "expr": "sum(irate(roq_profile_count{source=\"bitstamp\", function=\"market_by_price\"}[1m]))",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "thresholds": "0,1",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Market by Price",
-      "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "50%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "",
-          "value": "0"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 4,
-        "y": 28
-      },
-      "id": 168,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "pluginVersion": "6.4.3",
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": true,
-        "ymax": 1,
-        "ymin": 0
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "expr": "",
-          "refId": "A"
-        }
-      ],
-      "thresholds": "0,1",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Working Orders",
-      "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "50%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "",
-          "value": "0"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 6,
-        "y": 28
-      },
-      "id": 170,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "pluginVersion": "6.4.3",
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": true,
-        "ymax": 1,
-        "ymin": 0
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "expr": "max(roq_clients{source=\"bitstamp\", event=\"connect\"}) - max(roq_clients{source=\"bitstamp\", event=\"disconnect\"})",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "thresholds": "0,1",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Clients",
-      "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "50%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "",
-          "value": "0"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "collapsed": false,
-      "datasource": null,
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 30
-      },
-      "id": 4,
-      "panels": [],
-      "title": "Coinbase PRO (USA, VA)",
-      "type": "row"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": true,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 0,
-        "y": 31
-      },
-      "id": 7,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "pluginVersion": "6.4.3",
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false,
-        "ymax": 1,
-        "ymin": 0
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "expr": "max(absent(roq_updated{source=\"coinbase-pro\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
-          "instant": true,
-          "refId": "A"
-        }
-      ],
-      "thresholds": "0.5,1",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Service",
-      "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "50%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "UP",
-          "value": "0"
-        },
-        {
-          "op": "=",
-          "text": "DOWN",
-          "value": "1"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": true,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 2,
-        "y": 31
-      },
-      "id": 32,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "pluginVersion": "6.4.3",
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false,
-        "ymax": 1,
-        "ymin": 0
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "expr": "max(absent(roq_updated{source=\"coinbase-pro\",connection=\"market_data\",state=\"ready\"}) OR vector(0))",
-          "instant": true,
-          "refId": "A"
-        }
-      ],
-      "thresholds": "0.5,1",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Market Data",
-      "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "50%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "READY",
-          "value": "0"
-        },
-        {
-          "op": "=",
-          "text": "NOT READY",
-          "value": "1"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": true,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 4,
-        "y": 31
-      },
-      "id": 33,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "pluginVersion": "6.4.3",
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false,
-        "ymax": 1,
-        "ymin": 0
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "expr": "max(absent(roq_updated{source=\"coinbase-pro\",connection=\"order_manager\",state=\"ready\"}) OR vector(0))",
-          "instant": true,
-          "refId": "A"
-        }
-      ],
-      "thresholds": "0.5,1",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Order Manager",
-      "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "50%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "READY",
-          "value": "0"
-        },
-        {
-          "op": "=",
-          "text": "NOT READY",
-          "value": "1"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": true,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 6,
-        "y": 31
-      },
-      "id": 20,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "pluginVersion": "6.4.3",
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": true,
-        "ymax": 1,
-        "ymin": 0
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "expr": "roq_exceptions{source=\"coinbase-pro\"}",
-          "instant": true,
-          "refId": "A"
-        }
-      ],
-      "thresholds": "1,5",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Exceptions",
-      "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "50%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "",
-          "value": "0"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": null,
-      "decimals": null,
-      "description": "",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "format": "short",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 8,
-        "y": 31
-      },
-      "id": 95,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false,
-        "ymax": null,
-        "ymin": null
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "expr": "sum(roq_events_count{source=\"coinbase-pro\"})",
-          "format": "time_series",
-          "instant": true,
-          "refId": "A"
-        }
-      ],
-      "thresholds": "",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Events (total)",
-      "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "50%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "aliasColors": {},
-      "bars": true,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "links": []
-        },
-        "overrides": []
-      },
-      "fill": 0,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 4,
-        "w": 3,
-        "x": 10,
-        "y": 31
-      },
-      "hiddenSeries": false,
-      "id": 108,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": false,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.5.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "irate(roq_events_count{source=\"coinbase-pro\"}[1m])",
-          "format": "time_series",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Events (frequency)",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:771",
-          "format": "cps",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:772",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": false
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "links": []
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 4,
-        "w": 3,
-        "x": 13,
-        "y": 31
-      },
-      "hiddenSeries": false,
-      "id": 191,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": false,
-        "hideEmpty": true,
-        "hideZero": true,
-        "max": true,
-        "min": false,
-        "rightSide": true,
-        "show": false,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.5.3",
-      "pointradius": 0.5,
-      "points": true,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "irate(roq_profile_sum{source=\"coinbase-pro\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"coinbase-pro\"}[1m]) / 1000",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Processing (latency)",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:514",
-          "decimals": null,
-          "format": "µs",
-          "label": "",
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:515",
-          "decimals": 0,
-          "format": "cps",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": false
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "links": []
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 4,
-        "w": 3,
-        "x": 16,
-        "y": 31
-      },
-      "hiddenSeries": false,
-      "id": 70,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": false,
-        "hideEmpty": true,
-        "hideZero": true,
-        "max": true,
-        "min": false,
-        "rightSide": true,
-        "show": false,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.5.3",
-      "pointradius": 0.5,
-      "points": true,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "irate(roq_latency_sum{source=\"coinbase-pro\", function=\"ping\"}[1m]) / on(source, connection, function) irate(roq_latency_count{source=\"coinbase-pro\"}[1m]) / 1000000",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "External (latency)",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "decimals": null,
-          "format": "ms",
-          "label": "",
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "decimals": 0,
-          "format": "cps",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": false
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "displayName": "${__series.name}",
-          "mappings": [],
-          "max": 100,
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 2
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 3,
-        "x": 19,
-        "y": 31
-      },
-      "id": 132,
-      "links": [],
-      "options": {
-        "displayMode": "basic",
-        "orientation": "vertical",
-        "reduceOptions": {
-          "calcs": [
-            "last"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showUnfilled": false,
-        "text": {}
-      },
-      "pluginVersion": "7.5.3",
-      "targets": [
-        {
-          "expr": "max by (connection) (roq_counter{source=\"coinbase-pro\",function=\"disconnect\"})",
-          "instant": true,
-          "legendFormat": "{{connection}}",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Disconnects",
-      "transparent": true,
-      "type": "bargauge"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": null,
-      "decimals": 0,
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "format": "s",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 0,
-        "y": 33
-      },
-      "id": 74,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "pluginVersion": "6.4.3",
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false,
-        "ymax": 1,
-        "ymin": 0
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "expr": "time() - roq_process{source=\"coinbase-pro\",name=\"start_time\"}",
-          "instant": true,
           "refId": "A"
         }
       ],
@@ -7177,9 +7478,9 @@
         "x": 0,
         "y": 35
       },
-      "id": 11,
+      "id": 4,
       "panels": [],
-      "title": "Deribit (UK)",
+      "title": "Coinbase PRO (USA, VA)",
       "type": "row"
     },
     {
@@ -7210,7 +7511,7 @@
         "x": 0,
         "y": 36
       },
-      "id": 2,
+      "id": 7,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -7232,13 +7533,7 @@
       "postfixFontSize": "50%",
       "prefix": "",
       "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
+      "rangeMaps": [],
       "sparkline": {
         "fillColor": "rgba(31, 118, 189, 0.18)",
         "full": false,
@@ -7250,7 +7545,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "max(absent(roq_updated{source=\"deribit\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
+          "expr": "max(absent(roq_updated{source=\"coinbase-pro\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
           "instant": true,
           "refId": "A"
         }
@@ -7279,7 +7574,6 @@
     {
       "cacheTimeout": null,
       "colorBackground": true,
-      "colorPostfix": false,
       "colorValue": false,
       "colors": [
         "#299c46",
@@ -7305,7 +7599,7 @@
         "x": 2,
         "y": 36
       },
-      "id": 34,
+      "id": 32,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -7345,7 +7639,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "max(absent(roq_updated{source=\"deribit\",connection=\"market_data\",state=\"ready\"}) OR vector(0))",
+          "expr": "max(absent(roq_updated{source=\"coinbase-pro\",connection=\"market_data\",state=\"ready\"}) OR vector(0))",
           "instant": true,
           "refId": "A"
         }
@@ -7399,7 +7693,7 @@
         "x": 4,
         "y": 36
       },
-      "id": 35,
+      "id": 33,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -7439,7 +7733,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "max(absent(roq_updated{source=\"deribit\",connection=\"order_manager\",state=\"ready\"}) OR vector(0))",
+          "expr": "max(absent(roq_updated{source=\"coinbase-pro\",connection=\"order_manager\",state=\"ready\"}) OR vector(0))",
           "instant": true,
           "refId": "A"
         }
@@ -7493,7 +7787,7 @@
         "x": 6,
         "y": 36
       },
-      "id": 21,
+      "id": 20,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -7533,7 +7827,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "roq_exceptions{source=\"deribit\"}",
+          "expr": "roq_exceptions{source=\"coinbase-pro\"}",
           "instant": true,
           "refId": "A"
         }
@@ -7584,7 +7878,7 @@
         "x": 8,
         "y": 36
       },
-      "id": 109,
+      "id": 95,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -7623,7 +7917,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(roq_events_count{source=\"deribit\"})",
+          "expr": "sum(roq_events_count{source=\"coinbase-pro\"})",
           "format": "time_series",
           "instant": true,
           "refId": "A"
@@ -7667,7 +7961,7 @@
         "y": 36
       },
       "hiddenSeries": false,
-      "id": 96,
+      "id": 108,
       "legend": {
         "avg": false,
         "current": false,
@@ -7684,7 +7978,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -7694,9 +7988,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(roq_events_count{source=\"deribit\"}[1m])",
+          "expr": "irate(roq_events_count{source=\"coinbase-pro\"}[1m])",
           "format": "time_series",
           "instant": false,
+          "interval": "",
+          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -7721,7 +8017,7 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:817",
+          "$$hashKey": "object:771",
           "format": "cps",
           "label": null,
           "logBase": 1,
@@ -7730,7 +8026,7 @@
           "show": true
         },
         {
-          "$$hashKey": "object:818",
+          "$$hashKey": "object:772",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -7766,7 +8062,7 @@
         "y": 36
       },
       "hiddenSeries": false,
-      "id": 192,
+      "id": 191,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -7787,7 +8083,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -7797,7 +8093,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(roq_profile_sum{source=\"deribit\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"deribit\"}[1m]) / 1000",
+          "expr": "irate(roq_profile_sum{source=\"coinbase-pro\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"coinbase-pro\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -7872,7 +8168,7 @@
         "y": 36
       },
       "hiddenSeries": false,
-      "id": 71,
+      "id": 70,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -7893,7 +8189,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -7903,7 +8199,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(roq_latency_sum{source=\"deribit\", function=\"ping\"}[1m]) / on(source, connection, function) irate(roq_latency_count{source=\"deribit\"}[1m]) / 1000000",
+          "expr": "irate(roq_latency_sum{source=\"coinbase-pro\", function=\"ping\"}[1m]) / on(source, connection, function) irate(roq_latency_count{source=\"coinbase-pro\"}[1m]) / 1000000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -7988,7 +8284,7 @@
         "x": 19,
         "y": 36
       },
-      "id": 131,
+      "id": 132,
       "links": [],
       "options": {
         "displayMode": "basic",
@@ -8003,10 +8299,10 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "targets": [
         {
-          "expr": "max by (connection) (roq_counter{source=\"deribit\",function=\"disconnect\"})",
+          "expr": "max by (connection) (roq_counter{source=\"coinbase-pro\",function=\"disconnect\"})",
           "instant": true,
           "legendFormat": "{{connection}}",
           "refId": "A"
@@ -8047,7 +8343,7 @@
         "x": 0,
         "y": 38
       },
-      "id": 75,
+      "id": 74,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -8087,10 +8383,8 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "time() - roq_process{source=\"deribit\",name=\"start_time\"}",
+          "expr": "time() - roq_process{source=\"coinbase-pro\",name=\"start_time\"}",
           "instant": true,
-          "interval": "",
-          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -8385,9 +8679,9 @@
         "x": 0,
         "y": 40
       },
-      "id": 150,
+      "id": 11,
       "panels": [],
-      "title": "FTX (Singapore)",
+      "title": "Deribit (UK)",
       "type": "row"
     },
     {
@@ -8418,7 +8712,7 @@
         "x": 0,
         "y": 41
       },
-      "id": 153,
+      "id": 2,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -8458,10 +8752,8 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "max(absent(roq_updated{source=\"ftx\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
+          "expr": "max(absent(roq_updated{source=\"deribit\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
           "instant": true,
-          "interval": "",
-          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -8515,7 +8807,7 @@
         "x": 2,
         "y": 41
       },
-      "id": 155,
+      "id": 34,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -8555,10 +8847,8 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "max(absent(roq_updated{source=\"ftx\",connection=\"market_data\",state=\"ready\"}) OR vector(0))",
+          "expr": "max(absent(roq_updated{source=\"deribit\",connection=\"market_data\",state=\"ready\"}) OR vector(0))",
           "instant": true,
-          "interval": "",
-          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -8611,7 +8901,7 @@
         "x": 4,
         "y": 41
       },
-      "id": 157,
+      "id": 35,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -8651,10 +8941,8 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "max(absent(roq_updated{source=\"ftx\",connection=\"order_manager\",state=\"ready\"}) OR vector(0))",
+          "expr": "max(absent(roq_updated{source=\"deribit\",connection=\"order_manager\",state=\"ready\"}) OR vector(0))",
           "instant": true,
-          "interval": "",
-          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -8707,7 +8995,7 @@
         "x": 6,
         "y": 41
       },
-      "id": 159,
+      "id": 21,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -8747,10 +9035,8 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "roq_exceptions{source=\"ftx\"}",
+          "expr": "roq_exceptions{source=\"deribit\"}",
           "instant": true,
-          "interval": "",
-          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -8800,7 +9086,7 @@
         "x": 8,
         "y": 41
       },
-      "id": 161,
+      "id": 109,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -8839,11 +9125,9 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(roq_events_count{source=\"ftx\"})",
+          "expr": "sum(roq_events_count{source=\"deribit\"})",
           "format": "time_series",
           "instant": true,
-          "interval": "",
-          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -8885,7 +9169,7 @@
         "y": 41
       },
       "hiddenSeries": false,
-      "id": 162,
+      "id": 96,
       "legend": {
         "avg": false,
         "current": false,
@@ -8902,7 +9186,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -8912,11 +9196,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(roq_events_count{source=\"ftx\"}[1m])",
+          "expr": "irate(roq_events_count{source=\"deribit\"}[1m])",
           "format": "time_series",
           "instant": false,
-          "interval": "",
-          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -8941,7 +9223,7 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:863",
+          "$$hashKey": "object:817",
           "format": "cps",
           "label": null,
           "logBase": 1,
@@ -8950,7 +9232,7 @@
           "show": true
         },
         {
-          "$$hashKey": "object:864",
+          "$$hashKey": "object:818",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -8986,7 +9268,7 @@
         "y": 41
       },
       "hiddenSeries": false,
-      "id": 193,
+      "id": 192,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -9007,7 +9289,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -9017,7 +9299,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(roq_profile_sum{source=\"ftx\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"ftx\"}[1m]) / 1000",
+          "expr": "irate(roq_profile_sum{source=\"deribit\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"deribit\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -9092,7 +9374,7 @@
         "y": 41
       },
       "hiddenSeries": false,
-      "id": 163,
+      "id": 71,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -9113,7 +9395,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -9123,7 +9405,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(roq_latency_sum{source=\"ftx\", function=\"ping\"}[1m]) / on(source, connection, function) irate(roq_latency_count{source=\"ftx\"}[1m]) / 1000000",
+          "expr": "irate(roq_latency_sum{source=\"deribit\", function=\"ping\"}[1m]) / on(source, connection, function) irate(roq_latency_count{source=\"deribit\"}[1m]) / 1000000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -9208,7 +9490,7 @@
         "x": 19,
         "y": 41
       },
-      "id": 164,
+      "id": 131,
       "links": [],
       "options": {
         "displayMode": "basic",
@@ -9223,12 +9505,11 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "targets": [
         {
-          "expr": "max by (connection) (roq_counter{source=\"ftx\",function=\"disconnect\"})",
+          "expr": "max by (connection) (roq_counter{source=\"deribit\",function=\"disconnect\"})",
           "instant": true,
-          "interval": "",
           "legendFormat": "{{connection}}",
           "refId": "A"
         }
@@ -9268,7 +9549,7 @@
         "x": 0,
         "y": 43
       },
-      "id": 154,
+      "id": 75,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -9308,7 +9589,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "time() - roq_process{source=\"ftx\",name=\"start_time\"}",
+          "expr": "time() - roq_process{source=\"deribit\",name=\"start_time\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -9610,9 +9891,9 @@
         "x": 0,
         "y": 45
       },
-      "id": 116,
+      "id": 150,
       "panels": [],
-      "title": "Gemini (USA, NJ)",
+      "title": "FTX (Singapore)",
       "type": "row"
     },
     {
@@ -9643,7 +9924,7 @@
         "x": 0,
         "y": 46
       },
-      "id": 117,
+      "id": 153,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -9683,8 +9964,10 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "max(absent(roq_updated{source=\"gemini\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
+          "expr": "max(absent(roq_updated{source=\"ftx\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
           "instant": true,
+          "interval": "",
+          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -9738,7 +10021,7 @@
         "x": 2,
         "y": 46
       },
-      "id": 118,
+      "id": 155,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -9778,8 +10061,10 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "max(absent(roq_updated{source=\"gemini\",connection=\"market_data\",state=\"ready\"}) OR vector(0))",
+          "expr": "max(absent(roq_updated{source=\"ftx\",connection=\"market_data\",state=\"ready\"}) OR vector(0))",
           "instant": true,
+          "interval": "",
+          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -9832,7 +10117,7 @@
         "x": 4,
         "y": 46
       },
-      "id": 119,
+      "id": 157,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -9872,8 +10157,10 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "max(absent(roq_updated{source=\"gemini\",connection=\"order_manager\",state=\"ready\"}) OR vector(0))",
+          "expr": "max(absent(roq_updated{source=\"ftx\",connection=\"order_manager\",state=\"ready\"}) OR vector(0))",
           "instant": true,
+          "interval": "",
+          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -9926,7 +10213,7 @@
         "x": 6,
         "y": 46
       },
-      "id": 120,
+      "id": 159,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -9966,8 +10253,10 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "roq_exceptions{source=\"gemini\"}",
+          "expr": "roq_exceptions{source=\"ftx\"}",
           "instant": true,
+          "interval": "",
+          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -10017,7 +10306,7 @@
         "x": 8,
         "y": 46
       },
-      "id": 125,
+      "id": 161,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -10056,9 +10345,11 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(roq_events_count{source=\"gemini\"})",
+          "expr": "sum(roq_events_count{source=\"ftx\"})",
           "format": "time_series",
           "instant": true,
+          "interval": "",
+          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -10100,7 +10391,7 @@
         "y": 46
       },
       "hiddenSeries": false,
-      "id": 126,
+      "id": 162,
       "legend": {
         "avg": false,
         "current": false,
@@ -10117,7 +10408,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -10127,9 +10418,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(roq_events_count{source=\"gemini\"}[1m])",
+          "expr": "irate(roq_events_count{source=\"ftx\"}[1m])",
           "format": "time_series",
           "instant": false,
+          "interval": "",
+          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -10154,7 +10447,7 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:909",
+          "$$hashKey": "object:863",
           "format": "cps",
           "label": null,
           "logBase": 1,
@@ -10163,7 +10456,7 @@
           "show": true
         },
         {
-          "$$hashKey": "object:910",
+          "$$hashKey": "object:864",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -10199,7 +10492,7 @@
         "y": 46
       },
       "hiddenSeries": false,
-      "id": 194,
+      "id": 193,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -10220,7 +10513,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -10230,7 +10523,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(roq_profile_sum{source=\"gemini\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"gemini\"}[1m]) / 1000",
+          "expr": "irate(roq_profile_sum{source=\"ftx\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"ftx\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -10305,7 +10598,7 @@
         "y": 46
       },
       "hiddenSeries": false,
-      "id": 127,
+      "id": 163,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -10326,7 +10619,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -10336,7 +10629,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(roq_latency_sum{source=\"gemini\", function=\"ping\"}[1m]) / on(source, connection, function) irate(roq_latency_count{source=\"gemini\"}[1m]) / 1000000",
+          "expr": "irate(roq_latency_sum{source=\"ftx\", function=\"ping\"}[1m]) / on(source, connection, function) irate(roq_latency_count{source=\"ftx\"}[1m]) / 1000000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -10421,7 +10714,7 @@
         "x": 19,
         "y": 46
       },
-      "id": 130,
+      "id": 164,
       "links": [],
       "options": {
         "displayMode": "basic",
@@ -10436,11 +10729,12 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "targets": [
         {
-          "expr": "max by (connection) (roq_counter{source=\"gemini\",function=\"disconnect\"})",
+          "expr": "max by (connection) (roq_counter{source=\"ftx\",function=\"disconnect\"})",
           "instant": true,
+          "interval": "",
           "legendFormat": "{{connection}}",
           "refId": "A"
         }
@@ -10480,7 +10774,7 @@
         "x": 0,
         "y": 48
       },
-      "id": 121,
+      "id": 154,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -10520,8 +10814,10 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "time() - roq_process{source=\"gemini\",name=\"start_time\"}",
+          "expr": "time() - roq_process{source=\"ftx\",name=\"start_time\"}",
           "instant": true,
+          "interval": "",
+          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -10816,9 +11112,9 @@
         "x": 0,
         "y": 50
       },
-      "id": 176,
+      "id": 116,
       "panels": [],
-      "title": "HitBTC (Germany)",
+      "title": "Gemini (USA, NJ)",
       "type": "row"
     },
     {
@@ -10849,7 +11145,7 @@
         "x": 0,
         "y": 51
       },
-      "id": 177,
+      "id": 117,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -10889,10 +11185,8 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "max(absent(roq_updated{source=\"hitbtc\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
+          "expr": "max(absent(roq_updated{source=\"gemini\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
           "instant": true,
-          "interval": "",
-          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -10946,7 +11240,7 @@
         "x": 2,
         "y": 51
       },
-      "id": 179,
+      "id": 118,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -10986,10 +11280,8 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "max(absent(roq_updated{source=\"hitbtc\",connection=\"market_data\",state=\"ready\"}) OR vector(0))",
+          "expr": "max(absent(roq_updated{source=\"gemini\",connection=\"market_data\",state=\"ready\"}) OR vector(0))",
           "instant": true,
-          "interval": "",
-          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -11042,7 +11334,7 @@
         "x": 4,
         "y": 51
       },
-      "id": 181,
+      "id": 119,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -11082,10 +11374,8 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "max(absent(roq_updated{source=\"hitbtc\",connection=\"order_manager\",state=\"ready\"}) OR vector(0))",
+          "expr": "max(absent(roq_updated{source=\"gemini\",connection=\"order_manager\",state=\"ready\"}) OR vector(0))",
           "instant": true,
-          "interval": "",
-          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -11138,7 +11428,7 @@
         "x": 6,
         "y": 51
       },
-      "id": 183,
+      "id": 120,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -11178,10 +11468,8 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "roq_exceptions{source=\"hitbtc\"}",
+          "expr": "roq_exceptions{source=\"gemini\"}",
           "instant": true,
-          "interval": "",
-          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -11231,7 +11519,7 @@
         "x": 8,
         "y": 51
       },
-      "id": 185,
+      "id": 125,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -11270,11 +11558,9 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(roq_events_count{source=\"hitbtc\"})",
+          "expr": "sum(roq_events_count{source=\"gemini\"})",
           "format": "time_series",
           "instant": true,
-          "interval": "",
-          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -11316,7 +11602,7 @@
         "y": 51
       },
       "hiddenSeries": false,
-      "id": 186,
+      "id": 126,
       "legend": {
         "avg": false,
         "current": false,
@@ -11333,7 +11619,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -11343,11 +11629,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(roq_events_count{source=\"hitbtc\"}[1m])",
+          "expr": "irate(roq_events_count{source=\"gemini\"}[1m])",
           "format": "time_series",
           "instant": false,
-          "interval": "",
-          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -11372,7 +11656,7 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:955",
+          "$$hashKey": "object:909",
           "format": "cps",
           "label": null,
           "logBase": 1,
@@ -11381,7 +11665,7 @@
           "show": true
         },
         {
-          "$$hashKey": "object:956",
+          "$$hashKey": "object:910",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -11417,7 +11701,7 @@
         "y": 51
       },
       "hiddenSeries": false,
-      "id": 195,
+      "id": 194,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -11438,7 +11722,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -11448,7 +11732,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(roq_profile_sum{source=\"hitbtc\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"hitbtc\"}[1m]) / 1000",
+          "expr": "irate(roq_profile_sum{source=\"gemini\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"gemini\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -11523,7 +11807,7 @@
         "y": 51
       },
       "hiddenSeries": false,
-      "id": 187,
+      "id": 127,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -11544,7 +11828,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -11554,7 +11838,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(roq_latency_sum{source=\"hitbtc\", function=\"ping\"}[1m]) / on(source, connection, function) irate(roq_latency_count{source=\"hitbtc\"}[1m]) / 1000000",
+          "expr": "irate(roq_latency_sum{source=\"gemini\", function=\"ping\"}[1m]) / on(source, connection, function) irate(roq_latency_count{source=\"gemini\"}[1m]) / 1000000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -11639,7 +11923,7 @@
         "x": 19,
         "y": 51
       },
-      "id": 188,
+      "id": 130,
       "links": [],
       "options": {
         "displayMode": "basic",
@@ -11654,12 +11938,11 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "targets": [
         {
-          "expr": "max by (connection) (roq_counter{source=\"hitbtc\",function=\"disconnect\"})",
+          "expr": "max by (connection) (roq_counter{source=\"gemini\",function=\"disconnect\"})",
           "instant": true,
-          "interval": "",
           "legendFormat": "{{connection}}",
           "refId": "A"
         }
@@ -11699,7 +11982,7 @@
         "x": 0,
         "y": 53
       },
-      "id": 178,
+      "id": 121,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -11739,10 +12022,8 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "time() - roq_process{source=\"hitbtc\",name=\"start_time\"}",
+          "expr": "time() - roq_process{source=\"gemini\",name=\"start_time\"}",
           "instant": true,
-          "interval": "",
-          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -12041,9 +12322,9 @@
         "x": 0,
         "y": 55
       },
-      "id": 197,
+      "id": 176,
       "panels": [],
-      "title": "Kraken",
+      "title": "HitBTC (Germany)",
       "type": "row"
     },
     {
@@ -12074,7 +12355,7 @@
         "x": 0,
         "y": 56
       },
-      "id": 198,
+      "id": 177,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -12114,7 +12395,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "max(absent(roq_updated{source=\"kraken\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
+          "expr": "max(absent(roq_updated{source=\"hitbtc\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -12171,7 +12452,7 @@
         "x": 2,
         "y": 56
       },
-      "id": 200,
+      "id": 179,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -12211,7 +12492,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "max(absent(roq_updated{source=\"kraken\",connection=\"market_data\",state=\"ready\"}) OR vector(0))",
+          "expr": "max(absent(roq_updated{source=\"hitbtc\",connection=\"market_data\",state=\"ready\"}) OR vector(0))",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -12267,7 +12548,7 @@
         "x": 4,
         "y": 56
       },
-      "id": 202,
+      "id": 181,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -12307,7 +12588,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "max(absent(roq_updated{source=\"kraken\",connection=\"order_manager\",state=\"ready\"}) OR vector(0))",
+          "expr": "max(absent(roq_updated{source=\"hitbtc\",connection=\"order_manager\",state=\"ready\"}) OR vector(0))",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -12363,7 +12644,7 @@
         "x": 6,
         "y": 56
       },
-      "id": 205,
+      "id": 183,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -12403,7 +12684,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "roq_exceptions{source=\"kraken\"}",
+          "expr": "roq_exceptions{source=\"hitbtc\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -12456,7 +12737,7 @@
         "x": 8,
         "y": 56
       },
-      "id": 206,
+      "id": 185,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -12495,7 +12776,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(roq_events_count{source=\"kraken\"})",
+          "expr": "sum(roq_events_count{source=\"hitbtc\"})",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -12541,7 +12822,7 @@
         "y": 56
       },
       "hiddenSeries": false,
-      "id": 207,
+      "id": 186,
       "legend": {
         "avg": false,
         "current": false,
@@ -12558,7 +12839,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -12568,7 +12849,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(roq_events_count{source=\"kraken\"}[1m])",
+          "expr": "irate(roq_events_count{source=\"hitbtc\"}[1m])",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -12597,7 +12878,7 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:1001",
+          "$$hashKey": "object:955",
           "format": "cps",
           "label": null,
           "logBase": 1,
@@ -12606,7 +12887,7 @@
           "show": true
         },
         {
-          "$$hashKey": "object:1002",
+          "$$hashKey": "object:956",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -12642,7 +12923,7 @@
         "y": 56
       },
       "hiddenSeries": false,
-      "id": 208,
+      "id": 195,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -12663,7 +12944,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -12673,7 +12954,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(roq_profile_sum{source=\"kraken\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"kraken\"}[1m]) / 1000",
+          "expr": "irate(roq_profile_sum{source=\"hitbtc\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"hitbtc\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -12748,7 +13029,7 @@
         "y": 56
       },
       "hiddenSeries": false,
-      "id": 209,
+      "id": 187,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -12769,7 +13050,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -12779,7 +13060,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(roq_latency_sum{source=\"kraken\", function=\"ping\"}[1m]) / on(source, connection, function) irate(roq_latency_count{source=\"kraken\"}[1m]) / 1000000",
+          "expr": "irate(roq_latency_sum{source=\"hitbtc\", function=\"ping\"}[1m]) / on(source, connection, function) irate(roq_latency_count{source=\"hitbtc\"}[1m]) / 1000000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -12807,7 +13088,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:1074",
           "decimals": null,
           "format": "ms",
           "label": "",
@@ -12817,7 +13097,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:1075",
           "decimals": 0,
           "format": "cps",
           "label": null,
@@ -12866,7 +13145,7 @@
         "x": 19,
         "y": 56
       },
-      "id": 210,
+      "id": 188,
       "links": [],
       "options": {
         "displayMode": "basic",
@@ -12881,10 +13160,10 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "targets": [
         {
-          "expr": "max by (connection) (roq_counter{source=\"kraken\",function=\"disconnect\"})",
+          "expr": "max by (connection) (roq_counter{source=\"hitbtc\",function=\"disconnect\"})",
           "instant": true,
           "interval": "",
           "legendFormat": "{{connection}}",
@@ -12926,7 +13205,7 @@
         "x": 0,
         "y": 58
       },
-      "id": 199,
+      "id": 178,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -12966,7 +13245,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "time() - roq_process{source=\"kraken\",name=\"start_time\"}",
+          "expr": "time() - roq_process{source=\"hitbtc\",name=\"start_time\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -13268,6 +13547,963 @@
         "x": 0,
         "y": 60
       },
+      "id": 197,
+      "panels": [],
+      "title": "Kraken (Costa Rica + \"Europe\"?)",
+      "type": "row"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": true,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 0,
+        "y": 61
+      },
+      "id": 198,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": 1,
+        "ymin": 0
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "max(absent(roq_updated{source=\"kraken\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0.5,1",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Service",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "UP",
+          "value": "0"
+        },
+        {
+          "op": "=",
+          "text": "DOWN",
+          "value": "1"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": true,
+      "colorPostfix": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 2,
+        "y": 61
+      },
+      "id": 200,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": 1,
+        "ymin": 0
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "max(absent(roq_updated{source=\"kraken\",connection=\"market_data\",state=\"ready\"}) OR vector(0))",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0.5,1",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Market Data",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "READY",
+          "value": "0"
+        },
+        {
+          "op": "=",
+          "text": "NOT READY",
+          "value": "1"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": true,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 4,
+        "y": 61
+      },
+      "id": 202,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": 1,
+        "ymin": 0
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "max(absent(roq_updated{source=\"kraken\",connection=\"order_manager\",state=\"ready\"}) OR vector(0))",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0.5,1",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Order Manager",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "READY",
+          "value": "0"
+        },
+        {
+          "op": "=",
+          "text": "NOT READY",
+          "value": "1"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": true,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 6,
+        "y": 61
+      },
+      "id": 205,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true,
+        "ymax": 1,
+        "ymin": 0
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "roq_exceptions{source=\"kraken\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "1,5",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Exceptions",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "",
+          "value": "0"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "decimals": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "format": "short",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 8,
+        "y": 61
+      },
+      "id": 206,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "sum(roq_events_count{source=\"kraken\"})",
+          "format": "time_series",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Events (total)",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "aliasColors": {},
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 0,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 10,
+        "y": 61
+      },
+      "hiddenSeries": false,
+      "id": 207,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(roq_events_count{source=\"kraken\"}[1m])",
+          "format": "time_series",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Events (frequency)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "transparent": true,
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:1001",
+          "format": "cps",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:1002",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 13,
+        "y": 61
+      },
+      "hiddenSeries": false,
+      "id": 208,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "hideEmpty": true,
+        "hideZero": true,
+        "max": true,
+        "min": false,
+        "rightSide": true,
+        "show": false,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.4",
+      "pointradius": 0.5,
+      "points": true,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(roq_profile_sum{source=\"kraken\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"kraken\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Processing (latency)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "transparent": true,
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:514",
+          "decimals": null,
+          "format": "µs",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:515",
+          "decimals": 0,
+          "format": "cps",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 16,
+        "y": 61
+      },
+      "hiddenSeries": false,
+      "id": 209,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "hideEmpty": true,
+        "hideZero": true,
+        "max": true,
+        "min": false,
+        "rightSide": true,
+        "show": false,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.4",
+      "pointradius": 0.5,
+      "points": true,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(roq_latency_sum{source=\"kraken\", function=\"ping\"}[1m]) / on(source, connection, function) irate(roq_latency_count{source=\"kraken\"}[1m]) / 1000000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "External (latency)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "transparent": true,
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:1074",
+          "decimals": null,
+          "format": "ms",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:1075",
+          "decimals": 0,
+          "format": "cps",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "displayName": "${__series.name}",
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 2
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 19,
+        "y": 61
+      },
+      "id": 210,
+      "links": [],
+      "options": {
+        "displayMode": "basic",
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": false,
+        "text": {}
+      },
+      "pluginVersion": "7.5.4",
+      "targets": [
+        {
+          "expr": "max by (connection) (roq_counter{source=\"kraken\",function=\"disconnect\"})",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "{{connection}}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Disconnects",
+      "transparent": true,
+      "type": "bargauge"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "decimals": 0,
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "format": "s",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 0,
+        "y": 63
+      },
+      "id": 199,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.4.3",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": 1,
+        "ymin": 0
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "time() - roq_process{source=\"kraken\",name=\"start_time\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0,1",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Uptime",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "",
+          "value": "0"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 65
+      },
       "id": 63,
       "panels": [],
       "title": "Orders",
@@ -13291,7 +14527,7 @@
         "h": 5,
         "w": 10,
         "x": 0,
-        "y": 61
+        "y": 66
       },
       "hiddenSeries": false,
       "id": 65,
@@ -13315,7 +14551,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -13392,7 +14628,7 @@
         "h": 5,
         "w": 10,
         "x": 10,
-        "y": 61
+        "y": 66
       },
       "hiddenSeries": false,
       "id": 40,
@@ -13416,7 +14652,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -13493,7 +14729,7 @@
         "h": 5,
         "w": 10,
         "x": 0,
-        "y": 66
+        "y": 71
       },
       "hiddenSeries": false,
       "id": 39,
@@ -13517,7 +14753,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -13594,7 +14830,7 @@
         "h": 5,
         "w": 10,
         "x": 10,
-        "y": 66
+        "y": 71
       },
       "hiddenSeries": false,
       "id": 64,
@@ -13618,7 +14854,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -13684,7 +14920,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 71
+        "y": 76
       },
       "id": 56,
       "panels": [],
@@ -13709,7 +14945,7 @@
         "h": 5,
         "w": 18,
         "x": 0,
-        "y": 72
+        "y": 77
       },
       "hiddenSeries": false,
       "id": 94,
@@ -13733,7 +14969,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -13810,7 +15046,7 @@
         "h": 6,
         "w": 18,
         "x": 0,
-        "y": 77
+        "y": 82
       },
       "hiddenSeries": false,
       "id": 111,
@@ -13834,7 +15070,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 0.5,
       "points": false,
       "renderer": "flot",
@@ -13913,7 +15149,7 @@
         "h": 6,
         "w": 6,
         "x": 0,
-        "y": 83
+        "y": 88
       },
       "hiddenSeries": false,
       "id": 112,
@@ -13937,7 +15173,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -14016,7 +15252,7 @@
         "h": 6,
         "w": 6,
         "x": 6,
-        "y": 83
+        "y": 88
       },
       "hiddenSeries": false,
       "id": 113,
@@ -14040,7 +15276,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -14119,7 +15355,7 @@
         "h": 6,
         "w": 6,
         "x": 12,
-        "y": 83
+        "y": 88
       },
       "hiddenSeries": false,
       "id": 114,
@@ -14143,7 +15379,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -14220,7 +15456,7 @@
         "h": 5,
         "w": 18,
         "x": 0,
-        "y": 89
+        "y": 94
       },
       "hiddenSeries": false,
       "id": 110,
@@ -14244,7 +15480,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -14321,7 +15557,7 @@
         "h": 6,
         "w": 18,
         "x": 0,
-        "y": 94
+        "y": 99
       },
       "hiddenSeries": false,
       "id": 38,
@@ -14345,7 +15581,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 0.5,
       "points": false,
       "renderer": "flot",
@@ -14426,7 +15662,7 @@
         "h": 6,
         "w": 6,
         "x": 0,
-        "y": 100
+        "y": 105
       },
       "hiddenSeries": false,
       "id": 91,
@@ -14450,7 +15686,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -14530,7 +15766,7 @@
         "h": 6,
         "w": 6,
         "x": 6,
-        "y": 100
+        "y": 105
       },
       "hiddenSeries": false,
       "id": 92,
@@ -14554,7 +15790,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -14633,7 +15869,7 @@
         "h": 6,
         "w": 6,
         "x": 12,
-        "y": 100
+        "y": 105
       },
       "hiddenSeries": false,
       "id": 43,
@@ -14657,7 +15893,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -14735,7 +15971,7 @@
         "h": 6,
         "w": 18,
         "x": 0,
-        "y": 106
+        "y": 111
       },
       "hiddenSeries": false,
       "id": 54,
@@ -14759,7 +15995,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 0.5,
       "points": false,
       "renderer": "flot",
@@ -14838,7 +16074,7 @@
         "h": 6,
         "w": 6,
         "x": 0,
-        "y": 112
+        "y": 117
       },
       "hiddenSeries": false,
       "id": 66,
@@ -14862,7 +16098,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 0.5,
       "points": false,
       "renderer": "flot",
@@ -14941,7 +16177,7 @@
         "h": 6,
         "w": 6,
         "x": 6,
-        "y": 112
+        "y": 117
       },
       "hiddenSeries": false,
       "id": 67,
@@ -14965,7 +16201,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 0.5,
       "points": false,
       "renderer": "flot",
@@ -15044,7 +16280,7 @@
         "h": 6,
         "w": 6,
         "x": 12,
-        "y": 112
+        "y": 117
       },
       "hiddenSeries": false,
       "id": 105,
@@ -15068,7 +16304,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 0.5,
       "points": false,
       "renderer": "flot",
@@ -15134,7 +16370,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 118
+        "y": 123
       },
       "id": 104,
       "panels": [],
@@ -15159,7 +16395,7 @@
         "h": 5,
         "w": 18,
         "x": 0,
-        "y": 119
+        "y": 124
       },
       "hiddenSeries": false,
       "id": 98,
@@ -15183,7 +16419,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -15261,7 +16497,7 @@
         "h": 5,
         "w": 18,
         "x": 0,
-        "y": 124
+        "y": 129
       },
       "hiddenSeries": false,
       "id": 102,
@@ -15285,7 +16521,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -15363,7 +16599,7 @@
         "h": 5,
         "w": 18,
         "x": 0,
-        "y": 129
+        "y": 134
       },
       "hiddenSeries": false,
       "id": 99,
@@ -15387,7 +16623,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -15465,7 +16701,7 @@
         "h": 5,
         "w": 18,
         "x": 0,
-        "y": 134
+        "y": 139
       },
       "hiddenSeries": false,
       "id": 100,
@@ -15489,7 +16725,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -15567,7 +16803,7 @@
         "h": 5,
         "w": 18,
         "x": 0,
-        "y": 139
+        "y": 144
       },
       "hiddenSeries": false,
       "id": 101,
@@ -15591,7 +16827,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.3",
+      "pluginVersion": "7.5.4",
       "pointradius": 0.5,
       "points": true,
       "renderer": "flot",
@@ -15680,5 +16916,5 @@
   "timezone": "",
   "title": "roq-dashboard",
   "uid": "Afi9GToZz",
-  "version": 7
+  "version": 11
 }

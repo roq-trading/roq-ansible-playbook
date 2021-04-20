@@ -63,6 +63,15 @@ scrape_configs:
     static_configs:
       - targets: ['nginx.service:{{ nginx_config.http_port }}']
 {% endif %}
+{% if 'roq_binance_futures' in groups %}
+
+  - job_name: 'roq-binance-futures'
+    metrics_path: '/metrics/roq-binance-futures'
+    params:
+      format: [ prometheus ]
+    static_configs:
+      - targets: ['nginx.service:{{ nginx_config.http_port }}']
+{% endif %}
 {% if 'roq_bitmex' in groups %}
 
   - job_name: 'roq-bitmex'
