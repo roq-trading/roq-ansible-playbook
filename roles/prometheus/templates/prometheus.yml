@@ -135,10 +135,37 @@ scrape_configs:
     static_configs:
       - targets: ['nginx.service:{{ nginx_config.http_port }}']
 {% endif %}
+{% if 'roq_huobi' in groups %}
+
+  - job_name: 'roq-huobi'
+    metrics_path: '/metrics/roq-huobi'
+    params:
+      format: [ prometheus ]
+    static_configs:
+      - targets: ['nginx.service:{{ nginx_config.http_port }}']
+{% endif %}
+{% if 'roq_huobi_futures' in groups %}
+
+  - job_name: 'roq-huobi-futures'
+    metrics_path: '/metrics/roq-huobi-futures'
+    params:
+      format: [ prometheus ]
+    static_configs:
+      - targets: ['nginx.service:{{ nginx_config.http_port }}']
+{% endif %}
 {% if 'roq_kraken' in groups %}
 
   - job_name: 'roq-kraken'
     metrics_path: '/metrics/roq-kraken'
+    params:
+      format: [ prometheus ]
+    static_configs:
+      - targets: ['nginx.service:{{ nginx_config.http_port }}']
+{% endif %}
+{% if 'roq_kraken_futures' in groups %}
+
+  - job_name: 'roq-kraken-futures'
+    metrics_path: '/metrics/roq-kraken-futures'
     params:
       format: [ prometheus ]
     static_configs:

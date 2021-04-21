@@ -1,0 +1,22 @@
+---
+
+roq_kraken_defaults:
+  version: "{{ roq_version }}"
+  docker:
+    use: "{{ roq_use_docker }}"
+    name: "roqtrading/roq-kraken-futures"
+  service:
+    start: "Sun *-*-* 00:01:00"
+    stop: "Sat *-*-* 23:59:00"
+  logging:
+    verbosity: 0
+  flags:
+    name: "kraken-futures"
+    config_file: "{{ directory_config.usr_local_etc }}/roq-kraken-futures/config.toml"
+    event_log_dir: "{{ directory_config.var_lib }}/roq/data"
+    client_listen_address: "{{ directory_config.run }}/roq/roq-kraken-futures.sock"
+    metrics_listen_address: "{{ directory_config.run }}/roq/metrics/roq-kraken-futures.sock"
+    rest_uri: "https://testnet.krakenfuture.com"
+    ws_uri: "wss://stream.krakenfuture.com/ws"
+  symbols:
+    - ".*"

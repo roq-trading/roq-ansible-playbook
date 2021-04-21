@@ -1,6 +1,6 @@
 ---
 
-roq_binance_defaults:
+roq_binance_futures_defaults:
   version: "{{ roq_version }}"
   docker:
     use: "{{ roq_use_docker }}"
