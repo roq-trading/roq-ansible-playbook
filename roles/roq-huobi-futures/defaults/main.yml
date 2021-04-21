@@ -16,7 +16,8 @@ roq_huobi_futures_defaults:
     event_log_dir: "{{ directory_config.var_lib }}/roq/data"
     client_listen_address: "{{ directory_config.run }}/roq/roq-huobi-futures.sock"
     metrics_listen_address: "{{ directory_config.run }}/roq/metrics/roq-huobi-futures.sock"
-    rest_uri: "https://testnet.huobi-futures.com"
-    ws_uri: "wss://testnet.huobi-futures.com/realtime"
+    rest_uri: "https://api.hbdm.com"
+    ws_market_uri: "wss://api.hbdm.com/ws"
+    ws_order_uri: "wss://api.hbdm.com/notification"
   symbols:
     - ".*"

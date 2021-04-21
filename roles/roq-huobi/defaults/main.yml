@@ -16,7 +16,9 @@ roq_huobi_defaults:
     event_log_dir: "{{ directory_config.var_lib }}/roq/data"
     client_listen_address: "{{ directory_config.run }}/roq/roq-huobi.sock"
     metrics_listen_address: "{{ directory_config.run }}/roq/metrics/roq-huobi.sock"
-    rest_uri: "https://testnet.huobi.com"
-    ws_uri: "wss://testnet.huobi.com/realtime"
+    rest_uri: "https://api.huobi.pro"
+    ws_market_uri: "wss://api.huobi.pro/ws"
+    ws_mbp_uri: "wss://api.huobi.pro/feed"
+    ws_account_uri: "wss://api.huobi.pro/ws/v2"
   symbols:
     - ".*"
