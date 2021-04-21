@@ -1310,7 +1310,7 @@
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 6,
+        "x": 8,
         "y": 6
       },
       "id": 235,
@@ -1921,7 +1921,7 @@
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 6,
+        "x": 8,
         "y": 11
       },
       "id": 247,
@@ -13807,7 +13807,7 @@
       },
       "id": 197,
       "panels": [],
-      "title": "Kraken (Costa Rica + \"Europe\")",
+      "title": "Kraken (Costa Rica)",
       "type": "row"
     },
     {
@@ -14856,7 +14856,7 @@
       },
       "id": 268,
       "panels": [],
-      "title": "Kraken Futures (Costa Rica + \"Europe\")",
+      "title": "Kraken Futures (Costa Rica)",
       "type": "row"
     },
     {
@@ -18297,7 +18297,7 @@
       }
     }
   ],
-  "refresh": "",
+  "refresh": "10s",
   "schemaVersion": 27,
   "style": "dark",
   "tags": [],
