@@ -62,7 +62,7 @@
     template:
       src: "gateway/{{ item | basename }}"
       dest: "{{ item | dirname }}/roq-{{ item | basename | replace('item', config.flags.name) }}"
-      mode: "{{ 0755 if (item | splitext | last == '.sh') else 0644 }}"
+      mode: "{{ '0755' if (item | splitext | last == '.sh') else '0644' }}"
     with_items:
       - "/etc/systemd/system/item.service"
       - "/etc/systemd/system/item.timer"
