@@ -29,14 +29,6 @@
   roles:
     - roq-clickhouse
 
-- hosts: influxdb
-  roles:
-    - influxdb
-
-- hosts: roq_influxdb
-  roles:
-    - roq-influxdb
-
 - hosts: redis
   roles:
     - redis
@@ -50,6 +42,10 @@
 - hosts: roq_kafka
   roles:
     - roq-kafka
+
+- hosts: roq_fix_bridge
+  roles:
+    - roq-fix-bridge
 
 - hosts: roq_binance
   roles:

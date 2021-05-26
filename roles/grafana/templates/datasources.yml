@@ -20,13 +20,3 @@ datasources:
     type: "clickhouse"
     url: "http://clickhouse.service:{{ clickhouse_config.http_port }}"
 {% endif %}
-{% if 'influxdb' in groups %}
-  - name: "InfluxDB"
-    orgId: 1
-    access: "proxy"
-    editable: true
-    isDefault: false
-    type: "influxdb"
-    url: "http://influxdb.service:{{ influxdb_config.port }}"
-    version: 1
-{% endif %}

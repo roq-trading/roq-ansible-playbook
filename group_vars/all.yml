@@ -40,12 +40,6 @@ clickhouse_defaults:
     name: "yandex/clickhouse"
     tag: "latest"
 
-influxdb_defaults:
-  port: 8086
-  docker:
-    name: "library/influxdb"
-    tag: "latest"
-
 redis_defaults:
   port: 6379
   docker:

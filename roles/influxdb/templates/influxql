@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-docker exec \
-  --interactive \
-  --tty \
-  influxdb.service \
-  influx \
-    -precision rfc3339 \
-    $@

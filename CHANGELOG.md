@@ -4,6 +4,14 @@ All notable changes will be documented in this file.
 
 ## Head
 
+### Added
+
+* The `roq-fix-bridge` role
+
+### Removed
+
+* The `influxdb` and `roq-influxdb` roles
+
 ## 0.7.0 &ndash; 2021-04-15
 
 ## 0.6.1 &ndash; 2021-02-19

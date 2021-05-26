@@ -2,8 +2,8 @@
 
 - name: combine user configuration with defaults
   set_fact:
-    roq_influxdb_config: >
-        {{ roq_influxdb_defaults | combine(roq_influxdb | default({}), recursive=True) }}
+    roq_fix_bridge_config: >
+        {{ roq_fix_bridge_defaults | combine(roq_fix_bridge | default({}), recursive=True) }}
     cacheable: true
   tags:
     - always
@@ -17,9 +17,9 @@
 
 - name: shorter variable name for config
   set_fact:
-    config: "{{ roq_influxdb_config }}"
+    config: "{{ roq_fix_bridge_config }}"
   tags:
-    - roq-influxdb
+    - roq-fix-bridge
 
 - block:
 
@@ -33,12 +33,12 @@
     with_items:
       - "{{ directory_config.var_lib }}/roq"
       - "{{ directory_config.var_lib }}/roq/data"
-      - "{{ directory_config.usr_local_etc }}/roq-influxdb"
+      - "{{ directory_config.usr_local_etc }}/roq-fix-bridge"
 
   - name: create config
     template:
       src: "templates/{{ item }}"
-      dest: "{{ directory_config.usr_local_etc }}/roq-influxdb/{{ item }}"
+      dest: "{{ directory_config.usr_local_etc }}/roq-fix-bridge/{{ item }}"
       owner: "{{ roq_user }}"
       # group: "{{ roq_user }}"
       mode: 0644
@@ -47,31 +47,31 @@
 
   - name: create shell script
     template:
-      src: "templates/roq-influxdb"
-      dest: "{{ directory_config.usr_local_bin }}/roq-influxdb"
+      src: "templates/roq-fix-bridge"
+      dest: "{{ directory_config.usr_local_bin }}/roq-fix-bridge"
       owner: "{{ roq_user }}"
       # group: "{{ roq_user }}"
       mode: 0755
 
   - name: check previous version
-    shell: '{{ directory_config.opt }}/conda/bin/conda list -f roq-influxdb | sed -n "s/^roq-influxdb\s*\([0-9]\+\.[0-9]\+\.[0-9]\+\).*/\1/p"'
+    shell: '{{ directory_config.opt }}/conda/bin/conda list -f roq-fix-bridge | sed -n "s/^roq-fix-bridge\s*\([0-9]\+\.[0-9]\+\.[0-9]\+\).*/\1/p"'
     register: previous_version
     changed_when: false
 
   - name: install conda package
     shell: "{{ directory_config.opt }}/conda/bin/conda install -y -n base \
-      roq-influxdb{{ '' if config.version == 'latest' else '==%s'|format(config.version) }}"
+      roq-fix-bridge{{ '' if config.version == 'latest' else '==%s'|format(config.version) }}"
     changed_when: false
 
   - name: check current version
-    shell: '{{ directory_config.opt }}/conda/bin/conda list -f roq-influxdb | sed -n "s/^roq-influxdb\s*\([0-9]\+\.[0-9]\+\.[0-9]\+\).*/\1/p"'
+    shell: '{{ directory_config.opt }}/conda/bin/conda list -f roq-fix-bridge | sed -n "s/^roq-fix-bridge\s*\([0-9]\+\.[0-9]\+\.[0-9]\+\).*/\1/p"'
     register: current_version
     changed_when: "current_version.stdout != previous_version.stdout"
-  
-  when: "'roq_influxdb' in group_names"
+
+  when: "'roq_fix_bridge' in group_names"
   become: "{{ 'true' if become_user is defined else 'false' }}"
   tags:
-    - roq-influxdb
+    - roq-fix-bridge
 
 ##############
 ### SERVER ###
@@ -91,7 +91,7 @@
   - name: define list of systemd units
     set_fact:
       systemd_units:
-      - 'roq-influxdb.service'
+      - 'roq-fix-bridge.service'
 
   - name: create systemd units
     template:
@@ -109,7 +109,7 @@
       daemon_reload: true
     with_items: "{{ systemd_units }}"
 
-  when: become_user is defined and 'roq_influxdb' in group_names
+  when: become_user is defined and 'roq_fix_bridge' in group_names
   become: true
   tags:
-    - roq-influxdb
+    - roq-fix-bridge

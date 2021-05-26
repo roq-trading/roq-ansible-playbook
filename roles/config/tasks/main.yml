@@ -14,12 +14,6 @@
           {{ clickhouse_defaults | combine(clickhouse | default({}), recursive=True) }}
       cacheable: true
 
-  - name: create influxdb config
-    set_fact:
-      influxdb_config: >
-          {{ influxdb_defaults | combine(influxdb | default({}), recursive=True) }}
-      cacheable: true
-
   - name: create redis config
     set_fact:
       redis_config: >
