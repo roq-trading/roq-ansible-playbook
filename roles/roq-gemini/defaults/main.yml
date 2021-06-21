@@ -16,9 +16,9 @@ roq_gemini_defaults:
     event_log_dir: "{{ directory_config.var_lib }}/roq/data"
     client_listen_address: "{{ directory_config.run }}/roq/roq-gemini.sock"
     metrics_listen_address: "{{ directory_config.run }}/roq/metrics/roq-gemini.sock"
-    fix_mkt_uri: "tcp://8.44.203.78:1529"
-    fix_ord_uri: "tcp://8.44.203.78:1528"
-    fix_drp_uri: "tcp://8.44.203.78:1530"
+    fix_mkt_uri: "tcp://3.220.21.165:1514"
+    fix_ord_uri: "tcp://3.220.21.165:1514"
+    fix_drp_uri: "tcp://3.220.21.165:1514"
   symbols:
     - ".*"
   market_data:
