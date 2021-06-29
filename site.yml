@@ -87,6 +87,10 @@
   roles:
     - roq-kraken
 
+- hosts: roq_kraken_futures
+  roles:
+    - roq-kraken-futures
+
 - hosts: trading
   roles:
     - prometheus
